@@ -1,0 +1,3293 @@
+{
+  "433403844": {
+    "artwork": {
+      "width": 1024,
+      "url": "https://is1-ssl.mzstatic.com/image/thumb/Purple123/v4/d0/18/dc/d018dcf3-e7cf-78fd-c318-d0d7dc3ee96d/AppIcon-0-1x_U007emarketing-0-0-85-220-0-7.png/{w}x{h}bb.{f}",
+      "height": 1024,
+      "textColor3": "09282a",
+      "textColor2": "000607",
+      "textColor4": "0a282a",
+      "hasAlpha": false,
+      "textColor1": "000606",
+      "bgColor": "2faeb8",
+      "hasP3": false,
+      "supportsLayeredImage": false
+    },
+    "artistName": "Hitech LLC",
+    "firstVersionSupportingInAppPurchaseApi": "5.8.1",
+    "url": "https://apps.apple.com/ru/app/%D0%BF%D1%81%D0%B8%D1%85%D0%BE%D0%BB%D0%BE%D0%B3%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%B8%D0%B5-%D1%82%D0%B5%D1%81%D1%82%D1%8B-%D0%BD%D0%B0-iq/id433403844",
+    "shortUrl": "https://apps.apple.com/ru/app/%D0%BF%D1%81%D0%B8%D1%85%D0%BE%D0%BB%D0%BE%D0%B3%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%B8%D0%B5-%D1%82%D0%B5%D1%81%D1%82%D1%8B-%D0%BD%D0%B0-iq/id433403844",
+    "videoPreviewsByType": {},
+    "deviceFamilies": [
+      "iphone",
+      "ipad",
+      "ipod"
+    ],
+    "genreNames": [
+      "Образ жизни",
+      "Образование"
+    ],
+    "nameSortValue": "ПсихологическиеТестынаIQ",
+    "id": "433403844",
+    "releaseDate": "2011-05-02",
+    "userRating": {
+      "value": 3.9,
+      "ratingCount": 567,
+      "ratingCountList": [
+        144,
+        5,
+        3,
+        9,
+        406
+      ],
+      "ariaLabelForRatings": "Звезд: 3.9"
+    },
+    "contentRatingsBySystem": {
+      "appsApple": {
+        "name": "17+",
+        "value": 600,
+        "rank": 4,
+        "advisories": [
+          "Часто/очень часто встречающиеся сцены откровенного содержания, предназначенные только для взрослых"
+        ]
+      }
+    },
+    "name": "Психологические Тесты на IQ",
+    "artistUrl": "https://apps.apple.com/ru/developer/hitech-llc/id665836492",
+    "screenshotsByType": {
+      "ipadPro_2018": [
+        {
+          "width": 2048,
+          "url": "https://is5-ssl.mzstatic.com/image/thumb/Purple128/v4/b6/6a/7b/b66a7bc6-33b0-94ff-cc6b-fcefc6ec3fb5/pr_source.jpg/{w}x{h}bb.{f}",
+          "height": 2732,
+          "textColor3": "cbe2e0",
+          "textColor2": "c7f4f6",
+          "textColor4": "9fdbde",
+          "hasAlpha": false,
+          "textColor1": "fffef9",
+          "bgColor": "007580",
+          "checksum": "c8338f558cea9702c71a8016b6a71fb7",
+          "hasP3": false,
+          "supportsLayeredImage": false
+        },
+        {
+          "width": 2048,
+          "url": "https://is1-ssl.mzstatic.com/image/thumb/Purple128/v4/85/65/62/85656203-0bc6-c8e9-4f13-c63337fdbe7c/pr_source.jpg/{w}x{h}bb.{f}",
+          "height": 2732,
+          "textColor3": "604b4b",
+          "textColor2": "2e2c2a",
+          "textColor4": "575554",
+          "hasAlpha": false,
+          "textColor1": "3a1f1f",
+          "bgColor": "f8f8fa",
+          "checksum": "7a4b0b5d1cfd067db8a1fa90ce1ff3dd",
+          "hasP3": false,
+          "supportsLayeredImage": false
+        },
+        {
+          "width": 2048,
+          "url": "https://is4-ssl.mzstatic.com/image/thumb/Purple118/v4/6a/55/d5/6a55d5ca-d05b-601c-77c7-437fe08e5df5/pr_source.jpg/{w}x{h}bb.{f}",
+          "height": 2732,
+          "textColor3": "323234",
+          "textColor2": "2f3031",
+          "textColor4": "575859",
+          "hasAlpha": false,
+          "textColor1": "010003",
+          "bgColor": "f8f8fa",
+          "checksum": "e06e1dfbb19c3dbc14fc0ce47d63d7b1",
+          "hasP3": false,
+          "supportsLayeredImage": false
+        },
+        {
+          "width": 2048,
+          "url": "https://is2-ssl.mzstatic.com/image/thumb/Purple128/v4/fe/ce/17/fece178c-841c-8019-b9bf-40c86ddc641f/pr_source.jpg/{w}x{h}bb.{f}",
+          "height": 2732,
+          "textColor3": "3d3d3f",
+          "textColor2": "30241f",
+          "textColor4": "584e4a",
+          "hasAlpha": false,
+          "textColor1": "0e0e10",
+          "bgColor": "f8f8fa",
+          "checksum": "f211b0afd12c0df7ba82259278100cb0",
+          "hasP3": false,
+          "supportsLayeredImage": false
+        }
+      ],
+      "ipadPro": [
+        {
+          "width": 2048,
+          "url": "https://is3-ssl.mzstatic.com/image/thumb/Purple128/v4/13/54/b6/1354b627-9c9a-790b-166a-e408a83ba9b0/pr_source.jpg/{w}x{h}bb.{f}",
+          "height": 2732,
+          "textColor3": "cbe2e0",
+          "textColor2": "c7f4f6",
+          "textColor4": "9fdbde",
+          "hasAlpha": false,
+          "textColor1": "fffef9",
+          "bgColor": "007580",
+          "checksum": "c8338f558cea9702c71a8016b6a71fb7",
+          "hasP3": false,
+          "supportsLayeredImage": false
+        },
+        {
+          "width": 2048,
+          "url": "https://is5-ssl.mzstatic.com/image/thumb/Purple128/v4/01/5b/17/015b1700-52a1-719b-ee36-f78e145aaa23/pr_source.jpg/{w}x{h}bb.{f}",
+          "height": 2732,
+          "textColor3": "604b4b",
+          "textColor2": "2e2c2a",
+          "textColor4": "575554",
+          "hasAlpha": false,
+          "textColor1": "3a1f1f",
+          "bgColor": "f8f8fa",
+          "checksum": "7a4b0b5d1cfd067db8a1fa90ce1ff3dd",
+          "hasP3": false,
+          "supportsLayeredImage": false
+        },
+        {
+          "width": 2048,
+          "url": "https://is4-ssl.mzstatic.com/image/thumb/Purple118/v4/ce/b6/e3/ceb6e3aa-9544-9edb-83de-087d66b640b6/pr_source.jpg/{w}x{h}bb.{f}",
+          "height": 2732,
+          "textColor3": "323234",
+          "textColor2": "2f3031",
+          "textColor4": "575859",
+          "hasAlpha": false,
+          "textColor1": "010003",
+          "bgColor": "f8f8fa",
+          "checksum": "e06e1dfbb19c3dbc14fc0ce47d63d7b1",
+          "hasP3": false,
+          "supportsLayeredImage": false
+        },
+        {
+          "width": 2048,
+          "url": "https://is4-ssl.mzstatic.com/image/thumb/Purple118/v4/df/97/b0/df97b031-03b1-dc12-b6d0-a3403db60787/pr_source.jpg/{w}x{h}bb.{f}",
+          "height": 2732,
+          "textColor3": "3d3d3f",
+          "textColor2": "30241f",
+          "textColor4": "584e4a",
+          "hasAlpha": false,
+          "textColor1": "0e0e10",
+          "bgColor": "f8f8fa",
+          "checksum": "f211b0afd12c0df7ba82259278100cb0",
+          "hasP3": false,
+          "supportsLayeredImage": false
+        }
+      ],
+      "iphone6+": [
+        {
+          "width": 1242,
+          "url": "https://is3-ssl.mzstatic.com/image/thumb/Purple118/v4/08/61/bf/0861bffd-0781-d201-5811-297c265d5fc1/pr_source.jpg/{w}x{h}bb.{f}",
+          "height": 2208,
+          "textColor3": "cde2e5",
+          "textColor2": "ffce18",
+          "textColor4": "d2bc2c",
+          "hasAlpha": false,
+          "textColor1": "f9ffff",
+          "bgColor": "207280",
+          "checksum": "50e687edcafba3a8bc6ede0c790396bd",
+          "hasP3": false,
+          "supportsLayeredImage": false
+        },
+        {
+          "width": 1242,
+          "url": "https://is4-ssl.mzstatic.com/image/thumb/Purple118/v4/93/b4/3d/93b43dfc-6c82-ffad-3992-ce2e8453a315/pr_source.jpg/{w}x{h}bb.{f}",
+          "height": 2208,
+          "textColor3": "bbddd6",
+          "textColor2": "f0f84e",
+          "textColor4": "c6dd58",
+          "hasAlpha": false,
+          "textColor1": "e1f8ec",
+          "bgColor": "207280",
+          "checksum": "0697d314b45a2284886294c3dfcab0ad",
+          "hasP3": false,
+          "supportsLayeredImage": false
+        },
+        {
+          "width": 1242,
+          "url": "https://is4-ssl.mzstatic.com/image/thumb/Purple118/v4/e8/eb/ea/e8ebea83-31cb-8517-d36c-60a502d1a5e1/pr_source.jpg/{w}x{h}bb.{f}",
+          "height": 2208,
+          "textColor3": "505052",
+          "textColor2": "332e2a",
+          "textColor4": "5b5754",
+          "hasAlpha": false,
+          "textColor1": "262627",
+          "bgColor": "fafafc",
+          "checksum": "d1d33163277c895238c8be7c41de8c0a",
+          "hasP3": false,
+          "supportsLayeredImage": false
+        },
+        {
+          "width": 1242,
+          "url": "https://is1-ssl.mzstatic.com/image/thumb/Purple118/v4/cd/ee/34/cdee347d-fcd8-2b39-7cf7-f4078be93304/pr_source.jpg/{w}x{h}bb.{f}",
+          "height": 2208,
+          "textColor3": "323233",
+          "textColor2": "262627",
+          "textColor4": "505052",
+          "hasAlpha": false,
+          "textColor1": "000000",
+          "bgColor": "fafafc",
+          "checksum": "7517cbdc53252005bce93faba5cc5ec3",
+          "hasP3": false,
+          "supportsLayeredImage": false
+        },
+        {
+          "width": 1242,
+          "url": "https://is1-ssl.mzstatic.com/image/thumb/Purple128/v4/38/58/77/38587754-c0a8-380a-0ad0-d7d34ec49937/pr_source.jpg/{w}x{h}bb.{f}",
+          "height": 2208,
+          "textColor3": "323233",
+          "textColor2": "1a171c",
+          "textColor4": "464449",
+          "hasAlpha": false,
+          "textColor1": "000000",
+          "bgColor": "fafafc",
+          "checksum": "2aae1e6409cf1f1353c08e895ea560e1",
+          "hasP3": false,
+          "supportsLayeredImage": false
+        }
+      ],
+      "iphone_6_5": [
+        {
+          "width": 1242,
+          "url": "https://is3-ssl.mzstatic.com/image/thumb/Purple118/v4/30/c3/04/30c304c4-10f6-75ad-64da-adc60bab095f/pr_source.jpg/{w}x{h}bb.{f}",
+          "height": 2688,
+          "textColor3": "d2e2e3",
+          "textColor2": "ffd530",
+          "textColor4": "d2c140",
+          "hasAlpha": false,
+          "textColor1": "fffffd",
+          "bgColor": "207280",
+          "checksum": "162598cd6ae0280e1e35515ba50d8388",
+          "hasP3": false,
+          "supportsLayeredImage": false
+        },
+        {
+          "width": 1242,
+          "url": "https://is5-ssl.mzstatic.com/image/thumb/Purple118/v4/63/11/78/6311785b-1349-b7de-36eb-13436a359edd/pr_source.jpg/{w}x{h}bb.{f}",
+          "height": 2688,
+          "textColor3": "bedbe3",
+          "textColor2": "f5fa2e",
+          "textColor4": "cbde3e",
+          "hasAlpha": false,
+          "textColor1": "e6f5fc",
+          "bgColor": "207280",
+          "checksum": "d94aa2da0054d3224b86993c5ac50c6b",
+          "hasP3": false,
+          "supportsLayeredImage": false
+        },
+        {
+          "width": 1242,
+          "url": "https://is1-ssl.mzstatic.com/image/thumb/Purple128/v4/59/8b/ed/598bed44-db3a-110e-f427-469572e1d2e9/pr_source.jpg/{w}x{h}bb.{f}",
+          "height": 2688,
+          "textColor3": "4c484e",
+          "textColor2": "262626",
+          "textColor4": "505050",
+          "hasAlpha": false,
+          "textColor1": "211c24",
+          "bgColor": "f7f7f7",
+          "checksum": "9a902efc84f17da101e163e34bd56582",
+          "hasP3": false,
+          "supportsLayeredImage": false
+        },
+        {
+          "width": 1242,
+          "url": "https://is4-ssl.mzstatic.com/image/thumb/Purple118/v4/05/19/1c/05191ca3-508e-c253-b2ed-9f6e50c71f1f/pr_source.jpg/{w}x{h}bb.{f}",
+          "height": 2688,
+          "textColor3": "313131",
+          "textColor2": "292929",
+          "textColor4": "525252",
+          "hasAlpha": false,
+          "textColor1": "000000",
+          "bgColor": "f7f7f7",
+          "checksum": "8b5736fa3b12aaff84a2930a0245c6b4",
+          "hasP3": false,
+          "supportsLayeredImage": false
+        },
+        {
+          "width": 1242,
+          "url": "https://is4-ssl.mzstatic.com/image/thumb/Purple118/v4/fd/80/1e/fd801ea2-00ee-ecab-e19e-2c65fed8fd4e/pr_source.jpg/{w}x{h}bb.{f}",
+          "height": 2688,
+          "textColor3": "313131",
+          "textColor2": "292929",
+          "textColor4": "525252",
+          "hasAlpha": false,
+          "textColor1": "000000",
+          "bgColor": "f7f7f7",
+          "checksum": "c1566466dcad7131faebfdf651da9bc1",
+          "hasP3": false,
+          "supportsLayeredImage": false
+        }
+      ]
+    },
+    "nameRaw": "Психологические Тесты на IQ",
+    "editorialArtwork": {},
+    "subtitle": "Узнай всё о себе и партнёре",
+    "bundleId": "com.nit.ab1120",
+    "hasInAppPurchases": true,
+    "kind": "iosSoftware",
+    "copyright": "© 2019, Hitech LLC",
+    "chartPositionForStore": {
+      "appStore": {
+        "position": 103,
+        "genreName": "Образ жизни",
+        "chartUrl": "https://itunes.apple.com/WebObjects/MZStore.woa/wa/viewTop?cc=ru&genreId=6012&popId=96"
+      }
+    },
+    "artistId": "665836492",
+    "genres": [
+      {
+        "genreId": "6012",
+        "name": "Образ жизни",
+        "url": "https://itunes.apple.com/ru/genre/id6012",
+        "mediaType": "8",
+        "parentGenreId": "36"
+      },
+      {
+        "genreId": "6017",
+        "name": "Образование",
+        "url": "https://itunes.apple.com/ru/genre/id6017",
+        "mediaType": "8",
+        "parentGenreId": "36"
+      }
+    ],
+    "minimumOSVersion": "9.0",
+    "messagesScreenshots": {},
+    "requiredCapabilities": "armv7 ",
+    "offers": [
+      {
+        "actionText": {
+          "short": "ЗАГРУЗИТЬ",
+          "medium": "Загрузить",
+          "long": "ЗАГРУЗИТЬ",
+          "downloaded": "УСТАНОВЛЕНО",
+          "downloading": "УСТАНОВКА"
+        },
+        "type": "get",
+        "priceFormatted": "0 ₽",
+        "price": 0,
+        "buyParams": "productType=C&price=0&salableAdamId=433403844&pricingParameters=STDQ&pg=default&appExtVrsId=831871192",
+        "version": {
+          "display": "5.83.1",
+          "externalId": 831871192
+        },
+        "assets": [
+          {
+            "flavor": "iosSoftware",
+            "size": 31433728
+          }
+        ]
+      },
+      {
+        "actionText": {
+          "short": "ЗАГРУЗИТЬ",
+          "medium": "Загрузить",
+          "long": "ЗАГРУЗИТЬ ПРИЛОЖЕНИЕ",
+          "downloaded": "УСТАНОВЛЕНО",
+          "downloading": "УСТАНОВКА"
+        },
+        "type": "update",
+        "priceFormatted": "0 ₽",
+        "price": 0,
+        "buyParams": "productType=C&price=0&salableAdamId=433403844&pricingParameters=SWUPD&pg=default&appExtVrsId=831871192",
+        "version": {
+          "display": "5.83.1",
+          "externalId": 831871192
+        },
+        "assets": [
+          {
+            "flavor": "iosSoftware",
+            "size": 31433728
+          }
+        ]
+      }
+    ]
+  },
+  "849714592": {
+    "artwork": {
+      "width": 1024,
+      "url": "https://is3-ssl.mzstatic.com/image/thumb/Purple7/v4/55/ed/6b/55ed6bac-5752-ac6b-bf8a-3f87191ca578/mzl.yqdtjqgs.png/{w}x{h}bb.{f}",
+      "height": 1024,
+      "textColor3": "333733",
+      "textColor2": "282c3d",
+      "textColor4": "535664",
+      "hasAlpha": false,
+      "textColor1": "000500",
+      "bgColor": "ffffff",
+      "hasP3": false,
+      "supportsLayeredImage": false
+    },
+    "artistName": "Dmitriy Yudin",
+    "url": "https://apps.apple.com/ru/app/%D1%82%D0%B5%D1%81%D1%82%D1%8B-%D0%BD%D0%B0-%D1%81%D0%B5%D0%BA%D1%81-%D0%B8-%D0%BB%D1%8E%D0%B1%D0%BE%D0%B2%D1%8C-%D0%B0-%D1%82%D0%B0%D0%BA-%D0%B6%D0%B5-%D1%85%D0%B0%D1%80%D0%B0%D0%BA%D1%82%D0%B5%D1%80-%D0%B7%D0%B4%D0%BE%D1%80%D0%BE%D0%B2%D1%8C%D0%B5-%D0%B8/id849714592",
+    "shortUrl": "https://apps.apple.com/ru/app/%D1%82%D0%B5%D1%81%D1%82%D1%8B-%D0%BD%D0%B0-%D1%81%D0%B5%D0%BA%D1%81-%D0%B8-%D0%BB%D1%8E%D0%B1%D0%BE%D0%B2%D1%8C-%D0%B0-%D1%82%D0%B0%D0%BA-%D0%B6%D0%B5-%D1%85%D0%B0%D1%80%D0%B0%D0%BA%D1%82%D0%B5%D1%80-%D0%B7%D0%B4%D0%BE%D1%80%D0%BE%D0%B2%D1%8C%D0%B5-%D0%B8/id849714592",
+    "videoPreviewsByType": {},
+    "deviceFamilies": [
+      "iphone",
+      "ipad",
+      "ipod"
+    ],
+    "genreNames": [
+      "Развлечения",
+      "Образ жизни"
+    ],
+    "nameSortValue": "ТестынасексилюбовьатакжехарактерздоровьеивозрастПриколыпроденьгиработаимузыкаТестнаiqинтеллект",
+    "id": "849714592",
+    "releaseDate": "2014-04-08",
+    "userRating": {
+      "value": 4.4,
+      "ratingCount": 29002,
+      "ratingCountList": [
+        809,
+        700,
+        2525,
+        5879,
+        19089
+      ],
+      "ariaLabelForRatings": "Звезд: 4.4"
+    },
+    "contentRatingsBySystem": {
+      "appsApple": {
+        "name": "4+",
+        "value": 100,
+        "rank": 1
+      }
+    },
+    "name": "Тесты на секс и любовь, а так же характер, здоровье и возраст. Приколы про деньги, работа и музыка. Тест на iq интеллект",
+    "artistUrl": "https://apps.apple.com/ru/developer/dmitriy-yudin/id968007421",
+    "screenshotsByType": {
+      "iphone5": [
+        {
+          "width": 640,
+          "height": 1136,
+          "url": "https://is4-ssl.mzstatic.com/image/thumb/Purple3/v4/f8/94/4e/f8944ef8-ed0b-c68f-eab3-661c88d7966d/pr_source.png/{w}x{h}bb.{f}",
+          "supportsLayeredImage": false,
+          "hasP3": false,
+          "hasAlpha": false,
+          "checksum": "9da372deff6bd6f4f461e49a43a1c2e8"
+        },
+        {
+          "width": 640,
+          "height": 1136,
+          "url": "https://is1-ssl.mzstatic.com/image/thumb/Purple1/v4/47/b4/25/47b42540-282e-3df3-e60b-f96f6b594f0a/pr_source.png/{w}x{h}bb.{f}",
+          "supportsLayeredImage": false,
+          "hasP3": false,
+          "hasAlpha": false,
+          "checksum": "90d94f55149106554f7023db5b0840ac"
+        },
+        {
+          "width": 640,
+          "height": 1136,
+          "url": "https://is4-ssl.mzstatic.com/image/thumb/Purple5/v4/fe/79/0c/fe790ce6-8773-63bd-534f-79eb2883ac83/pr_source.png/{w}x{h}bb.{f}",
+          "supportsLayeredImage": false,
+          "hasP3": false,
+          "hasAlpha": false,
+          "checksum": "6c4d5ade1d89b7c4a1ea4f7583d1d5dc"
+        },
+        {
+          "width": 640,
+          "height": 1136,
+          "url": "https://is1-ssl.mzstatic.com/image/thumb/Purple5/v4/e2/ff/3d/e2ff3daa-550e-d4b9-ae75-a79e3eace520/pr_source.png/{w}x{h}bb.{f}",
+          "supportsLayeredImage": false,
+          "hasP3": false,
+          "hasAlpha": false,
+          "checksum": "c8553d243424342e9aa4513c9f26ad52"
+        },
+        {
+          "width": 640,
+          "height": 1136,
+          "url": "https://is2-ssl.mzstatic.com/image/thumb/Purple3/v4/4a/04/6a/4a046a21-fc93-6582-86b9-902ec65f0f87/pr_source.png/{w}x{h}bb.{f}",
+          "supportsLayeredImage": false,
+          "hasP3": false,
+          "hasAlpha": false,
+          "checksum": "d7ebe56755ae6571cf2bae2b8e043dd3"
+        }
+      ],
+      "iphone": [
+        {
+          "width": 640,
+          "height": 960,
+          "url": "https://is1-ssl.mzstatic.com/image/thumb/Purple3/v4/58/62/db/5862db68-f103-82d0-c947-c7ab6a546f6a/pr_source.png/{w}x{h}bb.{f}",
+          "supportsLayeredImage": false,
+          "hasP3": false,
+          "hasAlpha": false,
+          "checksum": "1a32948fa9ea04170d54cd3686501b81"
+        },
+        {
+          "width": 640,
+          "height": 960,
+          "url": "https://is1-ssl.mzstatic.com/image/thumb/Purple1/v4/93/19/48/931948f6-f18f-2cf2-fc97-9c5fa6cf64da/pr_source.png/{w}x{h}bb.{f}",
+          "supportsLayeredImage": false,
+          "hasP3": false,
+          "hasAlpha": false,
+          "checksum": "ababc6d852bd40083bd7fef407466a04"
+        },
+        {
+          "width": 640,
+          "height": 960,
+          "url": "https://is1-ssl.mzstatic.com/image/thumb/Purple3/v4/60/27/ef/6027efae-be17-c3a7-e328-220f774d33ff/pr_source.png/{w}x{h}bb.{f}",
+          "supportsLayeredImage": false,
+          "hasP3": false,
+          "hasAlpha": false,
+          "checksum": "6a076af10146173f9268557068e93dd0"
+        },
+        {
+          "width": 640,
+          "height": 960,
+          "url": "https://is5-ssl.mzstatic.com/image/thumb/Purple3/v4/6a/8e/5c/6a8e5c64-7b5b-0db0-ed55-eef40a47ee45/pr_source.png/{w}x{h}bb.{f}",
+          "supportsLayeredImage": false,
+          "hasP3": false,
+          "hasAlpha": false,
+          "checksum": "89734c570127bef193bd680b25cdafaf"
+        },
+        {
+          "width": 640,
+          "height": 960,
+          "url": "https://is3-ssl.mzstatic.com/image/thumb/Purple1/v4/12/44/4c/12444c5a-fc15-3687-344b-35287e540064/pr_source.png/{w}x{h}bb.{f}",
+          "supportsLayeredImage": false,
+          "hasP3": false,
+          "hasAlpha": false,
+          "checksum": "1fc10a6fd4f225a93b462ce4e7212128"
+        }
+      ],
+      "ipad": [
+        {
+          "width": 768,
+          "height": 1024,
+          "url": "https://is1-ssl.mzstatic.com/image/thumb/Purple3/v4/13/0c/31/130c31f7-40a4-72be-ad2c-c353c42bb9e9/mzl.mgdcawvj.jpg/{w}x{h}bb.{f}",
+          "supportsLayeredImage": false,
+          "hasP3": false,
+          "hasAlpha": false,
+          "checksum": "05330d8e0e8e76a38e0fb02e34cbd3e3"
+        },
+        {
+          "width": 768,
+          "height": 1024,
+          "url": "https://is5-ssl.mzstatic.com/image/thumb/Purple3/v4/02/4a/cb/024acb68-971e-698f-2682-e8db5e136f0b/mzl.rynwcytg.jpg/{w}x{h}bb.{f}",
+          "supportsLayeredImage": false,
+          "hasP3": false,
+          "hasAlpha": false,
+          "checksum": "acafa93dec6bf96114f22ea08baa3b08"
+        },
+        {
+          "width": 768,
+          "height": 1024,
+          "url": "https://is3-ssl.mzstatic.com/image/thumb/Purple1/v4/d4/e6/c4/d4e6c41e-edbd-583a-d554-8e7658a02e7d/mzl.oxcotdjl.jpg/{w}x{h}bb.{f}",
+          "supportsLayeredImage": false,
+          "hasP3": false,
+          "hasAlpha": false,
+          "checksum": "27f7d6ab32f4fb611e84f5261a55ab42"
+        },
+        {
+          "width": 768,
+          "height": 1024,
+          "url": "https://is5-ssl.mzstatic.com/image/thumb/Purple5/v4/63/91/9f/63919f5a-32d9-1205-29f6-954d23294f88/mzl.ntuevvrh.jpg/{w}x{h}bb.{f}",
+          "supportsLayeredImage": false,
+          "hasP3": false,
+          "hasAlpha": false,
+          "checksum": "7a0363635b2caad2e29f6444c72f7b7d"
+        },
+        {
+          "width": 768,
+          "height": 1024,
+          "url": "https://is2-ssl.mzstatic.com/image/thumb/Purple5/v4/83/ac/1d/83ac1d71-e97e-a2f4-64af-d9cf7e786456/mzl.wggxzkfj.jpg/{w}x{h}bb.{f}",
+          "supportsLayeredImage": false,
+          "hasP3": false,
+          "hasAlpha": false,
+          "checksum": "32fc989e64635d260ea4a4fd9103f043"
+        }
+      ]
+    },
+    "nameRaw": "Тесты на секс и любовь, а так же характер, здоровье и возраст. Приколы про деньги, работа и музыка. Тест на iq интеллект",
+    "editorialArtwork": {},
+    "bundleId": "com.emperorlab.VKTests",
+    "hasInAppPurchases": true,
+    "kind": "iosSoftware",
+    "copyright": "© Inqea",
+    "chartPositionForStore": {
+      "appStore": {
+        "position": 174,
+        "genreName": "Развлечения",
+        "chartUrl": "https://itunes.apple.com/WebObjects/MZStore.woa/wa/viewTop?cc=ru&genreId=6016&popId=96"
+      }
+    },
+    "artistId": "968007421",
+    "genres": [
+      {
+        "genreId": "6016",
+        "name": "Развлечения",
+        "url": "https://itunes.apple.com/ru/genre/id6016",
+        "mediaType": "8",
+        "parentGenreId": "36"
+      },
+      {
+        "genreId": "6012",
+        "name": "Образ жизни",
+        "url": "https://itunes.apple.com/ru/genre/id6012",
+        "mediaType": "8",
+        "parentGenreId": "36"
+      }
+    ],
+    "minimumOSVersion": "6.1",
+    "messagesScreenshots": {},
+    "requiredCapabilities": "armv7 gamekit ",
+    "offers": [
+      {
+        "actionText": {
+          "short": "ЗАГРУЗИТЬ",
+          "medium": "Загрузить",
+          "long": "ЗАГРУЗИТЬ",
+          "downloaded": "УСТАНОВЛЕНО",
+          "downloading": "УСТАНОВКА"
+        },
+        "type": "get",
+        "priceFormatted": "0 ₽",
+        "price": 0,
+        "buyParams": "productType=C&price=0&salableAdamId=849714592&pricingParameters=STDQ&pg=default&appExtVrsId=812263605",
+        "version": {
+          "display": "1.4.1",
+          "externalId": 812263605
+        },
+        "assets": [
+          {
+            "flavor": "iosSoftware",
+            "size": 28172288
+          }
+        ]
+      },
+      {
+        "actionText": {
+          "short": "ЗАГРУЗИТЬ",
+          "medium": "Загрузить",
+          "long": "ЗАГРУЗИТЬ ПРИЛОЖЕНИЕ",
+          "downloaded": "УСТАНОВЛЕНО",
+          "downloading": "УСТАНОВКА"
+        },
+        "type": "update",
+        "priceFormatted": "0 ₽",
+        "price": 0,
+        "buyParams": "productType=C&price=0&salableAdamId=849714592&pricingParameters=SWUPD&pg=default&appExtVrsId=812263605",
+        "version": {
+          "display": "1.4.1",
+          "externalId": 812263605
+        },
+        "assets": [
+          {
+            "flavor": "iosSoftware",
+            "size": 28172288
+          }
+        ]
+      }
+    ]
+  },
+  "887025430": {
+    "artwork": {
+      "width": 1024,
+      "url": "https://is1-ssl.mzstatic.com/image/thumb/Purple123/v4/29/4b/a8/294ba8b8-72a7-906a-1d93-6b3c703d9eb7/AppIcon-0-1x_U007emarketing-0-0-85-220-0-10.png/{w}x{h}bb.{f}",
+      "height": 1024,
+      "textColor3": "0cd3d4",
+      "textColor2": "00a5e6",
+      "textColor4": "008ec7",
+      "hasAlpha": false,
+      "textColor1": "0ffcf5",
+      "bgColor": "00304f",
+      "hasP3": false,
+      "supportsLayeredImage": false
+    },
+    "artistName": "Dmitriy Yudin",
+    "hasMessagesExtension": true,
+    "url": "https://apps.apple.com/ru/app/%D1%82%D0%B5%D1%81%D1%82-%D0%BD%D0%B0-%D0%B2%D0%BE%D0%B7%D1%80%D0%B0%D1%81%D1%82-%D0%BC%D0%BE%D0%B7%D0%B3%D0%B0/id887025430",
+    "shortUrl": "https://apps.apple.com/ru/app/%D1%82%D0%B5%D1%81%D1%82-%D0%BD%D0%B0-%D0%B2%D0%BE%D0%B7%D1%80%D0%B0%D1%81%D1%82-%D0%BC%D0%BE%D0%B7%D0%B3%D0%B0/id887025430",
+    "videoPreviewsByType": {},
+    "deviceFamilies": [
+      "iphone",
+      "ipad",
+      "ipod"
+    ],
+    "genreNames": [
+      "Игры",
+      "Головоломки",
+      "Образование"
+    ],
+    "nameSortValue": "ТестнаВозрастМозга",
+    "id": "887025430",
+    "releaseDate": "2014-06-29",
+    "userRating": {
+      "value": 4.6,
+      "ratingCount": 11352,
+      "ratingCountList": [
+        570,
+        226,
+        476,
+        956,
+        9124
+      ],
+      "ariaLabelForRatings": "Звезд: 4.6"
+    },
+    "contentRatingsBySystem": {
+      "appsApple": {
+        "name": "4+",
+        "value": 100,
+        "rank": 1
+      }
+    },
+    "name": "Тест на Возраст Мозга",
+    "artistUrl": "https://apps.apple.com/ru/developer/dmitriy-yudin/id968007421",
+    "screenshotsByType": {
+      "ipadPro_2018": [
+        {
+          "width": 2048,
+          "url": "https://is4-ssl.mzstatic.com/image/thumb/Purple113/v4/d7/fa/5d/d7fa5d7a-5dd2-b2c1-fabc-36ebce85e7fe/pr_source.jpg/{w}x{h}bb.{f}",
+          "height": 2732,
+          "textColor3": "381a04",
+          "textColor2": "221c18",
+          "textColor4": "4e3118",
+          "hasAlpha": false,
+          "textColor1": "060000",
+          "bgColor": "ff8416",
+          "checksum": "470406fe19d015d1d11029753747fcd3",
+          "hasP3": false,
+          "supportsLayeredImage": false
+        },
+        {
+          "width": 2048,
+          "url": "https://is3-ssl.mzstatic.com/image/thumb/Purple113/v4/a2/b7/46/a2b746a4-9dbd-7bca-2048-652dfd36e816/pr_source.jpg/{w}x{h}bb.{f}",
+          "height": 2732,
+          "textColor3": "33385a",
+          "textColor2": "002b48",
+          "textColor4": "33556c",
+          "hasAlpha": false,
+          "textColor1": "000731",
+          "bgColor": "fffeff",
+          "checksum": "e86e0786bb95fefa38da9013d8648b94",
+          "hasP3": false,
+          "supportsLayeredImage": false
+        },
+        {
+          "width": 2048,
+          "url": "https://is5-ssl.mzstatic.com/image/thumb/Purple123/v4/ce/fc/ac/cefcac03-f049-ac75-6839-eb72a56b250f/pr_source.jpg/{w}x{h}bb.{f}",
+          "height": 2732,
+          "textColor3": "333d73",
+          "textColor2": "320051",
+          "textColor4": "5b3373",
+          "hasAlpha": false,
+          "textColor1": "000d50",
+          "bgColor": "ffffff",
+          "checksum": "23179cbedd859f16aef527119de7f479",
+          "hasP3": false,
+          "supportsLayeredImage": false
+        },
+        {
+          "width": 2048,
+          "url": "https://is4-ssl.mzstatic.com/image/thumb/Purple113/v4/42/b1/88/42b188c4-9ee7-9c7c-09ef-7719c567e6a7/pr_source.jpg/{w}x{h}bb.{f}",
+          "height": 2732,
+          "textColor3": "333c74",
+          "textColor2": "282828",
+          "textColor4": "535353",
+          "hasAlpha": false,
+          "textColor1": "000c51",
+          "bgColor": "fffdff",
+          "checksum": "aeffb27e2bffeae76c4dc91821b81b9d",
+          "hasP3": false,
+          "supportsLayeredImage": false
+        },
+        {
+          "width": 2048,
+          "url": "https://is2-ssl.mzstatic.com/image/thumb/Purple123/v4/63/0e/b5/630eb512-6312-30ee-bbd7-329e55cd1ffb/pr_source.jpg/{w}x{h}bb.{f}",
+          "height": 2732,
+          "textColor3": "64397c",
+          "textColor2": "55140c",
+          "textColor4": "764139",
+          "hasAlpha": false,
+          "textColor1": "3f095f",
+          "bgColor": "f7f7ef",
+          "checksum": "ec8b7d7d4ef0f8933ad68ca684613d89",
+          "hasP3": false,
+          "supportsLayeredImage": false
+        }
+      ],
+      "ipadPro": [
+        {
+          "width": 2048,
+          "url": "https://is2-ssl.mzstatic.com/image/thumb/Purple113/v4/87/b0/3f/87b03fd3-0735-b064-9a9b-fa460b922ccf/pr_source.png/{w}x{h}bb.{f}",
+          "height": 2732,
+          "textColor3": "331a04",
+          "textColor2": "1a1613",
+          "textColor4": "482c13",
+          "hasAlpha": false,
+          "textColor1": "000000",
+          "bgColor": "ff8413",
+          "checksum": "d236bd02f484d7304ba8818054097ac1",
+          "hasP3": false,
+          "supportsLayeredImage": false
+        },
+        {
+          "width": 2048,
+          "url": "https://is4-ssl.mzstatic.com/image/thumb/Purple113/v4/08/76/4f/08764f37-d282-a016-c51a-b251f5e8e4af/pr_source.jpg/{w}x{h}bb.{f}",
+          "height": 2732,
+          "textColor3": "5a376f",
+          "textColor2": "002c47",
+          "textColor4": "33566c",
+          "hasAlpha": false,
+          "textColor1": "31054b",
+          "bgColor": "ffffff",
+          "checksum": "58a50d69a4b4bf71fd2d3d83431be92e",
+          "hasP3": false,
+          "supportsLayeredImage": false
+        },
+        {
+          "width": 2048,
+          "url": "https://is2-ssl.mzstatic.com/image/thumb/Purple113/v4/f5/04/03/f50403bb-4075-853f-63e4-be5fa2b218bb/pr_source.jpg/{w}x{h}bb.{f}",
+          "height": 2732,
+          "textColor3": "333c74",
+          "textColor2": "320051",
+          "textColor4": "5b3373",
+          "hasAlpha": false,
+          "textColor1": "000c51",
+          "bgColor": "ffffff",
+          "checksum": "0bd40c78047f55fbe719ddab1c7c5511",
+          "hasP3": false,
+          "supportsLayeredImage": false
+        },
+        {
+          "width": 2048,
+          "url": "https://is5-ssl.mzstatic.com/image/thumb/Purple123/v4/cf/e2/fd/cfe2fd71-7863-d55f-2e98-c84da7038141/pr_source.jpg/{w}x{h}bb.{f}",
+          "height": 2732,
+          "textColor3": "333c74",
+          "textColor2": "282828",
+          "textColor4": "535353",
+          "hasAlpha": false,
+          "textColor1": "000c51",
+          "bgColor": "ffffff",
+          "checksum": "3f1484733166f4ba5ee872b7040141d4",
+          "hasP3": false,
+          "supportsLayeredImage": false
+        },
+        {
+          "width": 2048,
+          "url": "https://is1-ssl.mzstatic.com/image/thumb/Purple123/v4/6f/03/29/6f032942-bd67-ed12-33e7-640bd901385a/pr_source.jpg/{w}x{h}bb.{f}",
+          "height": 2732,
+          "textColor3": "5e3377",
+          "textColor2": "3f0960",
+          "textColor4": "663a80",
+          "hasAlpha": false,
+          "textColor1": "360055",
+          "bgColor": "ffffff",
+          "checksum": "7bd3d663282d35e339e68ed4fcc96938",
+          "hasP3": false,
+          "supportsLayeredImage": false
+        }
+      ],
+      "iphone6+": [
+        {
+          "width": 1242,
+          "url": "https://is5-ssl.mzstatic.com/image/thumb/Purple123/v4/f8/ae/3e/f8ae3edc-b3b6-8a84-e452-49299740e375/pr_source.png/{w}x{h}bb.{f}",
+          "height": 2208,
+          "textColor3": "301a07",
+          "textColor2": "261f1b",
+          "textColor4": "4f331d",
+          "hasAlpha": false,
+          "textColor1": "000000",
+          "bgColor": "f38225",
+          "checksum": "35e0b512aed0f4fc6ca40823dc21fa5f",
+          "hasP3": false,
+          "supportsLayeredImage": false
+        },
+        {
+          "width": 1242,
+          "url": "https://is5-ssl.mzstatic.com/image/thumb/Purple113/v4/9b/71/42/9b7142ba-0556-6bdc-d2fb-ab0f3ba7947c/pr_source.jpg/{w}x{h}bb.{f}",
+          "height": 2208,
+          "textColor3": "3b366f",
+          "textColor2": "002c47",
+          "textColor4": "33566c",
+          "hasAlpha": false,
+          "textColor1": "0a044b",
+          "bgColor": "ffffff",
+          "checksum": "4e1a98dd1527fd5ac68baca742e2cb65",
+          "hasP3": false,
+          "supportsLayeredImage": false
+        },
+        {
+          "width": 1242,
+          "url": "https://is3-ssl.mzstatic.com/image/thumb/Purple113/v4/7b/41/4e/7b414e25-e015-ee40-55c4-eb1810b5428f/pr_source.jpg/{w}x{h}bb.{f}",
+          "height": 2208,
+          "textColor3": "333c73",
+          "textColor2": "320051",
+          "textColor4": "5b3373",
+          "hasAlpha": false,
+          "textColor1": "000c51",
+          "bgColor": "ffffff",
+          "checksum": "b68931dc289753547c0563cfe7ea161a",
+          "hasP3": false,
+          "supportsLayeredImage": false
+        },
+        {
+          "width": 1242,
+          "url": "https://is1-ssl.mzstatic.com/image/thumb/Purple113/v4/2f/c5/dd/2fc5ddb4-a045-4fe0-3e47-61acee24bedc/pr_source.jpg/{w}x{h}bb.{f}",
+          "height": 2208,
+          "textColor3": "2b356d",
+          "textColor2": "323232",
+          "textColor4": "545454",
+          "hasAlpha": false,
+          "textColor1": "000c51",
+          "bgColor": "dadada",
+          "checksum": "1d7f42e0f2d6ad04c3d31eef5086d1f4",
+          "hasP3": false,
+          "supportsLayeredImage": false
+        },
+        {
+          "width": 1242,
+          "url": "https://is2-ssl.mzstatic.com/image/thumb/Purple123/v4/a8/e2/f3/a8e2f32c-eeae-5bcb-d608-e033cd6b2db7/pr_source.jpg/{w}x{h}bb.{f}",
+          "height": 2208,
+          "textColor3": "65387e",
+          "textColor2": "55140c",
+          "textColor4": "76413a",
+          "hasAlpha": false,
+          "textColor1": "400960",
+          "bgColor": "f9f5f4",
+          "checksum": "5843b7828d360af1f368c5d740318f8e",
+          "hasP3": false,
+          "supportsLayeredImage": false
+        }
+      ],
+      "iphone_6_5": [
+        {
+          "width": 1242,
+          "url": "https://is1-ssl.mzstatic.com/image/thumb/Purple113/v4/46/48/e8/4648e862-6abc-ef6d-1d7b-a7cbf8aae770/pr_source.png/{w}x{h}bb.{f}",
+          "height": 2688,
+          "textColor3": "301a07",
+          "textColor2": "211e1b",
+          "textColor4": "4b321d",
+          "hasAlpha": false,
+          "textColor1": "000000",
+          "bgColor": "f48224",
+          "checksum": "019ed1939db34f2c621b06b716ced485",
+          "hasP3": false,
+          "supportsLayeredImage": false
+        },
+        {
+          "width": 1242,
+          "url": "https://is3-ssl.mzstatic.com/image/thumb/Purple123/v4/f8/b9/19/f8b91985-8c6e-08fb-f77e-5e8056206d22/pr_source.png/{w}x{h}bb.{f}",
+          "height": 2688,
+          "textColor3": "33385a",
+          "textColor2": "002c47",
+          "textColor4": "33566b",
+          "hasAlpha": false,
+          "textColor1": "000731",
+          "bgColor": "ffffff",
+          "checksum": "0685f283ea043d6613c156701a459386",
+          "hasP3": false,
+          "supportsLayeredImage": false
+        },
+        {
+          "width": 1242,
+          "url": "https://is1-ssl.mzstatic.com/image/thumb/Purple123/v4/23/1a/73/231a7389-9c81-ed9b-518a-e48cdf7ee17d/pr_source.png/{w}x{h}bb.{f}",
+          "height": 2688,
+          "textColor3": "333c74",
+          "textColor2": "320050",
+          "textColor4": "5b3373",
+          "hasAlpha": false,
+          "textColor1": "000c51",
+          "bgColor": "ffffff",
+          "checksum": "d853302e53f51ae64851d6a6d5efa1a3",
+          "hasP3": false,
+          "supportsLayeredImage": false
+        },
+        {
+          "width": 1242,
+          "url": "https://is5-ssl.mzstatic.com/image/thumb/Purple113/v4/49/5c/bc/495cbc58-7bfb-ea47-6b57-23ae92c6c864/pr_source.png/{w}x{h}bb.{f}",
+          "height": 2688,
+          "textColor3": "333c74",
+          "textColor2": "2f2f2f",
+          "textColor4": "595959",
+          "hasAlpha": false,
+          "textColor1": "000c51",
+          "bgColor": "ffffff",
+          "checksum": "9d4d1459d8d99c5594f247181ee30cc9",
+          "hasP3": false,
+          "supportsLayeredImage": false
+        },
+        {
+          "width": 1242,
+          "url": "https://is3-ssl.mzstatic.com/image/thumb/Purple113/v4/5a/ad/e7/5aade782-c1a5-c4b0-2700-df8a7f657a06/pr_source.png/{w}x{h}bb.{f}",
+          "height": 2688,
+          "textColor3": "65387d",
+          "textColor2": "55140c",
+          "textColor4": "76413a",
+          "hasAlpha": false,
+          "textColor1": "400960",
+          "bgColor": "f9f4f4",
+          "checksum": "92b53b9cbcd2447cb2d255871a92c8f7",
+          "hasP3": false,
+          "supportsLayeredImage": false
+        }
+      ]
+    },
+    "ovalArtwork": {
+      "width": 1024,
+      "url": "https://is2-ssl.mzstatic.com/image/thumb/Purple123/v4/78/73/10/7873107a-7729-aa0e-5dc2-e44205951a82/iMessage_App_Icon-0-1x_U007emarketing-0-0-GLES2_U002c0-512MB-sRGB-0-0-0-85-181-0-0-0-0.png/{w}x{h}bb.{f}",
+      "height": 768,
+      "textColor3": "03d5d6",
+      "textColor2": "02dbf1",
+      "textColor4": "01b9d0",
+      "hasAlpha": false,
+      "textColor1": "04fef8",
+      "bgColor": "00304f",
+      "hasP3": false,
+      "supportsLayeredImage": false
+    },
+    "nameRaw": "Brain Games: Moron or Smart?",
+    "editorialArtwork": {
+      "brandLogo": {
+        "width": 1080,
+        "url": "https://is4-ssl.mzstatic.com/image/thumb/Features113/v4/28/e5/fa/28e5fa1a-00f5-6ec6-9625-836455ad6534/source/{w}x{h}{c}.{f}",
+        "height": 1080,
+        "textColor3": "c1c1c1",
+        "textColor2": "e5e5e5",
+        "textColor4": "b7b7b7",
+        "hasAlpha": true,
+        "textColor1": "f2f2f2",
+        "bgColor": "000000",
+        "hasP3": false,
+        "supportsLayeredImage": false
+      }
+    },
+    "subtitle": "Тесты на тренировку памяти",
+    "bundleId": "com.studio.dash.almaz.brainage",
+    "hasInAppPurchases": true,
+    "kind": "iosSoftware",
+    "copyright": "© Inqea",
+    "chartPositionForStore": {
+      "appStore": {
+        "position": 133,
+        "genreName": "Головоломки",
+        "chartUrl": "https://itunes.apple.com/WebObjects/MZStore.woa/wa/viewTop?cc=ru&genreId=7012&popId=96"
+      },
+      "messages": {
+        "position": 32,
+        "genreName": "Головоломки",
+        "chartUrl": "https://itunes.apple.com/WebObjects/MZStore.woa/wa/viewTop?cc=ru&genreId=7012&popId=108"
+      }
+    },
+    "artistId": "968007421",
+    "genres": [
+      {
+        "genreId": "6014",
+        "name": "Игры",
+        "url": "https://itunes.apple.com/ru/genre/id6014",
+        "mediaType": "8",
+        "parentGenreId": "36"
+      },
+      {
+        "genreId": "7012",
+        "name": "Головоломки",
+        "url": "https://itunes.apple.com/ru/genre/id7012",
+        "mediaType": "8",
+        "parentGenreId": "6014"
+      },
+      {
+        "genreId": "6017",
+        "name": "Образование",
+        "url": "https://itunes.apple.com/ru/genre/id6017",
+        "mediaType": "8",
+        "parentGenreId": "36"
+      }
+    ],
+    "minimumOSVersion": "9.0",
+    "messagesScreenshots": {
+      "ipadPro_2018": [
+        {
+          "width": 2048,
+          "url": "https://is2-ssl.mzstatic.com/image/thumb/Purple113/v4/19/97/03/19970300-a6df-d909-06d2-c59c33e9facf/pr_source.jpg/{w}x{h}bb.{f}",
+          "height": 2732,
+          "textColor3": "381a04",
+          "textColor2": "221c18",
+          "textColor4": "4e3118",
+          "hasAlpha": false,
+          "textColor1": "060000",
+          "bgColor": "ff8416",
+          "checksum": "470406fe19d015d1d11029753747fcd3",
+          "hasP3": false,
+          "supportsLayeredImage": false
+        },
+        {
+          "width": 2048,
+          "url": "https://is3-ssl.mzstatic.com/image/thumb/Purple123/v4/81/93/bc/8193bcce-bdb9-5c8b-a853-69dac4eface9/pr_source.jpg/{w}x{h}bb.{f}",
+          "height": 2732,
+          "textColor3": "33385a",
+          "textColor2": "002b48",
+          "textColor4": "33556c",
+          "hasAlpha": false,
+          "textColor1": "000731",
+          "bgColor": "fffeff",
+          "checksum": "e86e0786bb95fefa38da9013d8648b94",
+          "hasP3": false,
+          "supportsLayeredImage": false
+        },
+        {
+          "width": 2048,
+          "url": "https://is2-ssl.mzstatic.com/image/thumb/Purple123/v4/84/c9/cd/84c9cd7c-0635-c100-9d21-679f4a8ba86b/pr_source.jpg/{w}x{h}bb.{f}",
+          "height": 2732,
+          "textColor3": "333d73",
+          "textColor2": "320051",
+          "textColor4": "5b3373",
+          "hasAlpha": false,
+          "textColor1": "000d50",
+          "bgColor": "ffffff",
+          "checksum": "23179cbedd859f16aef527119de7f479",
+          "hasP3": false,
+          "supportsLayeredImage": false
+        },
+        {
+          "width": 2048,
+          "url": "https://is1-ssl.mzstatic.com/image/thumb/Purple113/v4/7e/5e/d4/7e5ed480-d976-b07a-9091-199ea1cbaf62/pr_source.jpg/{w}x{h}bb.{f}",
+          "height": 2732,
+          "textColor3": "333c74",
+          "textColor2": "282828",
+          "textColor4": "535353",
+          "hasAlpha": false,
+          "textColor1": "000c51",
+          "bgColor": "fffdff",
+          "checksum": "aeffb27e2bffeae76c4dc91821b81b9d",
+          "hasP3": false,
+          "supportsLayeredImage": false
+        },
+        {
+          "width": 2048,
+          "url": "https://is1-ssl.mzstatic.com/image/thumb/Purple123/v4/b7/19/09/b719092a-1242-de29-5a5d-7266bd39497e/pr_source.jpg/{w}x{h}bb.{f}",
+          "height": 2732,
+          "textColor3": "64397c",
+          "textColor2": "55140c",
+          "textColor4": "764139",
+          "hasAlpha": false,
+          "textColor1": "3f095f",
+          "bgColor": "f7f7ef",
+          "checksum": "ec8b7d7d4ef0f8933ad68ca684613d89",
+          "hasP3": false,
+          "supportsLayeredImage": false
+        }
+      ],
+      "ipadPro": [
+        {
+          "width": 2048,
+          "url": "https://is5-ssl.mzstatic.com/image/thumb/Purple113/v4/3c/e5/f6/3ce5f68d-4917-b146-7e30-cbed1b8c1c87/pr_source.png/{w}x{h}bb.{f}",
+          "height": 2732,
+          "textColor3": "675159",
+          "textColor2": "660d10",
+          "textColor4": "843d3f",
+          "hasAlpha": false,
+          "textColor1": "41252f",
+          "bgColor": "ffffff",
+          "checksum": "927feb906a42bfa19232c78c6259cd2b",
+          "hasP3": false,
+          "supportsLayeredImage": false
+        }
+      ],
+      "iphone6+": [
+        {
+          "width": 1242,
+          "url": "https://is5-ssl.mzstatic.com/image/thumb/Purple113/v4/29/a4/63/29a463b1-d825-af8d-44d5-f1a831c1be2c/pr_source.png/{w}x{h}bb.{f}",
+          "height": 2208,
+          "textColor3": "313a43",
+          "textColor2": "40252f",
+          "textColor4": "654f57",
+          "hasAlpha": false,
+          "textColor1": "000a16",
+          "bgColor": "f8f8f8",
+          "checksum": "e3ac61f38a081bd3bf13688db8d50e5b",
+          "hasP3": false,
+          "supportsLayeredImage": false
+        },
+        {
+          "width": 1242,
+          "url": "https://is5-ssl.mzstatic.com/image/thumb/Purple113/v4/cb/69/4e/cb694e6c-c5d0-09ce-e490-c04c3f19916b/pr_source.png/{w}x{h}bb.{f}",
+          "height": 2208,
+          "textColor3": "3a3a3a",
+          "textColor2": "202020",
+          "textColor4": "4c4c4c",
+          "hasAlpha": false,
+          "textColor1": "0a0a0a",
+          "bgColor": "f9f9f9",
+          "checksum": "aaf41a0bcf72a9103be3622a20fc10f1",
+          "hasP3": false,
+          "supportsLayeredImage": false
+        }
+      ],
+      "iphone_6_5": [
+        {
+          "width": 1242,
+          "url": "https://is5-ssl.mzstatic.com/image/thumb/Purple113/v4/83/92/fe/8392fe83-ad06-c2b7-3f6d-065d06ba4083/pr_source.jpg/{w}x{h}bb.{f}",
+          "height": 2688,
+          "textColor3": "442c17",
+          "textColor2": "1c1714",
+          "textColor4": "472c17",
+          "hasAlpha": false,
+          "textColor1": "181614",
+          "bgColor": "f48124",
+          "checksum": "8fde94bc859cd87fff6115b3943ab5ff",
+          "hasP3": false,
+          "supportsLayeredImage": false
+        },
+        {
+          "width": 1242,
+          "url": "https://is3-ssl.mzstatic.com/image/thumb/Purple113/v4/19/4a/18/194a187e-dc74-0087-7929-2d611bd49622/pr_source.jpg/{w}x{h}bb.{f}",
+          "height": 2688,
+          "textColor3": "33385a",
+          "textColor2": "042941",
+          "textColor4": "365466",
+          "hasAlpha": false,
+          "textColor1": "000731",
+          "bgColor": "fffffd",
+          "checksum": "bce228b204abd8a4b3e7e51b4d3b39d6",
+          "hasP3": false,
+          "supportsLayeredImage": false
+        },
+        {
+          "width": 1242,
+          "url": "https://is3-ssl.mzstatic.com/image/thumb/Purple113/v4/f2/2c/f8/f22cf858-8086-e46b-82db-20e1ca2ffec8/pr_source.jpg/{w}x{h}bb.{f}",
+          "height": 2688,
+          "textColor3": "333c74",
+          "textColor2": "330052",
+          "textColor4": "5b3374",
+          "hasAlpha": false,
+          "textColor1": "000b52",
+          "bgColor": "feffff",
+          "checksum": "84d01e925842e8b1ce58eee5e9fc8bbc",
+          "hasP3": false,
+          "supportsLayeredImage": false
+        },
+        {
+          "width": 1242,
+          "url": "https://is1-ssl.mzstatic.com/image/thumb/Purple113/v4/be/ac/2c/beac2cfe-bdd7-b611-54bb-cf4396873b46/pr_source.jpg/{w}x{h}bb.{f}",
+          "height": 2688,
+          "textColor3": "333b74",
+          "textColor2": "1b2150",
+          "textColor4": "494d73",
+          "hasAlpha": false,
+          "textColor1": "000b51",
+          "bgColor": "fffdff",
+          "checksum": "877aa72cd5f814d7527251a6ac4459c9",
+          "hasP3": false,
+          "supportsLayeredImage": false
+        },
+        {
+          "width": 1242,
+          "url": "https://is1-ssl.mzstatic.com/image/thumb/Purple123/v4/56/d4/5b/56d45bec-7667-ec5f-8016-17ca123c5cbb/pr_source.jpg/{w}x{h}bb.{f}",
+          "height": 2688,
+          "textColor3": "63387c",
+          "textColor2": "56120a",
+          "textColor4": "774039",
+          "hasAlpha": false,
+          "textColor1": "3d095e",
+          "bgColor": "f9f5f4",
+          "checksum": "cc682da42a54f8bf0fec11ed8384ecde",
+          "hasP3": false,
+          "supportsLayeredImage": false
+        }
+      ]
+    },
+    "requiredCapabilities": "armv7 ",
+    "offers": [
+      {
+        "actionText": {
+          "short": "ЗАГРУЗИТЬ",
+          "medium": "Загрузить",
+          "long": "ЗАГРУЗИТЬ",
+          "downloaded": "УСТАНОВЛЕНО",
+          "downloading": "УСТАНОВКА"
+        },
+        "type": "get",
+        "priceFormatted": "0 ₽",
+        "price": 0,
+        "buyParams": "productType=C&price=0&salableAdamId=887025430&pricingParameters=STDQ&pg=default&appExtVrsId=830870767",
+        "version": {
+          "display": "2.0.92",
+          "externalId": 830870767
+        },
+        "assets": [
+          {
+            "flavor": "iosSoftware",
+            "size": 61135872
+          }
+        ]
+      },
+      {
+        "actionText": {
+          "short": "ЗАГРУЗИТЬ",
+          "medium": "Загрузить",
+          "long": "ЗАГРУЗИТЬ ПРИЛОЖЕНИЕ",
+          "downloaded": "УСТАНОВЛЕНО",
+          "downloading": "УСТАНОВКА"
+        },
+        "type": "update",
+        "priceFormatted": "0 ₽",
+        "price": 0,
+        "buyParams": "productType=C&price=0&salableAdamId=887025430&pricingParameters=SWUPD&pg=default&appExtVrsId=830870767",
+        "version": {
+          "display": "2.0.92",
+          "externalId": 830870767
+        },
+        "assets": [
+          {
+            "flavor": "iosSoftware",
+            "size": 61135872
+          }
+        ]
+      }
+    ]
+  },
+  "1113503715": {
+    "artwork": {
+      "width": 1024,
+      "url": "https://is5-ssl.mzstatic.com/image/thumb/Purple113/v4/08/7d/c3/087dc3f3-95aa-7318-6f0f-edfd948cd517/AppIcon-1x_U007emarketing-0-7-0-85-220.png/{w}x{h}bb.{f}",
+      "height": 1024,
+      "textColor3": "d5d3cf",
+      "textColor2": "e8e3dc",
+      "textColor4": "ccc8c3",
+      "hasAlpha": false,
+      "textColor1": "f3f1ec",
+      "bgColor": "5d5b5d",
+      "hasP3": false,
+      "supportsLayeredImage": false
+    },
+    "artistName": "First Class Media B.V.",
+    "firstVersionSupportingInAppPurchaseApi": "1.2.8",
+    "url": "https://apps.apple.com/ru/app/%D0%B4%D0%B5%D1%82%D0%B5%D0%BA%D1%82%D0%BE%D1%80-%D0%BB%D0%B6%D0%B8-%D0%BF%D0%BE%D0%BB%D0%B8%D0%B3%D1%80%D0%B0%D1%84/id1113503715",
+    "shortUrl": "https://apps.apple.com/ru/app/%D0%B4%D0%B5%D1%82%D0%B5%D0%BA%D1%82%D0%BE%D1%80-%D0%BB%D0%B6%D0%B8-%D0%BF%D0%BE%D0%BB%D0%B8%D0%B3%D1%80%D0%B0%D1%84/id1113503715",
+    "videoPreviewsByType": {},
+    "deviceFamilies": [
+      "iphone",
+      "ipad",
+      "ipod"
+    ],
+    "genreNames": [
+      "Развлечения",
+      "Социальные сети"
+    ],
+    "nameSortValue": "Детекторлжиполиграф",
+    "id": "1113503715",
+    "releaseDate": "2016-05-20",
+    "userRating": {
+      "value": 4.1,
+      "ratingCount": 1036,
+      "ratingCountList": [
+        159,
+        40,
+        57,
+        84,
+        696
+      ],
+      "ariaLabelForRatings": "Звезд: 4.1"
+    },
+    "contentRatingsBySystem": {
+      "appsApple": {
+        "name": "4+",
+        "value": 100,
+        "rank": 1
+      }
+    },
+    "name": "Детектор лжи полиграф",
+    "artistUrl": "https://apps.apple.com/ru/developer/first-class-media-b-v/id1394094946",
+    "screenshotsByType": {
+      "iphone5": [
+        {
+          "width": 640,
+          "url": "https://is2-ssl.mzstatic.com/image/thumb/Purple111/v4/5f/ca/8f/5fca8f42-a848-231b-f4b8-8d25d89df1db/mzl.dndcqkro.png/{w}x{h}bb.{f}",
+          "height": 1136,
+          "textColor3": "88c5cc",
+          "textColor2": "51c9d6",
+          "textColor4": "4cabb6",
+          "hasAlpha": false,
+          "textColor1": "9de9f1",
+          "bgColor": "363636",
+          "checksum": "eb2e7ea10df091512b37ab79a6e3d9da",
+          "hasP3": false,
+          "supportsLayeredImage": false
+        },
+        {
+          "width": 640,
+          "url": "https://is4-ssl.mzstatic.com/image/thumb/Purple111/v4/7d/56/a4/7d56a4da-a655-44e4-011b-f2c871e13634/mzl.orkdjnhe.png/{w}x{h}bb.{f}",
+          "height": 1136,
+          "textColor3": "d5d5d4",
+          "textColor2": "d7d7d4",
+          "textColor4": "b5b5b3",
+          "hasAlpha": false,
+          "textColor1": "ffffff",
+          "bgColor": "2f2f2d",
+          "checksum": "2c222201a759985fc4c218e2a0140cbc",
+          "hasP3": false,
+          "supportsLayeredImage": false
+        },
+        {
+          "width": 640,
+          "url": "https://is1-ssl.mzstatic.com/image/thumb/Purple111/v4/ac/ab/2f/acab2f6f-c061-89ab-4719-5b36318ba7be/mzl.cliwgdmt.png/{w}x{h}bb.{f}",
+          "height": 1136,
+          "textColor3": "8fc8ce",
+          "textColor2": "d1d1d1",
+          "textColor4": "b3b4b3",
+          "hasAlpha": false,
+          "textColor1": "a4eaf2",
+          "bgColor": "3d3e3d",
+          "checksum": "29b365993da14f20f7226598bd85a753",
+          "hasP3": false,
+          "supportsLayeredImage": false
+        }
+      ],
+      "ipadPro_2018": [
+        {
+          "width": 2048,
+          "url": "https://is3-ssl.mzstatic.com/image/thumb/Purple113/v4/28/6e/5f/286e5ff4-53c0-9fba-cdb1-b02bec187204/pr_source.png/{w}x{h}bb.{f}",
+          "height": 2732,
+          "textColor3": "8dc6cc",
+          "textColor2": "89e2ed",
+          "textColor4": "79c1c9",
+          "hasAlpha": false,
+          "textColor1": "a2e9f1",
+          "bgColor": "3b3c3b",
+          "checksum": "f22f415b1865b7417b1974f5da8659b9",
+          "hasP3": false,
+          "supportsLayeredImage": false
+        }
+      ],
+      "iphone": [
+        {
+          "width": 640,
+          "url": "https://is3-ssl.mzstatic.com/image/thumb/Purple122/v4/12/b2/a2/12b2a297-d162-e0dd-143a-b9d0ef2f285c/mzl.ahhsgavh.png/{w}x{h}bb.{f}",
+          "height": 960,
+          "textColor3": "88c3c9",
+          "textColor2": "56c6d0",
+          "textColor4": "4fa9b0",
+          "hasAlpha": false,
+          "textColor1": "9de7ef",
+          "bgColor": "333433",
+          "checksum": "771c6a4348aea484e31370fa84eafaf3",
+          "hasP3": false,
+          "supportsLayeredImage": false
+        },
+        {
+          "width": 640,
+          "url": "https://is1-ssl.mzstatic.com/image/thumb/Purple91/v4/ba/0b/6f/ba0b6f2b-ffb5-45f1-fc40-afbd473b1cea/mzl.qhjdqkuz.png/{w}x{h}bb.{f}",
+          "height": 960,
+          "textColor3": "cdcecf",
+          "textColor2": "faa7a6",
+          "textColor4": "d28f8e",
+          "hasAlpha": false,
+          "textColor1": "f4f5f6",
+          "bgColor": "323232",
+          "checksum": "d420036df32d912f5c15b4739097c5fd",
+          "hasP3": false,
+          "supportsLayeredImage": false
+        },
+        {
+          "width": 640,
+          "url": "https://is5-ssl.mzstatic.com/image/thumb/Purple122/v4/35/35/95/3535952b-9fb9-da51-f67c-44e23bcb9c13/mzl.hjegsjfn.png/{w}x{h}bb.{f}",
+          "height": 960,
+          "textColor3": "84bec3",
+          "textColor2": "c5c5c3",
+          "textColor4": "9f9f9e",
+          "hasAlpha": false,
+          "textColor1": "a2ebf2",
+          "bgColor": "090a08",
+          "checksum": "305d3f1becfea6ee922e98b2253f8e08",
+          "hasP3": false,
+          "supportsLayeredImage": false
+        }
+      ],
+      "ipadPro": [
+        {
+          "width": 2048,
+          "url": "https://is2-ssl.mzstatic.com/image/thumb/Purple123/v4/13/10/8e/13108e34-e4df-ee2a-a088-232e4e35b970/mzl.vkdwzgti.png/{w}x{h}bb.{f}",
+          "height": 2732,
+          "textColor3": "1d3537",
+          "textColor2": "111211",
+          "textColor4": "2a3a3c",
+          "hasAlpha": false,
+          "textColor1": "000c0c",
+          "bgColor": "90dbe6",
+          "checksum": "f22f415b1865b7417b1974f5da8659b9",
+          "hasP3": false,
+          "supportsLayeredImage": false
+        }
+      ],
+      "iphone6+": [
+        {
+          "width": 1242,
+          "url": "https://is5-ssl.mzstatic.com/image/thumb/Purple122/v4/cc/0a/11/cc0a11c3-b048-35e5-9de9-3ed84ea4e16d/mzl.frlujhft.png/{w}x{h}bb.{f}",
+          "height": 2208,
+          "textColor3": "80c1c9",
+          "textColor2": "55c8d2",
+          "textColor4": "4da9b1",
+          "hasAlpha": false,
+          "textColor1": "95e6f0",
+          "bgColor": "2e2f2e",
+          "checksum": "418bb7db86293a8be87b50da5acf5ce5",
+          "hasP3": false,
+          "supportsLayeredImage": false
+        },
+        {
+          "width": 1242,
+          "url": "https://is2-ssl.mzstatic.com/image/thumb/Purple111/v4/01/61/b7/0161b7a8-6dfa-fb3f-65a7-1a0c29b7cd1f/mzl.trparziq.png/{w}x{h}bb.{f}",
+          "height": 2208,
+          "textColor3": "a8a9a7",
+          "textColor2": "e6a8ae",
+          "textColor4": "c18f94",
+          "hasAlpha": false,
+          "textColor1": "c7c7c6",
+          "bgColor": "2e2f2d",
+          "checksum": "9b231d14c37d62e3a21126547f8edf76",
+          "hasP3": false,
+          "supportsLayeredImage": false
+        },
+        {
+          "width": 1242,
+          "url": "https://is5-ssl.mzstatic.com/image/thumb/Purple111/v4/91/39/b6/9139b681-6482-28dc-827e-33423cf81bbf/mzl.rrkwdljy.png/{w}x{h}bb.{f}",
+          "height": 2208,
+          "textColor3": "82c4cd",
+          "textColor2": "d2d2d1",
+          "textColor4": "b5b5b4",
+          "hasAlpha": false,
+          "textColor1": "93e5f0",
+          "bgColor": "414241",
+          "checksum": "de88f88024ecbc2fc5948744294c225e",
+          "hasP3": false,
+          "supportsLayeredImage": false
+        }
+      ],
+      "iphone_6_5": [
+        {
+          "width": 1242,
+          "url": "https://is2-ssl.mzstatic.com/image/thumb/Purple113/v4/73/cc/fa/73ccfaab-b38d-5fd5-da03-4cc318caef71/pr_source.png/{w}x{h}bb.{f}",
+          "height": 2688,
+          "textColor3": "bebcba",
+          "textColor2": "6ee1e8",
+          "textColor4": "63bec5",
+          "hasAlpha": false,
+          "textColor1": "e0dedc",
+          "bgColor": "363636",
+          "checksum": "2bb98bd504138780eded220496e04ec3",
+          "hasP3": false,
+          "supportsLayeredImage": false
+        },
+        {
+          "width": 1242,
+          "url": "https://is2-ssl.mzstatic.com/image/thumb/Purple123/v4/d9/04/b5/d904b5a7-5dc9-8aaa-67ff-096980465846/pr_source.png/{w}x{h}bb.{f}",
+          "height": 2688,
+          "textColor3": "b7b7b6",
+          "textColor2": "96e8f0",
+          "textColor4": "7dbfc5",
+          "hasAlpha": false,
+          "textColor1": "dedede",
+          "bgColor": "1c1c1a",
+          "checksum": "9724c4a35d14e58d2a9bb80d19bfdf82",
+          "hasP3": false,
+          "supportsLayeredImage": false
+        }
+      ],
+      "iphone6": [
+        {
+          "width": 750,
+          "url": "https://is3-ssl.mzstatic.com/image/thumb/Purple111/v4/1f/5a/47/1f5a4757-dd65-7e50-703c-c6a51f4a0828/mzl.olmvedre.png/{w}x{h}bb.{f}",
+          "height": 1334,
+          "textColor3": "7dc1c9",
+          "textColor2": "50c7d6",
+          "textColor4": "4baab5",
+          "hasAlpha": false,
+          "textColor1": "8fe4ef",
+          "bgColor": "363735",
+          "checksum": "a42ab6663b37f79771eb38896538af03",
+          "hasP3": false,
+          "supportsLayeredImage": false
+        },
+        {
+          "width": 750,
+          "url": "https://is3-ssl.mzstatic.com/image/thumb/Purple91/v4/34/80/e3/3480e397-f71a-31f8-6da8-c779ee01aa84/mzl.kgvchmkp.png/{w}x{h}bb.{f}",
+          "height": 1334,
+          "textColor3": "d6d6d6",
+          "textColor2": "e6a8ae",
+          "textColor4": "c39196",
+          "hasAlpha": false,
+          "textColor1": "ffffff",
+          "bgColor": "363635",
+          "checksum": "6f7b715121b6a18602d1a65868b88114",
+          "hasP3": false,
+          "supportsLayeredImage": false
+        },
+        {
+          "width": 750,
+          "url": "https://is2-ssl.mzstatic.com/image/thumb/Purple111/v4/f8/5a/cf/f85acf1e-fa07-abc2-33e8-d763f01d0d48/mzl.hqdolhdm.png/{w}x{h}bb.{f}",
+          "height": 1334,
+          "textColor3": "82c6cd",
+          "textColor2": "58cede",
+          "textColor4": "55b3c0",
+          "hasAlpha": false,
+          "textColor1": "92e6ee",
+          "bgColor": "464646",
+          "checksum": "a5f5db558b38ec522f7e225311dc38f3",
+          "hasP3": false,
+          "supportsLayeredImage": false
+        }
+      ],
+      "ipad": [
+        {
+          "width": 1536,
+          "url": "https://is1-ssl.mzstatic.com/image/thumb/Purple122/v4/47/ef/9f/47ef9f1d-0d6b-343e-16d9-d998e33684b3/mzl.kqjiliqk.png/{w}x{h}bb.{f}",
+          "height": 2048,
+          "textColor3": "333d3e",
+          "textColor2": "1a3738",
+          "textColor4": "485f60",
+          "hasAlpha": false,
+          "textColor1": "000d0d",
+          "bgColor": "ffffff",
+          "checksum": "3988648c5116fa5219d9b538a4dabac9",
+          "hasP3": false,
+          "supportsLayeredImage": false
+        },
+        {
+          "width": 1536,
+          "url": "https://is3-ssl.mzstatic.com/image/thumb/Purple111/v4/79/cf/89/79cf899d-b696-e91d-c0f6-311fa30bcdfb/mzl.ptfrcgpe.png/{w}x{h}bb.{f}",
+          "height": 2048,
+          "textColor3": "e0d2d3",
+          "textColor2": "edb7bb",
+          "textColor4": "d2999d",
+          "hasAlpha": false,
+          "textColor1": "ffffff",
+          "bgColor": "672325",
+          "checksum": "e6e527f7b8bfda3e9d3e005df00e334c",
+          "hasP3": false,
+          "supportsLayeredImage": false
+        },
+        {
+          "width": 1536,
+          "url": "https://is5-ssl.mzstatic.com/image/thumb/Purple111/v4/50/6c/4b/506c4bad-38ce-d18a-a5ba-4080c17c7d2e/mzl.ifuoxwnx.png/{w}x{h}bb.{f}",
+          "height": 2048,
+          "textColor3": "89bfc4",
+          "textColor2": "55c9d5",
+          "textColor4": "47a4ad",
+          "hasAlpha": false,
+          "textColor1": "a7ebf2",
+          "bgColor": "0f0f0f",
+          "checksum": "91766f002c86059f7b0d80d28019d82f",
+          "hasP3": false,
+          "supportsLayeredImage": false
+        }
+      ]
+    },
+    "nameRaw": "Lie Detector Truth Test",
+    "editorialArtwork": {},
+    "subtitle": "с анализом голоса",
+    "bundleId": "org.retropixel.truthdetector",
+    "hasInAppPurchases": true,
+    "kind": "iosSoftware",
+    "copyright": "© 2016-2020 First Class Media B.V.",
+    "chartPositionForStore": {
+      "appStore": {
+        "position": 179,
+        "genreName": "Развлечения",
+        "chartUrl": "https://itunes.apple.com/WebObjects/MZStore.woa/wa/viewTop?cc=ru&genreId=6016&popId=96"
+      }
+    },
+    "artistId": "1394094946",
+    "genres": [
+      {
+        "genreId": "6016",
+        "name": "Развлечения",
+        "url": "https://itunes.apple.com/ru/genre/id6016",
+        "mediaType": "8",
+        "parentGenreId": "36"
+      },
+      {
+        "genreId": "6005",
+        "name": "Социальные сети",
+        "url": "https://itunes.apple.com/ru/genre/id6005",
+        "mediaType": "8",
+        "parentGenreId": "36"
+      }
+    ],
+    "minimumOSVersion": "9.3",
+    "messagesScreenshots": {},
+    "offers": [
+      {
+        "actionText": {
+          "short": "ЗАГРУЗИТЬ",
+          "medium": "Загрузить",
+          "long": "ЗАГРУЗИТЬ",
+          "downloaded": "УСТАНОВЛЕНО",
+          "downloading": "УСТАНОВКА"
+        },
+        "type": "get",
+        "priceFormatted": "0 ₽",
+        "price": 0,
+        "buyParams": "productType=C&price=0&salableAdamId=1113503715&pricingParameters=STDQ&pg=default&appExtVrsId=835471691",
+        "version": {
+          "display": "1.2.8",
+          "externalId": 835471691
+        },
+        "assets": [
+          {
+            "flavor": "iosSoftware",
+            "size": 189921280
+          }
+        ]
+      },
+      {
+        "actionText": {
+          "short": "ЗАГРУЗИТЬ",
+          "medium": "Загрузить",
+          "long": "ЗАГРУЗИТЬ ПРИЛОЖЕНИЕ",
+          "downloaded": "УСТАНОВЛЕНО",
+          "downloading": "УСТАНОВКА"
+        },
+        "type": "update",
+        "priceFormatted": "0 ₽",
+        "price": 0,
+        "buyParams": "productType=C&price=0&salableAdamId=1113503715&pricingParameters=SWUPD&pg=default&appExtVrsId=835471691",
+        "version": {
+          "display": "1.2.8",
+          "externalId": 835471691
+        },
+        "assets": [
+          {
+            "flavor": "iosSoftware",
+            "size": 189921280
+          }
+        ]
+      }
+    ]
+  },
+  "1236714438": {
+    "artwork": {
+      "width": 1024,
+      "url": "https://is4-ssl.mzstatic.com/image/thumb/Purple127/v4/3d/1b/d5/3d1bd5b9-3032-576f-0d5b-e1f5a2222e67/pr_source.png/{w}x{h}bb.{f}",
+      "height": 1024,
+      "textColor3": "54433f",
+      "textColor2": "152c4c",
+      "textColor4": "434d44",
+      "hasAlpha": true,
+      "textColor1": "2a1f45",
+      "bgColor": "fbd025",
+      "hasP3": false,
+      "supportsLayeredImage": false
+    },
+    "artistName": "DigestBook",
+    "url": "https://apps.apple.com/ru/app/%D1%82%D0%B5%D1%81%D1%82-%D0%BB%D1%8E%D1%88%D0%B5%D1%80%D0%B0-%D0%B8-%D0%B4%D1%80%D1%83%D0%B3%D0%B8%D0%B5-%D0%BF%D1%81%D0%B8%D1%85%D0%BE%D0%BB%D0%BE%D0%B3%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%B8%D0%B5-%D1%82%D0%B5%D1%81%D1%82%D1%8B/id1236714438",
+    "shortUrl": "https://apps.apple.com/ru/app/%D1%82%D0%B5%D1%81%D1%82-%D0%BB%D1%8E%D1%88%D0%B5%D1%80%D0%B0-%D0%B8-%D0%B4%D1%80%D1%83%D0%B3%D0%B8%D0%B5-%D0%BF%D1%81%D0%B8%D1%85%D0%BE%D0%BB%D0%BE%D0%B3%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%B8%D0%B5-%D1%82%D0%B5%D1%81%D1%82%D1%8B/id1236714438",
+    "videoPreviewsByType": {},
+    "deviceFamilies": [
+      "iphone",
+      "ipad",
+      "ipod"
+    ],
+    "genreNames": [
+      "Образование",
+      "Образ жизни"
+    ],
+    "nameSortValue": "ТестЛюшераидругиеПсихологическиеТесты",
+    "id": "1236714438",
+    "releaseDate": "2017-06-22",
+    "userRating": {
+      "value": 4.2,
+      "ratingCount": 340,
+      "ratingCountList": [
+        67,
+        1,
+        2,
+        1,
+        269
+      ],
+      "ariaLabelForRatings": "Звезд: 4.2"
+    },
+    "contentRatingsBySystem": {
+      "appsApple": {
+        "name": "17+",
+        "value": 600,
+        "rank": 4,
+        "advisories": [
+          "Редко/умеренно встречающиеся сцены сексуального или эротического характера",
+          "Часто/очень часто встречающиеся сцены откровенного содержания, предназначенные только для взрослых"
+        ]
+      }
+    },
+    "name": "Тест Люшера и другие Психологические Тесты",
+    "artistUrl": "https://apps.apple.com/ru/developer/digestbook/id474760442",
+    "screenshotsByType": {
+      "iphone6+": [
+        {
+          "width": 1242,
+          "url": "https://is5-ssl.mzstatic.com/image/thumb/Purple127/v4/48/e7/24/48e7240d-230b-d8a8-1e84-5dd4b8437234/pr_source.jpg/{w}x{h}bb.{f}",
+          "height": 2208,
+          "textColor3": "433533",
+          "textColor2": "471005",
+          "textColor4": "6b3f37",
+          "hasAlpha": false,
+          "textColor1": "140300",
+          "bgColor": "fffeff",
+          "checksum": "dca30fcf4df24ad270f913e60213b55b",
+          "hasP3": false,
+          "supportsLayeredImage": false
+        },
+        {
+          "width": 1242,
+          "url": "https://is1-ssl.mzstatic.com/image/thumb/Purple117/v4/12/32/86/123286ed-111e-31f1-6537-d27b0ff0247e/pr_source.jpg/{w}x{h}bb.{f}",
+          "height": 2208,
+          "textColor3": "3a3d44",
+          "textColor2": "1e1e1e",
+          "textColor4": "4a4a4a",
+          "hasAlpha": false,
+          "textColor1": "0a0e16",
+          "bgColor": "fafafa",
+          "checksum": "d91862c14b7a4116e9d324d03c58979c",
+          "hasP3": false,
+          "supportsLayeredImage": false
+        },
+        {
+          "width": 1242,
+          "url": "https://is5-ssl.mzstatic.com/image/thumb/Purple127/v4/28/e7/9b/28e79b85-dc47-3081-4409-45342be1dd70/pr_source.jpg/{w}x{h}bb.{f}",
+          "height": 2208,
+          "textColor3": "3e3532",
+          "textColor2": "3d3226",
+          "textColor4": "635a50",
+          "hasAlpha": false,
+          "textColor1": "100400",
+          "bgColor": "fafafa",
+          "checksum": "c7509d62eac7fda5f87ab7cf5eac2303",
+          "hasP3": false,
+          "supportsLayeredImage": false
+        },
+        {
+          "width": 1242,
+          "url": "https://is3-ssl.mzstatic.com/image/thumb/Purple127/v4/b2/10/df/b210dfde-99a3-e9d4-5007-50c2d297127e/pr_source.jpg/{w}x{h}bb.{f}",
+          "height": 2208,
+          "textColor3": "48494e",
+          "textColor2": "222b36",
+          "textColor4": "4d545d",
+          "hasAlpha": false,
+          "textColor1": "1b1d23",
+          "bgColor": "fafafa",
+          "checksum": "a31bd5b8695713bdf749e03edd326d22",
+          "hasP3": false,
+          "supportsLayeredImage": false
+        },
+        {
+          "width": 1242,
+          "url": "https://is1-ssl.mzstatic.com/image/thumb/Purple127/v4/7d/8c/76/7d8c76b1-9591-59bc-6b99-b0c9aec6e64a/pr_source.jpg/{w}x{h}bb.{f}",
+          "height": 2208,
+          "textColor3": "3c3b43",
+          "textColor2": "2b2428",
+          "textColor4": "544e52",
+          "hasAlpha": false,
+          "textColor1": "0d0c16",
+          "bgColor": "fafafa",
+          "checksum": "87f2e5c849b405bfd802ff50054bca45",
+          "hasP3": false,
+          "supportsLayeredImage": false
+        }
+      ],
+      "ipadPro": [
+        {
+          "width": 2048,
+          "url": "https://is1-ssl.mzstatic.com/image/thumb/Purple127/v4/cc/76/2e/cc762e6b-9bb0-ae49-efce-17664b52182d/pr_source.jpg/{w}x{h}bb.{f}",
+          "height": 2732,
+          "textColor3": "463634",
+          "textColor2": "4a1402",
+          "textColor4": "6e4334",
+          "hasAlpha": false,
+          "textColor1": "170402",
+          "bgColor": "ffffff",
+          "checksum": "a194b5c4226842bf13a10f997de46e23",
+          "hasP3": false,
+          "supportsLayeredImage": false
+        },
+        {
+          "width": 2048,
+          "url": "https://is3-ssl.mzstatic.com/image/thumb/Purple127/v4/cf/8d/71/cf8d71b4-a7da-c9f3-bd77-8c960ba39db9/pr_source.jpg/{w}x{h}bb.{f}",
+          "height": 2732,
+          "textColor3": "383a41",
+          "textColor2": "0f101a",
+          "textColor4": "3d3e47",
+          "hasAlpha": false,
+          "textColor1": "090b13",
+          "bgColor": "f6f7fa",
+          "checksum": "22d799fa462786c454e9023552c88bbb",
+          "hasP3": false,
+          "supportsLayeredImage": false
+        },
+        {
+          "width": 2048,
+          "url": "https://is5-ssl.mzstatic.com/image/thumb/Purple127/v4/94/b5/68/94b56843-23fd-ea43-cf10-06179af49149/pr_source.jpg/{w}x{h}bb.{f}",
+          "height": 2732,
+          "textColor3": "413932",
+          "textColor2": "241a10",
+          "textColor4": "4e463f",
+          "hasAlpha": false,
+          "textColor1": "140a00",
+          "bgColor": "f6f7fa",
+          "checksum": "a995086861624e72fef5ca9adf13e5ea",
+          "hasP3": false,
+          "supportsLayeredImage": false
+        },
+        {
+          "width": 2048,
+          "url": "https://is5-ssl.mzstatic.com/image/thumb/Purple127/v4/0c/b9/81/0cb98104-f471-1829-4a79-c9f1b296543b/pr_source.jpg/{w}x{h}bb.{f}",
+          "height": 2732,
+          "textColor3": "3c3837",
+          "textColor2": "232b34",
+          "textColor4": "4d545c",
+          "hasAlpha": false,
+          "textColor1": "0e0807",
+          "bgColor": "f5f8fa",
+          "checksum": "c17b642db1e62987ae6b37777af69088",
+          "hasP3": false,
+          "supportsLayeredImage": false
+        },
+        {
+          "width": 2048,
+          "url": "https://is5-ssl.mzstatic.com/image/thumb/Purple117/v4/9f/fe/44/9ffe447f-9617-101f-b18a-4d05e3b907de/pr_source.jpg/{w}x{h}bb.{f}",
+          "height": 2732,
+          "textColor3": "38373d",
+          "textColor2": "0e0d16",
+          "textColor4": "3d3c43",
+          "hasAlpha": false,
+          "textColor1": "09070e",
+          "bgColor": "f6f7fa",
+          "checksum": "01635a9ea6576bd0e8abd6c957110dec",
+          "hasP3": false,
+          "supportsLayeredImage": false
+        }
+      ]
+    },
+    "nameRaw": "Тест Люшера и другие Психологические Тесты",
+    "editorialArtwork": {},
+    "subtitle": "Более 100 тестов!",
+    "bundleId": "com.db.p026",
+    "hasInAppPurchases": true,
+    "kind": "iosSoftware",
+    "copyright": "© 2017, Digest Books",
+    "artistId": "474760442",
+    "genres": [
+      {
+        "genreId": "6017",
+        "name": "Образование",
+        "url": "https://itunes.apple.com/ru/genre/id6017",
+        "mediaType": "8",
+        "parentGenreId": "36"
+      },
+      {
+        "genreId": "6012",
+        "name": "Образ жизни",
+        "url": "https://itunes.apple.com/ru/genre/id6012",
+        "mediaType": "8",
+        "parentGenreId": "36"
+      }
+    ],
+    "minimumOSVersion": "8.0",
+    "messagesScreenshots": {},
+    "requiredCapabilities": "armv7 ",
+    "offers": [
+      {
+        "actionText": {
+          "short": "ЗАГРУЗИТЬ",
+          "medium": "Загрузить",
+          "long": "ЗАГРУЗИТЬ",
+          "downloaded": "УСТАНОВЛЕНО",
+          "downloading": "УСТАНОВКА"
+        },
+        "type": "get",
+        "priceFormatted": "0 ₽",
+        "price": 0,
+        "buyParams": "productType=C&price=0&salableAdamId=1236714438&pricingParameters=STDQ&pg=default&appExtVrsId=822154820",
+        "version": {
+          "display": "5.5.1",
+          "externalId": 822154820
+        },
+        "assets": [
+          {
+            "flavor": "iosSoftware",
+            "size": 27916288
+          }
+        ]
+      },
+      {
+        "actionText": {
+          "short": "ЗАГРУЗИТЬ",
+          "medium": "Загрузить",
+          "long": "ЗАГРУЗИТЬ ПРИЛОЖЕНИЕ",
+          "downloaded": "УСТАНОВЛЕНО",
+          "downloading": "УСТАНОВКА"
+        },
+        "type": "update",
+        "priceFormatted": "0 ₽",
+        "price": 0,
+        "buyParams": "productType=C&price=0&salableAdamId=1236714438&pricingParameters=SWUPD&pg=default&appExtVrsId=822154820",
+        "version": {
+          "display": "5.5.1",
+          "externalId": 822154820
+        },
+        "assets": [
+          {
+            "flavor": "iosSoftware",
+            "size": 27916288
+          }
+        ]
+      }
+    ]
+  },
+  "1351678168": {
+    "label": "ПРИЛОЖЕНИЕ\nДНЯ",
+    "id": "1351678168",
+    "cardIds": [
+      "932496645"
+    ],
+    "relatedContent": {
+      "932496645": {
+        "artwork": {
+          "width": 1024,
+          "url": "https://is2-ssl.mzstatic.com/image/thumb/Purple124/v4/a0/c6/20/a0c620b5-6623-25a1-efd8-9f5f9bc7434b/AppIcon-0-0-1x_U007emarketing-0-0-0-5-0-0-sRGB-0-0-0-GLES2_U002c0-512MB-85-220-0-0.png/{w}x{h}bb.{f}",
+          "height": 1024,
+          "textColor3": "112e28",
+          "textColor2": "000a09",
+          "textColor4": "122f29",
+          "hasAlpha": false,
+          "textColor1": "000908",
+          "bgColor": "59c2a8",
+          "hasP3": false,
+          "supportsLayeredImage": false
+        },
+        "artistName": "Mimi Hearing Technologies",
+        "url": "https://apps.apple.com/ru/app/%D1%81%D0%BB%D1%83%D1%85%D0%BE%D0%B2%D0%BE%D0%B9-%D1%82%D0%B5%D1%81%D1%82-mimi/id932496645",
+        "shortUrl": "https://apps.apple.com/ru/app/%D1%81%D0%BB%D1%83%D1%85%D0%BE%D0%B2%D0%BE%D0%B9-%D1%82%D0%B5%D1%81%D1%82-mimi/id932496645",
+        "deviceFamilies": [
+          "iphone",
+          "ipod"
+        ],
+        "genreNames": [
+          "Здоровье и фитнес",
+          "Образ жизни"
+        ],
+        "itunesNotes": {
+          "tagline": "Как слышно?"
+        },
+        "nameSortValue": "СлуховойтестMimi",
+        "id": "932496645",
+        "releaseDate": "2014-11-03",
+        "userRating": {
+          "value": 4.8,
+          "ratingCount": 553,
+          "ratingCountList": [
+            14,
+            5,
+            5,
+            27,
+            502
+          ],
+          "ariaLabelForRatings": "Звезд: 4.8"
+        },
+        "contentRatingsBySystem": {
+          "appsApple": {
+            "name": "4+",
+            "value": 100,
+            "rank": 1
+          }
+        },
+        "name": "Слуховой тест Mimi",
+        "artistUrl": "https://apps.apple.com/ru/developer/mimi-hearing-technologies/id855322101",
+        "nameRaw": "Mimi Hearing Test",
+        "editorialArtwork": {
+          "originalFlowcaseBrick": {
+            "width": 3200,
+            "url": "https://is4-ssl.mzstatic.com/image/thumb/Features60/v4/69/a8/18/69a8182a-f580-b820-0e0c-e3e978d4f5cf/source/{w}x{h}{c}.{f}",
+            "height": 600,
+            "textColor3": "28484b",
+            "textColor2": "1a2d36",
+            "textColor4": "314e51",
+            "hasAlpha": false,
+            "textColor1": "10252e",
+            "bgColor": "8bd1c0",
+            "hasP3": false,
+            "supportsLayeredImage": false
+          },
+          "storeFlowcase": {
+            "width": 4320,
+            "url": "https://is3-ssl.mzstatic.com/image/thumb/Features111/v4/37/d4/fa/37d4faae-1af3-4187-4ba2-05d13bdfed32/source/{w}x{h}{c}.{f}",
+            "height": 1080,
+            "textColor3": "11362d",
+            "textColor2": "161616",
+            "textColor4": "14372e",
+            "hasAlpha": false,
+            "textColor1": "121515",
+            "bgColor": "0ab98d",
+            "hasP3": false,
+            "supportsLayeredImage": false
+          },
+          "subscriptionHero": {
+            "width": 4320,
+            "url": "https://is5-ssl.mzstatic.com/image/thumb/Features118/v4/1d/15/95/1d159570-c31c-936d-fd15-1999e78d0733/source/{w}x{h}{c}.{f}",
+            "height": 1080,
+            "textColor3": "254240",
+            "textColor2": "16241f",
+            "textColor4": "294440",
+            "hasAlpha": false,
+            "textColor1": "12221f",
+            "bgColor": "72c5c2",
+            "hasP3": false,
+            "supportsLayeredImage": false
+          }
+        },
+        "subtitle": "проверьте свои уши",
+        "bundleId": "io.mimi.TestSuite",
+        "kind": "iosSoftware",
+        "copyright": "© Mimi Hearing Technologies GmbH",
+        "artistId": "855322101",
+        "genres": [
+          {
+            "genreId": "6013",
+            "name": "Здоровье и фитнес",
+            "url": "https://itunes.apple.com/ru/genre/id6013",
+            "mediaType": "8",
+            "parentGenreId": "36"
+          },
+          {
+            "genreId": "6012",
+            "name": "Образ жизни",
+            "url": "https://itunes.apple.com/ru/genre/id6012",
+            "mediaType": "8",
+            "parentGenreId": "36"
+          }
+        ],
+        "minimumOSVersion": "10.0",
+        "requiredCapabilities": "armv7 ",
+        "offers": [
+          {
+            "actionText": {
+              "short": "ЗАГРУЗИТЬ",
+              "medium": "Загрузить",
+              "long": "ЗАГРУЗИТЬ",
+              "downloaded": "УСТАНОВЛЕНО",
+              "downloading": "УСТАНОВКА"
+            },
+            "type": "get",
+            "priceFormatted": "0 ₽",
+            "price": 0,
+            "buyParams": "productType=C&price=0&salableAdamId=932496645&pricingParameters=STDQ&pg=default&appExtVrsId=834703522",
+            "version": {
+              "display": "4.11.1",
+              "externalId": 834703522
+            },
+            "assets": [
+              {
+                "flavor": "iosSoftware",
+                "size": 63141888
+              }
+            ]
+          },
+          {
+            "actionText": {
+              "short": "ЗАГРУЗИТЬ",
+              "medium": "Загрузить",
+              "long": "ЗАГРУЗИТЬ ПРИЛОЖЕНИЕ",
+              "downloaded": "УСТАНОВЛЕНО",
+              "downloading": "УСТАНОВКА"
+            },
+            "type": "update",
+            "priceFormatted": "0 ₽",
+            "price": 0,
+            "buyParams": "productType=C&price=0&salableAdamId=932496645&pricingParameters=SWUPD&pg=default&appExtVrsId=834703522",
+            "version": {
+              "display": "4.11.1",
+              "externalId": 834703522
+            },
+            "assets": [
+              {
+                "flavor": "iosSoftware",
+                "size": 63141888
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "editorialArtwork": {
+      "dayCard": {
+        "width": 3524,
+        "url": "https://is4-ssl.mzstatic.com/image/thumb/Features118/v4/b5/f7/67/b5f7670f-17d2-afb2-478b-cc39cef170e9/source/{w}x{h}{c}.{f}",
+        "height": 2160,
+        "textColor3": "dda5c5",
+        "textColor2": "11e9b8",
+        "textColor4": "1fc2be",
+        "hasAlpha": false,
+        "textColor1": "ffc5c0",
+        "bgColor": "5726d9",
+        "hasP3": false,
+        "supportsLayeredImage": false
+      }
+    },
+    "kind": "editorialItem",
+    "link": {
+      "url": "https://apps.apple.com/ru/story/id1351678168",
+      "kindId": "59"
+    },
+    "displayStyle": "Branded",
+    "cardDisplayStyle": "AppOfTheDay",
+    "displaySubStyle": "AppOfDay"
+  },
+  "1432456562": {
+    "artwork": {
+      "width": 1024,
+      "url": "https://is3-ssl.mzstatic.com/image/thumb/Purple123/v4/da/30/f9/da30f9d7-ce26-630e-2bf3-ccf27c0372d6/AppIcon-1x_U007emarketing-0-10-0-0-85-220.png/{w}x{h}bb.{f}",
+      "height": 1024,
+      "textColor3": "332800",
+      "textColor2": "3a160d",
+      "textColor4": "623b0a",
+      "hasAlpha": false,
+      "textColor1": "000000",
+      "bgColor": "ffcc00",
+      "hasP3": false,
+      "supportsLayeredImage": false
+    },
+    "artistName": "Max Kochergin",
+    "firstVersionSupportingInAppPurchaseApi": "1.0",
+    "url": "https://apps.apple.com/ru/app/%D0%BA%D0%B0%D0%B2%D0%B5%D1%80%D0%B7%D0%BD%D1%8B%D0%B9-%D1%82%D0%B5%D1%81%D1%82-iq-%D0%B3%D0%BE%D0%BB%D0%BE%D0%B2%D0%BE%D0%BB%D0%BE%D0%BC%D0%BA%D0%B0/id1432456562",
+    "shortUrl": "https://apps.apple.com/ru/app/%D0%BA%D0%B0%D0%B2%D0%B5%D1%80%D0%B7%D0%BD%D1%8B%D0%B9-%D1%82%D0%B5%D1%81%D1%82-iq-%D0%B3%D0%BE%D0%BB%D0%BE%D0%B2%D0%BE%D0%BB%D0%BE%D0%BC%D0%BA%D0%B0/id1432456562",
+    "videoPreviewsByType": {
+      "ipadPro_2018": [
+        {
+          "previewFrame": {
+            "width": 1200,
+            "url": "https://is1-ssl.mzstatic.com/image/thumb/PurpleVideo118/v4/d9/ec/d6/d9ecd686-ce4b-844a-3ad0-525ae63d6cfd/Job91dd7c76-da20-418e-873a-985904d75ef9-101378354-PreviewImage_preview_image_nonvideo_sdr-Time1540980672223.png/{w}x{h}bb.{f}",
+            "height": 1600,
+            "textColor3": "613d34",
+            "textColor2": "472200",
+            "textColor4": "6b4e33",
+            "hasAlpha": false,
+            "textColor1": "390c01",
+            "bgColor": "ffffff",
+            "checksum": "9e84eb0f8672c0cce347bc631c124884",
+            "hasP3": false,
+            "supportsLayeredImage": false
+          },
+          "video": "https://apptrailers.itunes.apple.com/itunes-assets/PurpleVideo128/v4/86/b2/d9/86b2d970-0ae5-85c5-e2f5-8bc18f6de00e/P56276129_default.m3u8"
+        }
+      ],
+      "ipadPro": [
+        {
+          "previewFrame": {
+            "width": 1200,
+            "url": "https://is4-ssl.mzstatic.com/image/thumb/PurpleVideo118/v4/22/fc/8b/22fc8b60-9935-0adc-2a89-1d71caab5bed/Job69fb7558-8e90-46a3-9892-e2d529ea9e74-101073433-PreviewImage_preview_image_nonvideo_sdr-Time1536298150455.png/{w}x{h}bb.{f}",
+            "height": 1600,
+            "textColor3": "613d34",
+            "textColor2": "472200",
+            "textColor4": "6b4e33",
+            "hasAlpha": false,
+            "textColor1": "390c01",
+            "bgColor": "ffffff",
+            "checksum": "9e84eb0f8672c0cce347bc631c124884",
+            "hasP3": false,
+            "supportsLayeredImage": false
+          },
+          "video": "https://apptrailers.itunes.apple.com/itunes-assets/PurpleVideo113/v4/44/15/72/44157227-ce4f-8007-573e-76a10ecd14e9/P63147241_default.m3u8"
+        }
+      ],
+      "iphone6+": [
+        {
+          "previewFrame": {
+            "width": 1080,
+            "url": "https://is2-ssl.mzstatic.com/image/thumb/PurpleVideo118/v4/08/be/42/08be4292-c5d3-d345-681e-b6125463342d/Joba2f8231f-5581-47a3-9194-7356937930fe-101073430-PreviewImage_preview_image_nonvideo_sdr-Time1536298168511.png/{w}x{h}bb.{f}",
+            "height": 1920,
+            "textColor3": "613d33",
+            "textColor2": "472200",
+            "textColor4": "6b4e33",
+            "hasAlpha": false,
+            "textColor1": "390c00",
+            "bgColor": "ffffff",
+            "checksum": "3e73439054cdb628ae77dea856cadd22",
+            "hasP3": false,
+            "supportsLayeredImage": false
+          },
+          "video": "https://apptrailers.itunes.apple.com/itunes-assets/PurpleVideo113/v4/ba/a1/22/baa1225a-4b6d-f3da-cc17-8afb8426715c/P63135736_default.m3u8"
+        }
+      ],
+      "iphone_6_5": [
+        {
+          "previewFrame": {
+            "width": 886,
+            "url": "https://is5-ssl.mzstatic.com/image/thumb/PurpleVideo118/v4/1f/16/4e/1f164e5d-96ad-f965-01bd-083048b21bf0/Job40a38e0f-e6aa-48a1-b755-d9ddf6a4a777-101118927-PreviewImage_preview_image_nonvideo_sdr-Time1537163992248.png/{w}x{h}bb.{f}",
+            "height": 1920,
+            "textColor3": "613c33",
+            "textColor2": "490a00",
+            "textColor4": "6e3a33",
+            "hasAlpha": false,
+            "textColor1": "390c00",
+            "bgColor": "fffbff",
+            "checksum": "76c142821f5c59e00c773a25bfea7f54",
+            "hasP3": false,
+            "supportsLayeredImage": false
+          },
+          "video": "https://apptrailers.itunes.apple.com/itunes-assets/PurpleVideo123/v4/0f/c7/5d/0fc75d90-83c2-2367-c7fe-14ca99abb85e/P63147340_default.m3u8"
+        }
+      ]
+    },
+    "deviceFamilies": [
+      "iphone",
+      "ipad",
+      "ipod"
+    ],
+    "genreNames": [
+      "Игры",
+      "Головоломки",
+      "Викторины",
+      "Развлечения"
+    ],
+    "nameSortValue": "КаверзныйтестIQГоловоломка",
+    "id": "1432456562",
+    "releaseDate": "2018-12-06",
+    "userRating": {
+      "value": 4.7,
+      "ratingCount": 31438,
+      "ratingCountList": [
+        925,
+        357,
+        1034,
+        2413,
+        26709
+      ],
+      "ariaLabelForRatings": "Звезд: 4.7"
+    },
+    "contentRatingsBySystem": {
+      "appsApple": {
+        "name": "4+",
+        "value": 100,
+        "rank": 1
+      }
+    },
+    "name": "Каверзный тест: IQ Головоломка",
+    "artistUrl": "https://apps.apple.com/ru/developer/max-kochergin/id989631278",
+    "screenshotsByType": {
+      "ipadPro_2018": [
+        {
+          "width": 2048,
+          "url": "https://is3-ssl.mzstatic.com/image/thumb/Purple118/v4/97/50/d5/9750d508-5021-380b-5e8e-9a3d23e3611f/pr_source.png/{w}x{h}bb.{f}",
+          "height": 2732,
+          "textColor3": "333914",
+          "textColor2": "202020",
+          "textColor4": "3f4521",
+          "hasAlpha": false,
+          "textColor1": "101010",
+          "bgColor": "bedb24",
+          "checksum": "45f45dfd697d6d615ecc5a13b10d8b71",
+          "hasP3": false,
+          "supportsLayeredImage": false
+        },
+        {
+          "width": 2048,
+          "url": "https://is3-ssl.mzstatic.com/image/thumb/Purple128/v4/75/45/67/754567e7-cab8-29b5-ba21-cd91f45c42b1/pr_source.png/{w}x{h}bb.{f}",
+          "height": 2732,
+          "textColor3": "350c21",
+          "textColor2": "020404",
+          "textColor4": "350d22",
+          "hasAlpha": false,
+          "textColor1": "030303",
+          "bgColor": "ff3299",
+          "checksum": "5b0519413e7772aed9980c758c67f1e7",
+          "hasP3": false,
+          "supportsLayeredImage": false
+        },
+        {
+          "width": 2048,
+          "url": "https://is3-ssl.mzstatic.com/image/thumb/Purple128/v4/85/28/5d/85285d5d-a354-8fe6-44b5-8541508c4f7e/pr_source.png/{w}x{h}bb.{f}",
+          "height": 2732,
+          "textColor3": "c6d2df",
+          "textColor2": "ff7ebe",
+          "textColor4": "cf6fad",
+          "hasAlpha": false,
+          "textColor1": "f3f9fb",
+          "bgColor": "10376d",
+          "checksum": "8337bf6cff3cb2d0a8ba24cb5403c8ed",
+          "hasP3": false,
+          "supportsLayeredImage": false
+        }
+      ],
+      "ipadPro": [
+        {
+          "width": 2048,
+          "url": "https://is1-ssl.mzstatic.com/image/thumb/Purple128/v4/68/3f/2b/683f2bc9-e191-3a4b-6c81-33b1255720da/pr_source.png/{w}x{h}bb.{f}",
+          "height": 2732,
+          "textColor3": "333914",
+          "textColor2": "202020",
+          "textColor4": "3f4521",
+          "hasAlpha": false,
+          "textColor1": "101010",
+          "bgColor": "bedb24",
+          "checksum": "664e091d6c7217738511236b23742ee9",
+          "hasP3": false,
+          "supportsLayeredImage": false
+        },
+        {
+          "width": 2048,
+          "url": "https://is4-ssl.mzstatic.com/image/thumb/Purple118/v4/a3/c0/63/a3c063e4-1b1f-e505-9235-5d662947c339/pr_source.png/{w}x{h}bb.{f}",
+          "height": 2732,
+          "textColor3": "350c21",
+          "textColor2": "020404",
+          "textColor4": "350d22",
+          "hasAlpha": false,
+          "textColor1": "030303",
+          "bgColor": "ff3299",
+          "checksum": "92f2c0eeadd481d60e5da0cf0c2a497d",
+          "hasP3": false,
+          "supportsLayeredImage": false
+        },
+        {
+          "width": 2048,
+          "url": "https://is1-ssl.mzstatic.com/image/thumb/Purple128/v4/8a/96/3d/8a963d6a-b23b-8041-621c-3280b0010c6c/pr_source.png/{w}x{h}bb.{f}",
+          "height": 2732,
+          "textColor3": "cfd6e1",
+          "textColor2": "45bdda",
+          "textColor4": "3aa2c4",
+          "hasAlpha": false,
+          "textColor1": "ffffff",
+          "bgColor": "10376d",
+          "checksum": "0465702fbaf478c6f6edece471bf7acd",
+          "hasP3": false,
+          "supportsLayeredImage": false
+        }
+      ],
+      "iphone6+": [
+        {
+          "width": 1242,
+          "url": "https://is2-ssl.mzstatic.com/image/thumb/Purple128/v4/c1/47/fb/c147fbb6-66c7-1859-2f28-37457afb1f2c/pr_source.png/{w}x{h}bb.{f}",
+          "height": 2208,
+          "textColor3": "333914",
+          "textColor2": "202020",
+          "textColor4": "3f4521",
+          "hasAlpha": false,
+          "textColor1": "101010",
+          "bgColor": "bedb24",
+          "checksum": "55f84f44f0d1033b8cb340f8a27c29d5",
+          "hasP3": false,
+          "supportsLayeredImage": false
+        },
+        {
+          "width": 1242,
+          "url": "https://is5-ssl.mzstatic.com/image/thumb/Purple128/v4/ba/54/5a/ba545a36-5dc5-7299-6a81-992cc6ba81b9/pr_source.png/{w}x{h}bb.{f}",
+          "height": 2208,
+          "textColor3": "0d2025",
+          "textColor2": "030304",
+          "textColor4": "0d2125",
+          "hasAlpha": false,
+          "textColor1": "030303",
+          "bgColor": "3796ad",
+          "checksum": "454aaff273ec3e37f201677cd92c1511",
+          "hasP3": false,
+          "supportsLayeredImage": false
+        },
+        {
+          "width": 1242,
+          "url": "https://is1-ssl.mzstatic.com/image/thumb/Purple118/v4/93/4a/08/934a08c6-2980-85bd-363c-bd4a0ca597e1/pr_source.png/{w}x{h}bb.{f}",
+          "height": 2208,
+          "textColor3": "ced5df",
+          "textColor2": "45bdda",
+          "textColor4": "39a0c2",
+          "hasAlpha": false,
+          "textColor1": "ffffff",
+          "bgColor": "0b3064",
+          "checksum": "524005d6d61692d97a4235831ce3a24e",
+          "hasP3": false,
+          "supportsLayeredImage": false
+        }
+      ],
+      "iphone_6_5": [
+        {
+          "width": 1242,
+          "url": "https://is4-ssl.mzstatic.com/image/thumb/Purple128/v4/9c/02/7b/9c027bf3-d2b6-f071-d5f0-72a6754ebd04/pr_source.png/{w}x{h}bb.{f}",
+          "height": 2688,
+          "textColor3": "2e340f",
+          "textColor2": "202020",
+          "textColor4": "3b411b",
+          "hasAlpha": false,
+          "textColor1": "101010",
+          "bgColor": "a8c608",
+          "checksum": "4a6e7b0df87109f50c5df05635a5cc98",
+          "hasP3": false,
+          "supportsLayeredImage": false
+        },
+        {
+          "width": 1242,
+          "url": "https://is3-ssl.mzstatic.com/image/thumb/Purple128/v4/f0/dd/52/f0dd5215-6e28-9006-51fa-80671bde990a/pr_source.png/{w}x{h}bb.{f}",
+          "height": 2688,
+          "textColor3": "d2e3e7",
+          "textColor2": "facaab",
+          "textColor4": "ceb9a4",
+          "hasAlpha": false,
+          "textColor1": "ffffff",
+          "bgColor": "207488",
+          "checksum": "26312ee3b7f48e0dd37af26f17150a70",
+          "hasP3": false,
+          "supportsLayeredImage": false
+        },
+        {
+          "width": 1242,
+          "url": "https://is5-ssl.mzstatic.com/image/thumb/Purple118/v4/1d/a9/19/1da919bf-088d-2e78-a7b0-62545a0ba676/pr_source.png/{w}x{h}bb.{f}",
+          "height": 2688,
+          "textColor3": "ced5df",
+          "textColor2": "70c6db",
+          "textColor4": "5ba8c3",
+          "hasAlpha": false,
+          "textColor1": "ffffff",
+          "bgColor": "0b3064",
+          "checksum": "0a5060eeda2cdc2a96bda1f79e695d11",
+          "hasP3": false,
+          "supportsLayeredImage": false
+        }
+      ]
+    },
+    "nameRaw": "Tricky Test: Brain Out Game IQ",
+    "editorialArtwork": {
+      "brandLogo": {
+        "width": 1080,
+        "url": "https://is4-ssl.mzstatic.com/image/thumb/Features113/v4/28/e5/fa/28e5fa1a-00f5-6ec6-9625-836455ad6534/source/{w}x{h}{c}.{f}",
+        "height": 1080,
+        "textColor3": "c1c1c1",
+        "textColor2": "e5e5e5",
+        "textColor4": "b7b7b7",
+        "hasAlpha": true,
+        "textColor1": "f2f2f2",
+        "bgColor": "000000",
+        "hasP3": false,
+        "supportsLayeredImage": false
+      }
+    },
+    "subtitle": "Проверь, на сколько ты умен!",
+    "bundleId": "tricky.farmers.test",
+    "hasInAppPurchases": true,
+    "kind": "iosSoftware",
+    "copyright": "© Max Kochergin",
+    "chartPositionForStore": {
+      "appStore": {
+        "position": 23,
+        "genreName": "Викторины",
+        "chartUrl": "https://itunes.apple.com/WebObjects/MZStore.woa/wa/viewTop?cc=ru&genreId=7018&popId=96"
+      }
+    },
+    "artistId": "989631278",
+    "genres": [
+      {
+        "genreId": "6014",
+        "name": "Игры",
+        "url": "https://itunes.apple.com/ru/genre/id6014",
+        "mediaType": "8",
+        "parentGenreId": "36"
+      },
+      {
+        "genreId": "7012",
+        "name": "Головоломки",
+        "url": "https://itunes.apple.com/ru/genre/id7012",
+        "mediaType": "8",
+        "parentGenreId": "6014"
+      },
+      {
+        "genreId": "7018",
+        "name": "Викторины",
+        "url": "https://itunes.apple.com/ru/genre/id7018",
+        "mediaType": "8",
+        "parentGenreId": "6014"
+      },
+      {
+        "genreId": "6016",
+        "name": "Развлечения",
+        "url": "https://itunes.apple.com/ru/genre/id6016",
+        "mediaType": "8",
+        "parentGenreId": "36"
+      }
+    ],
+    "minimumOSVersion": "10.0",
+    "messagesScreenshots": {},
+    "offers": [
+      {
+        "actionText": {
+          "short": "ЗАГРУЗИТЬ",
+          "medium": "Загрузить",
+          "long": "ЗАГРУЗИТЬ",
+          "downloaded": "УСТАНОВЛЕНО",
+          "downloading": "УСТАНОВКА"
+        },
+        "type": "get",
+        "priceFormatted": "0 ₽",
+        "price": 0,
+        "buyParams": "productType=C&price=0&salableAdamId=1432456562&pricingParameters=STDQ&pg=default&appExtVrsId=835535821",
+        "version": {
+          "display": "2.1.2",
+          "externalId": 835535821
+        },
+        "assets": [
+          {
+            "flavor": "iosSoftware",
+            "size": 50463744
+          }
+        ]
+      },
+      {
+        "actionText": {
+          "short": "ЗАГРУЗИТЬ",
+          "medium": "Загрузить",
+          "long": "ЗАГРУЗИТЬ ПРИЛОЖЕНИЕ",
+          "downloaded": "УСТАНОВЛЕНО",
+          "downloading": "УСТАНОВКА"
+        },
+        "type": "update",
+        "priceFormatted": "0 ₽",
+        "price": 0,
+        "buyParams": "productType=C&price=0&salableAdamId=1432456562&pricingParameters=SWUPD&pg=default&appExtVrsId=835535821",
+        "version": {
+          "display": "2.1.2",
+          "externalId": 835535821
+        },
+        "assets": [
+          {
+            "flavor": "iosSoftware",
+            "size": 50463744
+          }
+        ]
+      }
+    ]
+  },
+  "1477841973": {
+    "artwork": {
+      "width": 1024,
+      "url": "https://is5-ssl.mzstatic.com/image/thumb/Purple123/v4/c1/cf/d2/c1cfd227-33eb-771a-c285-44e4f740846e/AppIcon-0-0-1x_U007emarketing-0-0-0-7-0-0-sRGB-0-0-0-GLES2_U002c0-512MB-85-220-0-0.png/{w}x{h}bb.{f}",
+      "height": 1024,
+      "textColor3": "333333",
+      "textColor2": "221f00",
+      "textColor4": "4e4c33",
+      "hasAlpha": false,
+      "textColor1": "000000",
+      "bgColor": "ffffff",
+      "hasP3": false,
+      "supportsLayeredImage": false
+    },
+    "artistName": "EYEWIND LIMITED",
+    "url": "https://apps.apple.com/ru/app/brain-out/id1477841973",
+    "shortUrl": "https://apps.apple.com/ru/app/brain-out/id1477841973",
+    "videoPreviewsByType": {
+      "ipadPro_2018": [
+        {
+          "previewFrame": {
+            "width": 1200,
+            "url": "https://is5-ssl.mzstatic.com/image/thumb/PurpleVideo123/v4/95/d4/a0/95d4a0fd-785e-c8b2-aedc-1ed951d8d20a/Job07a939ea-bc8f-4d4d-9696-60c99dc6e502-104259267-PreviewImage_preview_image_nonvideo_sdr-Time1571227154811.png/{w}x{h}bb.{f}",
+            "height": 1600,
+            "textColor3": "3c3b39",
+            "textColor2": "2a2a2a",
+            "textColor4": "555555",
+            "hasAlpha": false,
+            "textColor1": "0b0a08",
+            "bgColor": "ffffff",
+            "checksum": "dfe68ca9633cffabe7111e0be87ff14c",
+            "hasP3": false,
+            "supportsLayeredImage": false
+          },
+          "video": "https://apptrailers.itunes.apple.com/itunes-assets/PurpleVideo123/v4/c0/d7/7a/c0d77a27-7748-6513-9064-b7994c16f8fa/P62301392_default.m3u8"
+        }
+      ],
+      "ipadPro": [
+        {
+          "previewFrame": {
+            "width": 1200,
+            "url": "https://is4-ssl.mzstatic.com/image/thumb/PurpleVideo113/v4/3d/aa/d0/3daad05e-d7b0-bb47-ac32-a546eca0b864/Jobe9a3a472-ce00-42c7-bb82-37f07040a85c-104259023-PreviewImage_preview_image_nonvideo_sdr-Time1571227153329.png/{w}x{h}bb.{f}",
+            "height": 1600,
+            "textColor3": "3c3b39",
+            "textColor2": "2a2a2a",
+            "textColor4": "555555",
+            "hasAlpha": false,
+            "textColor1": "0b0a08",
+            "bgColor": "ffffff",
+            "checksum": "dfe68ca9633cffabe7111e0be87ff14c",
+            "hasP3": false,
+            "supportsLayeredImage": false
+          },
+          "video": "https://apptrailers.itunes.apple.com/itunes-assets/PurpleVideo123/v4/17/b9/9b/17b99bc5-0db3-74a4-f1fe-df9469af15d7/P62301245_default.m3u8"
+        }
+      ],
+      "iphone6+": [
+        {
+          "previewFrame": {
+            "width": 1080,
+            "url": "https://is2-ssl.mzstatic.com/image/thumb/PurpleVideo113/v4/f3/af/ac/f3afacc2-1aba-b8c6-59f9-7d74851e08dc/Jobc7ee58a7-1a5a-4d99-80d6-bd0924c372fc-104259269-PreviewImage_preview_image_nonvideo_sdr-Time1571227153112.png/{w}x{h}bb.{f}",
+            "height": 1920,
+            "textColor3": "343333",
+            "textColor2": "242525",
+            "textColor4": "505151",
+            "hasAlpha": false,
+            "textColor1": "010000",
+            "bgColor": "ffffff",
+            "checksum": "efb4580fc347371973c6324ab5f894c3",
+            "hasP3": false,
+            "supportsLayeredImage": false
+          },
+          "video": "https://apptrailers.itunes.apple.com/itunes-assets/PurpleVideo123/v4/40/5d/14/405d14f1-0da6-13c0-f8e8-06a9b3a47383/P62301393_default.m3u8"
+        }
+      ],
+      "iphone_6_5": [
+        {
+          "previewFrame": {
+            "width": 886,
+            "url": "https://is3-ssl.mzstatic.com/image/thumb/PurpleVideo123/v4/25/ee/8f/25ee8f62-ec49-76a8-0fc7-59289b92b3ca/Job2bead426-8409-4f7d-a276-00f5276ec149-104259265-PreviewImage_preview_image_nonvideo_sdr-Time1571227152390.png/{w}x{h}bb.{f}",
+            "height": 1920,
+            "textColor3": "353535",
+            "textColor2": "202020",
+            "textColor4": "4c4c4c",
+            "hasAlpha": false,
+            "textColor1": "030303",
+            "bgColor": "ffffff",
+            "checksum": "230e418e9499d47ab1587493acd9afd6",
+            "hasP3": false,
+            "supportsLayeredImage": false
+          },
+          "video": "https://apptrailers.itunes.apple.com/itunes-assets/PurpleVideo113/v4/fa/d4/8c/fad48c99-da2e-8630-6324-b2092ebe39a7/P62301386_default.m3u8"
+        }
+      ]
+    },
+    "deviceFamilies": [
+      "iphone",
+      "ipad",
+      "ipod"
+    ],
+    "genreNames": [
+      "Игры",
+      "Словесные",
+      "Головоломки",
+      "Развлечения"
+    ],
+    "nameSortValue": "BrainOut",
+    "id": "1477841973",
+    "releaseDate": "2019-10-06",
+    "userRating": {
+      "value": 4.7,
+      "ratingCount": 30997,
+      "ratingCountList": [
+        1641,
+        460,
+        672,
+        1512,
+        26712
+      ],
+      "ariaLabelForRatings": "Звезд: 4.7"
+    },
+    "contentRatingsBySystem": {
+      "appsApple": {
+        "name": "12+",
+        "value": 300,
+        "rank": 3,
+        "advisories": [
+          "Редко/умеренно встречающиеся сквернословие или грубый юмор",
+          "Редко/умеренно встречающиеся сцены с использованием или упоминанием алкогольной и табачной продукции или наркотических средств"
+        ]
+      }
+    },
+    "name": "Brain Out",
+    "artistUrl": "https://apps.apple.com/ru/developer/eyewind-limited/id1317690197",
+    "screenshotsByType": {
+      "ipadPro_2018": [
+        {
+          "width": 2048,
+          "url": "https://is5-ssl.mzstatic.com/image/thumb/Purple113/v4/dc/bf/ca/dcbfcaef-db1e-ea55-cd72-931a14406c4e/pr_source.jpg/{w}x{h}bb.{f}",
+          "height": 2732,
+          "textColor3": "343434",
+          "textColor2": "3b1418",
+          "textColor4": "624346",
+          "hasAlpha": false,
+          "textColor1": "010101",
+          "bgColor": "ffffff",
+          "checksum": "2df59776253134628f4aefb2ff1afe71",
+          "hasP3": false,
+          "supportsLayeredImage": false
+        },
+        {
+          "width": 2048,
+          "url": "https://is2-ssl.mzstatic.com/image/thumb/Purple123/v4/8a/60/a0/8a60a089-a8bd-1701-7c62-ff254ae88b61/pr_source.jpg/{w}x{h}bb.{f}",
+          "height": 2732,
+          "textColor3": "363333",
+          "textColor2": "171717",
+          "textColor4": "464646",
+          "hasAlpha": false,
+          "textColor1": "040000",
+          "bgColor": "ffffff",
+          "checksum": "8ad763e47a2ad5691491cfc085949148",
+          "hasP3": false,
+          "supportsLayeredImage": false
+        },
+        {
+          "width": 2048,
+          "url": "https://is2-ssl.mzstatic.com/image/thumb/Purple113/v4/d3/b6/06/d3b60606-b70d-7b10-72e5-e2090c071328/pr_source.jpg/{w}x{h}bb.{f}",
+          "height": 2732,
+          "textColor3": "343434",
+          "textColor2": "402126",
+          "textColor4": "664d51",
+          "hasAlpha": false,
+          "textColor1": "010101",
+          "bgColor": "ffffff",
+          "checksum": "f0ac1d4902ce473647d171f8aed4cf04",
+          "hasP3": false,
+          "supportsLayeredImage": false
+        },
+        {
+          "width": 2048,
+          "url": "https://is1-ssl.mzstatic.com/image/thumb/Purple113/v4/dd/7f/df/dd7fdf85-3705-e89d-4a1d-2bd9fb53aef4/pr_source.jpg/{w}x{h}bb.{f}",
+          "height": 2732,
+          "textColor3": "343333",
+          "textColor2": "5a210f",
+          "textColor4": "7b4d3f",
+          "hasAlpha": false,
+          "textColor1": "010000",
+          "bgColor": "ffffff",
+          "checksum": "e596c5af67c7f43e56604fd1eff926e8",
+          "hasP3": false,
+          "supportsLayeredImage": false
+        },
+        {
+          "width": 2048,
+          "url": "https://is2-ssl.mzstatic.com/image/thumb/Purple113/v4/a2/f4/2a/a2f42ae4-865b-d63e-137f-0c013e459b48/pr_source.jpg/{w}x{h}bb.{f}",
+          "height": 2732,
+          "textColor3": "333433",
+          "textColor2": "171717",
+          "textColor4": "464646",
+          "hasAlpha": false,
+          "textColor1": "000100",
+          "bgColor": "ffffff",
+          "checksum": "5e1171bd650334c4fb0645ed88cf2cad",
+          "hasP3": false,
+          "supportsLayeredImage": false
+        },
+        {
+          "width": 2048,
+          "url": "https://is2-ssl.mzstatic.com/image/thumb/Purple113/v4/b6/47/52/b64752a2-de03-d4c2-9c4a-874d18340f4d/pr_source.jpg/{w}x{h}bb.{f}",
+          "height": 2732,
+          "textColor3": "333333",
+          "textColor2": "161616",
+          "textColor4": "454545",
+          "hasAlpha": false,
+          "textColor1": "000000",
+          "bgColor": "ffffff",
+          "checksum": "e6c8bca8e619be27d373c1cfe2065bf6",
+          "hasP3": false,
+          "supportsLayeredImage": false
+        },
+        {
+          "width": 2048,
+          "url": "https://is2-ssl.mzstatic.com/image/thumb/Purple123/v4/50/c5/10/50c51021-3169-5f86-8a9e-a5275049db7f/pr_source.jpg/{w}x{h}bb.{f}",
+          "height": 2732,
+          "textColor3": "333333",
+          "textColor2": "1c1c1c",
+          "textColor4": "4a4a4a",
+          "hasAlpha": false,
+          "textColor1": "000000",
+          "bgColor": "ffffff",
+          "checksum": "a3bdad897a85cd15224573919c8bd113",
+          "hasP3": false,
+          "supportsLayeredImage": false
+        }
+      ],
+      "ipadPro": [
+        {
+          "width": 2048,
+          "url": "https://is2-ssl.mzstatic.com/image/thumb/Purple113/v4/1b/2b/2b/1b2b2b11-3d90-2ecc-741b-b556565a13ab/pr_source.jpg/{w}x{h}bb.{f}",
+          "height": 2732,
+          "textColor3": "343434",
+          "textColor2": "3b1418",
+          "textColor4": "624346",
+          "hasAlpha": false,
+          "textColor1": "010101",
+          "bgColor": "ffffff",
+          "checksum": "2df59776253134628f4aefb2ff1afe71",
+          "hasP3": false,
+          "supportsLayeredImage": false
+        },
+        {
+          "width": 2048,
+          "url": "https://is2-ssl.mzstatic.com/image/thumb/Purple123/v4/74/a8/3a/74a83a0b-601f-4d29-25c1-746a4fb71273/pr_source.jpg/{w}x{h}bb.{f}",
+          "height": 2732,
+          "textColor3": "363333",
+          "textColor2": "171717",
+          "textColor4": "464646",
+          "hasAlpha": false,
+          "textColor1": "040000",
+          "bgColor": "ffffff",
+          "checksum": "8ad763e47a2ad5691491cfc085949148",
+          "hasP3": false,
+          "supportsLayeredImage": false
+        },
+        {
+          "width": 2048,
+          "url": "https://is4-ssl.mzstatic.com/image/thumb/Purple113/v4/ff/6c/09/ff6c09d6-16bd-aebe-6227-ce44c8309d0a/pr_source.jpg/{w}x{h}bb.{f}",
+          "height": 2732,
+          "textColor3": "343434",
+          "textColor2": "402126",
+          "textColor4": "664d51",
+          "hasAlpha": false,
+          "textColor1": "010101",
+          "bgColor": "ffffff",
+          "checksum": "f0ac1d4902ce473647d171f8aed4cf04",
+          "hasP3": false,
+          "supportsLayeredImage": false
+        },
+        {
+          "width": 2048,
+          "url": "https://is1-ssl.mzstatic.com/image/thumb/Purple113/v4/ec/b8/59/ecb85988-51bf-2d30-f729-e0c929a88734/pr_source.jpg/{w}x{h}bb.{f}",
+          "height": 2732,
+          "textColor3": "343333",
+          "textColor2": "5a210f",
+          "textColor4": "7b4d3f",
+          "hasAlpha": false,
+          "textColor1": "010000",
+          "bgColor": "ffffff",
+          "checksum": "e596c5af67c7f43e56604fd1eff926e8",
+          "hasP3": false,
+          "supportsLayeredImage": false
+        },
+        {
+          "width": 2048,
+          "url": "https://is2-ssl.mzstatic.com/image/thumb/Purple113/v4/90/f0/8a/90f08a34-f955-5b11-ef6d-ef6881722dfa/pr_source.jpg/{w}x{h}bb.{f}",
+          "height": 2732,
+          "textColor3": "333433",
+          "textColor2": "171717",
+          "textColor4": "464646",
+          "hasAlpha": false,
+          "textColor1": "000100",
+          "bgColor": "ffffff",
+          "checksum": "5e1171bd650334c4fb0645ed88cf2cad",
+          "hasP3": false,
+          "supportsLayeredImage": false
+        },
+        {
+          "width": 2048,
+          "url": "https://is5-ssl.mzstatic.com/image/thumb/Purple123/v4/84/ee/c2/84eec2bd-5b8d-092d-b707-748ba08775ca/pr_source.jpg/{w}x{h}bb.{f}",
+          "height": 2732,
+          "textColor3": "333333",
+          "textColor2": "161616",
+          "textColor4": "454545",
+          "hasAlpha": false,
+          "textColor1": "000000",
+          "bgColor": "ffffff",
+          "checksum": "e6c8bca8e619be27d373c1cfe2065bf6",
+          "hasP3": false,
+          "supportsLayeredImage": false
+        },
+        {
+          "width": 2048,
+          "url": "https://is2-ssl.mzstatic.com/image/thumb/Purple113/v4/23/59/9c/23599c4a-78f2-3356-31da-c70fb4f25d87/pr_source.jpg/{w}x{h}bb.{f}",
+          "height": 2732,
+          "textColor3": "333333",
+          "textColor2": "1c1c1c",
+          "textColor4": "4a4a4a",
+          "hasAlpha": false,
+          "textColor1": "000000",
+          "bgColor": "ffffff",
+          "checksum": "a3bdad897a85cd15224573919c8bd113",
+          "hasP3": false,
+          "supportsLayeredImage": false
+        }
+      ],
+      "iphone6+": [
+        {
+          "width": 1242,
+          "url": "https://is2-ssl.mzstatic.com/image/thumb/Purple113/v4/0e/49/7b/0e497b84-00d3-a5ed-ef11-5f755773264a/pr_source.jpg/{w}x{h}bb.{f}",
+          "height": 2208,
+          "textColor3": "383838",
+          "textColor2": "23334b",
+          "textColor4": "4f5c6f",
+          "hasAlpha": false,
+          "textColor1": "070707",
+          "bgColor": "ffffff",
+          "checksum": "61a46f2526589bbe4f7a706c62ad19f0",
+          "hasP3": false,
+          "supportsLayeredImage": false
+        },
+        {
+          "width": 1242,
+          "url": "https://is1-ssl.mzstatic.com/image/thumb/Purple113/v4/fb/ae/6d/fbae6d33-b80f-31ff-482d-f13b805c9790/pr_source.jpg/{w}x{h}bb.{f}",
+          "height": 2208,
+          "textColor3": "363336",
+          "textColor2": "3d101c",
+          "textColor4": "644049",
+          "hasAlpha": false,
+          "textColor1": "040004",
+          "bgColor": "ffffff",
+          "checksum": "079c747ba57ac7abdefcfb535255a463",
+          "hasP3": false,
+          "supportsLayeredImage": false
+        },
+        {
+          "width": 1242,
+          "url": "https://is3-ssl.mzstatic.com/image/thumb/Purple113/v4/5a/a3/e9/5aa3e994-9de1-0dec-84e7-3978e018e4a9/pr_source.jpg/{w}x{h}bb.{f}",
+          "height": 2208,
+          "textColor3": "373737",
+          "textColor2": "222222",
+          "textColor4": "4e4e4e",
+          "hasAlpha": false,
+          "textColor1": "050505",
+          "bgColor": "ffffff",
+          "checksum": "2781ab1cac8817cbef212ac00c1a22ab",
+          "hasP3": false,
+          "supportsLayeredImage": false
+        },
+        {
+          "width": 1242,
+          "url": "https://is2-ssl.mzstatic.com/image/thumb/Purple113/v4/60/87/42/608742b1-489c-9bea-ff52-94483dac62ba/pr_source.jpg/{w}x{h}bb.{f}",
+          "height": 2208,
+          "textColor3": "343333",
+          "textColor2": "56200e",
+          "textColor4": "784d3e",
+          "hasAlpha": false,
+          "textColor1": "010000",
+          "bgColor": "ffffff",
+          "checksum": "815e5f279bed67353f8537eba9015f3f",
+          "hasP3": false,
+          "supportsLayeredImage": false
+        },
+        {
+          "width": 1242,
+          "url": "https://is3-ssl.mzstatic.com/image/thumb/Purple113/v4/8f/a7/20/8fa7202c-2043-b426-b4a1-650defe2667a/pr_source.jpg/{w}x{h}bb.{f}",
+          "height": 2208,
+          "textColor3": "463333",
+          "textColor2": "191919",
+          "textColor4": "474747",
+          "hasAlpha": false,
+          "textColor1": "180000",
+          "bgColor": "ffffff",
+          "checksum": "babc6cf036464b5bb52358403665d0f8",
+          "hasP3": false,
+          "supportsLayeredImage": false
+        },
+        {
+          "width": 1242,
+          "url": "https://is2-ssl.mzstatic.com/image/thumb/Purple123/v4/fd/02/4d/fd024db2-680f-aa16-87ce-4b2e83233628/pr_source.jpg/{w}x{h}bb.{f}",
+          "height": 2208,
+          "textColor3": "353333",
+          "textColor2": "191919",
+          "textColor4": "474747",
+          "hasAlpha": false,
+          "textColor1": "030000",
+          "bgColor": "ffffff",
+          "checksum": "535b8fdb7acb2256d89db95f61fecdab",
+          "hasP3": false,
+          "supportsLayeredImage": false
+        },
+        {
+          "width": 1242,
+          "url": "https://is3-ssl.mzstatic.com/image/thumb/Purple113/v4/27/ba/37/27ba373c-2a36-c464-3e9f-d3807b3c5503/pr_source.jpg/{w}x{h}bb.{f}",
+          "height": 2208,
+          "textColor3": "333333",
+          "textColor2": "171717",
+          "textColor4": "454545",
+          "hasAlpha": false,
+          "textColor1": "000000",
+          "bgColor": "ffffff",
+          "checksum": "4375306fd2b9a3b79715604bccea7fa0",
+          "hasP3": false,
+          "supportsLayeredImage": false
+        }
+      ],
+      "iphone_6_5": [
+        {
+          "width": 1242,
+          "url": "https://is2-ssl.mzstatic.com/image/thumb/Purple113/v4/c6/04/45/c6044552-9281-b153-db46-00f0a93402e3/pr_source.jpg/{w}x{h}bb.{f}",
+          "height": 2688,
+          "textColor3": "333333",
+          "textColor2": "23334c",
+          "textColor4": "4f5c70",
+          "hasAlpha": false,
+          "textColor1": "000000",
+          "bgColor": "ffffff",
+          "checksum": "93c7897d5c5d7862d63c52f79ac52a5e",
+          "hasP3": false,
+          "supportsLayeredImage": false
+        },
+        {
+          "width": 1242,
+          "url": "https://is3-ssl.mzstatic.com/image/thumb/Purple113/v4/80/98/79/80987993-5ea4-97c2-39fd-6d9bf4b8807c/pr_source.jpg/{w}x{h}bb.{f}",
+          "height": 2688,
+          "textColor3": "333333",
+          "textColor2": "310c13",
+          "textColor4": "5a3d42",
+          "hasAlpha": false,
+          "textColor1": "000000",
+          "bgColor": "ffffff",
+          "checksum": "6e7d98caf621c69838c615a8fc1df1fc",
+          "hasP3": false,
+          "supportsLayeredImage": false
+        },
+        {
+          "width": 1242,
+          "url": "https://is3-ssl.mzstatic.com/image/thumb/Purple123/v4/13/c9/1b/13c91b7d-54e3-b39e-0b6c-a5b22ddd84a7/pr_source.jpg/{w}x{h}bb.{f}",
+          "height": 2688,
+          "textColor3": "33363b",
+          "textColor2": "262626",
+          "textColor4": "515151",
+          "hasAlpha": false,
+          "textColor1": "00040a",
+          "bgColor": "ffffff",
+          "checksum": "0d6698fe173512de1966852c320bd529",
+          "hasP3": false,
+          "supportsLayeredImage": false
+        },
+        {
+          "width": 1242,
+          "url": "https://is4-ssl.mzstatic.com/image/thumb/Purple113/v4/64/75/f2/6475f2ab-0073-b021-2330-94218158d6bd/pr_source.jpg/{w}x{h}bb.{f}",
+          "height": 2688,
+          "textColor3": "393938",
+          "textColor2": "1f362c",
+          "textColor4": "4b5e56",
+          "hasAlpha": false,
+          "textColor1": "080706",
+          "bgColor": "ffffff",
+          "checksum": "86f20d0d7c01bcc02f4c443bdbfc7c66",
+          "hasP3": false,
+          "supportsLayeredImage": false
+        },
+        {
+          "width": 1242,
+          "url": "https://is1-ssl.mzstatic.com/image/thumb/Purple123/v4/17/01/a5/1701a52e-59a2-c010-f897-9af4c177c74f/pr_source.jpg/{w}x{h}bb.{f}",
+          "height": 2688,
+          "textColor3": "3c3333",
+          "textColor2": "151515",
+          "textColor4": "434343",
+          "hasAlpha": false,
+          "textColor1": "0b0000",
+          "bgColor": "ffffff",
+          "checksum": "aa21d7a9bd5648d8c11c0a3d0ed73f02",
+          "hasP3": false,
+          "supportsLayeredImage": false
+        },
+        {
+          "width": 1242,
+          "url": "https://is1-ssl.mzstatic.com/image/thumb/Purple123/v4/06/6d/b4/066db411-4525-294c-280f-ad7d10d6bbc4/pr_source.jpg/{w}x{h}bb.{f}",
+          "height": 2688,
+          "textColor3": "363636",
+          "textColor2": "191919",
+          "textColor4": "474747",
+          "hasAlpha": false,
+          "textColor1": "040404",
+          "bgColor": "ffffff",
+          "checksum": "12cb44791f7d00623aa9958aceb870c9",
+          "hasP3": false,
+          "supportsLayeredImage": false
+        },
+        {
+          "width": 1242,
+          "url": "https://is4-ssl.mzstatic.com/image/thumb/Purple113/v4/95/77/cd/9577cd66-a0d1-e5ec-018b-5034fd60594d/pr_source.jpg/{w}x{h}bb.{f}",
+          "height": 2688,
+          "textColor3": "333333",
+          "textColor2": "313131",
+          "textColor4": "5a5a5a",
+          "hasAlpha": false,
+          "textColor1": "000000",
+          "bgColor": "ffffff",
+          "checksum": "3fe5d44555b9292323a7672fe00ede32",
+          "hasP3": false,
+          "supportsLayeredImage": false
+        }
+      ]
+    },
+    "nameRaw": "Brain Out",
+    "editorialArtwork": {
+      "brandLogo": {
+        "width": 1080,
+        "url": "https://is4-ssl.mzstatic.com/image/thumb/Features113/v4/28/e5/fa/28e5fa1a-00f5-6ec6-9625-836455ad6534/source/{w}x{h}{c}.{f}",
+        "height": 1080,
+        "textColor3": "c1c1c1",
+        "textColor2": "e5e5e5",
+        "textColor4": "b7b7b7",
+        "hasAlpha": true,
+        "textColor1": "f2f2f2",
+        "bgColor": "000000",
+        "hasP3": false,
+        "supportsLayeredImage": false
+      }
+    },
+    "subtitle": "Ты сможешь пройти?",
+    "bundleId": "com.mind.quiz.brain.out",
+    "hasInAppPurchases": true,
+    "kind": "iosSoftware",
+    "copyright": "© EYEWIND LIMITED",
+    "chartPositionForStore": {
+      "appStore": {
+        "position": 1,
+        "genreName": "Словесные",
+        "chartUrl": "https://itunes.apple.com/WebObjects/MZStore.woa/wa/viewTop?cc=ru&genreId=7019&popId=96"
+      }
+    },
+    "artistId": "1317690197",
+    "genres": [
+      {
+        "genreId": "6014",
+        "name": "Игры",
+        "url": "https://itunes.apple.com/ru/genre/id6014",
+        "mediaType": "8",
+        "parentGenreId": "36"
+      },
+      {
+        "genreId": "7019",
+        "name": "Словесные",
+        "url": "https://itunes.apple.com/ru/genre/id7019",
+        "mediaType": "8",
+        "parentGenreId": "6014"
+      },
+      {
+        "genreId": "7012",
+        "name": "Головоломки",
+        "url": "https://itunes.apple.com/ru/genre/id7012",
+        "mediaType": "8",
+        "parentGenreId": "6014"
+      },
+      {
+        "genreId": "6016",
+        "name": "Развлечения",
+        "url": "https://itunes.apple.com/ru/genre/id6016",
+        "mediaType": "8",
+        "parentGenreId": "36"
+      }
+    ],
+    "minimumOSVersion": "10.3",
+    "messagesScreenshots": {},
+    "requiredCapabilities": "arm64 ",
+    "offers": [
+      {
+        "actionText": {
+          "short": "ЗАГРУЗИТЬ",
+          "medium": "Загрузить",
+          "long": "ЗАГРУЗИТЬ",
+          "downloaded": "УСТАНОВЛЕНО",
+          "downloading": "УСТАНОВКА"
+        },
+        "type": "get",
+        "priceFormatted": "0 ₽",
+        "price": 0,
+        "buyParams": "productType=C&price=0&salableAdamId=1477841973&pricingParameters=STDQ&pg=default&appExtVrsId=835187762",
+        "version": {
+          "display": "1.1.0",
+          "externalId": 835187762
+        },
+        "assets": [
+          {
+            "flavor": "iosSoftware",
+            "size": 211691520
+          }
+        ]
+      },
+      {
+        "actionText": {
+          "short": "ЗАГРУЗИТЬ",
+          "medium": "Загрузить",
+          "long": "ЗАГРУЗИТЬ ПРИЛОЖЕНИЕ",
+          "downloaded": "УСТАНОВЛЕНО",
+          "downloading": "УСТАНОВКА"
+        },
+        "type": "update",
+        "priceFormatted": "0 ₽",
+        "price": 0,
+        "buyParams": "productType=C&price=0&salableAdamId=1477841973&pricingParameters=SWUPD&pg=default&appExtVrsId=835187762",
+        "version": {
+          "display": "1.1.0",
+          "externalId": 835187762
+        },
+        "assets": [
+          {
+            "flavor": "iosSoftware",
+            "size": 211691520
+          }
+        ]
+      }
+    ]
+  }
+}
