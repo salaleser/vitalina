@@ -50,9 +50,9 @@ func Vitalina(s *discordgo.Session, m *discordgo.MessageCreate) {
 		detections := util.DetectLanguage(m.Content[1:])
 
 		if len(detections) > 0 {
-			flag := util.GetFlagByLanguage(detections[0].Language)
+			language := util.GetLanguageByCode(detections[0].Language)
 			time.Sleep(100)
-			s.MessageReactionAdd(m.ChannelID, m.ID, flag)
+			s.MessageReactionAdd(m.ChannelID, m.ID, language.Emoji)
 
 			score := util.GetEmojiByDigit(detections[0].ConfidenceScore)
 			time.Sleep(100)
@@ -66,6 +66,14 @@ func Vitalina(s *discordgo.Session, m *discordgo.MessageCreate) {
 			}
 			time.Sleep(100)
 			s.MessageReactionAdd(m.ChannelID, m.ID, reliable)
+		}
+	}
+
+	if strings.HasPrefix(m.Content, ",") {
+		detections := util.DetectLanguage(m.Content[1:])
+
+		if len(detections) > 0 {
+			SendLanguageDetection(s, m, detections)
 		}
 	}
 }
@@ -188,34 +196,9 @@ func SendMetadata(s *discordgo.Session, m *discordgo.MessageCreate, appID string
 		return
 	}
 
-	footer := discordgo.MessageEmbedFooter{
-		Text:    "Author: " + metadata.ArtistName + ", " + getStars(int(metadata.Rating)),
-		IconURL: footerIconURL,
-	}
+	ft := "Author: " + metadata.ArtistName + ", " + getStars(int(metadata.Rating))
 
-	thumbnail := discordgo.MessageEmbedThumbnail{
-		URL: metadata.Logo,
-	}
-
-	image := discordgo.MessageEmbedImage{
-		URL: metadata.Screenshot1,
-	}
-
-	embed := discordgo.MessageEmbed{
-		Color:       100000,
-		Title:       metadata.Title,
-		Description: metadata.Subtitle,
-		Footer:      &footer,
-		URL:         link,
-		Thumbnail:   &thumbnail,
-		Image:       &image,
-	}
-
-	message := discordgo.MessageSend{
-		Embed: &embed,
-	}
-
-	s.ChannelMessageSendComplex(m.ChannelID, &message)
+	util.Send(s, m, metadata.Title, metadata.Subtitle, link, metadata.Screenshot1, metadata.Logo, ft, footerIconURL)
 }
 
 func SendStory(s *discordgo.Session, m *discordgo.MessageCreate, storyID string) {
@@ -229,44 +212,21 @@ func SendStory(s *discordgo.Session, m *discordgo.MessageCreate, storyID string)
 		return
 	}
 
-	imageURL := ""
+	iu := ""
 	for _, v := range story.EditorialArtwork {
-		imageURL = strings.Replace(v.URL, "{w}x{h}{c}.{f}", "512x512bb.png", -1)
+		iu = strings.Replace(v.URL, "{w}x{h}{c}.{f}", "512x512bb.png", -1)
 	}
 
-	cardIDs := "\n"
+	t := story.Label
+	d := "**" + story.EditorialNotes.Name + "**\n" + story.EditorialNotes.Short
+	l := story.Link.URL
+
+	ft := "\n"
 	for _, card := range story.CardIds {
-		cardIDs += "\n" + card
+		ft += "\n" + card
 	}
 
-	footer := discordgo.MessageEmbedFooter{
-		Text:    cardIDs,
-		IconURL: asLogoURL,
-	}
-
-	thumbnail := discordgo.MessageEmbedThumbnail{
-		URL: "",
-	}
-
-	image := discordgo.MessageEmbedImage{
-		URL: imageURL,
-	}
-
-	embed := discordgo.MessageEmbed{
-		Color:       100000,
-		Title:       story.Label,
-		Description: "**" + story.EditorialNotes.Name + "**\n" + story.EditorialNotes.Short,
-		Footer:      &footer,
-		URL:         story.Link.URL,
-		Thumbnail:   &thumbnail,
-		Image:       &image,
-	}
-
-	message := discordgo.MessageSend{
-		Embed: &embed,
-	}
-
-	s.ChannelMessageSendComplex(m.ChannelID, &message)
+	util.Send(s, m, t, d, l, iu, "", ft, asLogoURL)
 }
 
 func SendAsAppIDs(s *discordgo.Session, m *discordgo.MessageCreate, keyword string) {
@@ -274,44 +234,20 @@ func SendAsAppIDs(s *discordgo.Session, m *discordgo.MessageCreate, keyword stri
 	language := "ru"
 	count := 5
 
-	var buffer bytes.Buffer
+	var d bytes.Buffer
 
 	metadatas := scraper.AsAppIDs(keyword, location, language)
 	for i, m := range metadatas {
-		buffer.WriteString(fmt.Sprintf("**%d**: %s (`%s`) %s\n", i+1, m.Title, m.AppID, getStars(int(m.Rating))))
+		d.WriteString(fmt.Sprintf("**%d**: %s (`%s`) %s\n", i+1, m.Title, m.AppID, getStars(int(m.Rating))))
 		if i >= count {
 			break
 		}
 	}
 
-	footer := discordgo.MessageEmbedFooter{
-		Text:    fmt.Sprintf("Total: %d", len(metadatas)),
-		IconURL: asLogoURL,
-	}
+	t := "Приложения App Store по ключевому слову «" + keyword + "»:"
+	ft := fmt.Sprintf("Total: %d", len(metadatas))
 
-	thumbnail := discordgo.MessageEmbedThumbnail{
-		URL: asLogoURL,
-	}
-
-	image := discordgo.MessageEmbedImage{
-		// URL: "https://developer.apple.com/app-store/marketing/guidelines/images/badge-download-on-the-app-store.svg",
-	}
-
-	embed := discordgo.MessageEmbed{
-		Color:       100000,
-		Title:       "Приложения App Store по ключевому слову «" + keyword + "»:",
-		Description: buffer.String(),
-		Footer:      &footer,
-		// URL:         link,
-		Thumbnail: &thumbnail,
-		Image:     &image,
-	}
-
-	message := discordgo.MessageSend{
-		Embed: &embed,
-	}
-
-	s.ChannelMessageSendComplex(m.ChannelID, &message)
+	util.Send(s, m, t, d.String(), "", "", asLogoURL, ft, asLogoURL)
 }
 
 func SendGpAppIDs(s *discordgo.Session, m *discordgo.MessageCreate, keyword string) {
@@ -319,44 +255,21 @@ func SendGpAppIDs(s *discordgo.Session, m *discordgo.MessageCreate, keyword stri
 	language := "ru"
 	count := 5
 
-	var buffer bytes.Buffer
+	var d bytes.Buffer
 
 	metadatas := scraper.GpAppIDs(keyword, location, language)
 	for i, m := range metadatas {
-		buffer.WriteString(fmt.Sprintf("**%d**: %s (`%s`) %s\n", i+1, m.Title, m.AppID, getStars(int(m.Rating))))
-		if i > count {
+		d.WriteString(fmt.Sprintf("**%d**: %s (`%s`) %s\n", i+1, m.Title, m.AppID, getStars(int(m.Rating))))
+		if i >= count {
 			break
 		}
 	}
 
-	footer := discordgo.MessageEmbedFooter{
-		Text:    fmt.Sprintf("Total: %d", len(metadatas)),
-		IconURL: gpLogoURL,
-	}
+	t := "Приложения Google Play по ключевому слову «" + keyword + "»:"
+	l := "https://play.google.com/store/search?q=" + keyword + "&c=apps&gl=" + location + "&hl=" + language
+	ft := fmt.Sprintf("Total: %d", len(metadatas))
 
-	thumbnail := discordgo.MessageEmbedThumbnail{
-		URL: gpLogoURL,
-	}
-
-	image := discordgo.MessageEmbedImage{
-		// URL: "https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png",
-	}
-
-	embed := discordgo.MessageEmbed{
-		Color:       100000,
-		Title:       "Приложения Google Play по ключевому слову «" + keyword + "»:",
-		Description: buffer.String(),
-		Footer:      &footer,
-		URL:         "https://play.google.com/store/search?q=" + keyword + "&c=apps&gl=" + location + "&hl=" + language,
-		Thumbnail:   &thumbnail,
-		Image:       &image,
-	}
-
-	message := discordgo.MessageSend{
-		Embed: &embed,
-	}
-
-	s.ChannelMessageSendComplex(m.ChannelID, &message)
+	util.Send(s, m, t, d.String(), l, "", gpLogoURL, ft, gpLogoURL)
 }
 
 func isPhrase(s string) bool {
@@ -382,4 +295,25 @@ func getStars(value int) string {
 	default:
 		return "—"
 	}
+}
+
+func SendLanguageDetection(s *discordgo.Session, m *discordgo.MessageCreate, detections []util.LanguageDetection) {
+	var description bytes.Buffer
+
+	for i, d := range detections {
+		l := util.GetLanguageByCode(d.Language)
+
+		r := "☐"
+		if d.IsReliable {
+			r = "☑︎"
+		}
+
+		ds := fmt.Sprintf("**%d**: %s [**%f**] %s | %s | %s\n", i+1, r, d.ConfidenceScore/10000, l.English, l.Russian, l.Native)
+		description.WriteString(ds)
+	}
+
+	t := "Возможный язык:"
+	ft := "Используя API https://detectlanguage.com"
+
+	util.Send(s, m, t, description.String(), "", "", "", ft, "")
 }
