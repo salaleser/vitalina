@@ -7,5 +7,8 @@ import (
 
 func main() {
 	util.ReadConfig()
+
+	util.InitLangaugeDetection()
+
 	bot.Start("Bot " + util.Config["token"])
 }

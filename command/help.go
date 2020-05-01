@@ -16,15 +16,24 @@ func Help(s *discordgo.Session, m *discordgo.MessageCreate) {
 	if len(args) == 1 {
 		var builder strings.Builder
 
-		builder.WriteString("Список поддерживаемых комад:\n")
+		builder.WriteString("Список поддерживаемых комад (префикс `~`):\n")
 		for title, description := range commands {
-			builder.WriteString(title)
+			builder.WriteString("`" + title + "`")
 			builder.WriteString(" — ")
 			builder.WriteString(description)
 			builder.WriteByte('\n')
 		}
 
-		util.SendInfo(s, m, builder.String())
+		text := "*Я переписываю бота на другой язык программирования. Я собираюсь " +
+			"восстановить большую часть старых команд в ближайшее время. Вопросы можно " +
+			"задать @salaleser#7570*\n\n" +
+			builder.String() +
+			"\nКроме того читает ID приложений App Store и Google Play (Steam будет " +
+			"добавлен) в тексте сообщений. А также текст, начинающийся с " +
+			"восклицательного знака воспринимает как команду для поиска в магазине " +
+			"приложений по ключевому запросу. Например: `!майнкрафт`."
+
+		util.SendInfo(s, m, text)
 	}
 }
 

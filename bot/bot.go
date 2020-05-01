@@ -67,7 +67,7 @@ func ready(s *discordgo.Session, event *discordgo.Ready) {
 	}
 	command.InitHelp(c) // FIXME workaround cycle imports
 
-	s.UpdateStatus(0, "твои нервы!")
+	s.UpdateStatus(0, "~help")
 }
 
 func messageCreate(s *discordgo.Session, m *discordgo.MessageCreate) {
@@ -77,9 +77,19 @@ func messageCreate(s *discordgo.Session, m *discordgo.MessageCreate) {
 
 	args := strings.Split(m.Content, " ")
 
-	guild, _ := s.Guild(m.GuildID)
-	channel, _ := s.Channel(m.ChannelID)
-	log.Printf("*%s #%s @%s: %q", guild.Name, channel.Name, m.Author.Username, m.Message.Content)
+	guild, err := s.Guild(m.GuildID)
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "get guild: %v\n", err)
+	}
+
+	channel, err := s.Channel(m.ChannelID)
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "get channel: %v\n", err)
+	}
+
+	if err == nil {
+		log.Printf("*%s #%s @%s: %q", guild.Name, channel.Name, m.Author.Username, m.Message.Content)
+	}
 
 	if !strings.HasPrefix(m.Content, "~") {
 		go command.Vitalina(s, m)

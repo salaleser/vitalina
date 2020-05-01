@@ -2,6 +2,7 @@ package db
 
 import (
 	"context"
+	"errors"
 	"fmt"
 	"os"
 	"strconv"
@@ -14,6 +15,11 @@ func GetTTSCount() int {
 	sql := "SELECT COUNT(*) FROM tts"
 
 	rows := query(sql)
+
+	if rows == nil {
+		fmt.Fprintf(os.Stderr, "tts execute query: %v\n", errors.New("rows == nil"))
+		return -1
+	}
 
 	var c int
 	for rows.Next() {
