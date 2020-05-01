@@ -117,228 +117,228 @@ func GetLanguageByCode(languageCode string) Language {
 	// 	return Language{"haw", "🌏", "HAW", "Гавайский", ""}
 	case "hi":
 		return Language{"hi", "🇮🇳", "Hindi", "Хинди", "हिन्दी"}
-	case "hmn":
-		return Language{"hmn", "", "HMONG", "", ""}
+	// case "hmn":
+	// 	return Language{"hmn", "", "HMONG", "", ""}
 	case "hr":
-		return Language{"hr", "🇭🇷", "HR", "", ""}
+		return Language{"hr", "🇭🇷", "Croatian", "Хорва́тский язы́к", "hrvatski jezik"}
 	case "ht":
-		return Language{"ht", "🇭🇹", "HT", "", ""}
+		return Language{"ht", "🇭🇹", "Haitian", "Гаитянский креольский язык", "Kreyòl ayisyen"}
 	case "hu":
-		return Language{"hu", "🇭🇺", "HU", "", ""}
+		return Language{"hu", "🇭🇺", "Hungarian", "Венге́рский язы́к", "magyar"}
 	case "hy":
-		return Language{"hy", "🇦🇲", "HY", "", ""}
+		return Language{"hy", "🇦🇲", "Armenian", "Армя́нский язы́к", "Հայերեն"}
 	case "ia":
-		return Language{"ia", "", "INTERLINGUA", "", ""}
+		return Language{"ia", "🇺🇳", "Interlingua", "Интерли́нгва", "Interlingua"}
 	case "id":
-		return Language{"id", "🇮🇩", "ID", "", ""}
+		return Language{"id", "🇮🇩", "Indonesian", "Индонези́йский язы́к", "Bahasa Indonesia"}
 	case "ie":
-		return Language{"ie", "", "INTERLINGUE", "", ""}
+		return Language{"ie", "🇺🇳", "Interlingue", "Интерли́нгве", "Interlingue"}
 	case "ig":
-		return Language{"ig", "", "IGBO", "", ""}
+		return Language{"ig", "🇳🇬", "Igbo", "И́гбо", "Asụsụ Igbo"}
 	case "ik":
-		return Language{"ik", "", "INUPIAK", "", ""}
+		return Language{"ik", "🇨🇦", "Inupiaq", "Инупиак", "Iñupiaq"}
 	case "is":
-		return Language{"is", "🇮🇸", "IS", "", ""}
+		return Language{"is", "🇮🇸", "Icelandic", "Исла́ндский язы́к", "Íslenska"}
 	case "it":
-		return Language{"it", "🇮🇹", "Italian", "Итальянский", ""}
+		return Language{"it", "🇮🇹", "Italian", "Италья́нский язы́к", "Italiano"}
 	case "iu":
-		return Language{"iu", "", "INUKTITUT", "", ""}
+		return Language{"iu", "🇨🇦", "Inuktitut", "Инуктитут", "ᐃᓄᒃᑎᑐᑦ"}
 	case "iw":
-		return Language{"iw", "🇮🇱", "HEBREW", "", ""}
+		return Language{"he", "🇮🇱", "Hebrew", "Иври́т", "עברית"}
 	case "ja":
-		return Language{"ja", "🇯🇵", "JA", "Японский", ""}
+		return Language{"ja", "🇯🇵", "Japanese", "Япо́нский язы́к", "日本語"}
 	case "jw":
-		return Language{"jw", "🌏", "JAVANESE", "", ""}
+		return Language{"jv", "🇮🇩", "Javanese", "Ява́нский язы́к", "ꦧꦱꦗꦮ"}
 	case "ka":
-		return Language{"ka", "🇬🇪", "KA", "", ""}
-	case "kha":
-		return Language{"kha", "", "KHASI", "", ""}
+		return Language{"ka", "🇬🇪", "Georgian", "Грузи́нский язы́к", "ქართული"}
+	// case "kha":
+	// 	return Language{"kha", "", "KHASI", "", ""}
 	case "kk":
-		return Language{"kk", "🇰🇿", "KK", "Казахский", ""}
+		return Language{"kk", "🇰🇿", "Kazakh", "Каза́хский язы́к", "қазақ тілі"}
 	case "kl":
-		return Language{"kl", "🇬🇱", "KL", "", ""}
+		return Language{"kl", "🇬🇱", "Kalaallisut", "Гренла́ндский язы́к", "kalaallisut"}
 	case "km":
-		return Language{"km", "", "KHMER", "", ""}
+		return Language{"km", "🇰🇭", "Central Khmer", "Кхмерский язык", "ភាសាខ្មែរ"}
 	case "kn":
-		return Language{"kn", "", "KANNADA", "", ""}
+		return Language{"kn", "🇮🇳", "Kannada", "Ка́ннада", "ಕನ್ನಡ"}
 	case "ko":
-		return Language{"ko", "🇰🇷", "KOREAN", "", ""}
+		return Language{"ko", "🇰🇷", "Korean", "Коре́йский язы́к", "한국어"}
 	case "ks":
-		return Language{"ks", "🇮🇳", "KASHMIRI", "", ""}
+		return Language{"ks", "🇮🇳", "Kashmiri", "Кашми́рский язы́к", "कश्मीरी"}
 	case "ku":
-		return Language{"ku", "🇹🇷", "KURDISH", "", ""} // для упрощения Турции флаг
+		return Language{"ku", "🇹🇷", "Kurdish", "Ку́рдские языки́", "Kurdî"} // для упрощения Турции флаг
 	case "ky":
-		return Language{"ky", "🇰🇬", "KY", "Киргизский", ""}
+		return Language{"ky", "🇰🇬", "Kyrgyz", "Киргизский", "Кыргызча"}
 	case "la":
-		return Language{"la", "", "LATIN", "", ""}
+		return Language{"la", "🇻🇦", "Latin", "Лати́нский язык", "latine"}
 	case "lb":
-		return Language{"lb", "🇱🇺", "LB", "", ""}
+		return Language{"lb", "🇱🇺", "Luxembourgish", "Люксембу́ргский язы́к", "Lëtzebuergesch"}
 	case "lg":
-		return Language{"lg", "", "GANDA", "", ""}
+		return Language{"lg", "🇺🇬", "Ganda", "Луга́нда", "Luganda"}
 	case "lif":
-		return Language{"lif", "", "LIMBU", "", ""}
+		return Language{"li", "🇳🇱", "Limburgan", "Ли́мбургский язык", "Limburgs"}
 	case "ln":
-		return Language{"ln", "", "LINGALA", "", ""}
+		return Language{"ln", "🇨🇩", "Lingala", "Линга́ла", "Lingála"}
 	case "lo":
-		return Language{"lo", "", "LAOTHIAN", "", ""}
+		return Language{"lo", "🇱🇦", "Lao", "Лао́сский язык", "ພາສາລາວ"}
 	case "lt":
-		return Language{"lt", "🇱🇹", "LT", "", ""}
+		return Language{"lt", "🇱🇹", "Lithuanian", "Лито́вский язы́к", "lietuvių kalba"}
 	case "lv":
-		return Language{"lv", "🇱🇻", "LV", "", ""}
-	case "mfe":
-		return Language{"mfe", "", "MAURITIAN_CREOLE", "", ""}
+		return Language{"lv", "🇱🇻", "Latvian", "Латы́шский язы́к", "latviešu valoda"}
+	// case "mfe":
+	// 	return Language{"mfe", "", "MAURITIAN_CREOLE", "", ""}
 	case "mg":
-		return Language{"mg", "🇲🇬", "MG", "", ""}
+		return Language{"mg", "🇲🇬", "Malagasy", "Малагаси́йский язы́к", "fiteny malagasy"}
 	case "mi":
-		return Language{"mi", "🌏", "MAORI", "", ""}
+		return Language{"mi", "🇳🇿", "Maori", "Ма́ори", "te reo Māori"}
 	case "mk":
-		return Language{"mk", "🇲🇰", "MK", "", ""}
+		return Language{"mk", "🇲🇰", "Macedonian", "Македо́нский язы́к", "македонски јазик"}
 	case "ml":
-		return Language{"ml", "", "MALAYALAM", "", ""}
+		return Language{"ml", "🇮🇳", "Malayalam", "Малая́лам", "മലയാളം"}
 	case "mn":
-		return Language{"mn", "🇲🇳", "MN", "", ""}
+		return Language{"mn", "🇲🇳", "Mongolian", "Монго́льский язы́к", "Монгол хэл"}
 	case "mr":
-		return Language{"mr", "", "MARATHI", "", ""}
+		return Language{"mr", "🇮🇳", "Marathi", "Мара́тхи", "मराठी"}
 	case "ms":
-		return Language{"ms", "🇲🇾", "MS", "", ""}
+		return Language{"ms", "🇲🇾", "Malay", "Мала́йский", "Bahasa Melayu"}
 	case "mt":
-		return Language{"mt", "🇲🇹", "MT", "", ""}
+		return Language{"mt", "🇲🇹", "Maltese", "Мальти́йский язы́к", "Malti"}
 	case "my":
-		return Language{"my", "🇲🇲", "MY", "", ""}
+		return Language{"my", "🇲🇲", "Burmese", "Бирма́нский язы́к", "ဗမာစာ"}
 	case "na":
-		return Language{"na", "🇳🇷", "NA", "", ""}
+		return Language{"na", "🇳🇷", "Nauru", "Науруанский язык", "Dorerin Naoero"}
 	case "ne":
-		return Language{"ne", "🇳🇵", "NE", "", ""}
+		return Language{"ne", "🇳🇵", "Nepali", "Непа́льский язык", "नेपाली"}
 	case "nl":
-		return Language{"nl", "🇳🇱", "NL", "", ""}
+		return Language{"nl", "🇳🇱", "Dutch", "Нидерла́ндский язы́к", "Nederlands"}
 	case "no":
-		return Language{"no", "🇳🇴", "NO", "Норвежский", ""}
+		return Language{"no", "🇳🇴", "Norwegian", "Норве́жский язык", "Norsk"}
 	case "nr":
-		return Language{"nr", "🇿🇦", "Ndebele", "", ""}
-	case "nso":
-		return Language{"nso", "🇿🇦", "PEDI", "", ""}
+		return Language{"nr", "🇿🇦", "South Ndebele", "Южный Ндебеле", "isiNdebele"}
+	// case "nso":
+	// 	return Language{"nso", "🇿🇦", "PEDI", "", ""}
 	case "ny":
-		return Language{"ny", "🇲🇼", "NYANJA", "", ""}
+		return Language{"ny", "🇲🇼", "Chichewa", "Чичева", "chiCheŵa"}
 	case "oc":
-		return Language{"oc", "🇫🇷", "OC", "Окситанский", ""}
+		return Language{"oc", "🇫🇷", "Occitan", "Оксита́нский язы́к", "occitan"}
 	case "om":
-		return Language{"om", "🇸🇴", "OROMO", "", ""}
+		return Language{"om", "🇪🇹", "Oromo", "Оромо", "Afaan Oromoo"}
 	case "or":
-		return Language{"or", "🇮🇳", "ORIYA", "", ""}
+		return Language{"or", "🇮🇳", "Oriya", "Ори́я", "ଓଡ଼ିଆ"}
 	case "pa":
-		return Language{"pa", "🇮🇳", "PUNJABI", "Панджа́би", ""}
+		return Language{"pa", "🇮🇳", "Punjabi", "Панджа́би", "ਪੰਜਾਬੀ"}
 	case "pl":
-		return Language{"pl", "🇵🇱", "Polish", "Польский", ""}
+		return Language{"pl", "🇵🇱", "Polish", "По́льский язы́к", "język polski"}
 	case "ps":
-		return Language{"ps", "🇦🇫", "PASHTO", "Пушту", ""}
+		return Language{"ps", "🇦🇫", "Pashto", "Пушту́", "پښتو"}
 	case "pt":
-		return Language{"pt", "🇵🇹", "PT", "Португальский", ""}
+		return Language{"pt", "🇵🇹", "Portuguese", "Португа́льский язы́к", "Português"}
 	case "qu":
-		return Language{"qu", "🌎", "Quechuan", "Кечуа", ""}
+		return Language{"qu", "🇧🇴", "Quechua", "Ке́чуа", "Runa Simi"}
 	case "rm":
-		return Language{"rm", "", "RHAETO_ROMANCE", "", ""}
+		return Language{"rm", "🇨🇭", "Romansh", "Рома́ншский язы́к", "Rumantsch Grischun"}
 	case "rn":
-		return Language{"rn", "🇧🇮", "Kirundi", "", ""}
+		return Language{"rn", "🇧🇮", "Rundi", "Рунди", "Ikirundi"}
 	case "ro":
-		return Language{"ro", "🇷🇴", "RO", "", ""}
+		return Language{"ro", "🇷🇴", "Romanian", "Румы́нский язы́к", "Română"}
 	case "ru":
-		return Language{"ru", "🇷🇺", "Russian", "Русский", ""}
+		return Language{"ru", "🇷🇺", "Russian", "Ру́сский язы́к", "русский"}
 	case "rw":
-		return Language{"rw", "🇷🇼", "Kinyarwanda", "", ""}
+		return Language{"rw", "🇷🇼", "Kinyarwanda", "Руанда", "Ikinyarwanda"}
 	case "sa":
-		return Language{"sa", "🇮🇳", "SANSKRIT", "", ""}
-	case "sco":
-		return Language{"sco", "🏴󠁧󠁢󠁳󠁣󠁴󠁿", "SCO", "", ""}
+		return Language{"sa", "🇮🇳", "Sanskrit", "Санскри́т", "संस्कृतम्"}
+	// case "sco":
+	// 	return Language{"sco", "🏴󠁧󠁢󠁳󠁣󠁴󠁿", "Scots", "", ""}
 	case "sd":
-		return Language{"sd", "", "SANGO", "", ""}
+		return Language{"sd", "🇵🇰", "Sindhi", "Си́ндхи", "सिन्धी"}
 	case "sg":
-		return Language{"sg", "", "SANGO", "", ""}
+		return Language{"sg", "🇨🇫", "Sango", "Санго", "yângâ tî sängö"}
 	case "si":
-		return Language{"si", "", "SINHALESE", "", ""}
+		return Language{"si", "🇱🇰", "Sinhala", "Синга́льский язы́к", "සිංහල"}
 	case "sk":
-		return Language{"sk", "🇸🇰", "SK", "", ""}
+		return Language{"sk", "🇸🇰", "Slovak", "Слова́цкий язы́к", "Slovenčina"}
 	case "sl":
-		return Language{"sl", "🇸🇮", "SL", "", ""}
+		return Language{"sl", "🇸🇮", "Slovenian", "Слове́нский язы́к", "Slovenski Jezik"}
 	case "sm":
-		return Language{"sm", "🇼🇸", "SM", "", ""}
+		return Language{"sm", "🇼🇸", "Samoan", "Самоа́нский язы́к", "gagana fa'a Samoa"}
 	case "sn":
-		return Language{"sn", "", "SHONA", "", ""}
+		return Language{"sn", "🇿🇼", "Shona", "Шо́на", "chiShona"}
 	case "so":
-		return Language{"so", "🇸🇴", "SO", "", ""}
+		return Language{"so", "🇸🇴", "Somali", "Сомали́йский язык", "Soomaaliga"}
 	case "sq":
-		return Language{"sq", "🇦🇱", "", "", ""}
+		return Language{"sq", "🇦🇱", "Albanian", "Алба́нский язы́к", "Shqip"}
 	case "sr":
-		return Language{"sr", "🇷🇸", "", "", ""}
+		return Language{"sr", "🇷🇸", "Serbian", "Се́рбский язы́к", "српски језик"}
 	case "ss":
-		return Language{"ss", "", "SISWANT", "", ""}
+		return Language{"ss", "🇸🇿", "Swati", "Сва́ти", "SiSwati"}
 	case "st":
-		return Language{"st", "", "SESOTHO", "", ""}
+		return Language{"st", "🇱🇸", "Sotho", "Сесо́то", "Sesotho"}
 	case "su":
-		return Language{"su", "", "SUNDANESE", "", ""}
+		return Language{"su", "🇮🇩", "Sundanese", "Сунданский язык", "Basa Sunda"}
 	case "sv":
-		return Language{"sv", "🇸🇪", "", "", ""}
+		return Language{"sv", "🇸🇪", "Swedish", "Шве́дский язы́к", "Svenska"}
 	case "sw":
-		return Language{"sw", "", "SWAHILI", "", ""}
-	case "syr":
-		return Language{"syr", "", "SYRIAC", "", ""}
+		return Language{"sw", "🇹🇿", "Swahili", "Суахи́ли", "Kiswahili"}
+	// case "syr":
+	// 	return Language{"syr", "", "SYRIAC", "", ""}
 	case "ta":
-		return Language{"ta", "", "TAMIL", "", ""}
+		return Language{"ta", "🇮🇳", "Tamil", "Тами́льский язы́к", "தமிழ்"}
 	case "te":
-		return Language{"te", "", "TELUGU", "", ""}
+		return Language{"te", "🇮🇳", "Telugu", "Язык те́лугу", "తెలుగు"}
 	case "tg":
-		return Language{"tg", "🇹🇯", "", "", ""}
+		return Language{"tg", "🇹🇯", "Tajik", "Таджи́кский язы́к", "тоҷикӣ"}
 	case "th":
-		return Language{"th", "🇹🇭", "", "", ""}
+		return Language{"th", "🇹🇭", "Thai", "Та́йский язык", "ไทย"}
 	case "ti":
-		return Language{"ti", "", "TIGRINYA", "", ""}
+		return Language{"ti", "🇪🇷", "Tigrinya", "Тигринья", "ትግርኛ"}
 	case "tk":
-		return Language{"tk", "🇹🇲", "", "", ""}
+		return Language{"tk", "🇹🇲", "Turkmen", "Туркме́нский язы́к", "Türkmen"}
 	case "tl":
-		return Language{"tl", "", "TAGALOG", "", ""}
+		return Language{"tl", "🇵🇭", "Tagalog", "Тага́льский язык", "Wikang Tagalog"}
 	case "tlh":
 		return Language{"tlh", "🎬", "tlh", "Клингонский", ""}
 	case "tn":
-		return Language{"tn", "", "TSWANA", "", ""}
+		return Language{"tn", "🇿🇦", "Tswana", "", "Setswana"}
 	case "to":
-		return Language{"to", "🇹🇴", "", "", ""}
+		return Language{"to", "🇹🇴", "Tonga", "Тонганский язык", "Faka Tonga"}
 	case "tr":
-		return Language{"tr", "🇹🇷", "", "", ""}
+		return Language{"tr", "🇹🇷", "Turkish", "Туре́цкий язы́к", "Türkçe"}
 	case "ts":
-		return Language{"ts", "", "TSONGA", "", ""}
+		return Language{"ts", "🇿🇦", "Tsonga", "Тсо́нга", "Xitsonga"}
 	case "tt":
-		return Language{"tt", "", "TATAR", "", ""}
+		return Language{"tt", "🇷🇺", "Tatar", "Тата́рский язы́к", "татар теле"}
 	case "ug":
-		return Language{"ug", "", "UIGHUR", "", ""}
+		return Language{"ug", "🇨🇳", "Uighur", "Уйгу́рский язы́к", "ئۇيغۇرچە‎"}
 	case "uk":
-		return Language{"uk", "🇺🇦", "", "", ""}
+		return Language{"uk", "🇺🇦", "Ukrainian", "Украи́нский язы́к", "Українська"}
 	case "ur":
-		return Language{"ur", "", "URDU", "", ""}
+		return Language{"ur", "🇵🇰", "Urdu", "Урду́", "اردو"}
 	case "uz":
-		return Language{"uz", "🇺🇿", "", "", ""}
+		return Language{"uz", "🇺🇿", "Uzbek", "Узбе́кский язы́к", "Oʻzbek"}
 	case "ve":
-		return Language{"ve", "", "VENDA", "", ""}
+		return Language{"ve", "🇿🇦", "Venda", "Венда", "Tshivenḓa"}
 	case "vi":
-		return Language{"vi", "🇻🇳", "", "", ""}
+		return Language{"vi", "🇻🇳", "Vietnamese", "Вьетна́мский язы́к", "Tiếng Việt"}
 	case "vo":
-		return Language{"vo", "🇺🇳", "VOLAPUK", "Волапюк", ""}
-	case "war":
-		return Language{"war", "🇵🇭", "Waray", "", ""}
+		return Language{"vo", "🇺🇳", "Volapük", "Волапю́к", "Volapük"}
+	// case "war":
+	// 	return Language{"war", "🇵🇭", "Waray", "", ""}
 	case "wo":
-		return Language{"wo", "", "WOLOF", "", ""}
+		return Language{"wo", "🇸🇳", "Wolof", "Воло́ф", "Wollof"}
 	case "xh":
-		return Language{"xh", "🇿🇦", "XHOSA", "", ""}
+		return Language{"xh", "🇿🇦", "Xhosa", "Ко́са", "isiXhosa"}
 	case "yi":
-		return Language{"yi", "🇮🇱", "YIDDISH", "Идиш", ""}
+		return Language{"yi", "🇮🇱", "Yiddish", "И́диш", "ייִדיש"}
 	case "yo":
-		return Language{"yo", "🇳🇬", "YORUBA", "", ""}
+		return Language{"yo", "🇳🇬", "Yoruba", "Йо́руба", "Yorùbá"}
 	case "za":
-		return Language{"za", "🇨🇳", "ZHUANG", "", ""}
+		return Language{"za", "🇨🇳", "Zhuang", "Чжуанский язык", "Saɯ cueŋƅ"}
 	case "zh":
-		return Language{"zh", "🇨🇳", "ZH", "", ""}
-	case "zh-Hant":
-		return Language{"zh-Hant", "🇨🇳", "ZH-HANT", "", ""}
+		return Language{"zh", "🇨🇳", "Chinese", "Кита́йский язы́к", "中文"}
+	// case "zh-Hant":
+	// 	return Language{"zh-Hant", "🇨🇳", "ZH-HANT", "", ""}
 	case "zu":
-		return Language{"zu", "🇿🇦", "ZULU", "", ""}
+		return Language{"zu", "🇿🇦", "Zulu", "isiZulu", "Зу́лу"}
 	default:
 		return Language{"??", "🏳", "Unknown", "Неизвестный", ""}
 	}
