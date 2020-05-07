@@ -7,19 +7,33 @@ import (
 	"os"
 	"regexp"
 	"strings"
+	"time"
 
 	"github.com/detectlanguage/detectlanguage-go"
+	voicerssgo "github.com/salaleser/voicerss-api-go"
 )
 
-// Config is a configuration
+// Config is a configuration.
 var Config = make(map[string]string)
 
 var languageDetectionClient *detectlanguage.Client
 
+// LanguageDetection is a vitalina's Detection structure.
 type LanguageDetection struct {
 	Language        string
 	ConfidenceScore float32
 	IsReliable      bool
+}
+
+// Message is a vitalina's Message structure.
+type Message struct {
+	Title         string
+	Description   string
+	Link          string
+	ImageURL      string
+	ThumbnailURL  string
+	FooterText    string
+	FooterIconURL string
 }
 
 // Regexp patterns
@@ -38,7 +52,7 @@ const (
 
 const separator = "=" // разделитель для парсинга файлов
 
-// ReadConfig reads lines from config file into the Config map
+// ReadConfig reads lines from config file into the Config map.
 func ReadConfig() {
 	file, err := os.Open("config")
 	if err != nil {
@@ -67,7 +81,7 @@ func InitLangaugeDetection() {
 	languageDetectionClient = detectlanguage.New(Config["language-detection-api-key"])
 }
 
-// IsAppID returns 0 if appID is not an application ID
+// IsAppID returns 0 if appID is not an application ID.
 func IsAppID(s string) int {
 	gpAppIDRegexp, _ := regexp.Compile(GPAppIDPattern)
 	asAppIDRegexp, _ := regexp.Compile(ASAppIDPattern)
@@ -83,39 +97,22 @@ func IsAppID(s string) int {
 	return NA
 }
 
-func IsLocation(s string) bool {
-	switch s {
-	case "ru":
-	case "us":
-	case "au":
-	case "fr":
-	case "de":
-	case "no":
-	case "pl":
-	case "gb":
-	case "es":
-	case "pt":
-	case "ca":
-	case "br":
-		return true
-	}
-
-	return false
-}
-
 func IsTimestamp(s string) bool {
 	timestampRegexp, _ := regexp.Compile(TimestampPattern)
 
 	return timestampRegexp.MatchString(s)
 }
 
-func GetFlagByCountry(countryCode string) string {
-	switch countryCode {
+func GetFlagByCountry(code string) string {
+	switch code {
 	case "ru":
+	case voicerssgo.Russian:
 		return "🇷🇺"
 	case "us":
+	case voicerssgo.EnglishUnitedStates:
 		return "🇺🇸"
 	case "au":
+	case voicerssgo.EnglishAustralia:
 		return "🇦🇺"
 	case "fr":
 		return "🇫🇷"
@@ -126,6 +123,7 @@ func GetFlagByCountry(countryCode string) string {
 	case "pl":
 		return "🇵🇱"
 	case "gb":
+	case voicerssgo.EnglishGreatBritain:
 		return "🇬🇧"
 	case "es":
 		return "🇪🇸"
@@ -134,12 +132,22 @@ func GetFlagByCountry(countryCode string) string {
 	case "ca":
 		return "🇨🇦"
 	case "br":
+	case voicerssgo.PortugueseBrazil:
 		return "🇧🇷"
+	case voicerssgo.ChineseHongKong:
+		return "🇭🇰"
+	case voicerssgo.ChineseChina:
+		return "🇨🇳"
+	case voicerssgo.Japanese:
+		return "🇯🇵"
 	default:
 		return "🏳"
 	}
+
+	return "🏳"
 }
 
+// DetectLanguage trying to detect language by given text and returns detections array.
 func DetectLanguage(value string) []LanguageDetection {
 	detections, err := languageDetectionClient.Detect(value)
 	if err != nil {
@@ -191,4 +199,9 @@ func GetEmojiByDigit(digit float32) string {
 	default:
 		return ""
 	}
+}
+
+// Now returns formatted current time.
+func Now() string {
+	return time.Now().Format(time.RFC3339)
 }

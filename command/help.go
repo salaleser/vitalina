@@ -37,7 +37,7 @@ func Help(s *discordgo.Session, m *discordgo.MessageCreate) {
 	}
 }
 
-// FIXME
+// InitHelp initializes command. (FIXME)
 func InitHelp(c map[string]string) {
 	commands = c
 }

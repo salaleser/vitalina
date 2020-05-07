@@ -8,6 +8,7 @@ import (
 	"os"
 )
 
+// GetRandomLines returns random lines from random Krovostok songs.
 func GetRandomLines() string {
 	dir, err := ioutil.ReadDir("lyrics")
 	if err != nil {

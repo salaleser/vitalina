@@ -86,46 +86,20 @@ func Tts(s *discordgo.Session, m *discordgo.MessageCreate) {
 			zeroes = ""
 		}
 
-		filename = zeroes + strconv.Itoa(counter+1)
-		file, err = voicerssgo.Get(util.Config["voice-rss-api-key"], language, tts, path+filename)
+		filename = path + zeroes + strconv.Itoa(counter+1)
+		file, err = voicerssgo.Get(util.Config["voice-rss-api-key"], language, tts, filename)
 		if err != nil {
 			fmt.Fprintf(os.Stderr, "getting sound file: %v\n", err)
 			return
 		}
 	}
 
-	db.UpdateTTS(tts, filename, counter, language, time.Now().Format(time.RFC3339))
+	db.UpdateTTS(tts, filename, counter, language, util.Now())
 
 	util.PlayFile(s, m, file.Name())
 
-	var emojiID string
-	switch language {
-	case voicerssgo.EnglishGreatBritain:
-		emojiID = "🇬🇧"
-		break
-	case voicerssgo.EnglishUnitedStates:
-		emojiID = "🇺🇸"
-		break
-	case voicerssgo.PortugueseBrazil:
-		emojiID = "🇧🇷"
-		break
-	case voicerssgo.ChineseHongKong:
-		emojiID = "🇭🇰"
-		break
-	case voicerssgo.Japanese:
-		emojiID = "🇯🇵"
-		break
-	case voicerssgo.Russian:
-		emojiID = "🇷🇺"
-		break
-	case voicerssgo.EnglishAustralia:
-		emojiID = "🇦🇺"
-		break
-	case voicerssgo.ChineseChina:
-		emojiID = "🇨🇳"
-		break
-	}
-	s.MessageReactionAdd(m.ChannelID, m.ID, emojiID)
+	emoji := util.GetFlagByCountry(language)
+	s.MessageReactionAdd(m.ChannelID, m.ID, emoji) // TODO
 
 	time.Sleep(100 * time.Millisecond)
 	if cached {

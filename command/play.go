@@ -5,5 +5,5 @@ import (
 )
 
 func Play(s *discordgo.Session, m *discordgo.MessageCreate) {
-	println("not implemented")
+
 }

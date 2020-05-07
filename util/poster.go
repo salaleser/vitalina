@@ -4,27 +4,31 @@ import (
 	"github.com/bwmarrin/discordgo"
 )
 
-func Send(s *discordgo.Session, m *discordgo.MessageCreate, title string, description string, url string,
-	imageURL string, thumbnailURL string, footerText string, footerIconURL string) {
+// Send publishes message.
+func Send(s *discordgo.Session, m *discordgo.MessageCreate, msg Message) {
+	if msg.Title == "" {
+		return
+	}
+
 	footer := discordgo.MessageEmbedFooter{
-		Text:    footerText,
-		IconURL: footerIconURL,
+		Text:    msg.FooterText,
+		IconURL: msg.FooterIconURL,
 	}
 
 	thumbnail := discordgo.MessageEmbedThumbnail{
-		URL: thumbnailURL,
+		URL: msg.ThumbnailURL,
 	}
 
 	image := discordgo.MessageEmbedImage{
-		URL: imageURL,
+		URL: msg.ImageURL,
 	}
 
 	embed := discordgo.MessageEmbed{
 		Color:       100000,
-		Title:       title,
-		Description: description,
+		Title:       msg.Title,
+		Description: msg.Description,
 		Footer:      &footer,
-		URL:         url,
+		URL:         msg.Link,
 		Thumbnail:   &thumbnail,
 		Image:       &image,
 	}
@@ -36,6 +40,7 @@ func Send(s *discordgo.Session, m *discordgo.MessageCreate, title string, descri
 	s.ChannelMessageSendComplex(m.ChannelID, &message)
 }
 
+// SendInfo publishes information message.
 func SendInfo(s *discordgo.Session, m *discordgo.MessageCreate, description string) {
 	footer := discordgo.MessageEmbedFooter{
 		Text: GetRandomLines(),
@@ -55,6 +60,7 @@ func SendInfo(s *discordgo.Session, m *discordgo.MessageCreate, description stri
 	s.ChannelMessageSendComplex(m.ChannelID, &message)
 }
 
+// SendError publishes error message.
 func SendError(s *discordgo.Session, m *discordgo.MessageCreate, description string, err error) {
 	footer := discordgo.MessageEmbedFooter{
 		Text: err.Error(),

@@ -32,7 +32,7 @@ func Start(token string) {
 	dg, err := discordgo.New(token)
 	if err != nil {
 		fmt.Println("error creating Discord session,", err)
-		return
+		os.Exit(1)
 	}
 
 	dg.Debug = false
@@ -43,7 +43,7 @@ func Start(token string) {
 	err = dg.Open()
 	if err != nil {
 		fmt.Println("error opening connection,", err)
-		return
+		os.Exit(1)
 	}
 
 	fmt.Println("Vitalina is now running.")

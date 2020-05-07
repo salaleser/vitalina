@@ -14,23 +14,34 @@ import (
 	"github.com/salaleser/vitalina/util"
 )
 
-const asLogoURL = "https://www.freepnglogos.com/uploads/app-store-logo-png/file-app-store-ios-custom-size-18.png"
-const gpLogoURL = "https://www.freepnglogos.com/uploads/google-play-png-logo/google-severs-music-studio-png-logo-21.png"
+const asLogoURL = "https://www.freepnglogos.com/uploads/" +
+	"app-store-logo-png/file-app-store-ios-custom-size-18.png"
+const gpLogoURL = "https://www.freepnglogos.com/uploads/" +
+	"google-play-png-logo/google-severs-music-studio-png-logo-21.png"
 
 func Vitalina(s *discordgo.Session, m *discordgo.MessageCreate) {
 	args := strings.Split(m.Content, " ")
 
 	for _, arg := range args {
 		if util.IsAppID(arg) == util.AppStore {
-			SendMetadata(s, m, arg, util.AppStore)
-			SendStory(s, m, arg)
+			// Кроме как запросить данные с сервера нет возможности заранее
+			// узнать тип (TODO изучить возможность)
+			// TODO ограничить доступными диапазонами
+			util.Send(s, m, GetMetadataMessage(arg, util.AppStore))
+			util.Send(s, m, GetStoryMessage(arg))
+			util.Send(s, m, GetRoomMessage(arg))
+			// добавить Genre
+			// добавить Store Front
+			// добавить Language
+			// добавить Platform
+			// добавить Artist
 		} else if util.IsAppID(arg) == util.GooglePlay {
-			SendMetadata(s, m, arg, util.GooglePlay)
+			util.Send(s, m, GetMetadataMessage(arg, util.GooglePlay))
 		} else if util.IsTimestamp(arg) {
-			// SendTimestamp(s, m, arg)
+			// GetTimestamp(arg) // FIXME
 		} else if strings.HasPrefix(m.Content, "!") {
-			SendAsAppIDs(s, m, m.Content[1:])
-			SendGpAppIDs(s, m, m.Content[1:])
+			util.Send(s, m, GetAsAppIDsMessage(m.Content[1:]))
+			util.Send(s, m, GetGpAppIDsMessage(m.Content[1:]))
 		}
 	}
 
@@ -41,16 +52,11 @@ func Vitalina(s *discordgo.Session, m *discordgo.MessageCreate) {
 		s.MessageReactionAdd(m.ChannelID, m.ID, "➖")
 	}
 
-	if time.Now().Second()%20 == 0 {
-		time.Sleep(100)
-		s.MessageReactionAdd(m.ChannelID, m.ID, "🙂")
-	}
-
 	if strings.HasPrefix(m.Content, ".") {
 		detections := util.DetectLanguage(m.Content[1:])
 
 		if len(detections) > 0 {
-			language := util.GetLanguageByCode(detections[0].Language)
+			language := util.Languages[detections[0].Language]
 			time.Sleep(100)
 			s.MessageReactionAdd(m.ChannelID, m.ID, language.Emoji)
 
@@ -73,12 +79,12 @@ func Vitalina(s *discordgo.Session, m *discordgo.MessageCreate) {
 		detections := util.DetectLanguage(m.Content[1:])
 
 		if len(detections) > 0 {
-			SendLanguageDetection(s, m, detections)
+			util.Send(s, m, GetLanguageDetectionMessage(detections))
 		}
 	}
 }
 
-func SendTimestamp(s *discordgo.Session, m *discordgo.MessageCreate, timestamp string) {
+func GetTimestampMessage(timestamp string) util.Message {
 	ts, _ := strconv.Atoi(timestamp)
 	date := time.Now().Format("EEEE, dd MMMM YYYY года в HH:mm:ss")
 	diff := time.Now().Unix() - int64(ts*1000)
@@ -94,46 +100,26 @@ func SendTimestamp(s *discordgo.Session, m *discordgo.MessageCreate, timestamp s
 	var value string
 	if diff <= time.Second.Milliseconds() {
 		quantity = diff
-		value = future + strconv.Itoa(int(quantity)) + " " + getEnding("секунда", int(quantity)) + past + date
+		value = future + strconv.Itoa(int(quantity)) + " " +
+			getEnding("секунда", int(quantity)) + past + date
 	} else if diff <= time.Second.Milliseconds() {
 		quantity = diff * time.Minute.Milliseconds()
-		value = future + strconv.Itoa(int(quantity)) + " " + getEnding("минута", int(quantity)) + past + date
+		value = future + strconv.Itoa(int(quantity)) + " " +
+			getEnding("минута", int(quantity)) + past + date
 	} else if diff <= time.Hour.Milliseconds()*24 {
 		quantity = diff * time.Hour.Milliseconds()
-		value = future + strconv.Itoa(int(quantity)) + " " + getEnding("час", int(quantity)) + past + date
+		value = future + strconv.Itoa(int(quantity)) + " " +
+			getEnding("час", int(quantity)) + past + date
 	} else {
 		quantity = diff * time.Hour.Milliseconds() * 24
-		value = future + strconv.Itoa(int(quantity)) + " " + getEnding("день", int(quantity)) + past + date
+		value = future + strconv.Itoa(int(quantity)) + " " +
+			getEnding("день", int(quantity)) + past + date
 	}
 
-	footer := discordgo.MessageEmbedFooter{
-		Text: "Не тормози мужик, моя информация может тебе пригодиться.",
-		// IconURL: aso.Logo,
-	}
-
-	thumbnail := discordgo.MessageEmbedThumbnail{
-		// URL: aso.Logo,
-	}
-
-	image := discordgo.MessageEmbedImage{
-		// URL: aso.Screenshot1,
-	}
-
-	embed := discordgo.MessageEmbed{
-		Color:       500000,
+	return util.Message{
 		Title:       "UNIX-time",
 		Description: value,
-		Footer:      &footer,
-		// URL:         link,
-		Thumbnail: &thumbnail,
-		Image:     &image,
 	}
-
-	message := discordgo.MessageSend{
-		Embed: &embed,
-	}
-
-	s.ChannelMessageSendComplex(m.ChannelID, &message)
 }
 
 func getEnding(nominative string, quantity int) string {
@@ -174,34 +160,41 @@ func getEnding(nominative string, quantity int) string {
 	return nominative
 }
 
-func SendMetadata(s *discordgo.Session, m *discordgo.MessageCreate, appID string, store int) {
+func GetMetadataMessage(appID string, store int) util.Message {
 	location := "ru"
 	language := "ru"
 
-	var metadata scraper.Metadata
+	var metadata scraper.MetadataResponse
 	var link string
 	var footerIconURL string
 	if store == util.AppStore {
-		metadata = scraper.AsMetadataBody(appID, location, language)
+		metadata = scraper.AsMetadata(appID, location, language)
 		link = metadata.Link
 		footerIconURL = asLogoURL
 	} else if store == util.GooglePlay {
-		metadata = scraper.GpMetadataBody(appID, location, language)
-		link = "https://play.google.com/store/apps/details?id=" + appID
+		metadata = scraper.GpMetadata(appID, location, language)
+		link = fmt.Sprintf("https://play.google.com/store/apps/details?id=%s", appID)
 		footerIconURL = gpLogoURL
 	}
 
 	// TODO улучшить проверку
 	if metadata.Title == "" {
-		return
+		return util.Message{}
 	}
 
-	ft := "Author: " + metadata.ArtistName + ", " + getStars(int(metadata.Rating))
-
-	util.Send(s, m, metadata.Title, metadata.Subtitle, link, metadata.Screenshot1, metadata.Logo, ft, footerIconURL)
+	return util.Message{
+		Title:        metadata.Title,
+		Description:  metadata.Subtitle,
+		Link:         link,
+		ImageURL:     metadata.Screenshot1,
+		ThumbnailURL: metadata.Logo,
+		FooterText: fmt.Sprintf("Application\nAuthor: %s, %s", metadata.ArtistName,
+			getStars(int(metadata.Rating))),
+		FooterIconURL: footerIconURL,
+	}
 }
 
-func SendStory(s *discordgo.Session, m *discordgo.MessageCreate, storyID string) {
+func GetStoryMessage(storyID string) util.Message {
 	location := "ru"
 	language := "ru"
 
@@ -209,7 +202,7 @@ func SendStory(s *discordgo.Session, m *discordgo.MessageCreate, storyID string)
 
 	// TODO улучшить проверку
 	if story.ID == "" {
-		return
+		return util.Message{}
 	}
 
 	iu := ""
@@ -217,59 +210,89 @@ func SendStory(s *discordgo.Session, m *discordgo.MessageCreate, storyID string)
 		iu = strings.Replace(v.URL, "{w}x{h}{c}.{f}", "512x512bb.png", -1)
 	}
 
-	t := story.Label
-	d := "**" + story.EditorialNotes.Name + "**\n" + story.EditorialNotes.Short
-	l := story.Link.URL
-
 	ft := "\n"
 	for _, card := range story.CardIds {
 		ft += "\n" + card
 	}
 
-	util.Send(s, m, t, d, l, iu, "", ft, asLogoURL)
+	return util.Message{
+		Title: story.Label,
+		Description: fmt.Sprintf("Story\n**%s**\n%s",
+			story.EditorialNotes.Name, story.EditorialNotes.Short),
+		Link:          story.Link.URL,
+		ImageURL:      iu,
+		FooterText:    ft,
+		FooterIconURL: asLogoURL,
+	}
 }
 
-func SendAsAppIDs(s *discordgo.Session, m *discordgo.MessageCreate, keyword string) {
+func GetRoomMessage(adamID string) util.Message {
 	location := "ru"
 	language := "ru"
-	count := 5
+
+	room := scraper.AsRoom(adamID, location, language)
+
+	// TODO улучшить проверку
+	if room.Title == "" {
+		return util.Message{}
+	}
+
+	return util.Message{
+		Title:        room.Title,
+		Description:  room.Subtitle,
+		Link:         room.Link,
+		ImageURL:     room.Screenshot1,
+		ThumbnailURL: room.Logo,
+		FooterText: fmt.Sprintf("Room\nAuthor: %s, %s",
+			room.ArtistName, getStars(int(room.Rating))),
+		FooterIconURL: asLogoURL,
+	}
+}
+
+func GetAsAppIDsMessage(keyword string) util.Message {
+	location := "ru"
+	language := "ru"
 
 	var d bytes.Buffer
 
 	metadatas := scraper.AsAppIDs(keyword, location, language)
 	for i, m := range metadatas {
-		d.WriteString(fmt.Sprintf("**%d**: %s (`%s`) %s\n", i+1, m.Title, m.AppID, getStars(int(m.Rating))))
-		if i >= count {
-			break
-		}
+		d.WriteString(fmt.Sprintf("**%d**: %s (`%s`) %s\n",
+			i+1, m.Title, m.AppID, getStars(int(m.Rating))))
 	}
 
-	t := "Приложения App Store по ключевому слову «" + keyword + "»:"
-	ft := fmt.Sprintf("Total: %d", len(metadatas))
-
-	util.Send(s, m, t, d.String(), "", "", asLogoURL, ft, asLogoURL)
+	return util.Message{
+		Title: fmt.Sprintf("Приложения App Store по ключевому слову «%s»:",
+			keyword),
+		Description:   d.String(),
+		ThumbnailURL:  asLogoURL,
+		FooterText:    fmt.Sprintf("Total: %d", len(metadatas)),
+		FooterIconURL: asLogoURL,
+	}
 }
 
-func SendGpAppIDs(s *discordgo.Session, m *discordgo.MessageCreate, keyword string) {
+func GetGpAppIDsMessage(keyword string) util.Message {
 	location := "ru"
 	language := "ru"
-	count := 5
 
 	var d bytes.Buffer
 
 	metadatas := scraper.GpAppIDs(keyword, location, language)
 	for i, m := range metadatas {
-		d.WriteString(fmt.Sprintf("**%d**: %s (`%s`) %s\n", i+1, m.Title, m.AppID, getStars(int(m.Rating))))
-		if i >= count {
-			break
-		}
+		d.WriteString(fmt.Sprintf("**%d**: %s (`%s`) %s\n",
+			i+1, m.Title, m.AppID, getStars(int(m.Rating))))
 	}
 
-	t := "Приложения Google Play по ключевому слову «" + keyword + "»:"
-	l := "https://play.google.com/store/search?q=" + keyword + "&c=apps&gl=" + location + "&hl=" + language
-	ft := fmt.Sprintf("Total: %d", len(metadatas))
-
-	util.Send(s, m, t, d.String(), l, "", gpLogoURL, ft, gpLogoURL)
+	return util.Message{
+		Title: fmt.Sprintf("Приложения Google Play по ключевому слову «%s»:",
+			keyword),
+		Description: d.String(),
+		Link: fmt.Sprintf("https://play.google.com/store/search?q=%s&c=apps&gl=%s&hl=%s",
+			keyword, location, language),
+		ThumbnailURL:  gpLogoURL,
+		FooterText:    fmt.Sprintf("Total: %d", len(metadatas)),
+		FooterIconURL: gpLogoURL,
+	}
 }
 
 func isPhrase(s string) bool {
@@ -297,23 +320,25 @@ func getStars(value int) string {
 	}
 }
 
-func SendLanguageDetection(s *discordgo.Session, m *discordgo.MessageCreate, detections []util.LanguageDetection) {
+func GetLanguageDetectionMessage(detections []util.LanguageDetection) util.Message {
 	var description bytes.Buffer
 
 	for i, d := range detections {
-		l := util.GetLanguageByCode(d.Language)
+		l := util.Languages[d.Language]
 
 		r := "☐"
 		if d.IsReliable {
 			r = "☑︎"
 		}
 
-		ds := fmt.Sprintf("**%d**: %s [**%f**] %s | %s | %s\n", i+1, r, d.ConfidenceScore/10000, l.English, l.Russian, l.Native)
+		ds := fmt.Sprintf("**%d**: %s [**%f**] %s | %s | %s\n",
+			i+1, r, d.ConfidenceScore/10000, l.English, l.Russian, l.Native)
 		description.WriteString(ds)
 	}
 
-	t := "Возможный язык:"
-	ft := "Используя API https://detectlanguage.com"
-
-	util.Send(s, m, t, description.String(), "", "", "", ft, "")
+	return util.Message{
+		Title:       "Возможный язык:",
+		Description: description.String(),
+		FooterText:  "Используя API https://detectlanguage.com",
+	}
 }
