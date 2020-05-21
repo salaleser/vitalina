@@ -361,3 +361,8 @@ func GetStarsBar(x int) string {
 		return "—"
 	}
 }
+
+// ConvertArtworkURL returns valid image URL by App Store artwork special URL.
+func ConvertArtworkURL(url string) string {
+	return strings.Replace(url, "{w}x{h}{c}.{f}", "512x512bb.png", -1)
+}
