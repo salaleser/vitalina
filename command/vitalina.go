@@ -12,12 +12,22 @@ import (
 	"github.com/salaleser/vitalina/util"
 )
 
+var (
+	force = false // принудительно сообщать о ходе работы
+	cc    = "us"
+	l     = ""
+)
+
 // Vitalina is a AI wannabe.
 func Vitalina(s *discordgo.Session, m *discordgo.MessageCreate) {
-	cc := "us"
-	l := ""
+	content := m.Content
 
-	args := strings.Split(m.Content, " ")
+	if strings.HasPrefix(m.Content, "?") {
+		force = true
+		content = m.Content[1:]
+	}
+
+	args := strings.Split(content, " ")
 
 	// Scan for country code and language
 	for _, arg := range args {
@@ -272,6 +282,17 @@ func getGroupingMessage(groupingID int, cc string, l string) util.Message {
 	if err != nil {
 		util.Debug(fmt.Sprintf("command.GetGroupingMessage(%d,%s,%s): %v",
 			groupingID, cc, l, err))
+
+		// TODO отправлять сообщение об ошибке
+		if force {
+			return util.Message{
+				Title: "[ERR]",
+				Description: fmt.Sprintf("command.GetGroupingMessage(%d,%s,%s): %v",
+					groupingID, cc, l, err),
+				FooterText: err.Error(),
+			}
+		}
+
 		return util.Message{}
 	}
 
