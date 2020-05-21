@@ -73,10 +73,13 @@ func ReadConfig() {
 	}
 }
 
+// InitLangaugeDetection initializes language detection client.
 func InitLangaugeDetection() {
 	languageDetectionClient = detectlanguage.New(Config["language-detection-api-key"])
 }
 
+// MatchesAsAppID reports whether the string s matches to App Store
+// Application ID.
 func MatchesAsAppID(s string) bool {
 	r, _ := regexp.Compile("^\\d{9,10}$")
 	if !r.MatchString(s) {
@@ -102,6 +105,8 @@ func MatchesAsAppID(s string) bool {
 	return true
 }
 
+// MatchesAsGroupingID reports whether the string s matches to App Store
+// Grouping ID.
 func MatchesAsGroupingID(s string) bool {
 	r, _ := regexp.Compile("^\\d{5,6}$")
 	if !r.MatchString(s) {
@@ -127,11 +132,13 @@ func MatchesAsGroupingID(s string) bool {
 	return true
 }
 
+// MatchesAsRoomID reports whether the string s matches to App Store Room ID.
 func MatchesAsRoomID(s string) bool {
 	r, _ := regexp.Compile("^\\d{2,20}$")
 	return r.MatchString(s)
 }
 
+// MatchesAsGenreID reports whether the string s matches to App Store Genre ID.
 func MatchesAsGenreID(s string) bool {
 	r, _ := regexp.Compile("^\\d{2,5}$")
 	if !r.MatchString(s) {
@@ -166,6 +173,7 @@ func MatchesAsGenreID(s string) bool {
 	return true
 }
 
+// MatchesAsStoryID reports whether the string s matches to App Store Story ID.
 func MatchesAsStoryID(s string) bool {
 	r, _ := regexp.Compile("^\\d{9,10}$")
 	return r.MatchString(s)
@@ -186,15 +194,20 @@ func GetStoreFromAppID(s string) int {
 	return NA
 }
 
+// GetFlagByCountry returns flag emoji.
+// TODO add countries
 func GetFlagByCountry(code string) string {
 	switch code {
 	case "ru":
+		return "🇷🇺"
 	case voicerssgo.Russian:
 		return "🇷🇺"
 	case "us":
+		return "🇺🇸"
 	case voicerssgo.EnglishUnitedStates:
 		return "🇺🇸"
 	case "au":
+		return "🇦🇺"
 	case voicerssgo.EnglishAustralia:
 		return "🇦🇺"
 	case "fr":
@@ -206,6 +219,7 @@ func GetFlagByCountry(code string) string {
 	case "pl":
 		return "🇵🇱"
 	case "gb":
+		return "🇬🇧"
 	case voicerssgo.EnglishGreatBritain:
 		return "🇬🇧"
 	case "es":
@@ -215,20 +229,24 @@ func GetFlagByCountry(code string) string {
 	case "ca":
 		return "🇨🇦"
 	case "br":
+		return "🇧🇷"
 	case voicerssgo.PortugueseBrazil:
 		return "🇧🇷"
+	case "hk":
+		return "🇭🇰"
 	case voicerssgo.ChineseHongKong:
 		return "🇭🇰"
+	case "cn":
+		return "🇨🇳"
 	case voicerssgo.ChineseChina:
 		return "🇨🇳"
 	case "jp":
+		return "🇯🇵"
 	case voicerssgo.Japanese:
 		return "🇯🇵"
 	default:
-		return "🏳"
+		return ""
 	}
-
-	return "🏳"
 }
 
 // DetectLanguage trying to detect language by given text and returns detections array.
@@ -248,6 +266,7 @@ func DetectLanguage(value string) []LanguageDetection {
 	return result
 }
 
+// GetEmojiByDigit returns emoji with the digit by given number.
 func GetEmojiByDigit(digit float32) string {
 	value := int(digit)
 
@@ -300,6 +319,7 @@ func contains(a []int, x int) bool {
 	return false
 }
 
+// ContainsMap reports whether the map m contains value x.
 func ContainsMap(m map[string]string, x string) bool {
 	for _, v := range m {
 		if v == x {
@@ -310,6 +330,7 @@ func ContainsMap(m map[string]string, x string) bool {
 	return false
 }
 
+// GetCcByStoreFront returns App Store country code by store front.
 func GetCcByStoreFront(storeFront string) string {
 	for cc, sf := range scraper.StoreFronts {
 		if sf == storeFront {
@@ -321,6 +342,7 @@ func GetCcByStoreFront(storeFront string) string {
 	return ""
 }
 
+// GetStarsBar returns bar with stars.
 func GetStarsBar(x int) string {
 	switch x {
 	case 0:

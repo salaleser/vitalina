@@ -2,10 +2,11 @@ package util
 
 import "log"
 
-var DebugMode = true
+var mode = true
 
+// Debug generates debug message
 func Debug(s string) {
-	if DebugMode {
+	if mode {
 		log.Printf("[DBG] %s\n", s)
 	}
 }

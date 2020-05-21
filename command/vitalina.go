@@ -24,15 +24,16 @@ func Vitalina(s *discordgo.Session, m *discordgo.MessageCreate) {
 		if _, ok := scraper.StoreFronts[strings.ToUpper(arg)]; ok {
 			util.Debug(fmt.Sprintf("Country code %q detected!", arg))
 			cc = arg
-			emoji := util.GetFlagByCountry(arg)
-			s.MessageReactionAdd(m.ChannelID, m.ID, emoji)
+			flag := util.GetFlagByCountry(arg)
+			s.MessageReactionAdd(m.ChannelID, m.ID, flag)
 		}
 
 		if _, ok := scraper.Languages[arg]; ok {
 			util.Debug(fmt.Sprintf("Language %q detected!", arg))
 			l = arg
-			emoji := util.GetFlagByCountry(arg)
-			s.MessageReactionAdd(m.ChannelID, m.ID, emoji)
+			isoLanguageCode := strings.Split(arg, "-")[0]
+			language := util.Languages[isoLanguageCode]
+			s.MessageReactionAdd(m.ChannelID, m.ID, language.Emoji)
 		}
 	}
 
