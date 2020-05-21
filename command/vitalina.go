@@ -34,7 +34,7 @@ func Vitalina(s *discordgo.Session, m *discordgo.MessageCreate) {
 		if _, ok := scraper.StoreFronts[strings.ToUpper(arg)]; ok {
 			util.Debug(fmt.Sprintf("Country code %q detected!", arg))
 			cc = arg
-			flag := util.GetFlagByCountry(arg)
+			flag := util.GetFlagByCountryCode(arg)
 			s.MessageReactionAdd(m.ChannelID, m.ID, flag)
 		}
 
@@ -261,7 +261,7 @@ func getStoreFrontMessage(sf string, cc string) util.Message {
 	return util.Message{
 		Title: fmt.Sprintf("App Store Store Front detected by code «%s»",
 			sf),
-		Description:   cc + " | " + util.GetFlagByCountry(cc),
+		Description:   cc + " | " + util.GetFlagByCountryCode(cc),
 		FooterText:    fmt.Sprintf("%s=%s", sf, cc),
 		FooterIconURL: util.AsLogoURL,
 	}

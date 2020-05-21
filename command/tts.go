@@ -99,7 +99,7 @@ func Tts(s *discordgo.Session, m *discordgo.MessageCreate) {
 
 	util.PlayFile(s, m, file.Name())
 
-	emoji := util.GetFlagByCountry(language)
+	emoji := util.GetFlagByCountryCode(language)
 	s.MessageReactionAdd(m.ChannelID, m.ID, emoji) // TODO
 
 	time.Sleep(100 * time.Millisecond)

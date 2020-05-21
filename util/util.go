@@ -194,9 +194,9 @@ func GetStoreFromAppID(s string) int {
 	return NA
 }
 
-// GetFlagByCountry returns flag emoji.
+// GetFlagByCountryCode returns flag emoji.
 // TODO add countries
-func GetFlagByCountry(code string) string {
+func GetFlagByCountryCode(code string) string {
 	switch code {
 	case "ru":
 		return "🇷🇺"
