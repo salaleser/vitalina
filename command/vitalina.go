@@ -18,6 +18,11 @@ var (
 	l     = ""
 )
 
+type section struct {
+	front   []scraper.Model
+	regular []scraper.Model
+}
+
 // Vitalina is a AI wannabe.
 func Vitalina(s *discordgo.Session, m *discordgo.MessageCreate) {
 	content := m.Content
@@ -78,8 +83,17 @@ func Vitalina(s *discordgo.Session, m *discordgo.MessageCreate) {
 
 		if util.MatchesAsGroupingID(arg) {
 			id, _ := strconv.Atoi(arg)
-			msg := getGroupingMessage(id, cc, l)
-			util.Send(s, m, msg)
+			err := processGrouping(s, m, id, cc, l)
+			if err != nil {
+				util.Debug(fmt.Sprintf("grouping (%d,%s,%s): %v", id, cc, l,
+					err))
+				if force {
+					util.SendError(s, m,
+						fmt.Sprintf("[id=%d,cc=%s,l=%s] %v", id, cc, l, err),
+						err,
+					)
+				}
+			}
 		}
 
 		if util.MatchesAsGenreID(arg) {
@@ -141,43 +155,43 @@ func Vitalina(s *discordgo.Session, m *discordgo.MessageCreate) {
 // 	}
 // }
 
-func getEnding(nominative string, quantity int) string {
-	genitive, _ := regexp.Compile("^\\d*[234]$")
-	plural, _ := regexp.Compile("^\\d*[05-9]$|^\\d*1\\d$")
-	genetiveMatcher := genitive.MatchString(strconv.Itoa(quantity))
-	pluralMatcher := plural.MatchString(strconv.Itoa(quantity))
-	switch nominative {
-	case "день":
-		if pluralMatcher {
-			return "дней"
-		}
-		if genetiveMatcher {
-			return "дня"
-		}
-	case "час":
-		if pluralMatcher {
-			return "часов"
-		}
-		if genetiveMatcher {
-			return "часа"
-		}
-	case "минута":
-		if pluralMatcher {
-			return "минут"
-		}
-		if genetiveMatcher {
-			return "минуты"
-		}
-	case "секунда":
-		if pluralMatcher {
-			return "секунд"
-		}
-		if genetiveMatcher {
-			return "секунды"
-		}
-	}
-	return nominative
-}
+// func getEnding(nominative string, quantity int) string {
+// 	genitive, _ := regexp.Compile("^\\d*[234]$")
+// 	plural, _ := regexp.Compile("^\\d*[05-9]$|^\\d*1\\d$")
+// 	genetiveMatcher := genitive.MatchString(strconv.Itoa(quantity))
+// 	pluralMatcher := plural.MatchString(strconv.Itoa(quantity))
+// 	switch nominative {
+// 	case "день":
+// 		if pluralMatcher {
+// 			return "дней"
+// 		}
+// 		if genetiveMatcher {
+// 			return "дня"
+// 		}
+// 	case "час":
+// 		if pluralMatcher {
+// 			return "часов"
+// 		}
+// 		if genetiveMatcher {
+// 			return "часа"
+// 		}
+// 	case "минута":
+// 		if pluralMatcher {
+// 			return "минут"
+// 		}
+// 		if genetiveMatcher {
+// 			return "минуты"
+// 		}
+// 	case "секунда":
+// 		if pluralMatcher {
+// 			return "секунд"
+// 		}
+// 		if genetiveMatcher {
+// 			return "секунды"
+// 		}
+// 	}
+// 	return nominative
+// }
 
 func getMetadataMessage(appID string, store int, cc string, l string) util.Message {
 	var metadata scraper.MetadataResponse
@@ -220,7 +234,7 @@ func getStoryMessage(storyID string, cc string, l string) util.Message {
 
 	iu := ""
 	for _, v := range story.EditorialArtwork {
-		iu = strings.Replace(v.URL, "{w}x{h}{c}.{f}", "512x512bb.png", -1)
+		iu = util.ConvertArtworkURL(v.URL)
 	}
 
 	ft := "\n"
@@ -277,35 +291,30 @@ func getAsLanguageMessage(asLanguageCode string, l string) util.Message {
 	}
 }
 
-func getGroupingMessage(groupingID int, cc string, l string) util.Message {
-	page, err := scraper.AsGrouping(groupingID, cc, l)
+func processGrouping(s *discordgo.Session, m *discordgo.MessageCreate,
+	id int, cc string, l string) error {
+	page, err := scraper.AsGrouping(id, cc, l)
 	if err != nil {
-		util.Debug(fmt.Sprintf("command.GetGroupingMessage(%d,%s,%s): %v",
-			groupingID, cc, l, err))
-
-		// TODO отправлять сообщение об ошибке
-		if force {
-			return util.Message{
-				Title: "[ERR]",
-				Description: fmt.Sprintf("command.GetGroupingMessage(%d,%s,%s): %v",
-					groupingID, cc, l, err),
-				FooterText: err.Error(),
-			}
-		}
-
-		return util.Message{}
+		return err
 	}
 
-	grouping := page.PageData.FcStructure.Model
+	sections := page.PageData.FcStructure.Model.Children[0].Children[0].Children
 
-	return util.Message{
-		Title:       grouping.AdamID,
-		Description: grouping.FcKind,
-		// Link:          story.Link.URL,
-		// ImageURL:      iu,
-		// FooterText:    ft,
-		FooterIconURL: util.AsLogoURL,
+	for _, section := range sections {
+		app := page.StorePlatformData["lockup"].Results[section.Link.ContentID]
+
+		time.Sleep(200)
+		util.Send(s, m, util.Message{
+			Title:         section.DesignBadge,
+			Description:   section.FcKind,
+			Link:          app.URL,
+			ImageURL:      util.ConvertArtworkURL(app.Artwork.URL),
+			FooterText:    section.Link.ContentID,
+			FooterIconURL: util.AsLogoURL,
+		})
 	}
+
+	return nil
 }
 
 func getRoomMessage(adamID string, cc string, l string) util.Message {
