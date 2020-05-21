@@ -2,7 +2,6 @@ package bot
 
 import (
 	"fmt"
-	"log"
 	"os"
 	"os/signal"
 	"strings"
@@ -21,13 +20,15 @@ type Command struct {
 	Description string
 }
 
+// Commands contains commands list.
+// TODO add aliases support
 var Commands = map[string]Command{
 	"help": {command.Help, "Помощь"},
 	"play": {command.Play, "(Play)"},
 	"tts":  {command.Tts, "(TTS)"},
 }
 
-// Start starts the bot
+// Start starts the bot.
 func Start(token string) {
 	dg, err := discordgo.New(token)
 	if err != nil {
@@ -87,10 +88,11 @@ func messageCreate(s *discordgo.Session, m *discordgo.MessageCreate) {
 		fmt.Fprintf(os.Stderr, "get channel: %v\n", err)
 	}
 
-	if err == nil {
-		log.Printf("*%s #%s @%s: %q", guild.Name, channel.Name, m.Author.Username, m.Message.Content)
-	}
+	util.Debug(fmt.Sprintf("*%s #%s @%s: %q", guild.Name, channel.Name,
+		m.Author.Username, m.Message.Content))
 
+	// Custom prefixes (aliases)
+	// TODO add aliases support
 	if !strings.HasPrefix(m.Content, "~") {
 		if strings.HasPrefix(m.Content, "!") {
 			go command.SearchApps(s, m)
@@ -104,6 +106,7 @@ func messageCreate(s *discordgo.Session, m *discordgo.MessageCreate) {
 		return
 	}
 
+	// Real commands
 	if cmd, ok := Commands[args[0][1:]]; ok {
 		go cmd.Hanlder(s, m)
 	} else {
