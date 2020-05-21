@@ -6,10 +6,12 @@ import (
 	"log"
 	"os"
 	"regexp"
+	"strconv"
 	"strings"
 	"time"
 
 	"github.com/detectlanguage/detectlanguage-go"
+	"github.com/salaleser/scraper"
 	voicerssgo "github.com/salaleser/voicerss-api-go"
 )
 
@@ -35,13 +37,6 @@ type Message struct {
 	FooterText    string
 	FooterIconURL string
 }
-
-// Regexp patterns
-const (
-	ASAppIDPattern   = "^\\d{9,10}$"
-	GPAppIDPattern   = "^[a-zA-Z][a-zA-Z0-9_]*(\\.[a-zA-Z0-9_]+)+[0-9a-zA-Z_]$"
-	TimestampPattern = "[MWN]" // FIXME
-)
 
 // Store
 const (
@@ -72,7 +67,8 @@ func ReadConfig() {
 		}
 	}
 
-	if err := scanner.Err(); err != nil {
+	err = scanner.Err()
+	if err != nil {
 		log.Println(err)
 	}
 }
@@ -81,26 +77,113 @@ func InitLangaugeDetection() {
 	languageDetectionClient = detectlanguage.New(Config["language-detection-api-key"])
 }
 
-// IsAppID returns 0 if appID is not an application ID.
-func IsAppID(s string) int {
-	gpAppIDRegexp, _ := regexp.Compile(GPAppIDPattern)
-	asAppIDRegexp, _ := regexp.Compile(ASAppIDPattern)
+func MatchesAsAppID(s string) bool {
+	r, _ := regexp.Compile("^\\d{9,10}$")
+	if !r.MatchString(s) {
+		return false
+	}
+
+	id, err := strconv.Atoi(s)
+	if err != nil {
+		return false
+	}
+
+	// TODO уточнить
+	if id < 100000000 {
+		return false
+	}
+
+	// TODO уточнить
+	if id > 9999999999 {
+		return false
+	}
+
+	Debug("App ID detected!")
+	return true
+}
+
+func MatchesAsGroupingID(s string) bool {
+	r, _ := regexp.Compile("^\\d{5,6}$")
+	if !r.MatchString(s) {
+		return false
+	}
+
+	id, err := strconv.Atoi(s)
+	if err != nil {
+		return false
+	}
+
+	// TODO уточнить
+	if id < 25000 {
+		return false
+	}
+
+	// TODO уточнить
+	if id > 172000 {
+		return false
+	}
+
+	Debug("Grouping ID detected!")
+	return true
+}
+
+func MatchesAsRoomID(s string) bool {
+	r, _ := regexp.Compile("^\\d{2,20}$")
+	return r.MatchString(s)
+}
+
+func MatchesAsGenreID(s string) bool {
+	r, _ := regexp.Compile("^\\d{2,5}$")
+	if !r.MatchString(s) {
+		return false
+	}
+
+	id, err := strconv.Atoi(s)
+	if err != nil {
+		return false
+	}
+
+	// Исключение для 36
+	if id == 36 {
+		return true
+	}
+
+	// TODO уточнить
+	if id < 6000 {
+		return false
+	}
+
+	// TODO уточнить
+	if id > 15000 {
+		return false
+	}
+
+	if !contains(scraper.GenreIDs, id) {
+		return false
+	}
+
+	Debug("Genre ID detected!")
+	return true
+}
+
+func MatchesAsStoryID(s string) bool {
+	r, _ := regexp.Compile("^\\d{9,10}$")
+	return r.MatchString(s)
+}
+
+// GetStoreFromAppID returns 0 if appID is not an application ID.
+func GetStoreFromAppID(s string) int {
+	gpAppIDRegexp, _ := regexp.Compile("^[a-zA-Z][a-zA-Z0-9_]*(\\.[a-zA-Z0-9_]+)+[0-9a-zA-Z_]$")
 
 	if gpAppIDRegexp.MatchString(s) {
 		return GooglePlay
 	}
 
-	if asAppIDRegexp.MatchString(s) {
+	if MatchesAsAppID(s) {
 		return AppStore
 	}
 
 	return NA
-}
-
-func IsTimestamp(s string) bool {
-	timestampRegexp, _ := regexp.Compile(TimestampPattern)
-
-	return timestampRegexp.MatchString(s)
 }
 
 func GetFlagByCountry(code string) string {
@@ -138,6 +221,7 @@ func GetFlagByCountry(code string) string {
 		return "🇭🇰"
 	case voicerssgo.ChineseChina:
 		return "🇨🇳"
+	case "jp":
 	case voicerssgo.Japanese:
 		return "🇯🇵"
 	default:
@@ -204,4 +288,54 @@ func GetEmojiByDigit(digit float32) string {
 // Now returns formatted current time.
 func Now() string {
 	return time.Now().Format(time.RFC3339)
+}
+
+func contains(a []int, x int) bool {
+	for _, e := range a {
+		if e == x {
+			return true
+		}
+	}
+
+	return false
+}
+
+func ContainsMap(m map[string]string, x string) bool {
+	for _, v := range m {
+		if v == x {
+			return true
+		}
+	}
+
+	return false
+}
+
+func GetCcByStoreFront(storeFront string) string {
+	for cc, sf := range scraper.StoreFronts {
+		if sf == storeFront {
+			// FIXME scraper.StoreFronts содержит ключи в верхнем регистре
+			return strings.ToLower(cc)
+		}
+	}
+
+	return ""
+}
+
+func GetStarsBar(x int) string {
+	switch x {
+	case 0:
+		return "☆☆☆☆☆"
+	case 1:
+		return "★☆☆☆☆"
+	case 2:
+		return "★★☆☆☆"
+	case 3:
+		return "★★★☆☆"
+	case 4:
+		return "★★★★☆"
+	case 5:
+		return "★★★★★"
+	default:
+		return "—"
+	}
 }

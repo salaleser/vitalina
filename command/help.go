@@ -9,7 +9,7 @@ import (
 
 var commands map[string]string
 
-// Help sends user manual
+// Help sends user manual.
 func Help(s *discordgo.Session, m *discordgo.MessageCreate) {
 	args := strings.Split(m.Content[1:], " ")
 

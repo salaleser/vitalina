@@ -92,7 +92,15 @@ func messageCreate(s *discordgo.Session, m *discordgo.MessageCreate) {
 	}
 
 	if !strings.HasPrefix(m.Content, "~") {
-		go command.Vitalina(s, m)
+		if strings.HasPrefix(m.Content, "!") {
+			go command.SearchApps(s, m)
+		} else if strings.HasPrefix(m.Content, ".") {
+			go command.DetectLanguage(s, m)
+		} else if strings.HasPrefix(m.Content, ",") {
+			go command.DetectLanguageFull(s, m)
+		} else {
+			go command.Vitalina(s, m)
+		}
 		return
 	}
 

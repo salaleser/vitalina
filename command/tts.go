@@ -18,6 +18,7 @@ import (
 
 const path = "cache/"
 
+// Tts pronounces the text.
 func Tts(s *discordgo.Session, m *discordgo.MessageCreate) {
 	args := strings.Split(m.Content, " ")
 

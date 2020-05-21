@@ -1,9 +1,7 @@
 package command
 
 import (
-	"bytes"
 	"fmt"
-	"math"
 	"regexp"
 	"strconv"
 	"strings"
@@ -14,113 +12,123 @@ import (
 	"github.com/salaleser/vitalina/util"
 )
 
-const asLogoURL = "https://www.freepnglogos.com/uploads/" +
-	"app-store-logo-png/file-app-store-ios-custom-size-18.png"
-const gpLogoURL = "https://www.freepnglogos.com/uploads/" +
-	"google-play-png-logo/google-severs-music-studio-png-logo-21.png"
-
+// Vitalina is a AI wannabe.
 func Vitalina(s *discordgo.Session, m *discordgo.MessageCreate) {
+	cc := "us"
+	l := ""
+
 	args := strings.Split(m.Content, " ")
 
+	// Scan for country code and language
 	for _, arg := range args {
-		if util.IsAppID(arg) == util.AppStore {
-			// Кроме как запросить данные с сервера нет возможности заранее
-			// узнать тип (TODO изучить возможность)
-			// TODO ограничить доступными диапазонами
-			util.Send(s, m, GetMetadataMessage(arg, util.AppStore))
-			util.Send(s, m, GetStoryMessage(arg))
-			util.Send(s, m, GetRoomMessage(arg))
-			// добавить Genre
-			// добавить Store Front
-			// добавить Language
-			// добавить Platform
-			// добавить Artist
-		} else if util.IsAppID(arg) == util.GooglePlay {
-			util.Send(s, m, GetMetadataMessage(arg, util.GooglePlay))
-		} else if util.IsTimestamp(arg) {
-			// GetTimestamp(arg) // FIXME
-		} else if strings.HasPrefix(m.Content, "!") {
-			util.Send(s, m, GetAsAppIDsMessage(m.Content[1:]))
-			util.Send(s, m, GetGpAppIDsMessage(m.Content[1:]))
+		if _, ok := scraper.StoreFronts[strings.ToUpper(arg)]; ok {
+			util.Debug(fmt.Sprintf("Country code %q detected!", arg))
+			cc = arg
+			emoji := util.GetFlagByCountry(arg)
+			s.MessageReactionAdd(m.ChannelID, m.ID, emoji)
+		}
+
+		if _, ok := scraper.Languages[arg]; ok {
+			util.Debug(fmt.Sprintf("Language %q detected!", arg))
+			l = arg
+			emoji := util.GetFlagByCountry(arg)
+			s.MessageReactionAdd(m.ChannelID, m.ID, emoji)
 		}
 	}
 
+	// Scan for IDs
+	for _, arg := range args {
+		// FIXME коды в верхнем регистре хранятся в мапе
+		if util.ContainsMap(scraper.StoreFronts, arg) {
+			cc := util.GetCcByStoreFront(arg)
+			msg := getStoreFrontMessage(arg, cc)
+			util.Send(s, m, msg)
+		}
+
+		if asLanguageCode, ok := scraper.Languages[arg]; ok {
+			msg := getAsLanguageMessage(asLanguageCode, arg)
+			util.Send(s, m, msg)
+		}
+
+		if util.MatchesAsAppID(arg) {
+			msg := getMetadataMessage(arg, util.AppStore, cc, l)
+			util.Send(s, m, msg)
+		}
+
+		if util.MatchesAsStoryID(arg) {
+			msg := getStoryMessage(arg, cc, l)
+			util.Send(s, m, msg)
+		}
+
+		if util.MatchesAsRoomID(arg) {
+			msg := getRoomMessage(arg, cc, l)
+			util.Send(s, m, msg)
+		}
+
+		if util.MatchesAsGroupingID(arg) {
+			id, _ := strconv.Atoi(arg)
+			msg := getGroupingMessage(id, cc, l)
+			util.Send(s, m, msg)
+		}
+
+		if util.MatchesAsGenreID(arg) {
+			id, _ := strconv.Atoi(arg)
+			msg := getAsGenreMessage(id, cc, l)
+			util.Send(s, m, msg)
+		}
+
+		if util.GetStoreFromAppID(arg) == util.GooglePlay {
+			msg := getMetadataMessage(arg, util.GooglePlay, cc, l)
+			util.Send(s, m, msg)
+		}
+	}
+
+	// Scan for phrases
 	if isPhrase(m.Content) {
 		time.Sleep(100)
 		s.MessageReactionAdd(m.ChannelID, m.ID, "➕")
 		time.Sleep(100)
 		s.MessageReactionAdd(m.ChannelID, m.ID, "➖")
 	}
-
-	if strings.HasPrefix(m.Content, ".") {
-		detections := util.DetectLanguage(m.Content[1:])
-
-		if len(detections) > 0 {
-			language := util.Languages[detections[0].Language]
-			time.Sleep(100)
-			s.MessageReactionAdd(m.ChannelID, m.ID, language.Emoji)
-
-			score := util.GetEmojiByDigit(detections[0].ConfidenceScore)
-			time.Sleep(100)
-			s.MessageReactionAdd(m.ChannelID, m.ID, score)
-
-			var reliable string
-			if detections[0].IsReliable {
-				reliable = "✅"
-			} else {
-				reliable = "❌"
-			}
-			time.Sleep(100)
-			s.MessageReactionAdd(m.ChannelID, m.ID, reliable)
-		}
-	}
-
-	if strings.HasPrefix(m.Content, ",") {
-		detections := util.DetectLanguage(m.Content[1:])
-
-		if len(detections) > 0 {
-			util.Send(s, m, GetLanguageDetectionMessage(detections))
-		}
-	}
 }
 
-func GetTimestampMessage(timestamp string) util.Message {
-	ts, _ := strconv.Atoi(timestamp)
-	date := time.Now().Format("EEEE, dd MMMM YYYY года в HH:mm:ss")
-	diff := time.Now().Unix() - int64(ts*1000)
-	future := ""
-	past := " назад, "
-	if diff < 0 {
-		future = "через "
-		past = ", "
-		diff = int64(math.Abs(float64(diff)))
-	}
+// func getTimestampMessage(timestamp string) util.Message {
+// 	ts, _ := strconv.Atoi(timestamp)
+// 	date := time.Now().Format("EEEE, dd MMMM YYYY года в HH:mm:ss")
+// 	diff := time.Now().Unix() - int64(ts*1000)
+// 	future := ""
+// 	past := " назад, "
+// 	if diff < 0 {
+// 		future = "через "
+// 		past = ", "
+// 		diff = int64(math.Abs(float64(diff)))
+// 	}
 
-	var quantity int64
-	var value string
-	if diff <= time.Second.Milliseconds() {
-		quantity = diff
-		value = future + strconv.Itoa(int(quantity)) + " " +
-			getEnding("секунда", int(quantity)) + past + date
-	} else if diff <= time.Second.Milliseconds() {
-		quantity = diff * time.Minute.Milliseconds()
-		value = future + strconv.Itoa(int(quantity)) + " " +
-			getEnding("минута", int(quantity)) + past + date
-	} else if diff <= time.Hour.Milliseconds()*24 {
-		quantity = diff * time.Hour.Milliseconds()
-		value = future + strconv.Itoa(int(quantity)) + " " +
-			getEnding("час", int(quantity)) + past + date
-	} else {
-		quantity = diff * time.Hour.Milliseconds() * 24
-		value = future + strconv.Itoa(int(quantity)) + " " +
-			getEnding("день", int(quantity)) + past + date
-	}
+// 	var quantity int64
+// 	var value string
+// 	if diff <= time.Second.Milliseconds() {
+// 		quantity = diff
+// 		value = future + strconv.Itoa(int(quantity)) + " " +
+// 			getEnding("секунда", int(quantity)) + past + date
+// 	} else if diff <= time.Second.Milliseconds() {
+// 		quantity = diff * time.Minute.Milliseconds()
+// 		value = future + strconv.Itoa(int(quantity)) + " " +
+// 			getEnding("минута", int(quantity)) + past + date
+// 	} else if diff <= time.Hour.Milliseconds()*24 {
+// 		quantity = diff * time.Hour.Milliseconds()
+// 		value = future + strconv.Itoa(int(quantity)) + " " +
+// 			getEnding("час", int(quantity)) + past + date
+// 	} else {
+// 		quantity = diff * time.Hour.Milliseconds() * 24
+// 		value = future + strconv.Itoa(int(quantity)) + " " +
+// 			getEnding("день", int(quantity)) + past + date
+// 	}
 
-	return util.Message{
-		Title:       "UNIX-time",
-		Description: value,
-	}
-}
+// 	return util.Message{
+// 		Title:       "UNIX-time",
+// 		Description: value,
+// 	}
+// }
 
 func getEnding(nominative string, quantity int) string {
 	genitive, _ := regexp.Compile("^\\d*[234]$")
@@ -160,21 +168,18 @@ func getEnding(nominative string, quantity int) string {
 	return nominative
 }
 
-func GetMetadataMessage(appID string, store int) util.Message {
-	location := "ru"
-	language := "ru"
-
+func getMetadataMessage(appID string, store int, cc string, l string) util.Message {
 	var metadata scraper.MetadataResponse
 	var link string
 	var footerIconURL string
 	if store == util.AppStore {
-		metadata = scraper.AsMetadata(appID, location, language)
+		metadata = scraper.AsMetadata(appID, cc, l)
 		link = metadata.Link
-		footerIconURL = asLogoURL
+		footerIconURL = util.AsLogoURL
 	} else if store == util.GooglePlay {
-		metadata = scraper.GpMetadata(appID, location, language)
+		metadata = scraper.GpMetadata(appID, cc, l)
 		link = fmt.Sprintf("https://play.google.com/store/apps/details?id=%s", appID)
-		footerIconURL = gpLogoURL
+		footerIconURL = util.GpLogoURL
 	}
 
 	// TODO улучшить проверку
@@ -189,16 +194,13 @@ func GetMetadataMessage(appID string, store int) util.Message {
 		ImageURL:     metadata.Screenshot1,
 		ThumbnailURL: metadata.Logo,
 		FooterText: fmt.Sprintf("Application\nAuthor: %s, %s", metadata.ArtistName,
-			getStars(int(metadata.Rating))),
+			util.GetStarsBar(int(metadata.Rating))),
 		FooterIconURL: footerIconURL,
 	}
 }
 
-func GetStoryMessage(storyID string) util.Message {
-	location := "ru"
-	language := "ru"
-
-	story := scraper.AsStory(storyID, location, language)
+func getStoryMessage(storyID string, cc string, l string) util.Message {
+	story := scraper.AsStory(storyID, cc, l)
 
 	// TODO улучшить проверку
 	if story.ID == "" {
@@ -222,15 +224,70 @@ func GetStoryMessage(storyID string) util.Message {
 		Link:          story.Link.URL,
 		ImageURL:      iu,
 		FooterText:    ft,
-		FooterIconURL: asLogoURL,
+		FooterIconURL: util.AsLogoURL,
 	}
 }
 
-func GetRoomMessage(adamID string) util.Message {
-	location := "ru"
-	language := "ru"
+func getAsGenreMessage(id int, cc string, l string) util.Message {
+	page, err := scraper.AsGenre(id, cc)
+	if err != nil {
+		util.Debug(err.Error())
+		return util.Message{}
+	}
 
-	room := scraper.AsRoom(adamID, location, language)
+	genre := strings.Split(page.PageData.MetricsBase.PageDetails, "_")[0]
+
+	return util.Message{
+		Title:         fmt.Sprintf("App Store Genre detected by code «%d»", id),
+		Description:   genre,
+		Link:          fmt.Sprintf("https://itunes.apple.com/%s/genre?id=%d", cc, id),
+		FooterText:    fmt.Sprintf("%d=%s", id, genre),
+		FooterIconURL: util.AsLogoURL,
+	}
+}
+
+func getStoreFrontMessage(sf string, cc string) util.Message {
+	return util.Message{
+		Title: fmt.Sprintf("App Store Store Front detected by code «%s»",
+			sf),
+		Description:   cc + " | " + util.GetFlagByCountry(cc),
+		FooterText:    fmt.Sprintf("%s=%s", sf, cc),
+		FooterIconURL: util.AsLogoURL,
+	}
+}
+
+func getAsLanguageMessage(asLanguageCode string, l string) util.Message {
+	return util.Message{
+		Title: fmt.Sprintf("App Store Langauge detected by code «%s»",
+			asLanguageCode),
+		Description:   l,
+		FooterText:    fmt.Sprintf("%s=%s", l, asLanguageCode),
+		FooterIconURL: util.AsLogoURL,
+	}
+}
+
+func getGroupingMessage(groupingID int, cc string, l string) util.Message {
+	page, err := scraper.AsGrouping(groupingID, cc, l)
+	if err != nil {
+		util.Debug(fmt.Sprintf("command.GetGroupingMessage(%d,%s,%s): %v",
+			groupingID, cc, l, err))
+		return util.Message{}
+	}
+
+	grouping := page.PageData.FcStructure.Model
+
+	return util.Message{
+		Title:       grouping.AdamID,
+		Description: grouping.FcKind,
+		// Link:          story.Link.URL,
+		// ImageURL:      iu,
+		// FooterText:    ft,
+		FooterIconURL: util.AsLogoURL,
+	}
+}
+
+func getRoomMessage(adamID string, cc string, l string) util.Message {
+	room := scraper.AsRoom(adamID, cc, l)
 
 	// TODO улучшить проверку
 	if room.Title == "" {
@@ -244,54 +301,8 @@ func GetRoomMessage(adamID string) util.Message {
 		ImageURL:     room.Screenshot1,
 		ThumbnailURL: room.Logo,
 		FooterText: fmt.Sprintf("Room\nAuthor: %s, %s",
-			room.ArtistName, getStars(int(room.Rating))),
-		FooterIconURL: asLogoURL,
-	}
-}
-
-func GetAsAppIDsMessage(keyword string) util.Message {
-	location := "ru"
-	language := "ru"
-
-	var d bytes.Buffer
-
-	metadatas := scraper.AsAppIDs(keyword, location, language)
-	for i, m := range metadatas {
-		d.WriteString(fmt.Sprintf("**%d**: %s (`%s`) %s\n",
-			i+1, m.Title, m.AppID, getStars(int(m.Rating))))
-	}
-
-	return util.Message{
-		Title: fmt.Sprintf("Приложения App Store по ключевому слову «%s»:",
-			keyword),
-		Description:   d.String(),
-		ThumbnailURL:  asLogoURL,
-		FooterText:    fmt.Sprintf("Total: %d", len(metadatas)),
-		FooterIconURL: asLogoURL,
-	}
-}
-
-func GetGpAppIDsMessage(keyword string) util.Message {
-	location := "ru"
-	language := "ru"
-
-	var d bytes.Buffer
-
-	metadatas := scraper.GpAppIDs(keyword, location, language)
-	for i, m := range metadatas {
-		d.WriteString(fmt.Sprintf("**%d**: %s (`%s`) %s\n",
-			i+1, m.Title, m.AppID, getStars(int(m.Rating))))
-	}
-
-	return util.Message{
-		Title: fmt.Sprintf("Приложения Google Play по ключевому слову «%s»:",
-			keyword),
-		Description: d.String(),
-		Link: fmt.Sprintf("https://play.google.com/store/search?q=%s&c=apps&gl=%s&hl=%s",
-			keyword, location, language),
-		ThumbnailURL:  gpLogoURL,
-		FooterText:    fmt.Sprintf("Total: %d", len(metadatas)),
-		FooterIconURL: gpLogoURL,
+			room.ArtistName, util.GetStarsBar(int(room.Rating))),
+		FooterIconURL: util.AsLogoURL,
 	}
 }
 
@@ -299,46 +310,4 @@ func isPhrase(s string) bool {
 	regexp, _ := regexp.Compile("^.{1,}\\?$")
 
 	return regexp.MatchString(s)
-}
-
-func getStars(value int) string {
-	switch value {
-	case 0:
-		return "☆☆☆☆☆"
-	case 1:
-		return "★☆☆☆☆"
-	case 2:
-		return "★★☆☆☆"
-	case 3:
-		return "★★★☆☆"
-	case 4:
-		return "★★★★☆"
-	case 5:
-		return "★★★★★"
-	default:
-		return "—"
-	}
-}
-
-func GetLanguageDetectionMessage(detections []util.LanguageDetection) util.Message {
-	var description bytes.Buffer
-
-	for i, d := range detections {
-		l := util.Languages[d.Language]
-
-		r := "☐"
-		if d.IsReliable {
-			r = "☑︎"
-		}
-
-		ds := fmt.Sprintf("**%d**: %s [**%f**] %s | %s | %s\n",
-			i+1, r, d.ConfidenceScore/10000, l.English, l.Russian, l.Native)
-		description.WriteString(ds)
-	}
-
-	return util.Message{
-		Title:       "Возможный язык:",
-		Description: description.String(),
-		FooterText:  "Используя API https://detectlanguage.com",
-	}
 }
