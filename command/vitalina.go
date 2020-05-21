@@ -261,7 +261,7 @@ func getStoreFrontMessage(sf string, cc string) util.Message {
 	return util.Message{
 		Title: fmt.Sprintf("App Store Store Front detected by code «%s»",
 			sf),
-		Description:   cc + " | " + util.GetFlagByCountryCode(cc),
+		Description:   cc + " " + util.GetFlagByCountryCode(cc),
 		FooterText:    fmt.Sprintf("%s=%s", sf, cc),
 		FooterIconURL: util.AsLogoURL,
 	}
