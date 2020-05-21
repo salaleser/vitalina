@@ -31,7 +31,12 @@ func Help(s *discordgo.Session, m *discordgo.MessageCreate) {
 			"\nКроме того читает ID приложений App Store и Google Play (Steam будет " +
 			"добавлен) в тексте сообщений. А также текст, начинающийся с " +
 			"восклицательного знака воспринимает как команду для поиска в магазине " +
-			"приложений по ключевому запросу. Например: `!майнкрафт`."
+			"приложений по ключевому запросу. Например: `!майнкрафт`." +
+			"\nВсе префиксы (алиасы для скрытых команд):" +
+			"\n`!` — search-apps (App Store, Google Play)" +
+			"\n`?` — force command (verbose mode)" +
+			"\n`.` — detect language (by reactions)" +
+			"\n`,` — detect language (by reply message)."
 
 		util.SendInfo(s, m, text)
 	}
