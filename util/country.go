@@ -10,6 +10,7 @@ type Country struct {
 }
 
 // Countries contains supported countries.
+// TODO добавить страны
 var Countries = map[string]Country{
 	"am": {"am", "🇦🇲", "Armenia", "Арме́ния", ""},
 	"ar": {"ar", "🇦🇷", "Argentina", "Аргенти́на", ""},

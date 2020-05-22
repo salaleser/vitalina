@@ -14,13 +14,13 @@ import (
 
 type room struct {
 	adamID             string
-	imageURL           string
 	contentIDs         []string
 	designBadge        string
 	designTag          string
 	displayStyle       string
 	doNotFilter        bool
 	fcKind             string
+	imageURL           string
 	name               string
 	seeAllURL          string
 	shouldUseGradients bool
@@ -67,14 +67,39 @@ func Vitalina(s *discordgo.Session, m *discordgo.MessageCreate) {
 		// FIXME коды в верхнем регистре хранятся в мапе
 		if util.ContainsMap(scraper.StoreFronts, id) {
 			cc := util.GetCcByStoreFront(id)
-			msg := getStoreFrontMessage(id, cc)
-			util.Send(s, m, msg)
+			country := util.Countries[cc]
+			util.Send(s, m, util.Message{
+				Title: fmt.Sprintf("App Store Store Front detected by code «%d»",
+					id),
+				Description: fmt.Sprintf("%s %s | %s", country.Emoji,
+					country.English, country.Russian),
+				FooterText:    fmt.Sprintf("%d=%s", id, cc),
+				FooterIconURL: util.AsLogoURL,
+			})
 		}
 
 		if force {
+			if sf, ok := scraper.StoreFronts[strings.ToUpper(arg)]; ok {
+				country := util.Countries[arg]
+				util.Send(s, m, util.Message{
+					Title: fmt.Sprintf("App Store Country detected by code «%s»",
+						cc),
+					Description: fmt.Sprintf("%d %s %s | %s", sf, country.Emoji,
+						country.English, country.Russian),
+					FooterText:    fmt.Sprintf("%s=%d", cc, sf),
+					FooterIconURL: util.AsLogoURL,
+				})
+			}
+
 			if asLanguageCode, ok := scraper.Languages[arg]; ok {
-				msg := getAsLanguageMessage(asLanguageCode, arg)
-				util.Send(s, m, msg)
+				util.Send(s, m, util.Message{
+					// FIXME перепутано там что-то
+					Title: fmt.Sprintf("App Store Langauge detected by code «%s»",
+						asLanguageCode),
+					Description:   l,
+					FooterText:    fmt.Sprintf("%s=%s", l, asLanguageCode),
+					FooterIconURL: util.AsLogoURL,
+				})
 			}
 		}
 
@@ -275,27 +300,6 @@ func getAsGenreMessage(id int, cc string, l string) util.Message {
 	}
 }
 
-func getStoreFrontMessage(sf int, cc string) util.Message {
-	return util.Message{
-		// FIXME перепутано там что-то
-		Title: fmt.Sprintf("App Store Store Front detected by code «%d»",
-			sf),
-		Description:   cc + " " + util.GetFlagByCountryCode(cc),
-		FooterText:    fmt.Sprintf("%d=%s", sf, cc),
-		FooterIconURL: util.AsLogoURL,
-	}
-}
-
-func getAsLanguageMessage(asLanguageCode string, l string) util.Message {
-	return util.Message{
-		Title: fmt.Sprintf("App Store Langauge detected by code «%s»",
-			asLanguageCode),
-		Description:   l,
-		FooterText:    fmt.Sprintf("%s=%s", l, asLanguageCode),
-		FooterIconURL: util.AsLogoURL,
-	}
-}
-
 func processGrouping(s *discordgo.Session, m *discordgo.MessageCreate,
 	id int, cc string, l string) error {
 	page, err := scraper.Grouping(id, cc, l)
@@ -350,9 +354,8 @@ func processGrouping(s *discordgo.Session, m *discordgo.MessageCreate,
 
 		time.Sleep(500)
 		util.Send(s, m, util.Message{
-			Title: room.designBadge,
-			Description: fmt.Sprintf("%s\n%s\n%s\n%s", room.tagline,
-				room.designBadge, room.designTag, room.displayStyle),
+			Title:         room.designBadge,
+			Description:   fmt.Sprintf("%s", room.tagline),
 			ImageURL:      util.ConvertArtworkURL(room.imageURL),
 			FooterText:    contentIDs.String(),
 			FooterIconURL: util.AsLogoURL,
@@ -367,10 +370,8 @@ func processGrouping(s *discordgo.Session, m *discordgo.MessageCreate,
 
 		time.Sleep(500)
 		util.Send(s, m, util.Message{
-			Title: room.name,
-			Description: fmt.Sprintf("%s\n%s\n%s\n%s", room.tagline,
-				room.designBadge, room.designTag, room.displayStyle),
-			ImageURL:      util.ConvertArtworkURL(room.imageURL),
+			Title:         room.name,
+			Description:   fmt.Sprintf("%s", room.displayStyle),
 			FooterText:    contentIDs.String(),
 			FooterIconURL: util.AsLogoURL,
 		})
