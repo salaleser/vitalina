@@ -320,7 +320,7 @@ func contains(a []int, x int) bool {
 }
 
 // ContainsMap reports whether the map m contains value x.
-func ContainsMap(m map[string]string, x string) bool {
+func ContainsMap(m map[string]int, x int) bool {
 	for _, v := range m {
 		if v == x {
 			return true
@@ -331,7 +331,7 @@ func ContainsMap(m map[string]string, x string) bool {
 }
 
 // GetCcByStoreFront returns App Store country code by store front.
-func GetCcByStoreFront(storeFront string) string {
+func GetCcByStoreFront(storeFront int) string {
 	for cc, sf := range scraper.StoreFronts {
 		if sf == storeFront {
 			// FIXME scraper.StoreFronts содержит ключи в верхнем регистре

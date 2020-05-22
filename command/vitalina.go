@@ -18,9 +18,21 @@ var (
 	l     = ""
 )
 
-type section struct {
-	front   []scraper.Model
-	regular []scraper.Model
+type room struct {
+	adamID             string
+	imageURL           string
+	contentIDs         []string
+	designBadge        string
+	designTag          string
+	displayStyle       string
+	doNotFilter        bool
+	fcKind             string
+	name               string
+	seeAllURL          string
+	shouldUseGradients bool
+	suppressTagline    string
+	tagline            string
+	title              string
 }
 
 // Vitalina is a AI wannabe.
@@ -54,10 +66,11 @@ func Vitalina(s *discordgo.Session, m *discordgo.MessageCreate) {
 
 	// Scan for IDs
 	for _, arg := range args {
+		id, _ := strconv.Atoi(arg)
 		// FIXME коды в верхнем регистре хранятся в мапе
-		if util.ContainsMap(scraper.StoreFronts, arg) {
-			cc := util.GetCcByStoreFront(arg)
-			msg := getStoreFrontMessage(arg, cc)
+		if util.ContainsMap(scraper.StoreFronts, id) {
+			cc := util.GetCcByStoreFront(id)
+			msg := getStoreFrontMessage(id, cc)
 			util.Send(s, m, msg)
 		}
 
@@ -72,13 +85,33 @@ func Vitalina(s *discordgo.Session, m *discordgo.MessageCreate) {
 		}
 
 		if util.MatchesAsStoryID(arg) {
-			msg := getStoryMessage(arg, cc, l)
-			util.Send(s, m, msg)
+			id, _ := strconv.Atoi(arg)
+			err := processStory(s, m, id, cc, l)
+			if err != nil {
+				util.Debug(fmt.Sprintf("story (%d,%s,%s): %v", id, cc, l,
+					err))
+				if force {
+					util.SendError(s, m,
+						fmt.Sprintf("[id=%d,cc=%s,l=%s] %v", id, cc, l, err),
+						err,
+					)
+				}
+			}
 		}
 
 		if util.MatchesAsRoomID(arg) {
-			msg := getRoomMessage(arg, cc, l)
-			util.Send(s, m, msg)
+			id, _ := strconv.Atoi(arg)
+			err := processRoom(s, m, id, cc, l)
+			if err != nil {
+				util.Debug(fmt.Sprintf("room (%d,%s,%s): %v", id, cc, l,
+					err))
+				if force {
+					util.SendError(s, m,
+						fmt.Sprintf("[id=%d,cc=%s,l=%s] %v", id, cc, l, err),
+						err,
+					)
+				}
+			}
 		}
 
 		if util.MatchesAsGroupingID(arg) {
@@ -198,7 +231,7 @@ func getMetadataMessage(appID string, store int, cc string, l string) util.Messa
 	var link string
 	var footerIconURL string
 	if store == util.AppStore {
-		metadata = scraper.AsMetadata(appID, cc, l)
+		metadata = scraper.Metadata(appID, cc, l)
 		link = metadata.Link
 		footerIconURL = util.AsLogoURL
 	} else if store == util.GooglePlay {
@@ -224,37 +257,8 @@ func getMetadataMessage(appID string, store int, cc string, l string) util.Messa
 	}
 }
 
-func getStoryMessage(storyID string, cc string, l string) util.Message {
-	story := scraper.AsStory(storyID, cc, l)
-
-	// TODO улучшить проверку
-	if story.ID == "" {
-		return util.Message{}
-	}
-
-	iu := ""
-	for _, v := range story.EditorialArtwork {
-		iu = util.ConvertArtworkURL(v.URL)
-	}
-
-	ft := "\n"
-	for _, card := range story.CardIds {
-		ft += "\n" + card
-	}
-
-	return util.Message{
-		Title: story.Label,
-		Description: fmt.Sprintf("Story\n**%s**\n%s",
-			story.EditorialNotes.Name, story.EditorialNotes.Short),
-		Link:          story.Link.URL,
-		ImageURL:      iu,
-		FooterText:    ft,
-		FooterIconURL: util.AsLogoURL,
-	}
-}
-
 func getAsGenreMessage(id int, cc string, l string) util.Message {
-	page, err := scraper.AsGenre(id, cc)
+	page, err := scraper.Genre(id, cc)
 	if err != nil {
 		util.Debug(err.Error())
 		return util.Message{}
@@ -263,20 +267,21 @@ func getAsGenreMessage(id int, cc string, l string) util.Message {
 	genre := strings.Split(page.PageData.MetricsBase.PageDetails, "_")[0]
 
 	return util.Message{
-		Title:         fmt.Sprintf("App Store Genre detected by code «%d»", id),
-		Description:   genre,
-		Link:          fmt.Sprintf("https://itunes.apple.com/%s/genre?id=%d", cc, id),
+		Title:       fmt.Sprintf("App Store Genre detected by code «%d»", id),
+		Description: genre,
+		Link: fmt.Sprintf("https://itunes.apple.com/%s/genre?id=%d",
+			cc, id),
 		FooterText:    fmt.Sprintf("%d=%s", id, genre),
 		FooterIconURL: util.AsLogoURL,
 	}
 }
 
-func getStoreFrontMessage(sf string, cc string) util.Message {
+func getStoreFrontMessage(sf int, cc string) util.Message {
 	return util.Message{
-		Title: fmt.Sprintf("App Store Store Front detected by code «%s»",
+		Title: fmt.Sprintf("App Store Store Front detected by code «%d",
 			sf),
 		Description:   cc + " " + util.GetFlagByCountryCode(cc),
-		FooterText:    fmt.Sprintf("%s=%s", sf, cc),
+		FooterText:    fmt.Sprintf("%d=%s", sf, cc),
 		FooterIconURL: util.AsLogoURL,
 	}
 }
@@ -293,23 +298,80 @@ func getAsLanguageMessage(asLanguageCode string, l string) util.Message {
 
 func processGrouping(s *discordgo.Session, m *discordgo.MessageCreate,
 	id int, cc string, l string) error {
-	page, err := scraper.AsGrouping(id, cc, l)
+	page, err := scraper.Grouping(id, cc, l)
 	if err != nil {
 		return err
 	}
 
-	sections := page.PageData.FcStructure.Model.Children[0].Children[0].Children
+	children := page.PageData.FcStructure.Model.Children[0].Children
 
-	for _, section := range sections {
-		app := page.StorePlatformData["lockup"].Results[section.Link.ContentID]
+	topSection := make([]room, 0)
+	regularSection := make([]room, 0)
+	for _, child := range children {
+		if child.FcKind == "311" ||
+			child.FcKind == "312" ||
+			child.FcKind == "424" ||
+			child.FcKind == "425" ||
+			child.FcKind == "437" ||
+			child.FcKind == "476" {
+			continue
+		}
 
-		time.Sleep(200)
+		if child.FcKind == "415" {
+			for _, top := range child.Children {
+				topSection = append(topSection, room{
+					contentIDs:  []string{top.Link.ContentID},
+					designBadge: top.DesignBadge,
+					fcKind:      top.FcKind,
+					imageURL:    util.ConvertArtworkURL(top.Artwork.URL),
+				})
+			}
+		} else {
+			contentIDs := make([]string, 0)
+			for _, cID := range child.Content {
+				contentIDs = append(contentIDs, cID.ContentID)
+			}
+
+			regularSection = append(regularSection, room{
+				contentIDs:   contentIDs,
+				displayStyle: child.DisplayStyle,
+				fcKind:       child.FcKind,
+				name:         child.Name,
+				tagline:      child.Tagline,
+			})
+		}
+	}
+
+	for _, room := range topSection {
+		contentIDs := strings.Builder{}
+		for _, contentID := range room.contentIDs {
+			contentIDs.WriteString(fmt.Sprintf("%s\n", contentID))
+		}
+
+		time.Sleep(500)
 		util.Send(s, m, util.Message{
-			Title:         section.DesignBadge,
-			Description:   section.FcKind,
-			Link:          app.URL,
-			ImageURL:      util.ConvertArtworkURL(app.Artwork.URL),
-			FooterText:    section.Link.ContentID,
+			Title: room.designBadge,
+			Description: fmt.Sprintf("%s\n%s\n%s\n%s", room.tagline,
+				room.designBadge, room.designTag, room.displayStyle),
+			ImageURL:      util.ConvertArtworkURL(room.imageURL),
+			FooterText:    contentIDs.String(),
+			FooterIconURL: util.AsLogoURL,
+		})
+	}
+
+	for _, room := range regularSection {
+		contentIDs := strings.Builder{}
+		for _, contentID := range room.contentIDs {
+			contentIDs.WriteString(fmt.Sprintf("%s\n", contentID))
+		}
+
+		time.Sleep(500)
+		util.Send(s, m, util.Message{
+			Title: room.name,
+			Description: fmt.Sprintf("%s\n%s\n%s\n%s", room.tagline,
+				room.designBadge, room.designTag, room.displayStyle),
+			ImageURL:      util.ConvertArtworkURL(room.imageURL),
+			FooterText:    contentIDs.String(),
 			FooterIconURL: util.AsLogoURL,
 		})
 	}
@@ -317,24 +379,60 @@ func processGrouping(s *discordgo.Session, m *discordgo.MessageCreate,
 	return nil
 }
 
-func getRoomMessage(adamID string, cc string, l string) util.Message {
-	room := scraper.AsRoom(adamID, cc, l)
-
-	// TODO улучшить проверку
-	if room.Title == "" {
-		return util.Message{}
+func processStory(s *discordgo.Session, m *discordgo.MessageCreate,
+	storyID int, cc string, l string) error {
+	page, err := scraper.Story(storyID, cc, l)
+	if err != nil {
+		return err
 	}
 
-	return util.Message{
-		Title:        room.Title,
-		Description:  room.Subtitle,
-		Link:         room.Link,
-		ImageURL:     room.Screenshot1,
-		ThumbnailURL: room.Logo,
-		FooterText: fmt.Sprintf("Room\nAuthor: %s, %s",
-			room.ArtistName, util.GetStarsBar(int(room.Rating))),
+	results := page.StorePlatformData["editorial-item-product"].Results
+	result := results[strconv.Itoa(storyID)]
+
+	iu := ""
+	for _, v := range result.EditorialArtwork {
+		iu = util.ConvertArtworkURL(v.URL)
+		break
+	}
+
+	ids := strings.Builder{}
+	for _, id := range result.CardIDs {
+		ids.WriteString(fmt.Sprintf("%s\n", id))
+	}
+
+	util.Send(s, m, util.Message{
+		Title: result.Label,
+		Description: fmt.Sprintf("Story\n**%s**\n%s",
+			result.EditorialNotes.Name, result.EditorialNotes.Short),
+		Link:          result.Link.URL,
+		ImageURL:      iu,
+		FooterText:    ids.String(),
 		FooterIconURL: util.AsLogoURL,
+	})
+
+	return nil
+}
+
+func processRoom(s *discordgo.Session, m *discordgo.MessageCreate,
+	fcID int, cc string, l string) error {
+	page, err := scraper.Room(fcID, cc, l)
+	if err != nil {
+		return err
 	}
+
+	contentIDs := strings.Builder{}
+	for _, contentID := range page.PageData.AdamIds {
+		contentIDs.WriteString(fmt.Sprintf("%d\n", contentID))
+	}
+
+	util.Send(s, m, util.Message{
+		Title:         page.PageData.PageTitle,
+		Description:   fmt.Sprintf("*(%s)*", page.PageData.PageType),
+		FooterText:    contentIDs.String(),
+		FooterIconURL: util.AsLogoURL,
+	})
+
+	return nil
 }
 
 func isPhrase(s string) bool {

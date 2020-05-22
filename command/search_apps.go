@@ -24,7 +24,7 @@ func SearchApps(s *discordgo.Session, m *discordgo.MessageCreate) {
 func getAsAppIDsMessage(keyword string, cc string, l string) util.Message {
 	var d bytes.Buffer
 
-	metadatas := scraper.AsAppIDs(keyword, cc, l)
+	metadatas := scraper.AppIDs(keyword, cc, l)
 	for i, m := range metadatas {
 		d.WriteString(fmt.Sprintf("**%d**: %s (`%s`) %s\n",
 			i+1, m.Title, m.AppID, util.GetStarsBar(int(m.Rating))))
