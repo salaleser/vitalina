@@ -12,12 +12,6 @@ import (
 	"github.com/salaleser/vitalina/util"
 )
 
-var (
-	force = false // принудительно сообщать о ходе работы
-	cc    = "us"
-	l     = ""
-)
-
 type room struct {
 	adamID             string
 	imageURL           string
@@ -37,6 +31,9 @@ type room struct {
 
 // Vitalina is a AI wannabe.
 func Vitalina(s *discordgo.Session, m *discordgo.MessageCreate) {
+	force := false // принудительно сообщать о ходе работы
+	cc := "us"
+	l := ""
 	content := m.Content
 
 	if strings.HasPrefix(m.Content, "?") {
@@ -51,8 +48,8 @@ func Vitalina(s *discordgo.Session, m *discordgo.MessageCreate) {
 		if _, ok := scraper.StoreFronts[strings.ToUpper(arg)]; ok {
 			util.Debug(fmt.Sprintf("Country code %q detected!", arg))
 			cc = arg
-			flag := util.GetFlagByCountryCode(arg)
-			s.MessageReactionAdd(m.ChannelID, m.ID, flag)
+			country := util.Countries[arg]
+			s.MessageReactionAdd(m.ChannelID, m.ID, country.Emoji)
 		}
 
 		if _, ok := scraper.Languages[arg]; ok {
@@ -74,9 +71,11 @@ func Vitalina(s *discordgo.Session, m *discordgo.MessageCreate) {
 			util.Send(s, m, msg)
 		}
 
-		if asLanguageCode, ok := scraper.Languages[arg]; ok {
-			msg := getAsLanguageMessage(asLanguageCode, arg)
-			util.Send(s, m, msg)
+		if force {
+			if asLanguageCode, ok := scraper.Languages[arg]; ok {
+				msg := getAsLanguageMessage(asLanguageCode, arg)
+				util.Send(s, m, msg)
+			}
 		}
 
 		if util.MatchesAsAppID(arg) {
@@ -88,11 +87,11 @@ func Vitalina(s *discordgo.Session, m *discordgo.MessageCreate) {
 			id, _ := strconv.Atoi(arg)
 			err := processStory(s, m, id, cc, l)
 			if err != nil {
-				util.Debug(fmt.Sprintf("story (%d,%s,%s): %v", id, cc, l,
+				util.Debug(fmt.Sprintf("story [id=%d,cc=%s,l=%s]: %v", id, cc, l,
 					err))
 				if force {
 					util.SendError(s, m,
-						fmt.Sprintf("[id=%d,cc=%s,l=%s] %v", id, cc, l, err),
+						fmt.Sprintf("Story [id=%d,cc=%s,l=%s]", id, cc, l),
 						err,
 					)
 				}
@@ -103,11 +102,11 @@ func Vitalina(s *discordgo.Session, m *discordgo.MessageCreate) {
 			id, _ := strconv.Atoi(arg)
 			err := processRoom(s, m, id, cc, l)
 			if err != nil {
-				util.Debug(fmt.Sprintf("room (%d,%s,%s): %v", id, cc, l,
+				util.Debug(fmt.Sprintf("room [id=%d,cc=%s,l=%s]: %v", id, cc, l,
 					err))
 				if force {
 					util.SendError(s, m,
-						fmt.Sprintf("[id=%d,cc=%s,l=%s] %v", id, cc, l, err),
+						fmt.Sprintf("Room [id=%d,cc=%s,l=%s]", id, cc, l),
 						err,
 					)
 				}
@@ -118,11 +117,11 @@ func Vitalina(s *discordgo.Session, m *discordgo.MessageCreate) {
 			id, _ := strconv.Atoi(arg)
 			err := processGrouping(s, m, id, cc, l)
 			if err != nil {
-				util.Debug(fmt.Sprintf("grouping (%d,%s,%s): %v", id, cc, l,
+				util.Debug(fmt.Sprintf("grouping [id=%d,cc=%s,l=%s]: %v", id, cc, l,
 					err))
 				if force {
 					util.SendError(s, m,
-						fmt.Sprintf("[id=%d,cc=%s,l=%s] %v", id, cc, l, err),
+						fmt.Sprintf("Grouping [id=%d,cc=%s,l=%s]", id, cc, l),
 						err,
 					)
 				}
@@ -278,7 +277,8 @@ func getAsGenreMessage(id int, cc string, l string) util.Message {
 
 func getStoreFrontMessage(sf int, cc string) util.Message {
 	return util.Message{
-		Title: fmt.Sprintf("App Store Store Front detected by code «%d",
+		// FIXME перепутано там что-то
+		Title: fmt.Sprintf("App Store Store Front detected by code «%d»",
 			sf),
 		Description:   cc + " " + util.GetFlagByCountryCode(cc),
 		FooterText:    fmt.Sprintf("%d=%s", sf, cc),
@@ -402,7 +402,7 @@ func processStory(s *discordgo.Session, m *discordgo.MessageCreate,
 
 	util.Send(s, m, util.Message{
 		Title: result.Label,
-		Description: fmt.Sprintf("Story\n**%s**\n%s",
+		Description: fmt.Sprintf("%s\n**%s**\n%s", page.PageData.PageType,
 			result.EditorialNotes.Name, result.EditorialNotes.Short),
 		Link:          result.Link.URL,
 		ImageURL:      iu,
@@ -427,7 +427,7 @@ func processRoom(s *discordgo.Session, m *discordgo.MessageCreate,
 
 	util.Send(s, m, util.Message{
 		Title:         page.PageData.PageTitle,
-		Description:   fmt.Sprintf("*(%s)*", page.PageData.PageType),
+		Description:   fmt.Sprintf("%s\n", page.PageData.MetricsBase.PageType),
 		FooterText:    contentIDs.String(),
 		FooterIconURL: util.AsLogoURL,
 	})

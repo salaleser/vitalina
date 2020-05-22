@@ -12,7 +12,6 @@ import (
 
 	"github.com/detectlanguage/detectlanguage-go"
 	"github.com/salaleser/scraper"
-	voicerssgo "github.com/salaleser/voicerss-api-go"
 )
 
 // Config is a configuration.
@@ -45,8 +44,6 @@ const (
 	AppStore
 )
 
-const separator = "=" // разделитель для парсинга файлов
-
 // ReadConfig reads lines from config file into the Config map.
 func ReadConfig() {
 	file, err := os.Open("config")
@@ -59,7 +56,7 @@ func ReadConfig() {
 	var line []string
 	scanner := bufio.NewScanner(file)
 	for scanner.Scan() {
-		line = strings.Split(scanner.Text(), separator)
+		line = strings.Split(scanner.Text(), "=")
 		if len(line) == 2 {
 			key := line[0]
 			value := line[1]
@@ -192,61 +189,6 @@ func GetStoreFromAppID(s string) int {
 	}
 
 	return NA
-}
-
-// GetFlagByCountryCode returns flag emoji.
-// TODO add countries
-func GetFlagByCountryCode(code string) string {
-	switch code {
-	case "ru":
-		return "🇷🇺"
-	case voicerssgo.Russian:
-		return "🇷🇺"
-	case "us":
-		return "🇺🇸"
-	case voicerssgo.EnglishUnitedStates:
-		return "🇺🇸"
-	case "au":
-		return "🇦🇺"
-	case voicerssgo.EnglishAustralia:
-		return "🇦🇺"
-	case "fr":
-		return "🇫🇷"
-	case "de":
-		return "🇩🇪"
-	case "no":
-		return "🇳🇴"
-	case "pl":
-		return "🇵🇱"
-	case "gb":
-		return "🇬🇧"
-	case voicerssgo.EnglishGreatBritain:
-		return "🇬🇧"
-	case "es":
-		return "🇪🇸"
-	case "pt":
-		return "🇵🇹"
-	case "ca":
-		return "🇨🇦"
-	case "br":
-		return "🇧🇷"
-	case voicerssgo.PortugueseBrazil:
-		return "🇧🇷"
-	case "hk":
-		return "🇭🇰"
-	case voicerssgo.ChineseHongKong:
-		return "🇭🇰"
-	case "cn":
-		return "🇨🇳"
-	case voicerssgo.ChineseChina:
-		return "🇨🇳"
-	case "jp":
-		return "🇯🇵"
-	case voicerssgo.Japanese:
-		return "🇯🇵"
-	default:
-		return ""
-	}
 }
 
 // DetectLanguage trying to detect language by given text and returns detections array.
