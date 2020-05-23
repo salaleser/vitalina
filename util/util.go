@@ -389,3 +389,23 @@ func Translate(text string, language string) string {
 	// TODO
 	return ""
 }
+
+// MakeListString returns numerated list
+func MakeListString(a []string) string {
+	builder := strings.Builder{}
+	for i, e := range a {
+		builder.WriteString(fmt.Sprintf("%d: %s\n", i+1, e))
+	}
+
+	return builder.String()
+}
+
+// MakeListInt returns numerated list
+func MakeListInt(a []int) string {
+	builder := strings.Builder{}
+	for i, e := range a {
+		builder.WriteString(fmt.Sprintf("%d: %d\n", i+1, e))
+	}
+
+	return builder.String()
+}

@@ -76,8 +76,6 @@ func messageCreate(s *discordgo.Session, m *discordgo.MessageCreate) {
 		return
 	}
 
-	args := strings.Split(m.Content, " ")
-
 	util.Debug(fmt.Sprintf("*%s #%s @%s: %q", m.GuildID, m.ChannelID,
 		m.Author.Username, m.Message.Content))
 
@@ -97,6 +95,7 @@ func messageCreate(s *discordgo.Session, m *discordgo.MessageCreate) {
 	}
 
 	// Real commands
+	args := strings.Split(m.Content, " ")
 	if cmd, ok := Commands[args[0][1:]]; ok {
 		go cmd.Hanlder(s, m)
 	} else {
