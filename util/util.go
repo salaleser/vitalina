@@ -352,8 +352,13 @@ func GetStarsBar(x int) string {
 }
 
 // ConvertArtworkURL returns valid image URL by App Store artwork special URL.
-func ConvertArtworkURL(url string) string {
-	return strings.Replace(url, "{w}x{h}{c}.{f}", "512x512bb.png", -1)
+func ConvertArtworkURL(url string, w int, h int) string {
+	var result string
+	result = strings.Replace(url, "{w}", strconv.Itoa(w), 1)
+	result = strings.Replace(url, "{h}", strconv.Itoa(w), 1)
+	result = strings.Replace(url, "{c}", "bb", 1)
+	result = strings.Replace(url, "{f}", "png", 1)
+	return result
 }
 
 // ConvertDiscordRegionToLanguage converts discord locale locale to language

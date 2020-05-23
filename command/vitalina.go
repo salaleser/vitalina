@@ -354,8 +354,7 @@ func processApp(s *discordgo.Session, m *discordgo.MessageCreate,
 		if len(screenshots) == 0 {
 			continue
 		}
-
-		iu = util.ConvertArtworkURL(screenshots[0].URL)
+		iu = util.ConvertArtworkURL(screenshots[0].URL, 512, 512)
 	}
 
 	util.Send(s, m, util.Message{
@@ -459,7 +458,7 @@ func processStory(s *discordgo.Session, m *discordgo.MessageCreate,
 
 	iu := ""
 	for _, v := range result.EditorialArtwork {
-		iu = util.ConvertArtworkURL(v.URL)
+		iu = util.ConvertArtworkURL(v.URL, 512, 512)
 		break
 	}
 
@@ -552,7 +551,7 @@ func extractRooms(page *scraper.Page) [][]room {
 					contentIDs:  []string{top.Link.ContentID},
 					designBadge: top.DesignBadge,
 					fcKind:      top.FcKind,
-					imageURL:    util.ConvertArtworkURL(top.Artwork.URL),
+					imageURL:    util.ConvertArtworkURL(top.Artwork.URL, 512, 512),
 				})
 			}
 		} else {
