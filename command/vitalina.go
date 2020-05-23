@@ -32,6 +32,7 @@ type room struct {
 // Vitalina is a AI wannabe.
 func Vitalina(s *discordgo.Session, m *discordgo.MessageCreate) {
 	force := false // принудительно сообщать о ходе работы
+
 	cc := "us"
 	l := ""
 	content := m.Content
@@ -45,59 +46,90 @@ func Vitalina(s *discordgo.Session, m *discordgo.MessageCreate) {
 
 	// Scan for country code and language
 	for _, arg := range args {
-		if _, ok := scraper.StoreFronts[strings.ToUpper(arg)]; ok {
+		if _, ok := scraper.StoreFronts[arg]; ok {
 			util.Debug(fmt.Sprintf("Country code %q detected!", arg))
 			cc = arg
-			country := util.Countries[arg]
+			country := util.Countries[strings.ToLower(arg)]
 			s.MessageReactionAdd(m.ChannelID, m.ID, country.Emoji)
 		}
 
 		if _, ok := scraper.Languages[arg]; ok {
 			util.Debug(fmt.Sprintf("Language %q detected!", arg))
 			l = arg
-			isoLanguageCode := strings.Split(arg, "-")[0]
-			language := util.Languages[isoLanguageCode]
+			language := util.Languages[strings.Split(arg, "-")[0]]
 			s.MessageReactionAdd(m.ChannelID, m.ID, language.Emoji)
 		}
 	}
 
 	// Scan for IDs
 	for _, arg := range args {
+		// Store Front
 		id, _ := strconv.Atoi(arg)
-		// FIXME коды в верхнем регистре хранятся в мапе
 		if util.ContainsMap(scraper.StoreFronts, id) {
 			cc := util.GetCcByStoreFront(id)
-			country := util.Countries[cc]
+			country := util.Countries[strings.ToLower(cc)]
+			g, _ := s.Guild(m.GuildID)
+			rl := util.ConvertDiscordRegionToLanguage(g.Region)
+			translate := country.Translate(rl)
 			util.Send(s, m, util.Message{
-				Title: fmt.Sprintf("App Store Store Front detected by code «%d»",
+				Title: fmt.Sprintf("App Store Store Front detected by ID «%d»",
 					id),
-				Description: fmt.Sprintf("%s %s | %s", country.Emoji,
-					country.English, country.Russian),
-				FooterText:    fmt.Sprintf("%d=%s", id, cc),
+				Description: fmt.Sprintf("%s\n%s (%s)", country.Emoji,
+					country.Title, translate),
+				FooterText: fmt.Sprintf("Country Code: %s\nStore Front ID: %d",
+					cc, id),
 				FooterIconURL: util.AsLogoURL,
 			})
 		}
 
 		if force {
+			// Coutry Code
 			if sf, ok := scraper.StoreFronts[strings.ToUpper(arg)]; ok {
-				country := util.Countries[arg]
+				country := util.Countries[strings.ToLower(arg)]
+				g, _ := s.Guild(m.GuildID)
+				rl := util.ConvertDiscordRegionToLanguage(g.Region)
+				translate := country.Translate(rl)
 				util.Send(s, m, util.Message{
-					Title: fmt.Sprintf("App Store Country detected by code «%s»",
-						cc),
-					Description: fmt.Sprintf("%d %s %s | %s", sf, country.Emoji,
-						country.English, country.Russian),
-					FooterText:    fmt.Sprintf("%s=%d", cc, sf),
+					Title: fmt.Sprintf("App Store Country Code detected by code «%s»",
+						arg),
+					Description: fmt.Sprintf("%s %s", country.Emoji,
+						translate),
+					FooterText: fmt.Sprintf("Country Code: %s\n"+
+						"Store Front ID: %d\nTitle: %s", strings.ToUpper(arg),
+						sf, country.Title),
 					FooterIconURL: util.AsLogoURL,
 				})
 			}
 
-			if asLanguageCode, ok := scraper.Languages[arg]; ok {
+			// App Store Langauge Code
+			if asl, ok := scraper.Languages[arg]; ok {
+				language := util.Languages[strings.Split(arg, "-")[0]]
+				g, _ := s.Guild(m.GuildID)
+				rl := util.ConvertDiscordRegionToLanguage(g.Region)
+				translate := language.Translate(rl)
 				util.Send(s, m, util.Message{
-					// FIXME перепутано там что-то
 					Title: fmt.Sprintf("App Store Langauge detected by code «%s»",
-						asLanguageCode),
-					Description:   l,
-					FooterText:    fmt.Sprintf("%s=%s", l, asLanguageCode),
+						arg),
+					Description: fmt.Sprintf("%s %s (%s)",
+						language.Emoji, translate, language.Native),
+					FooterText: fmt.Sprintf("Language Code: %s\n"+
+						"Language ID: %d\nTitle: %s", arg, asl, language.Title),
+					FooterIconURL: util.AsLogoURL,
+				})
+			}
+
+			// ISO 3166-1 alpha-2 code
+			if isol, ok := util.Languages[arg]; ok {
+				g, _ := s.Guild(m.GuildID)
+				rl := util.ConvertDiscordRegionToLanguage(g.Region)
+				translate := isol.Translate(rl)
+				util.Send(s, m, util.Message{
+					Title: fmt.Sprintf("ISO 3166-1 alpha-2 code detected by code «%s»",
+						arg),
+					Description: fmt.Sprintf("%s %s (%s)",
+						isol.Emoji, translate, isol.Native),
+					FooterText: fmt.Sprintf("ISO 3166-1 alpha-2 code: %s\n"+
+						"Title: %s", arg, isol.Title),
 					FooterIconURL: util.AsLogoURL,
 				})
 			}
@@ -346,36 +378,35 @@ func processGrouping(s *discordgo.Session, m *discordgo.MessageCreate,
 		}
 	}
 
-	for _, room := range topSection {
-		contentIDs := strings.Builder{}
-		for _, contentID := range room.contentIDs {
-			contentIDs.WriteString(fmt.Sprintf("%s\n", contentID))
-		}
-
-		time.Sleep(500)
-		util.Send(s, m, util.Message{
-			Title:         room.designBadge,
-			Description:   fmt.Sprintf("%s", room.tagline),
-			ImageURL:      util.ConvertArtworkURL(room.imageURL),
-			FooterText:    contentIDs.String(),
-			FooterIconURL: util.AsLogoURL,
-		})
+	topDescription := strings.Builder{}
+	for i, room := range topSection {
+		topDescription.WriteString(fmt.Sprintf("**%d** [%s]: %q (%s)\n",
+			i+1, room.fcKind, room.designBadge, room.contentIDs[0]))
 	}
 
-	for _, room := range regularSection {
-		contentIDs := strings.Builder{}
-		for _, contentID := range room.contentIDs {
-			contentIDs.WriteString(fmt.Sprintf("%s\n", contentID))
-		}
+	util.Send(s, m, util.Message{
+		Title:         fmt.Sprintf("TOP SECTION for Grouping ID: %d", id),
+		Description:   topDescription.String(),
+		FooterText:    "Grouping",
+		FooterIconURL: util.AsLogoURL,
+	})
 
-		time.Sleep(500)
-		util.Send(s, m, util.Message{
-			Title:         room.name,
-			Description:   fmt.Sprintf("%s", room.displayStyle),
-			FooterText:    contentIDs.String(),
-			FooterIconURL: util.AsLogoURL,
-		})
+	regularDescription := strings.Builder{}
+	for i, room := range regularSection {
+		cIDs := strings.Builder{}
+		for i, cID := range room.contentIDs {
+			cIDs.WriteString(fmt.Sprintf(", %d:%s", i+1, cID))
+		}
+		regularDescription.WriteString(fmt.Sprintf("**%d** [%s]: %q (%s)\n\n",
+			i+1, room.fcKind, room.name, cIDs.String()[2:]))
 	}
+
+	util.Send(s, m, util.Message{
+		Title:         fmt.Sprintf("REGULAR SECTION for Grouping ID: %d", id),
+		Description:   regularDescription.String(),
+		FooterText:    "Grouping",
+		FooterIconURL: util.AsLogoURL,
+	})
 
 	return nil
 }

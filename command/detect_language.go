@@ -57,7 +57,7 @@ func getLanguageDetectionMessage(detections []util.LanguageDetection) util.Messa
 		}
 
 		ds := fmt.Sprintf("**%d**: %s [**%f**] %s | %s | %s\n",
-			i+1, r, d.ConfidenceScore/10000, l.English, l.Russian, l.Native)
+			i+1, r, d.ConfidenceScore/10000, l.Title, l.TitleRu, l.Native)
 		description.WriteString(ds)
 	}
 

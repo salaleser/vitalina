@@ -2,11 +2,27 @@ package util
 
 // Language is a language structure.
 type Language struct {
-	Code    string
+	// Code is a ISO 3166-1 alpha-2 code
+	Code string
+	// Emoji FIXME: не всегда соответствует действительности
 	Emoji   string
-	English string
-	Russian string
+	Title   string
+	TitleRu string
 	Native  string
+}
+
+// Translate translates language title.
+func (l Language) Translate(language string) string {
+	switch language {
+	case "en-us":
+	case "en-gb":
+	case "en-au":
+		return l.Title
+	case "ru-ru":
+		return l.TitleRu
+	}
+
+	return l.Title
 }
 
 // Languages contains supported languages.

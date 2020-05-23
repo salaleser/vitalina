@@ -55,7 +55,11 @@ func Tts(s *discordgo.Session, m *discordgo.MessageCreate) {
 		return
 	}
 
-	language := getLanguage(tts, s.State.Settings.Locale)
+	language := "en-us"
+	detections := util.DetectLanguage(tts)
+	if len(detections) > 0 {
+		language = detections[0].Language
+	}
 
 	filename, counter := db.GetTTS(tts, language)
 
@@ -125,65 +129,4 @@ func isProper(text string) bool {
 	}
 
 	return !p1.MatchString(text) && !p2.MatchString(text) && !p3.MatchString(text)
-}
-
-func getLanguage(tts string, locale string) string {
-	language := voicerssgo.EnglishUnitedStates
-	switch locale {
-	case "Brazil":
-		language = voicerssgo.PortugueseBrazil
-		break
-	case "Western Europe":
-	case "Central Europe":
-		language = voicerssgo.EnglishGreatBritain
-		break
-	case "Hong Kong":
-		language = voicerssgo.ChineseHongKong
-		break
-	case "Japan":
-		language = voicerssgo.Japanese
-		break
-	case "Russia":
-		language = voicerssgo.Russian
-		break
-	case "Sydney":
-		language = voicerssgo.EnglishAustralia
-		break
-	case "Singapore":
-	case "US Central":
-	case "US East":
-	case "US South":
-	case "US West":
-		language = voicerssgo.EnglishUnitedStates
-		break
-	}
-
-	chPattern, err := regexp.Compile("^[\u4E00-\u9FA5]+$")
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "ch regexp compilation: %v\n", err)
-	}
-
-	ruPattern, err := regexp.Compile("^[А-ЯЁа-яё]+$")
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "ru regexp compilation: %v\n", err)
-	}
-
-	enPattern, err := regexp.Compile("^[A-Za-z]+$")
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "en regexp compilation: %v\n", err)
-	}
-
-	if chPattern.MatchString(tts) {
-		language = voicerssgo.ChineseChina
-	}
-
-	if ruPattern.MatchString(tts) {
-		language = voicerssgo.Russian
-	}
-
-	if enPattern.MatchString(tts) {
-		language = voicerssgo.EnglishUnitedStates
-	}
-
-	return language
 }

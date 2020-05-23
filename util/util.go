@@ -78,6 +78,8 @@ func InitLangaugeDetection() {
 // MatchesAsAppID reports whether the string s matches to App Store
 // Application ID.
 func MatchesAsAppID(s string) bool {
+	// min known id 281736535
+	// max known id 1514865198
 	r, _ := regexp.Compile("^\\d{9,10}$")
 	if !r.MatchString(s) {
 		return false
@@ -89,12 +91,12 @@ func MatchesAsAppID(s string) bool {
 	}
 
 	// TODO уточнить
-	if id < 100000000 {
+	if id < 200000000 {
 		return false
 	}
 
 	// TODO уточнить
-	if id > 9999999999 {
+	if id > 1600000000 {
 		return false
 	}
 
@@ -105,6 +107,8 @@ func MatchesAsAppID(s string) bool {
 // MatchesAsGroupingID reports whether the string s matches to App Store
 // Grouping ID.
 func MatchesAsGroupingID(s string) bool {
+	// min known id
+	// max known id
 	r, _ := regexp.Compile("^\\d{5,6}$")
 	if !r.MatchString(s) {
 		return false
@@ -131,8 +135,30 @@ func MatchesAsGroupingID(s string) bool {
 
 // MatchesAsRoomID reports whether the string s matches to App Store Room ID.
 func MatchesAsRoomID(s string) bool {
-	r, _ := regexp.Compile("^\\d{2,20}$")
-	return r.MatchString(s)
+	// min known id 1230164344
+	// max known id 1514843473
+	r, _ := regexp.Compile("^\\d{10}$")
+	if !r.MatchString(s) {
+		return false
+	}
+
+	id, err := strconv.Atoi(s)
+	if err != nil {
+		return false
+	}
+
+	// TODO уточнить
+	if id < 1000000000 {
+		return false
+	}
+
+	// TODO уточнить
+	if id > 2000000000 {
+		return false
+	}
+
+	Debug("Room ID detected!")
+	return true
 }
 
 // MatchesAsGenreID reports whether the string s matches to App Store Genre ID.
@@ -172,8 +198,30 @@ func MatchesAsGenreID(s string) bool {
 
 // MatchesAsStoryID reports whether the string s matches to App Store Story ID.
 func MatchesAsStoryID(s string) bool {
-	r, _ := regexp.Compile("^\\d{9,10}$")
-	return r.MatchString(s)
+	// min known id 1247570882
+	// max known id 1513553871
+	r, _ := regexp.Compile("^\\d{10}$")
+	if !r.MatchString(s) {
+		return false
+	}
+
+	id, err := strconv.Atoi(s)
+	if err != nil {
+		return false
+	}
+
+	// TODO уточнить
+	if id < 1000000000 {
+		return false
+	}
+
+	// TODO уточнить
+	if id > 2000000000 {
+		return false
+	}
+
+	Debug("Story ID detected!")
+	return true
 }
 
 // GetStoreFromAppID returns 0 if appID is not an application ID.
@@ -276,8 +324,7 @@ func ContainsMap(m map[string]int, x int) bool {
 func GetCcByStoreFront(storeFront int) string {
 	for cc, sf := range scraper.StoreFronts {
 		if sf == storeFront {
-			// FIXME scraper.StoreFronts содержит ключи в верхнем регистре
-			return strings.ToLower(cc)
+			return cc
 		}
 	}
 
@@ -307,4 +354,38 @@ func GetStarsBar(x int) string {
 // ConvertArtworkURL returns valid image URL by App Store artwork special URL.
 func ConvertArtworkURL(url string) string {
 	return strings.Replace(url, "{w}x{h}{c}.{f}", "512x512bb.png", -1)
+}
+
+// ConvertDiscordRegionToLanguage converts discord locale locale to language
+// and returns it.
+func ConvertDiscordRegionToLanguage(locale string) string {
+	switch locale {
+	case "brazil":
+		return "pt-br"
+	case "western europe":
+	case "central europe":
+		return "en-gb"
+	case "hong kong":
+		return "zh-hk"
+	case "japan":
+		return "ja-jp"
+	case "russia":
+		return "ru-ru"
+	case "sydney":
+		return "en-ua"
+	case "singapore":
+	case "us central":
+	case "us east":
+	case "us south":
+	case "us west":
+		return "en-us"
+	}
+
+	return "en-us"
+}
+
+// Translate tries to translate text text to language language.
+func Translate(text string, language string) string {
+	// TODO
+	return ""
 }

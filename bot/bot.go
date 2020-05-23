@@ -78,17 +78,7 @@ func messageCreate(s *discordgo.Session, m *discordgo.MessageCreate) {
 
 	args := strings.Split(m.Content, " ")
 
-	guild, err := s.Guild(m.GuildID)
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "get guild: %v\n", err)
-	}
-
-	channel, err := s.Channel(m.ChannelID)
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "get channel: %v\n", err)
-	}
-
-	util.Debug(fmt.Sprintf("*%s #%s @%s: %q", guild.Name, channel.Name,
+	util.Debug(fmt.Sprintf("*%s #%s @%s: %q", m.GuildID, m.ChannelID,
 		m.Author.Username, m.Message.Content))
 
 	// Custom prefixes (aliases)
