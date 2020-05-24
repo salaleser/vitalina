@@ -6,14 +6,9 @@ import (
 	"math/rand"
 	"os"
 	"regexp"
-	"strconv"
 	"strings"
-	"time"
 
 	"github.com/bwmarrin/discordgo"
-	"github.com/salaleser/vitalina/db"
-	"github.com/salaleser/vitalina/util"
-	voicerssgo "github.com/salaleser/voicerss-api-go"
 )
 
 const path = "cache/"
@@ -34,9 +29,9 @@ func Tts(s *discordgo.Session, m *discordgo.MessageCreate) {
 			dirSize += file.Size()
 		}
 
-		c := db.GetTTSCount()
-		text := fmt.Sprintf("База данных содержит %d ссылок.\nВсего в кэше %d файлов (%d Mb)", c, len(dir), dirSize/1024/1024)
-		s.ChannelMessageSend(m.ChannelID, text)
+		// c := db.GetTTSCount()
+		// text := fmt.Sprintf("База данных содержит %d ссылок.\nВсего в кэше %d файлов (%d Mb)", c, len(dir), dirSize/1024/1024)
+		// s.ChannelMessageSend(m.ChannelID, text)
 
 		return
 	}
@@ -55,61 +50,61 @@ func Tts(s *discordgo.Session, m *discordgo.MessageCreate) {
 		return
 	}
 
-	language := "en-us"
-	detections := util.DetectLanguage(tts)
-	if len(detections) > 0 {
-		language = detections[0].Language
-	}
+	// language := "en-us"
+	// detections := util.DetectLanguage(tts)
+	// if len(detections) > 0 {
+	// 	language = detections[0].Language
+	// }
 
-	filename, counter := db.GetTTS(tts, language)
+	// filename, counter := db.GetTTS(tts, language)
 
-	var cached bool
-	var file *os.File
-	if counter > 0 {
-		counter++
-		file, err = os.Open(path + filename + ".wav")
-		if err != nil {
-			fmt.Fprintf(os.Stderr, "sound file opening: %v\n", err)
-		}
-		cached = true
-	} else {
-		var zeroes string
-		switch len(strconv.Itoa(counter)) {
-		case 1:
-			zeroes = "0000"
-			break
-		case 2:
-			zeroes = "000"
-			break
-		case 3:
-			zeroes = "00"
-			break
-		case 4:
-			zeroes = "0"
-			break
-		default:
-			zeroes = ""
-		}
+	// var cached bool
+	// var file *os.File
+	// if counter > 0 {
+	// 	counter++
+	// 	file, err = os.Open(path + filename + ".wav")
+	// 	if err != nil {
+	// 		fmt.Fprintf(os.Stderr, "sound file opening: %v\n", err)
+	// 	}
+	// 	cached = true
+	// } else {
+	// 	var zeroes string
+	// 	switch len(strconv.Itoa(counter)) {
+	// 	case 1:
+	// 		zeroes = "0000"
+	// 		break
+	// 	case 2:
+	// 		zeroes = "000"
+	// 		break
+	// 	case 3:
+	// 		zeroes = "00"
+	// 		break
+	// 	case 4:
+	// 		zeroes = "0"
+	// 		break
+	// 	default:
+	// 		zeroes = ""
+	// 	}
 
-		filename = path + zeroes + strconv.Itoa(counter+1)
-		file, err = voicerssgo.Get(util.Config["voice-rss-api-key"], language, tts, filename)
-		if err != nil {
-			fmt.Fprintf(os.Stderr, "getting sound file: %v\n", err)
-			return
-		}
-	}
+	// 	filename = path + zeroes + strconv.Itoa(counter+1)
+	// 	file, err = voicerssgo.Get(util.Config["voice-rss-api-key"], language, tts, filename)
+	// 	if err != nil {
+	// 		fmt.Fprintf(os.Stderr, "getting sound file: %v\n", err)
+	// 		return
+	// 	}
+	// }
 
-	db.UpdateTTS(tts, filename, counter, language, util.Now())
+	// db.UpdateTTS(tts, filename, counter, language, util.Now())
 
-	util.PlayFile(s, m, file.Name())
+	// util.PlayFile(s, m, file.Name())
 
-	country := util.Countries[language]
-	s.MessageReactionAdd(m.ChannelID, m.ID, country.Emoji) // TODO
+	// country := util.Countries[language]
+	// s.MessageReactionAdd(m.ChannelID, m.ID, country.Emoji) // TODO
 
-	time.Sleep(100 * time.Millisecond)
-	if cached {
-		s.MessageReactionAdd(m.ChannelID, m.ID, "💾")
-	}
+	// time.Sleep(100 * time.Millisecond)
+	// if cached {
+	// 	s.MessageReactionAdd(m.ChannelID, m.ID, "💾")
+	// }
 }
 
 func isProper(text string) bool {

@@ -1,89 +1,78 @@
 package db
 
-import (
-	"context"
-	"errors"
-	"fmt"
-	"os"
-	"strconv"
+// func GetTTSCount() int {
+// 	sql := "SELECT COUNT(*) FROM tts"
 
-	"github.com/jackc/pgx"
-	"github.com/salaleser/vitalina/util"
-)
+// 	rows := query(sql)
 
-func GetTTSCount() int {
-	sql := "SELECT COUNT(*) FROM tts"
+// 	if rows == nil {
+// 		fmt.Fprintf(os.Stderr, "tts execute query: %v\n", errors.New("rows == nil"))
+// 		return -1
+// 	}
 
-	rows := query(sql)
+// 	var c int
+// 	for rows.Next() {
+// 		err := rows.Scan(&c)
+// 		if err != nil {
+// 			fmt.Fprintf(os.Stderr, "Scan1 tts count failed: %v\n", err)
+// 			return -1
+// 		}
+// 	}
 
-	if rows == nil {
-		fmt.Fprintf(os.Stderr, "tts execute query: %v\n", errors.New("rows == nil"))
-		return -1
-	}
+// 	return c
+// }
 
-	var c int
-	for rows.Next() {
-		err := rows.Scan(&c)
-		if err != nil {
-			fmt.Fprintf(os.Stderr, "Scan1 tts count failed: %v\n", err)
-			return -1
-		}
-	}
+// func GetTTS(tts string, language string) (string, int) {
+// 	sql := "SELECT filename, counter FROM tts WHERE text = '" + tts + "' AND language = '" + language + "'"
 
-	return c
-}
+// 	rows := query(sql)
 
-func GetTTS(tts string, language string) (string, int) {
-	sql := "SELECT filename, counter FROM tts WHERE text = '" + tts + "' AND language = '" + language + "'"
+// 	var filename string
+// 	var counter int
+// 	for rows.Next() {
+// 		err := rows.Scan(&filename, &counter)
+// 		if err != nil {
+// 			fmt.Fprintf(os.Stderr, "Scan tts failed: %v\n", err)
+// 		}
+// 	}
 
-	rows := query(sql)
+// 	return filename, counter
+// }
 
-	var filename string
-	var counter int
-	for rows.Next() {
-		err := rows.Scan(&filename, &counter)
-		if err != nil {
-			fmt.Fprintf(os.Stderr, "Scan tts failed: %v\n", err)
-		}
-	}
+// func UpdateTTS(tts string, filename string, counter int, language string, updated string) {
+// 	sql := fmt.Sprintf("INSERT INTO tts (text, filename, counter, language, updated) VALUES ('%s','%s',%d,'%s','%s') ON CONFLICT (text) DO UPDATE SET (counter, updated) = (%d,'%s')",
+// 		tts, filename, counter, language, updated, counter, updated)
 
-	return filename, counter
-}
+// 	query(sql)
+// }
 
-func UpdateTTS(tts string, filename string, counter int, language string, updated string) {
-	sql := fmt.Sprintf("INSERT INTO tts (text, filename, counter, language, updated) VALUES ('%s','%s',%d,'%s','%s') ON CONFLICT (text) DO UPDATE SET (counter, updated) = (%d,'%s')",
-		tts, filename, counter, language, updated, counter, updated)
+// func query(sql string) pgx.Rows {
+// 	port, _ := strconv.ParseInt(util.Config["db-port"], 10, 16)
+// 	config, err := pgx.ParseConfig("")
+// 	config.Host = util.Config["db-host"]
+// 	config.Port = uint16(port)
+// 	config.User = util.Config["db-user"]
+// 	config.Password = util.Config["db-password"]
+// 	config.Database = "vacdbot"
+// 	if err != nil {
+// 		fmt.Fprintf(os.Stderr, "Unable to parse connection string: %v\n", err)
+// 		return nil
+// 	}
 
-	query(sql)
-}
+// 	ctx := context.Background()
+// 	conn, err := pgx.ConnectConfig(ctx, config)
+// 	if err != nil {
+// 		fmt.Fprintf(os.Stderr, "Unable to connection to database: %v\n", err)
+// 		return nil
+// 	}
+// 	defer conn.Close(ctx)
 
-func query(sql string) pgx.Rows {
-	port, _ := strconv.ParseInt(util.Config["db-port"], 10, 16)
-	config, err := pgx.ParseConfig("")
-	config.Host = util.Config["db-host"]
-	config.Port = uint16(port)
-	config.User = util.Config["db-user"]
-	config.Password = util.Config["db-password"]
-	config.Database = "vacdbot"
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Unable to parse connection string: %v\n", err)
-		return nil
-	}
+// 	rows, err := conn.Query(context.Background(), sql)
+// 	if err != nil {
+// 		fmt.Fprintf(os.Stderr, "Query1 failed: %v\n", err)
+// 		return nil
+// 	}
+// 	defer rows.Close()
 
-	ctx := context.Background()
-	conn, err := pgx.ConnectConfig(ctx, config)
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Unable to connection to database: %v\n", err)
-		return nil
-	}
-	defer conn.Close(ctx)
-
-	rows, err := conn.Query(context.Background(), sql)
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Query1 failed: %v\n", err)
-		return nil
-	}
-	defer rows.Close()
-
-	return rows
-}
+// 	return rows
+// }
