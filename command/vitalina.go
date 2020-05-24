@@ -13,14 +13,15 @@ import (
 )
 
 type room struct {
-	adamID             string
-	contentIDs         []string
+	adamID string
+	// contentIDs         []string
 	designBadge        string
 	designTag          string
 	displayStyle       string
 	doNotFilter        bool
 	fcKind             string
 	imageURL           string
+	links              []string
 	name               string
 	seeAllURL          string
 	shouldUseGradients bool
@@ -72,7 +73,7 @@ func Vitalina(s *discordgo.Session, m *discordgo.MessageCreate) {
 			rl := util.ConvertDiscordRegionToLanguage(g.Region)
 			translate := country.Translate(rl)
 			util.Send(s, m, util.Message{
-				Title: fmt.Sprintf("App Store Store Front detected by ID «%d»",
+				Title: fmt.Sprintf("App Store Store Front detected by ID `%d`",
 					id),
 				Description: fmt.Sprintf("%s\n%s (%s)", country.Emoji,
 					country.Title, translate),
@@ -90,7 +91,7 @@ func Vitalina(s *discordgo.Session, m *discordgo.MessageCreate) {
 				rl := util.ConvertDiscordRegionToLanguage(g.Region)
 				translate := country.Translate(rl)
 				util.Send(s, m, util.Message{
-					Title: fmt.Sprintf("App Store Country Code detected by code «%s»",
+					Title: fmt.Sprintf("App Store Country Code detected by code %q",
 						arg),
 					Description: fmt.Sprintf("%s %s", country.Emoji,
 						translate),
@@ -108,7 +109,7 @@ func Vitalina(s *discordgo.Session, m *discordgo.MessageCreate) {
 				rl := util.ConvertDiscordRegionToLanguage(g.Region)
 				translate := language.Translate(rl)
 				util.Send(s, m, util.Message{
-					Title: fmt.Sprintf("App Store Langauge detected by code «%s»",
+					Title: fmt.Sprintf("App Store Langauge detected by code %q",
 						arg),
 					Description: fmt.Sprintf("%s %s (%s)",
 						language.Emoji, translate, language.Native),
@@ -124,7 +125,7 @@ func Vitalina(s *discordgo.Session, m *discordgo.MessageCreate) {
 				rl := util.ConvertDiscordRegionToLanguage(g.Region)
 				translate := isol.Translate(rl)
 				util.Send(s, m, util.Message{
-					Title: fmt.Sprintf("ISO 639-1 code detected by code «%s»",
+					Title: fmt.Sprintf("ISO 639-1 code detected by code %q",
 						arg),
 					Description: fmt.Sprintf("%s %s (%s)",
 						isol.Emoji, translate, isol.Native),
@@ -228,7 +229,7 @@ func Vitalina(s *discordgo.Session, m *discordgo.MessageCreate) {
 	}
 
 	// Scan for phrases
-	if isPhrase(m.Content) {
+	if isQuestion(m.Content) {
 		time.Sleep(100)
 		s.MessageReactionAdd(m.ChannelID, m.ID, "➕")
 		time.Sleep(100)
@@ -317,8 +318,14 @@ func processGpApp(s *discordgo.Session, m *discordgo.MessageCreate,
 	metadata := scraper.GpMetadata(packageName, gl, hl)
 
 	util.Send(s, m, util.Message{
-		Title:       metadata.Title,
-		Description: metadata.Subtitle,
+		Title: fmt.Sprintf("Application detected by package name `%s`",
+			packageName),
+		Description: fmt.Sprintf(""+
+			"__**%s**__\n"+
+			"%s",
+			metadata.Title,
+			metadata.Subtitle,
+		),
 		Link: fmt.Sprintf("https://play.google.com/store/apps/details?id=%s",
 			packageName),
 		ImageURL:     metadata.Screenshot1,
@@ -340,29 +347,36 @@ func processGpApp(s *discordgo.Session, m *discordgo.MessageCreate,
 }
 
 func processApp(s *discordgo.Session, m *discordgo.MessageCreate,
-	appID int, cc string, l string) error {
-	page, err := scraper.App(appID, cc, l)
+	id int, cc string, l string) error {
+	page, err := scraper.App(id, cc, l)
 	if err != nil {
 		return err
 	}
 
-	results := page.StorePlatformData["product-dv"].Results
-	result := results[strconv.Itoa(appID)]
+	const pd string = "product-dv"
+	result := page.StorePlatformData[pd].Results[strconv.Itoa(id)]
 
 	iu := ""
 	for _, screenshots := range result.ScreenshotsByType {
-		if len(screenshots) == 0 {
-			continue
+		if len(screenshots) > 0 {
+			iu = util.ConvertArtworkURL(screenshots[0].URL, 512, 512)
+			break
 		}
-		iu = util.ConvertArtworkURL(screenshots[0].URL, 512, 512)
 	}
 
 	util.Send(s, m, util.Message{
-		Title:        result.Name,
-		Description:  result.Subtitle,
+		Title: fmt.Sprintf("Application detected by ID `%d`", id),
+		Description: fmt.Sprintf(""+
+			"__**%s**__\n"+
+			"%s\n\n"+
+			"**Related Editorial Items:**\n%s",
+			result.Name,
+			result.Subtitle,
+			util.MakeList(result.RelatedEditorialItems),
+		),
 		Link:         result.URL,
 		ImageURL:     iu,
-		ThumbnailURL: result.Artwork.URL,
+		ThumbnailURL: util.ConvertArtworkURL(result.Artwork.URL, 512, 512),
 		FooterText: fmt.Sprintf(""+
 			"ID: %s\n"+
 			"Author: %s\n"+
@@ -370,14 +384,16 @@ func processApp(s *discordgo.Session, m *discordgo.MessageCreate,
 			"Rating Count: %d\n"+
 			"Bundle ID: %s\n"+
 			"Artist ID: %s\n"+
-			"Related Editorial Items: [%s]",
+			"Store Front: %s\n"+
+			"Language ID: %s",
 			result.ID,
 			result.ArtistName,
 			util.GetStarsBar(int(result.UserRating.Value)),
 			result.UserRating.RatingCount,
 			result.BundleID,
 			result.ArtistID,
-			util.MakeListString(result.RelatedEditorialItems),
+			page.PageData.MetricsBase.StoreFront,
+			page.PageData.MetricsBase.Language,
 		),
 		FooterIconURL: util.AsLogoURL,
 	})
@@ -394,19 +410,36 @@ func processGenre(s *discordgo.Session, m *discordgo.MessageCreate,
 
 	genreTitle := strings.Split(page.PageData.MetricsBase.PageDetails, "_")[0]
 	groupingID, _ := strconv.Atoi(page.PageData.MetricsBase.PageID)
+	link := strings.Replace(page.PageData.AllCategoriesLink.URL, "36",
+		strconv.Itoa(id), 1)
+
+	sections := buildRooms(&page)
+	d := strings.Builder{}
+	for i, s := range sections {
+		d.WriteString(fmt.Sprintf(""+
+			"**Section %d:**\n"+
+			"%s\n",
+			i+1,
+			buildDescription(s),
+		))
+	}
 
 	util.Send(s, m, util.Message{
-		Title:       fmt.Sprintf("Genre detected by ID «%d»", id),
-		Description: fmt.Sprintf("**%s**", genreTitle),
-		Link: strings.Replace(page.PageData.AllCategoriesLink.URL,
-			"36", strconv.Itoa(id), 1),
+		Title: fmt.Sprintf("Genre detected by ID `%d`", id),
+		Description: fmt.Sprintf(""+
+			"__**%s**__\n\n"+
+			"%s",
+			genreTitle,
+			d.String(),
+		),
+		Link: link,
 		FooterText: fmt.Sprintf(""+
 			"ID: %d\n"+
 			"Title: %s\n"+
 			"Grouping ID: %d\n"+
 			"Store Front: %s\n"+
 			"Language ID: %s",
-			id,
+			page.PageData.GenreID,
 			genreTitle,
 			groupingID,
 			page.PageData.MetricsBase.StoreFront,
@@ -414,15 +447,6 @@ func processGenre(s *discordgo.Session, m *discordgo.MessageCreate,
 		),
 		FooterIconURL: util.AsLogoURL,
 	})
-
-	sections := extractRooms(&page)
-
-	sendTopRooms(s, m, sections[0], id, groupingID,
-		page.PageData.MetricsBase.StoreFront,
-		page.PageData.MetricsBase.Language)
-	sendRegularRooms(s, m, sections[1], id, groupingID,
-		page.PageData.MetricsBase.StoreFront,
-		page.PageData.MetricsBase.Language)
 
 	return nil
 }
@@ -434,27 +458,45 @@ func processGrouping(s *discordgo.Session, m *discordgo.MessageCreate,
 		return err
 	}
 
-	sections := extractRooms(&page)
+	sections := buildRooms(&page)
+	d := strings.Builder{}
+	for i, s := range sections {
+		d.WriteString(fmt.Sprintf(""+
+			"**Section %d:**\n"+
+			"%s\n",
+			i+1,
+			buildDescription(s),
+		))
+	}
 
-	sendTopRooms(s, m, sections[0], -1, id,
-		page.PageData.MetricsBase.StoreFront,
-		page.PageData.MetricsBase.Language)
-	sendRegularRooms(s, m, sections[1], -1, id,
-		page.PageData.MetricsBase.StoreFront,
-		page.PageData.MetricsBase.Language)
+	util.Send(s, m, util.Message{
+		Title:       fmt.Sprintf("Grouping detected by ID `%d`", id),
+		Description: d.String(),
+		FooterText: fmt.Sprintf(""+
+			"ID: %s\n"+
+			"Content ID: %s\n"+
+			"Store Front: %s\n"+
+			"Language ID: %s",
+			page.PageData.MetricsBase.PageID,
+			page.PageData.ContentID,
+			page.PageData.MetricsBase.StoreFront,
+			page.PageData.MetricsBase.Language,
+		),
+		FooterIconURL: util.AsLogoURL,
+	})
 
 	return nil
 }
 
 func processStory(s *discordgo.Session, m *discordgo.MessageCreate,
-	storyID int, cc string, l string) error {
-	page, err := scraper.Story(storyID, cc, l)
+	id int, cc string, l string) error {
+	page, err := scraper.Story(id, cc, l)
 	if err != nil {
 		return err
 	}
 
-	results := page.StorePlatformData["editorial-item-product"].Results
-	result := results[strconv.Itoa(storyID)]
+	const eip string = "editorial-item-product"
+	result := page.StorePlatformData[eip].Results[strconv.Itoa(id)]
 
 	iu := ""
 	for _, v := range result.EditorialArtwork {
@@ -463,17 +505,16 @@ func processStory(s *discordgo.Session, m *discordgo.MessageCreate,
 	}
 
 	util.Send(s, m, util.Message{
-		Title: fmt.Sprintf("Story detected by ID «%d»", storyID),
+		Title: fmt.Sprintf("Story detected by ID `%d`", id),
 		Description: fmt.Sprintf(""+
-			"**%s**\n"+
+			"__**%s**__\n"+
 			"%s\n"+
 			"%s\n\n"+
-			"**App IDs:**\n"+
-			"%s",
+			"**App IDs:**\n%s",
 			result.Label,
 			result.EditorialNotes.Name,
 			result.EditorialNotes.Short,
-			util.MakeListString(result.CardIDs),
+			util.MakeList(result.CardIDs),
 		),
 		Link:     result.Link.URL,
 		ImageURL: iu,
@@ -494,26 +535,27 @@ func processStory(s *discordgo.Session, m *discordgo.MessageCreate,
 }
 
 func processRoom(s *discordgo.Session, m *discordgo.MessageCreate,
-	fcID int, cc string, l string) error {
-	page, err := scraper.Room(fcID, cc, l)
+	id int, cc string, l string) error {
+	page, err := scraper.Room(id, cc, l)
 	if err != nil {
 		return err
 	}
 
 	util.Send(s, m, util.Message{
-		Title: fmt.Sprintf("Room detected by ID «%d»", fcID),
+		Title: fmt.Sprintf("Room detected by ID `%d`", id),
 		Description: fmt.Sprintf(""+
-			"**%s**\n\n"+
-			"**App IDs:**\n"+
-			"%s",
+			"__**%s**__\n\n"+
+			"**App IDs:**\n%s",
 			page.PageData.PageTitle,
-			util.MakeListString(page.PageData.AdamIDs),
+			util.MakeList(page.PageData.AdamIDs),
 		),
 		FooterText: fmt.Sprintf(""+
 			"ID: %d\n"+
+			"FC Kind: %s\n"+
 			"Store Front: %s\n"+
 			"Language ID: %s",
-			fcID,
+			page.PageData.AdamID,
+			page.PageData.FcKind,
 			page.PageData.MetricsBase.StoreFront,
 			page.PageData.MetricsBase.Language,
 		),
@@ -523,106 +565,103 @@ func processRoom(s *discordgo.Session, m *discordgo.MessageCreate,
 	return nil
 }
 
-func isPhrase(s string) bool {
+func isQuestion(s string) bool {
 	regexp, _ := regexp.Compile("^.{1,}\\?$")
 
 	return regexp.MatchString(s)
 }
 
-func extractRooms(page *scraper.Page) [][]room {
+func buildRooms(page *scraper.Page) [][]room {
 	children := page.PageData.FcStructure.Model.Children[0].Children
 
-	topSection := make([]room, 0)
+	sections := make([][]room, 0)
 	regularSection := make([]room, 0)
-	for _, child := range children {
-		if child.FcKind == "311" ||
-			child.FcKind == "312" ||
-			child.FcKind == "424" ||
-			child.FcKind == "425" ||
-			child.FcKind == "437" ||
-			child.FcKind == "476" {
-			continue
-		}
-
-		if child.FcKind == "415" {
-			for _, top := range child.Children {
-				topSection = append(topSection, room{
-					adamID:      child.AdamID,
-					contentIDs:  []string{top.Link.ContentID},
-					designBadge: top.DesignBadge,
-					fcKind:      top.FcKind,
-					imageURL:    util.ConvertArtworkURL(top.Artwork.URL, 512, 512),
+	for _, c := range children {
+		switch c.FcKind {
+		case "415":
+			s := make([]room, 0)
+			for _, r := range c.Children {
+				s = append(s, room{
+					adamID:      r.AdamID,
+					designBadge: r.DesignBadge,
+					designTag:   r.DesignTag,
+					fcKind:      r.FcKind,
+					imageURL:    util.ConvertArtworkURL(r.Artwork.URL, 512, 512),
+					title:       r.Title,
 				})
 			}
-		} else {
-			contentIDs := make([]string, 0)
-			for _, cID := range child.Content {
-				contentIDs = append(contentIDs, cID.ContentID)
+			sections = append(sections, s)
+		case "418", "420", "429":
+			regularSection = append(regularSection, room{
+				adamID:       c.AdamID,
+				displayStyle: c.DisplayStyle,
+				fcKind:       c.FcKind,
+				name:         c.Name,
+				tagline:      c.Tagline,
+			})
+		case "424", "425":
+			s := make([]room, 0)
+			for _, r := range c.Children {
+				s = append(s, room{
+					adamID: r.AdamID,
+					name:   r.Name,
+					fcKind: r.FcKind,
+				})
+			}
+			sections = append(sections, s)
+			break
+		case "437":
+			links := make([]string, 0)
+			for _, l := range c.Links {
+				links = append(links, fmt.Sprintf("%s — %s", l.Label, l.URL))
 			}
 
-			regularSection = append(regularSection, room{
-				adamID:       child.AdamID,
-				contentIDs:   contentIDs,
-				displayStyle: child.DisplayStyle,
-				fcKind:       child.FcKind,
-				name:         child.Name,
-				tagline:      child.Tagline,
+			sections = append(sections, []room{
+				{
+					adamID: c.AdamID,
+					links:  links,
+					name:   c.Name,
+					fcKind: c.FcKind,
+				},
+			})
+		case "311", "312", "476":
+			sections = append(sections, []room{
+				{
+					adamID: c.AdamID,
+					name:   c.Name,
+					fcKind: c.FcKind,
+				},
 			})
 		}
 	}
 
-	return [][]room{
-		topSection,
-		regularSection,
-	}
+	sections = append(sections, regularSection)
+
+	return sections
 }
 
-func sendTopRooms(s *discordgo.Session, m *discordgo.MessageCreate,
-	rooms []room, genreID int, groupingID int, sf string, lc string) {
-	description := strings.Builder{}
-	for i, room := range rooms {
-		description.WriteString(fmt.Sprintf("**%d** [%s]: **%q** (%s)\n",
-			i+1, room.fcKind, room.designBadge, room.contentIDs[0]))
-	}
-
-	util.Send(s, m, util.Message{
-		Title:       "Rooms (top section)",
-		Description: description.String(),
-		FooterText: fmt.Sprintf(""+
-			"Genre ID: %d\n"+
-			"Grouping ID: %d\n"+
-			"Store Front: %s\n"+
-			"Language ID: %s",
-			genreID,
-			groupingID,
-			sf,
-			lc,
-		),
-		FooterIconURL: util.AsLogoURL,
-	})
-}
-
-func sendRegularRooms(s *discordgo.Session, m *discordgo.MessageCreate,
-	rooms []room, genreID int, groupingID int, sf string, lc string) {
+func buildDescription(rooms []room) string {
+	t := ""
+	s := ""
 	d := strings.Builder{}
-	for i, room := range rooms {
-		d.WriteString(fmt.Sprintf("**%d** [%s]: **%q** (%s)\n",
-			i+1, room.fcKind, room.name, room.adamID))
+	for i, r := range rooms {
+		if r.fcKind == "416" || r.fcKind == "417" {
+			t = r.designTag
+			s = r.designBadge
+		} else if r.fcKind == "426" {
+			t = r.name
+			s = util.MakeList(r.links)
+		} else if r.fcKind == "437" {
+			t = r.name
+			s = util.MakeList(r.links)
+		} else {
+			t = r.name
+			s = r.tagline
+		}
+
+		d.WriteString(fmt.Sprintf("%s **%d**: **%q** %s `%s`\n",
+			util.ConvertFcKind(r.fcKind), i+1, t, s, r.adamID))
 	}
 
-	util.Send(s, m, util.Message{
-		Title:       "Rooms (regular section)",
-		Description: d.String(),
-		FooterText: fmt.Sprintf(""+
-			"Genre ID: %d\n"+
-			"Grouping ID: %d\n"+
-			"Store Front: %s\n"+
-			"Language ID: %s",
-			genreID,
-			groupingID,
-			sf,
-			lc,
-		),
-		FooterIconURL: util.AsLogoURL,
-	})
+	return d.String()
 }

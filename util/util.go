@@ -353,11 +353,11 @@ func GetStarsBar(x int) string {
 
 // ConvertArtworkURL returns valid image URL by App Store artwork special URL.
 func ConvertArtworkURL(url string, w int, h int) string {
-	var result string
-	result = strings.Replace(url, "{w}", strconv.Itoa(w), 1)
-	result = strings.Replace(url, "{h}", strconv.Itoa(w), 1)
-	result = strings.Replace(url, "{c}", "bb", 1)
-	result = strings.Replace(url, "{f}", "png", 1)
+	result := url
+	result = strings.Replace(result, "{w}", strconv.Itoa(w), 1)
+	result = strings.Replace(result, "{h}", strconv.Itoa(w), 1)
+	result = strings.Replace(result, "{c}", "bb", 1)
+	result = strings.Replace(result, "{f}", "png", 1)
 	return result
 }
 
@@ -395,22 +395,67 @@ func Translate(text string, language string) string {
 	return ""
 }
 
-// MakeListString returns numerated list
-func MakeListString(a []string) string {
+// MakeList returns numerated list
+func MakeList(a interface{}) string {
 	builder := strings.Builder{}
-	for i, e := range a {
-		builder.WriteString(fmt.Sprintf("%d: %s\n", i+1, e))
+	switch f := a.(type) {
+	case []int:
+		for i, e := range f {
+			builder.WriteString(fmt.Sprintf("%d: `%d`\n", i+1, e))
+		}
+	case []string:
+		for i, e := range f {
+			builder.WriteString(fmt.Sprintf("%d: %s\n", i+1, e))
+		}
+	}
+
+	if builder.Len() == 0 {
+		return "—"
 	}
 
 	return builder.String()
 }
 
-// MakeListInt returns numerated list
-func MakeListInt(a []int) string {
-	builder := strings.Builder{}
-	for i, e := range a {
-		builder.WriteString(fmt.Sprintf("%d: %d\n", i+1, e))
+// ConvertFcKind converts FC Kind fcKind to nice picture.
+func ConvertFcKind(fcKind string) string {
+	switch fcKind {
+	case "413": // root all all
+		return "🅾️"
+	case "414": // root all
+		return "🅰️"
+	case "415": // root section 1
+		return "✴️"
+	case "416": // element section 1
+		return "🔴"
+	case "417": // element section 1
+		return "🟠"
+	case "418": // element section 2
+		return "🟡"
+	case "420": // element section 2
+		return "🟢"
+	case "429": // element section 2
+		return "🔵"
+	case "424": // Top Charts
+		return "🆚"
+	case "377": // element top 1
+		return "🟥"
+	case "369": // element top 1
+		return "🟧"
+	case "425": // Top Categories
+		return "🈷️"
+	case "426": // element top 2
+		return "🟨"
+	case "427": // element top 2
+		return "🟩"
+	case "437": // Quick Links
+		return "ℹ️"
+	case "311": // empty
+		return "🔼"
+	case "312": // empty
+		return "🔽"
+	case "476": // empty
+		return "⏹"
 	}
 
-	return builder.String()
+	return fmt.Sprintf("`%s`", fcKind)
 }
