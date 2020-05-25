@@ -14,9 +14,7 @@ type Language struct {
 // Translate translates language title.
 func (l Language) Translate(language string) string {
 	switch language {
-	case "en-us":
-	case "en-gb":
-	case "en-au":
+	case "en-us", "en-gb", "en-au":
 		return l.Title
 	case "ru-ru":
 		return l.TitleRu

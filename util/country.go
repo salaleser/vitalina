@@ -14,9 +14,7 @@ type Country struct {
 // Translate translates country title
 func (c Country) Translate(language string) string {
 	switch language {
-	case "en-us":
-	case "en-gb":
-	case "en-au":
+	case "en-us", "en-gb", "en-au":
 		return c.Title
 	case "ru-ru":
 		return c.TitleRu
