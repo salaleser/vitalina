@@ -48,14 +48,20 @@ func Vitalina(s *discordgo.Session, m *discordgo.MessageCreate) {
 	// Scan for country code and language
 	for _, arg := range args {
 		if _, ok := scraper.StoreFronts[arg]; ok {
-			util.Debug(fmt.Sprintf("Country code %q detected!", arg))
+			util.Debug(fmt.Sprintf(""+
+				"Country code %q detected!",
+				arg,
+			))
 			cc = arg
 			country := util.Countries[strings.ToLower(arg)]
 			s.MessageReactionAdd(m.ChannelID, m.ID, country.Emoji)
 		}
 
 		if _, ok := scraper.Languages[arg]; ok {
-			util.Debug(fmt.Sprintf("Language %q detected!", arg))
+			util.Debug(fmt.Sprintf(""+
+				"Language %q detected!",
+				arg,
+			))
 			l = arg
 			language := util.Languages[strings.Split(arg, "-")[0]]
 			s.MessageReactionAdd(m.ChannelID, m.ID, language.Emoji)
@@ -73,12 +79,22 @@ func Vitalina(s *discordgo.Session, m *discordgo.MessageCreate) {
 			rl := util.ConvertDiscordRegionToLanguage(g.Region)
 			translate := country.Translate(rl)
 			util.Send(s, m, util.Message{
-				Title: fmt.Sprintf("App Store Store Front detected by ID `%d`",
-					id),
-				Description: fmt.Sprintf("%s\n%s (%s)", country.Emoji,
-					country.Title, translate),
-				FooterText: fmt.Sprintf("Country Code: %s\nStore Front ID: %d",
-					cc, id),
+				Title: fmt.Sprintf(""+
+					"__App Store Store Front__ detected by ID `%d`",
+					id,
+				),
+				Description: fmt.Sprintf(""+
+					"%s %s (%s)",
+					country.Emoji,
+					country.Title,
+					translate,
+				),
+				FooterText: fmt.Sprintf(""+
+					"Country Code: %s\n"+
+					"Store Front ID: %d",
+					cc,
+					id,
+				),
 				FooterIconURL: util.AsLogoURL,
 			})
 		}
@@ -91,13 +107,23 @@ func Vitalina(s *discordgo.Session, m *discordgo.MessageCreate) {
 				rl := util.ConvertDiscordRegionToLanguage(g.Region)
 				translate := country.Translate(rl)
 				util.Send(s, m, util.Message{
-					Title: fmt.Sprintf("App Store Country Code detected by code %q",
-						arg),
-					Description: fmt.Sprintf("%s %s", country.Emoji,
-						translate),
-					FooterText: fmt.Sprintf("ISO 3166-1 alpha-2 code: %s\n"+
-						"Store Front ID: %d\nTitle: %s", strings.ToUpper(arg),
-						sf, country.Title),
+					Title: fmt.Sprintf(""+
+						"__App Store Country Code__ detected by code %q",
+						arg,
+					),
+					Description: fmt.Sprintf(""+
+						"%s %s",
+						country.Emoji,
+						translate,
+					),
+					FooterText: fmt.Sprintf(""+
+						"ISO 3166-1 alpha-2 code: %s\n"+
+						"Store Front ID: %d\n"+
+						"Title: %s",
+						strings.ToUpper(arg),
+						sf,
+						country.Title,
+					),
 					FooterIconURL: util.AsLogoURL,
 				})
 			}
@@ -109,12 +135,20 @@ func Vitalina(s *discordgo.Session, m *discordgo.MessageCreate) {
 				rl := util.ConvertDiscordRegionToLanguage(g.Region)
 				translate := language.Translate(rl)
 				util.Send(s, m, util.Message{
-					Title: fmt.Sprintf("App Store Langauge detected by code %q",
-						arg),
+					Title: fmt.Sprintf(""+
+						"__App Store Langauge__ detected by code %q",
+						arg,
+					),
 					Description: fmt.Sprintf("%s %s (%s)",
 						language.Emoji, translate, language.Native),
-					FooterText: fmt.Sprintf("Language Code: %s\n"+
-						"Language ID: %d\nTitle: %s", arg, asl, language.Title),
+					FooterText: fmt.Sprintf(""+
+						"Language Code: %s\n"+
+						"Language ID: %d\n"+
+						"Title: %s",
+						arg,
+						asl,
+						language.Title,
+					),
 					FooterIconURL: util.AsLogoURL,
 				})
 			}
@@ -125,12 +159,22 @@ func Vitalina(s *discordgo.Session, m *discordgo.MessageCreate) {
 				rl := util.ConvertDiscordRegionToLanguage(g.Region)
 				translate := isol.Translate(rl)
 				util.Send(s, m, util.Message{
-					Title: fmt.Sprintf("ISO 639-1 code detected by code %q",
-						arg),
-					Description: fmt.Sprintf("%s %s (%s)",
-						isol.Emoji, translate, isol.Native),
-					FooterText: fmt.Sprintf("ISO 639-1 code: %s\n"+
-						"Title: %s", arg, isol.Title),
+					Title: fmt.Sprintf(""+
+						"ISO 639-1 code detected by code %q",
+						arg,
+					),
+					Description: fmt.Sprintf(""+
+						"%s %s (%s)",
+						isol.Emoji,
+						translate,
+						isol.Native,
+					),
+					FooterText: fmt.Sprintf(""+
+						"ISO 639-1 code: %s\n"+
+						"Title: %s",
+						arg,
+						isol.Title,
+					),
 					FooterIconURL: util.AsLogoURL,
 				})
 			}
@@ -140,11 +184,14 @@ func Vitalina(s *discordgo.Session, m *discordgo.MessageCreate) {
 			id, _ := strconv.Atoi(arg)
 			err := processApp(s, m, id, cc, l)
 			if err != nil {
-				util.Debug(fmt.Sprintf("app [id=%d,cc=%s,l=%s]: %v", id, cc, l,
-					err))
+				util.Debug(fmt.Sprintf(
+					"app [id=%d,cc=%s,l=%s]: %v",
+					id, cc, l, err))
 				if force {
 					util.SendError(s, m,
-						fmt.Sprintf("App [id=%d,cc=%s,l=%s]", id, cc, l),
+						fmt.Sprintf(
+							"App [id=%d,cc=%s,l=%s]",
+							id, cc, l),
 						err,
 					)
 				}
@@ -155,11 +202,14 @@ func Vitalina(s *discordgo.Session, m *discordgo.MessageCreate) {
 			id, _ := strconv.Atoi(arg)
 			err := processStory(s, m, id, cc, l)
 			if err != nil {
-				util.Debug(fmt.Sprintf("story [id=%d,cc=%s,l=%s]: %v",
+				util.Debug(fmt.Sprintf(
+					"story [id=%d,cc=%s,l=%s]: %v",
 					id, cc, l, err))
 				if force {
 					util.SendError(s, m,
-						fmt.Sprintf("Story [id=%d,cc=%s,l=%s]", id, cc, l),
+						fmt.Sprintf(
+							"Story [id=%d,cc=%s,l=%s]",
+							id, cc, l),
 						err,
 					)
 				}
@@ -170,11 +220,14 @@ func Vitalina(s *discordgo.Session, m *discordgo.MessageCreate) {
 			id, _ := strconv.Atoi(arg)
 			err := processRoom(s, m, id, cc, l)
 			if err != nil {
-				util.Debug(fmt.Sprintf("room [id=%d,cc=%s,l=%s]: %v",
+				util.Debug(fmt.Sprintf(
+					"room [id=%d,cc=%s,l=%s]: %v",
 					id, cc, l, err))
 				if force {
 					util.SendError(s, m,
-						fmt.Sprintf("Room [id=%d,cc=%s,l=%s]", id, cc, l),
+						fmt.Sprintf(
+							"Room [id=%d,cc=%s,l=%s]",
+							id, cc, l),
 						err,
 					)
 				}
@@ -185,11 +238,14 @@ func Vitalina(s *discordgo.Session, m *discordgo.MessageCreate) {
 			id, _ := strconv.Atoi(arg)
 			err := processGrouping(s, m, id, cc, l)
 			if err != nil {
-				util.Debug(fmt.Sprintf("grouping [id=%d,cc=%s,l=%s]: %v",
+				util.Debug(fmt.Sprintf(
+					"grouping [id=%d,cc=%s,l=%s]: %v",
 					id, cc, l, err))
 				if force {
 					util.SendError(s, m,
-						fmt.Sprintf("Grouping [id=%d,cc=%s,l=%s]", id, cc, l),
+						fmt.Sprintf(
+							"Grouping [id=%d,cc=%s,l=%s]",
+							id, cc, l),
 						err,
 					)
 				}
@@ -200,11 +256,14 @@ func Vitalina(s *discordgo.Session, m *discordgo.MessageCreate) {
 			id, _ := strconv.Atoi(arg)
 			err := processGenre(s, m, id, cc, l)
 			if err != nil {
-				util.Debug(fmt.Sprintf("genre [id=%d,cc=%s,l=%s]: %v",
+				util.Debug(fmt.Sprintf(
+					"genre [id=%d,cc=%s,l=%s]: %v",
 					id, cc, l, err))
 				if force {
 					util.SendError(s, m,
-						fmt.Sprintf("Genre [id=%d,cc=%s,l=%s]", id, cc, l),
+						fmt.Sprintf(
+							"Genre [id=%d,cc=%s,l=%s]",
+							id, cc, l),
 						err,
 					)
 				}
@@ -214,13 +273,14 @@ func Vitalina(s *discordgo.Session, m *discordgo.MessageCreate) {
 		if util.GetStoreFromAppID(arg) == util.GooglePlay {
 			err := processGpApp(s, m, arg, cc, l)
 			if err != nil {
-				util.Debug(fmt.Sprintf("gp app"+
-					" [package_name=%s,gl=%s,hl=%s]: %v", arg, cc, l,
-					err))
+				util.Debug(fmt.Sprintf(
+					"gp app [package_name=%s,gl=%s,hl=%s]: %v",
+					arg, cc, l, err))
 				if force {
 					util.SendError(s, m,
-						fmt.Sprintf("Google Play application"+
-							" [package_name=%s,gl=%s,hl=%s]", arg, cc, l),
+						fmt.Sprintf(
+							"Application [package_name=%s,gl=%s,hl=%s]",
+							arg, cc, l),
 						err,
 					)
 				}
@@ -317,9 +377,15 @@ func processGpApp(s *discordgo.Session, m *discordgo.MessageCreate,
 	packageName string, gl string, hl string) error {
 	metadata := scraper.GpMetadata(packageName, gl, hl)
 
+	if metadata.Title == "" {
+		return nil
+	}
+
 	util.Send(s, m, util.Message{
-		Title: fmt.Sprintf("Application detected by package name `%s`",
-			packageName),
+		Title: fmt.Sprintf(""+
+			"__Application__ detected by package name `%s`",
+			packageName,
+		),
 		Description: fmt.Sprintf(""+
 			"__**%s**__\n"+
 			"%s",
@@ -365,7 +431,10 @@ func processApp(s *discordgo.Session, m *discordgo.MessageCreate,
 	}
 
 	util.Send(s, m, util.Message{
-		Title: fmt.Sprintf("Application detected by ID `%d`", id),
+		Title: fmt.Sprintf(""+
+			"__Application__ detected by ID `%d`",
+			id,
+		),
 		Description: fmt.Sprintf(""+
 			"__**%s**__\n"+
 			"%s\n\n"+
@@ -425,7 +494,10 @@ func processGenre(s *discordgo.Session, m *discordgo.MessageCreate,
 	}
 
 	util.Send(s, m, util.Message{
-		Title: fmt.Sprintf("Genre detected by ID `%d`", id),
+		Title: fmt.Sprintf(""+
+			"__Genre__ detected by ID `%d`",
+			id,
+		),
 		Description: fmt.Sprintf(""+
 			"__**%s**__\n\n"+
 			"%s",
@@ -470,7 +542,10 @@ func processGrouping(s *discordgo.Session, m *discordgo.MessageCreate,
 	}
 
 	util.Send(s, m, util.Message{
-		Title:       fmt.Sprintf("Grouping detected by ID `%d`", id),
+		Title: fmt.Sprintf(""+
+			"__Grouping__ detected by ID `%d`",
+			id,
+		),
 		Description: d.String(),
 		FooterText: fmt.Sprintf(""+
 			"ID: %s\n"+
@@ -505,7 +580,10 @@ func processStory(s *discordgo.Session, m *discordgo.MessageCreate,
 	}
 
 	util.Send(s, m, util.Message{
-		Title: fmt.Sprintf("Story detected by ID `%d`", id),
+		Title: fmt.Sprintf(""+
+			"__Story__ detected by ID `%d`",
+			id,
+		),
 		Description: fmt.Sprintf(""+
 			"__**%s**__\n"+
 			"%s\n"+
@@ -542,7 +620,10 @@ func processRoom(s *discordgo.Session, m *discordgo.MessageCreate,
 	}
 
 	util.Send(s, m, util.Message{
-		Title: fmt.Sprintf("Room detected by ID `%d`", id),
+		Title: fmt.Sprintf(""+
+			"__Room__ detected by ID `%d`",
+			id,
+		),
 		Description: fmt.Sprintf(""+
 			"__**%s**__\n\n"+
 			"**App IDs:**\n%s",

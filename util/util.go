@@ -224,7 +224,7 @@ func MatchesAsStoryID(s string) bool {
 	return true
 }
 
-// GetStoreFromAppID returns 0 if appID is not an application ID.
+// GetStoreFromAppID returns 0 if appID s is not an application ID.
 func GetStoreFromAppID(s string) int {
 	gpAppIDRegexp, _ := regexp.Compile("^[a-zA-Z][a-zA-Z0-9_]*(\\.[a-zA-Z0-9_]+)+[0-9a-zA-Z_]$")
 
@@ -256,17 +256,17 @@ func DetectLanguage(value string) []LanguageDetection {
 	return result
 }
 
-// GetEmojiByDigit returns emoji with the digit by given number.
-func GetEmojiByDigit(digit float32) string {
-	value := int(digit)
+// GetEmojiByDigit returns emoji with the digit by given number f.
+func GetEmojiByDigit(f float32) string {
+	d := int(f)
 
-	if value < 0 {
-		value = 0
-	} else if value > 10 {
-		value = 10
+	if d < 0 {
+		d = 0
+	} else if d > 10 {
+		d = 10
 	}
 
-	switch value {
+	switch d {
 	case 0:
 		return "0️⃣"
 	case 1:
@@ -320,7 +320,7 @@ func ContainsMap(m map[string]int, x int) bool {
 	return false
 }
 
-// GetCcByStoreFront returns App Store country code by store front.
+// GetCcByStoreFront returns App Store country code by store front storeFront.
 func GetCcByStoreFront(storeFront int) string {
 	for cc, sf := range scraper.StoreFronts {
 		if sf == storeFront {
@@ -331,9 +331,9 @@ func GetCcByStoreFront(storeFront int) string {
 	return ""
 }
 
-// GetStarsBar returns bar with stars.
-func GetStarsBar(x int) string {
-	switch x {
+// GetStarsBar returns bar with stars according to digit d.
+func GetStarsBar(d int) string {
+	switch d {
 	case 0:
 		return "☆☆☆☆☆"
 	case 1:
@@ -353,22 +353,21 @@ func GetStarsBar(x int) string {
 
 // ConvertArtworkURL returns valid image URL by App Store artwork special URL.
 func ConvertArtworkURL(url string, w int, h int) string {
-	result := url
-	result = strings.Replace(result, "{w}", strconv.Itoa(w), 1)
-	result = strings.Replace(result, "{h}", strconv.Itoa(w), 1)
-	result = strings.Replace(result, "{c}", "bb", 1)
-	result = strings.Replace(result, "{f}", "png", 1)
-	return result
+	r := url
+	r = strings.Replace(r, "{w}", strconv.Itoa(w), 1)
+	r = strings.Replace(r, "{h}", strconv.Itoa(w), 1)
+	r = strings.Replace(r, "{c}", "bb", 1)
+	r = strings.Replace(r, "{f}", "png", 1)
+	return r
 }
 
 // ConvertDiscordRegionToLanguage converts discord locale locale to language
 // and returns it.
-func ConvertDiscordRegionToLanguage(locale string) string {
-	switch locale {
+func ConvertDiscordRegionToLanguage(r string) string {
+	switch r {
 	case "brazil":
 		return "pt-br"
-	case "western europe":
-	case "central europe":
+	case "western europe", "central europe":
 		return "en-gb"
 	case "hong kong":
 		return "zh-hk"
@@ -378,11 +377,7 @@ func ConvertDiscordRegionToLanguage(locale string) string {
 		return "ru-ru"
 	case "sydney":
 		return "en-ua"
-	case "singapore":
-	case "us central":
-	case "us east":
-	case "us south":
-	case "us west":
+	case "singapore", "us central", "us east", "us south", "us west":
 		return "en-us"
 	}
 
