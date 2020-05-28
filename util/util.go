@@ -104,6 +104,35 @@ func MatchesAsAppID(s string) bool {
 	return true
 }
 
+// MatchesBundleID reports whether the string s matches to App Store
+// Bundle ID.
+func MatchesBundleID(s string) bool {
+	// min known id
+	// max known id
+	r, _ := regexp.Compile("^\\d{9,10}$")
+	if !r.MatchString(s) {
+		return false
+	}
+
+	id, err := strconv.Atoi(s)
+	if err != nil {
+		return false
+	}
+
+	// TODO уточнить
+	if id < 200000000 {
+		return false
+	}
+
+	// TODO уточнить
+	if id > 1600000000 {
+		return false
+	}
+
+	Debug("Bundle ID detected!")
+	return true
+}
+
 // MatchesAsGroupingID reports whether the string s matches to App Store
 // Grouping ID.
 func MatchesAsGroupingID(s string) bool {

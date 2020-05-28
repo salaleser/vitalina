@@ -198,6 +198,24 @@ func Vitalina(s *discordgo.Session, m *discordgo.MessageCreate) {
 			}
 		}
 
+		if util.MatchesBundleID(arg) {
+			id, _ := strconv.Atoi(arg)
+			err := processBundle(s, m, id, cc, l)
+			if err != nil {
+				util.Debug(fmt.Sprintf(
+					"bundle [id=%d,cc=%s,l=%s]: %v",
+					id, cc, l, err))
+				if force {
+					util.SendError(s, m,
+						fmt.Sprintf(
+							"Bundle [id=%d,cc=%s,l=%s]",
+							id, cc, l),
+						err,
+					)
+				}
+			}
+		}
+
 		if util.MatchesAsStoryID(arg) {
 			id, _ := strconv.Atoi(arg)
 			err := processStory(s, m, id, cc, l)
@@ -419,8 +437,8 @@ func processApp(s *discordgo.Session, m *discordgo.MessageCreate,
 		return err
 	}
 
-	const pd string = "product-dv"
-	result := page.StorePlatformData[pd].Results[strconv.Itoa(id)]
+	const spd string = "product-dv"
+	result := page.StorePlatformData[spd].Results[strconv.Itoa(id)]
 
 	iu := ""
 	for _, screenshots := range result.ScreenshotsByType {
@@ -453,6 +471,7 @@ func processApp(s *discordgo.Session, m *discordgo.MessageCreate,
 			"Rating Count: %d\n"+
 			"Bundle ID: %s\n"+
 			"Artist ID: %s\n"+
+			"Kind: %s\n"+
 			"Store Front: %s\n"+
 			"Language ID: %s",
 			result.ID,
@@ -461,6 +480,65 @@ func processApp(s *discordgo.Session, m *discordgo.MessageCreate,
 			result.UserRating.RatingCount,
 			result.BundleID,
 			result.ArtistID,
+			result.Kind,
+			page.PageData.MetricsBase.StoreFront,
+			page.PageData.MetricsBase.Language,
+		),
+		FooterIconURL: util.AsLogoURL,
+	})
+
+	return nil
+}
+
+func processBundle(s *discordgo.Session, m *discordgo.MessageCreate,
+	id int, cc string, l string) error {
+	page, err := scraper.Bundle(id, cc, l)
+	if err != nil {
+		return err
+	}
+
+	const spd string = "product-dv"
+	result := page.StorePlatformData[spd].Results[strconv.Itoa(id)]
+
+	iu := ""
+	for _, screenshots := range result.ScreenshotsByType {
+		if len(screenshots) > 0 {
+			iu = util.ConvertArtworkURL(screenshots[0].URL, 512, 512)
+			break
+		}
+	}
+
+	util.Send(s, m, util.Message{
+		Title: fmt.Sprintf(""+
+			"__Bundle__ detected by ID `%d`",
+			id,
+		),
+		Description: fmt.Sprintf(""+
+			"__**%s**__\n"+
+			"%s\n\n"+
+			"**Children IDs:**\n%s",
+			result.Name,
+			result.Description.Standard,
+			util.MakeList(result.ChildrenIDs),
+		),
+		Link:         result.URL,
+		ImageURL:     iu,
+		ThumbnailURL: util.ConvertArtworkURL(result.Artwork.URL, 512, 512),
+		FooterText: fmt.Sprintf(""+
+			"ID: %s\n"+
+			"Author: %s\n"+
+			"Rating: %s\n"+
+			"Rating Count: %d\n"+
+			"Artist ID: %s\n"+
+			"Kind: %s\n"+
+			"Store Front: %s\n"+
+			"Language ID: %s",
+			result.ID,
+			result.ArtistName,
+			util.GetStarsBar(int(result.UserRating.Value)),
+			result.UserRating.RatingCount,
+			result.ArtistID,
+			result.Kind,
 			page.PageData.MetricsBase.StoreFront,
 			page.PageData.MetricsBase.Language,
 		),
@@ -550,7 +628,7 @@ func processGrouping(s *discordgo.Session, m *discordgo.MessageCreate,
 		FooterText: fmt.Sprintf(""+
 			"ID: %s\n"+
 			"Content ID: %s\n"+
-			"Store Front: %s\n"+
+			"Store Front ID: %s\n"+
 			"Language ID: %s",
 			page.PageData.MetricsBase.PageID,
 			page.PageData.ContentID,
@@ -570,8 +648,8 @@ func processStory(s *discordgo.Session, m *discordgo.MessageCreate,
 		return err
 	}
 
-	const eip string = "editorial-item-product"
-	result := page.StorePlatformData[eip].Results[strconv.Itoa(id)]
+	const spd string = "editorial-item-product"
+	result := page.StorePlatformData[spd].Results[strconv.Itoa(id)]
 
 	iu := ""
 	for _, v := range result.EditorialArtwork {
