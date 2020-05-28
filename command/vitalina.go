@@ -80,7 +80,7 @@ func Vitalina(s *discordgo.Session, m *discordgo.MessageCreate) {
 			translate := country.Translate(rl)
 			util.Send(s, m, util.Message{
 				Title: fmt.Sprintf(""+
-					"__App Store Store Front__ detected by ID `%d`",
+					"__App Store Store Front ID__ detected by ID `%d`",
 					id,
 				),
 				Description: fmt.Sprintf(""+
@@ -472,7 +472,7 @@ func processApp(s *discordgo.Session, m *discordgo.MessageCreate,
 			"Bundle ID: %s\n"+
 			"Artist ID: %s\n"+
 			"Kind: %s\n"+
-			"Store Front: %s\n"+
+			"Store Front ID: %s\n"+
 			"Language ID: %s",
 			result.ID,
 			result.ArtistName,
@@ -531,7 +531,7 @@ func processBundle(s *discordgo.Session, m *discordgo.MessageCreate,
 			"Rating Count: %d\n"+
 			"Artist ID: %s\n"+
 			"Kind: %s\n"+
-			"Store Front: %s\n"+
+			"Store Front ID: %s\n"+
 			"Language ID: %s",
 			result.ID,
 			result.ArtistName,
@@ -587,7 +587,7 @@ func processGenre(s *discordgo.Session, m *discordgo.MessageCreate,
 			"ID: %d\n"+
 			"Title: %s\n"+
 			"Grouping ID: %d\n"+
-			"Store Front: %s\n"+
+			"Store Front ID: %s\n"+
 			"Language ID: %s",
 			page.PageData.GenreID,
 			genreTitle,
@@ -711,7 +711,7 @@ func processRoom(s *discordgo.Session, m *discordgo.MessageCreate,
 		FooterText: fmt.Sprintf(""+
 			"ID: %d\n"+
 			"FC Kind: %s\n"+
-			"Store Front: %s\n"+
+			"Store Front ID: %s\n"+
 			"Language ID: %s",
 			page.PageData.AdamID,
 			page.PageData.FcKind,
