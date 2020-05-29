@@ -483,3 +483,17 @@ func ConvertFcKind(fcKind string) string {
 
 	return fmt.Sprintf("`%s`", fcKind)
 }
+
+// ToGooglePlayGeoLocation converts string s to Google Play Geo Location
+// and returns it.
+// TODO
+func ToGooglePlayGeoLocation(s string) string {
+	return strings.ToLower(s)
+}
+
+// ToGooglePlayHumanLanguage converts string s to Google Play Human Language
+// and returns it.
+// TODO
+func ToGooglePlayHumanLanguage(s string) string {
+	return strings.Split(s, "-")[0]
+}

@@ -36,6 +36,9 @@ func Vitalina(s *discordgo.Session, m *discordgo.MessageCreate) {
 
 	cc := "us"
 	l := ""
+	gl := "us"
+	hl := ""
+
 	content := m.Content
 
 	if strings.HasPrefix(m.Content, "?") {
@@ -53,6 +56,7 @@ func Vitalina(s *discordgo.Session, m *discordgo.MessageCreate) {
 				arg,
 			))
 			cc = arg
+			gl = util.ToGooglePlayGeoLocation(arg)
 			country := util.Countries[strings.ToLower(arg)]
 			s.MessageReactionAdd(m.ChannelID, m.ID, country.Emoji)
 		}
@@ -63,6 +67,7 @@ func Vitalina(s *discordgo.Session, m *discordgo.MessageCreate) {
 				arg,
 			))
 			l = arg
+			hl = util.ToGooglePlayHumanLanguage(arg)
 			language := util.Languages[strings.Split(arg, "-")[0]]
 			s.MessageReactionAdd(m.ChannelID, m.ID, language.Emoji)
 		}
@@ -289,16 +294,16 @@ func Vitalina(s *discordgo.Session, m *discordgo.MessageCreate) {
 		}
 
 		if util.GetStoreFromAppID(arg) == util.GooglePlay {
-			err := processGpApp(s, m, arg, cc, l)
+			err := processAppGp(s, m, arg, gl, hl)
 			if err != nil {
 				util.Debug(fmt.Sprintf(
 					"gp app [package_name=%s,gl=%s,hl=%s]: %v",
-					arg, cc, l, err))
+					arg, gl, hl, err))
 				if force {
 					util.SendError(s, m,
 						fmt.Sprintf(
 							"Application [package_name=%s,gl=%s,hl=%s]",
-							arg, cc, l),
+							arg, gl, hl),
 						err,
 					)
 				}
@@ -391,9 +396,9 @@ func Vitalina(s *discordgo.Session, m *discordgo.MessageCreate) {
 // 	return nominative
 // }
 
-func processGpApp(s *discordgo.Session, m *discordgo.MessageCreate,
+func processAppGp(s *discordgo.Session, m *discordgo.MessageCreate,
 	packageName string, gl string, hl string) error {
-	metadata := scraper.GpMetadata(packageName, gl, hl)
+	metadata := scraper.AppGp(packageName, gl, hl)
 
 	if metadata.Title == "" {
 		return nil

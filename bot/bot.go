@@ -83,7 +83,7 @@ func messageCreate(s *discordgo.Session, m *discordgo.MessageCreate) {
 	// TODO add aliases support
 	if !strings.HasPrefix(m.Content, "~") {
 		if strings.HasPrefix(m.Content, "!") {
-			go command.SearchApps(s, m)
+			// go command.SearchApps(s, m)
 		} else if strings.HasPrefix(m.Content, ".") {
 			go command.DetectLanguage(s, m)
 		} else if strings.HasPrefix(m.Content, ",") {
