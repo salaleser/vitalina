@@ -722,7 +722,7 @@ func processRoom(s *discordgo.Session, m *discordgo.MessageCreate,
 	conn, err := grpc.Dial(fmt.Sprintf("%s:%s", util.Config["grpc-host"],
 		util.Config["grpc-port"]), grpc.WithInsecure(), grpc.WithBlock())
 	if err != nil {
-		log.Fatalf("did not connect: %v", err)
+		return fmt.Errorf("did not connect: %v", err)
 	}
 	defer conn.Close()
 	client := pb.NewScraperClient(conn)
@@ -732,7 +732,7 @@ func processRoom(s *discordgo.Session, m *discordgo.MessageCreate,
 	req := &pb.AppStoreRoomRequest{Id: id, CountryCode: cc, Language: l}
 	resp, err := client.AppStoreRoom(ctx, req)
 	if err != nil {
-		log.Fatalf("could not get room: %v", err)
+		return fmt.Errorf("could not get room: %v", err)
 	}
 
 	util.Send(s, m, util.Message{
