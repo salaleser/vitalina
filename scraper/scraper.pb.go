@@ -29,18 +29,16 @@ const (
 // of the legacy proto package is being used.
 const _ = proto.ProtoPackageIsVersion4
 
-type RoomRequest struct {
+type PingRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Id       uint32 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
-	Country  string `protobuf:"bytes,2,opt,name=country,proto3" json:"country,omitempty"`
-	Language string `protobuf:"bytes,3,opt,name=language,proto3" json:"language,omitempty"`
+	Ok string `protobuf:"bytes,1,opt,name=ok,proto3" json:"ok,omitempty"`
 }
 
-func (x *RoomRequest) Reset() {
-	*x = RoomRequest{}
+func (x *PingRequest) Reset() {
+	*x = PingRequest{}
 	if protoimpl.UnsafeEnabled {
 		mi := &file_scraper_scraper_proto_msgTypes[0]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -48,13 +46,13 @@ func (x *RoomRequest) Reset() {
 	}
 }
 
-func (x *RoomRequest) String() string {
+func (x *PingRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*RoomRequest) ProtoMessage() {}
+func (*PingRequest) ProtoMessage() {}
 
-func (x *RoomRequest) ProtoReflect() protoreflect.Message {
+func (x *PingRequest) ProtoReflect() protoreflect.Message {
 	mi := &file_scraper_scraper_proto_msgTypes[0]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -66,42 +64,28 @@ func (x *RoomRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use RoomRequest.ProtoReflect.Descriptor instead.
-func (*RoomRequest) Descriptor() ([]byte, []int) {
+// Deprecated: Use PingRequest.ProtoReflect.Descriptor instead.
+func (*PingRequest) Descriptor() ([]byte, []int) {
 	return file_scraper_scraper_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *RoomRequest) GetId() uint32 {
+func (x *PingRequest) GetOk() string {
 	if x != nil {
-		return x.Id
-	}
-	return 0
-}
-
-func (x *RoomRequest) GetCountry() string {
-	if x != nil {
-		return x.Country
+		return x.Ok
 	}
 	return ""
 }
 
-func (x *RoomRequest) GetLanguage() string {
-	if x != nil {
-		return x.Language
-	}
-	return ""
-}
-
-type RoomReply struct {
+type PingReply struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Data *Data `protobuf:"bytes,1,opt,name=data,proto3" json:"data,omitempty"`
+	Ok string `protobuf:"bytes,1,opt,name=ok,proto3" json:"ok,omitempty"`
 }
 
-func (x *RoomReply) Reset() {
-	*x = RoomReply{}
+func (x *PingReply) Reset() {
+	*x = PingReply{}
 	if protoimpl.UnsafeEnabled {
 		mi := &file_scraper_scraper_proto_msgTypes[1]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -109,13 +93,13 @@ func (x *RoomReply) Reset() {
 	}
 }
 
-func (x *RoomReply) String() string {
+func (x *PingReply) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*RoomReply) ProtoMessage() {}
+func (*PingReply) ProtoMessage() {}
 
-func (x *RoomReply) ProtoReflect() protoreflect.Message {
+func (x *PingReply) ProtoReflect() protoreflect.Message {
 	mi := &file_scraper_scraper_proto_msgTypes[1]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -127,30 +111,30 @@ func (x *RoomReply) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use RoomReply.ProtoReflect.Descriptor instead.
-func (*RoomReply) Descriptor() ([]byte, []int) {
+// Deprecated: Use PingReply.ProtoReflect.Descriptor instead.
+func (*PingReply) Descriptor() ([]byte, []int) {
 	return file_scraper_scraper_proto_rawDescGZIP(), []int{1}
 }
 
-func (x *RoomReply) GetData() *Data {
+func (x *PingReply) GetOk() string {
 	if x != nil {
-		return x.Data
+		return x.Ok
 	}
-	return nil
+	return ""
 }
 
-type Data struct {
+type AppStoreRoomRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	StorePlatformData map[string]*StorePlatformData `protobuf:"bytes,1,rep,name=store_platform_data,json=storePlatformData,proto3" json:"store_platform_data,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
-	PageData          *PageData                     `protobuf:"bytes,2,opt,name=page_data,json=pageData,proto3" json:"page_data,omitempty"`
-	Properties        *Properties                   `protobuf:"bytes,3,opt,name=properties,proto3" json:"properties,omitempty"`
+	Id          uint32 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	CountryCode string `protobuf:"bytes,2,opt,name=country_code,json=countryCode,proto3" json:"country_code,omitempty"`
+	Language    string `protobuf:"bytes,3,opt,name=language,proto3" json:"language,omitempty"`
 }
 
-func (x *Data) Reset() {
-	*x = Data{}
+func (x *AppStoreRoomRequest) Reset() {
+	*x = AppStoreRoomRequest{}
 	if protoimpl.UnsafeEnabled {
 		mi := &file_scraper_scraper_proto_msgTypes[2]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -158,13 +142,13 @@ func (x *Data) Reset() {
 	}
 }
 
-func (x *Data) String() string {
+func (x *AppStoreRoomRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*Data) ProtoMessage() {}
+func (*AppStoreRoomRequest) ProtoMessage() {}
 
-func (x *Data) ProtoReflect() protoreflect.Message {
+func (x *AppStoreRoomRequest) ProtoReflect() protoreflect.Message {
 	mi := &file_scraper_scraper_proto_msgTypes[2]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -176,43 +160,55 @@ func (x *Data) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use Data.ProtoReflect.Descriptor instead.
-func (*Data) Descriptor() ([]byte, []int) {
+// Deprecated: Use AppStoreRoomRequest.ProtoReflect.Descriptor instead.
+func (*AppStoreRoomRequest) Descriptor() ([]byte, []int) {
 	return file_scraper_scraper_proto_rawDescGZIP(), []int{2}
 }
 
-func (x *Data) GetStorePlatformData() map[string]*StorePlatformData {
+func (x *AppStoreRoomRequest) GetId() uint32 {
 	if x != nil {
-		return x.StorePlatformData
+		return x.Id
 	}
-	return nil
+	return 0
 }
 
-func (x *Data) GetPageData() *PageData {
+func (x *AppStoreRoomRequest) GetCountryCode() string {
 	if x != nil {
-		return x.PageData
+		return x.CountryCode
 	}
-	return nil
+	return ""
 }
 
-func (x *Data) GetProperties() *Properties {
+func (x *AppStoreRoomRequest) GetLanguage() string {
 	if x != nil {
-		return x.Properties
+		return x.Language
 	}
-	return nil
+	return ""
 }
 
-type Properties struct {
+type AppStoreRoomReply struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	RevNum string `protobuf:"bytes,1,opt,name=rev_num,json=revNum,proto3" json:"rev_num,omitempty"`
-	Time   string `protobuf:"bytes,2,opt,name=time,proto3" json:"time,omitempty"`
+	Title        string   `protobuf:"bytes,1,opt,name=title,proto3" json:"title,omitempty"`
+	Link         string   `protobuf:"bytes,2,opt,name=link,proto3" json:"link,omitempty"`
+	Id           uint32   `protobuf:"varint,3,opt,name=id,proto3" json:"id,omitempty"`
+	ContentIds   []uint32 `protobuf:"varint,4,rep,packed,name=content_ids,json=contentIds,proto3" json:"content_ids,omitempty"`
+	ArtistName   string   `protobuf:"bytes,5,opt,name=artist_name,json=artistName,proto3" json:"artist_name,omitempty"`
+	Rating       float32  `protobuf:"fixed32,6,opt,name=rating,proto3" json:"rating,omitempty"`
+	ReleaseDate  string   `protobuf:"bytes,7,opt,name=release_date,json=releaseDate,proto3" json:"release_date,omitempty"`
+	Subtitle     string   `protobuf:"bytes,8,opt,name=subtitle,proto3" json:"subtitle,omitempty"`
+	Description  string   `protobuf:"bytes,9,opt,name=description,proto3" json:"description,omitempty"`
+	Screenshot_1 string   `protobuf:"bytes,10,opt,name=screenshot_1,json=screenshot1,proto3" json:"screenshot_1,omitempty"`
+	Logo         string   `protobuf:"bytes,11,opt,name=logo,proto3" json:"logo,omitempty"`
+	FcKind       uint32   `protobuf:"varint,12,opt,name=fc_kind,json=fcKind,proto3" json:"fc_kind,omitempty"`
+	StoreFront   uint32   `protobuf:"varint,13,opt,name=store_front,json=storeFront,proto3" json:"store_front,omitempty"`
+	LanguageId   uint32   `protobuf:"varint,14,opt,name=language_id,json=languageId,proto3" json:"language_id,omitempty"`
 }
 
-func (x *Properties) Reset() {
-	*x = Properties{}
+func (x *AppStoreRoomReply) Reset() {
+	*x = AppStoreRoomReply{}
 	if protoimpl.UnsafeEnabled {
 		mi := &file_scraper_scraper_proto_msgTypes[3]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -220,13 +216,13 @@ func (x *Properties) Reset() {
 	}
 }
 
-func (x *Properties) String() string {
+func (x *AppStoreRoomReply) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*Properties) ProtoMessage() {}
+func (*AppStoreRoomReply) ProtoMessage() {}
 
-func (x *Properties) ProtoReflect() protoreflect.Message {
+func (x *AppStoreRoomReply) ProtoReflect() protoreflect.Message {
 	mi := &file_scraper_scraper_proto_msgTypes[3]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -238,38 +234,121 @@ func (x *Properties) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use Properties.ProtoReflect.Descriptor instead.
-func (*Properties) Descriptor() ([]byte, []int) {
+// Deprecated: Use AppStoreRoomReply.ProtoReflect.Descriptor instead.
+func (*AppStoreRoomReply) Descriptor() ([]byte, []int) {
 	return file_scraper_scraper_proto_rawDescGZIP(), []int{3}
 }
 
-func (x *Properties) GetRevNum() string {
+func (x *AppStoreRoomReply) GetTitle() string {
 	if x != nil {
-		return x.RevNum
+		return x.Title
 	}
 	return ""
 }
 
-func (x *Properties) GetTime() string {
+func (x *AppStoreRoomReply) GetLink() string {
 	if x != nil {
-		return x.Time
+		return x.Link
 	}
 	return ""
 }
 
-type StorePlatformData struct {
+func (x *AppStoreRoomReply) GetId() uint32 {
+	if x != nil {
+		return x.Id
+	}
+	return 0
+}
+
+func (x *AppStoreRoomReply) GetContentIds() []uint32 {
+	if x != nil {
+		return x.ContentIds
+	}
+	return nil
+}
+
+func (x *AppStoreRoomReply) GetArtistName() string {
+	if x != nil {
+		return x.ArtistName
+	}
+	return ""
+}
+
+func (x *AppStoreRoomReply) GetRating() float32 {
+	if x != nil {
+		return x.Rating
+	}
+	return 0
+}
+
+func (x *AppStoreRoomReply) GetReleaseDate() string {
+	if x != nil {
+		return x.ReleaseDate
+	}
+	return ""
+}
+
+func (x *AppStoreRoomReply) GetSubtitle() string {
+	if x != nil {
+		return x.Subtitle
+	}
+	return ""
+}
+
+func (x *AppStoreRoomReply) GetDescription() string {
+	if x != nil {
+		return x.Description
+	}
+	return ""
+}
+
+func (x *AppStoreRoomReply) GetScreenshot_1() string {
+	if x != nil {
+		return x.Screenshot_1
+	}
+	return ""
+}
+
+func (x *AppStoreRoomReply) GetLogo() string {
+	if x != nil {
+		return x.Logo
+	}
+	return ""
+}
+
+func (x *AppStoreRoomReply) GetFcKind() uint32 {
+	if x != nil {
+		return x.FcKind
+	}
+	return 0
+}
+
+func (x *AppStoreRoomReply) GetStoreFront() uint32 {
+	if x != nil {
+		return x.StoreFront
+	}
+	return 0
+}
+
+func (x *AppStoreRoomReply) GetLanguageId() uint32 {
+	if x != nil {
+		return x.LanguageId
+	}
+	return 0
+}
+
+type GooglePlayAppRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Results         map[string]*Result `protobuf:"bytes,1,rep,name=results,proto3" json:"results,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
-	Version         uint32             `protobuf:"varint,2,opt,name=version,proto3" json:"version,omitempty"`
-	IsAuthenticated bool               `protobuf:"varint,3,opt,name=is_authenticated,json=isAuthenticated,proto3" json:"is_authenticated,omitempty"`
-	Meta            *Meta              `protobuf:"bytes,4,opt,name=meta,proto3" json:"meta,omitempty"`
+	PackageName   string `protobuf:"bytes,1,opt,name=package_name,json=packageName,proto3" json:"package_name,omitempty"`
+	GeoLocation   string `protobuf:"bytes,2,opt,name=geo_location,json=geoLocation,proto3" json:"geo_location,omitempty"`
+	HumanLanguage string `protobuf:"bytes,3,opt,name=human_language,json=humanLanguage,proto3" json:"human_language,omitempty"`
 }
 
-func (x *StorePlatformData) Reset() {
-	*x = StorePlatformData{}
+func (x *GooglePlayAppRequest) Reset() {
+	*x = GooglePlayAppRequest{}
 	if protoimpl.UnsafeEnabled {
 		mi := &file_scraper_scraper_proto_msgTypes[4]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -277,13 +356,13 @@ func (x *StorePlatformData) Reset() {
 	}
 }
 
-func (x *StorePlatformData) String() string {
+func (x *GooglePlayAppRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*StorePlatformData) ProtoMessage() {}
+func (*GooglePlayAppRequest) ProtoMessage() {}
 
-func (x *StorePlatformData) ProtoReflect() protoreflect.Message {
+func (x *GooglePlayAppRequest) ProtoReflect() protoreflect.Message {
 	mi := &file_scraper_scraper_proto_msgTypes[4]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -295,74 +374,51 @@ func (x *StorePlatformData) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use StorePlatformData.ProtoReflect.Descriptor instead.
-func (*StorePlatformData) Descriptor() ([]byte, []int) {
+// Deprecated: Use GooglePlayAppRequest.ProtoReflect.Descriptor instead.
+func (*GooglePlayAppRequest) Descriptor() ([]byte, []int) {
 	return file_scraper_scraper_proto_rawDescGZIP(), []int{4}
 }
 
-func (x *StorePlatformData) GetResults() map[string]*Result {
+func (x *GooglePlayAppRequest) GetPackageName() string {
 	if x != nil {
-		return x.Results
+		return x.PackageName
 	}
-	return nil
+	return ""
 }
 
-func (x *StorePlatformData) GetVersion() uint32 {
+func (x *GooglePlayAppRequest) GetGeoLocation() string {
 	if x != nil {
-		return x.Version
+		return x.GeoLocation
 	}
-	return 0
+	return ""
 }
 
-func (x *StorePlatformData) GetIsAuthenticated() bool {
+func (x *GooglePlayAppRequest) GetHumanLanguage() string {
 	if x != nil {
-		return x.IsAuthenticated
+		return x.HumanLanguage
 	}
-	return false
+	return ""
 }
 
-func (x *StorePlatformData) GetMeta() *Meta {
-	if x != nil {
-		return x.Meta
-	}
-	return nil
-}
-
-type Result struct {
+type GooglePlayAppReply struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	ArtistId string `protobuf:"bytes,1,opt,name=artist_id,json=artistId,proto3" json:"artist_id,omitempty"`
-	// ArtistName                             string                   `json:"artistName"`
-	// ArtistURL                              string                   `json:"artistUrl"`
-	// Artwork                                Artwork                  `json:"artwork"`
-	// BundleID                               string                   `json:"bundleId"`
-	// Canvas                                 Canvas                   `json:"canvas"`
-	// CardDisplayStyle                       string                   `json:"cardDisplayStyle"`
-	// CardIDs                                []string                 `json:"cardIds"`
-	// ChartPositionForStore                  map[string]ChartPosition `json:"chartPositionForStore"`
-	// Children                               map[string]Result        `json:"children"`
-	// ChildrenIDs                            []string                 `json:"childrenIds"`
-	// СircularArtwork                        Artwork                  `json:"circularArtwork"`
-	// ContentRatingsBySystem                 ContentRatingsBySystem   `json:"contentRatingsBySystem"`
-	// Copyright                              string                   `json:"copyright"`
-	// Description                            Description              `json:"description"`
-	// DeviceFamilies                         []string                 `json:"deviceFamilies"`
-	// DisplayStyle                           string                   `json:"displayStyle"`
-	// DisplaySubStyle                        string                   `json:"displaySubStyle"`
-	// EditorialArtwork                       map[string]Artwork       `json:"editorialArtwork"`
-	// EditorialBadgeInfo                     EditorialBadgeInfo       `json:"editorialBadgeInfo"`
-	// EditorialNotes                         EditorialNotes           `json:"editorialNotes"`
-	// FirstVersionSupportingInAppPurchaseAPI string                   `json:"firstVersionSupportingInAppPurchaseApi"`
-	// Genres                                 Genres                   `json:"genres"`
-	// GenreNames                             []string                 `json:"genreNames"`
-	// HasInAppPurchases                      bool                     `json:"hasInAppPurchases"`
-	Id string `protobuf:"bytes,2,opt,name=id,proto3" json:"id,omitempty"`
+	Title       string  `protobuf:"bytes,1,opt,name=title,proto3" json:"title,omitempty"`
+	Link        string  `protobuf:"bytes,2,opt,name=link,proto3" json:"link,omitempty"`
+	PackageName string  `protobuf:"bytes,3,opt,name=package_name,json=packageName,proto3" json:"package_name,omitempty"`
+	ArtistName  string  `protobuf:"bytes,4,opt,name=artist_name,json=artistName,proto3" json:"artist_name,omitempty"`
+	Rating      float32 `protobuf:"fixed32,5,opt,name=rating,proto3" json:"rating,omitempty"`
+	ReleaseDate string  `protobuf:"bytes,6,opt,name=release_date,json=releaseDate,proto3" json:"release_date,omitempty"`
+	Subtitle    string  `protobuf:"bytes,7,opt,name=subtitle,proto3" json:"subtitle,omitempty"`
+	Description string  `protobuf:"bytes,8,opt,name=description,proto3" json:"description,omitempty"`
+	Screenshot1 string  `protobuf:"bytes,9,opt,name=screenshot1,proto3" json:"screenshot1,omitempty"`
+	Logo        string  `protobuf:"bytes,10,opt,name=logo,proto3" json:"logo,omitempty"`
 }
 
-func (x *Result) Reset() {
-	*x = Result{}
+func (x *GooglePlayAppReply) Reset() {
+	*x = GooglePlayAppReply{}
 	if protoimpl.UnsafeEnabled {
 		mi := &file_scraper_scraper_proto_msgTypes[5]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -370,13 +426,13 @@ func (x *Result) Reset() {
 	}
 }
 
-func (x *Result) String() string {
+func (x *GooglePlayAppReply) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*Result) ProtoMessage() {}
+func (*GooglePlayAppReply) ProtoMessage() {}
 
-func (x *Result) ProtoReflect() protoreflect.Message {
+func (x *GooglePlayAppReply) ProtoReflect() protoreflect.Message {
 	mi := &file_scraper_scraper_proto_msgTypes[5]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -388,407 +444,77 @@ func (x *Result) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use Result.ProtoReflect.Descriptor instead.
-func (*Result) Descriptor() ([]byte, []int) {
+// Deprecated: Use GooglePlayAppReply.ProtoReflect.Descriptor instead.
+func (*GooglePlayAppReply) Descriptor() ([]byte, []int) {
 	return file_scraper_scraper_proto_rawDescGZIP(), []int{5}
 }
 
-func (x *Result) GetArtistId() string {
+func (x *GooglePlayAppReply) GetTitle() string {
 	if x != nil {
-		return x.ArtistId
+		return x.Title
 	}
 	return ""
 }
 
-func (x *Result) GetId() string {
+func (x *GooglePlayAppReply) GetLink() string {
 	if x != nil {
-		return x.Id
+		return x.Link
 	}
 	return ""
 }
 
-type Meta struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
-	unknownFields protoimpl.UnknownFields
-
-	Storefront *Storefront `protobuf:"bytes,1,opt,name=storefront,proto3" json:"storefront,omitempty"`
-	Language   *Language   `protobuf:"bytes,2,opt,name=language,proto3" json:"language,omitempty"`
-}
-
-func (x *Meta) Reset() {
-	*x = Meta{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_scraper_scraper_proto_msgTypes[6]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
-
-func (x *Meta) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*Meta) ProtoMessage() {}
-
-func (x *Meta) ProtoReflect() protoreflect.Message {
-	mi := &file_scraper_scraper_proto_msgTypes[6]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use Meta.ProtoReflect.Descriptor instead.
-func (*Meta) Descriptor() ([]byte, []int) {
-	return file_scraper_scraper_proto_rawDescGZIP(), []int{6}
-}
-
-func (x *Meta) GetStorefront() *Storefront {
+func (x *GooglePlayAppReply) GetPackageName() string {
 	if x != nil {
-		return x.Storefront
-	}
-	return nil
-}
-
-func (x *Meta) GetLanguage() *Language {
-	if x != nil {
-		return x.Language
-	}
-	return nil
-}
-
-type Storefront struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
-	unknownFields protoimpl.UnknownFields
-
-	Id string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
-	Cc string `protobuf:"bytes,2,opt,name=cc,proto3" json:"cc,omitempty"`
-}
-
-func (x *Storefront) Reset() {
-	*x = Storefront{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_scraper_scraper_proto_msgTypes[7]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
-
-func (x *Storefront) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*Storefront) ProtoMessage() {}
-
-func (x *Storefront) ProtoReflect() protoreflect.Message {
-	mi := &file_scraper_scraper_proto_msgTypes[7]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use Storefront.ProtoReflect.Descriptor instead.
-func (*Storefront) Descriptor() ([]byte, []int) {
-	return file_scraper_scraper_proto_rawDescGZIP(), []int{7}
-}
-
-func (x *Storefront) GetId() string {
-	if x != nil {
-		return x.Id
+		return x.PackageName
 	}
 	return ""
 }
 
-func (x *Storefront) GetCc() string {
+func (x *GooglePlayAppReply) GetArtistName() string {
 	if x != nil {
-		return x.Cc
+		return x.ArtistName
 	}
 	return ""
 }
 
-type Language struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
-	unknownFields protoimpl.UnknownFields
-
-	Tag string `protobuf:"bytes,1,opt,name=tag,proto3" json:"tag,omitempty"`
-}
-
-func (x *Language) Reset() {
-	*x = Language{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_scraper_scraper_proto_msgTypes[8]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
-
-func (x *Language) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*Language) ProtoMessage() {}
-
-func (x *Language) ProtoReflect() protoreflect.Message {
-	mi := &file_scraper_scraper_proto_msgTypes[8]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use Language.ProtoReflect.Descriptor instead.
-func (*Language) Descriptor() ([]byte, []int) {
-	return file_scraper_scraper_proto_rawDescGZIP(), []int{8}
-}
-
-func (x *Language) GetTag() string {
+func (x *GooglePlayAppReply) GetRating() float32 {
 	if x != nil {
-		return x.Tag
-	}
-	return ""
-}
-
-type PageData struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
-	unknownFields protoimpl.UnknownFields
-
-	AdamId  uint32   `protobuf:"varint,1,opt,name=adam_id,json=adamId,proto3" json:"adam_id,omitempty"`
-	AdamIds []uint32 `protobuf:"varint,2,rep,packed,name=adam_ids,json=adamIds,proto3" json:"adam_ids,omitempty"`
-	// AllCategoriesLink         AllCategoriesLink         `json:"allCategoriesLink"`
-	// AppRatingsLearnMoreURL    string                    `json:"appRatingsLearnMoreUrl"`
-	// Bubbles                   Bubbles                   `json:"bubbles"`
-	// CmcSwooshData             CmcSwooshData             `json:"cmcSwooshData"`
-	// ComponentName             string                    `json:"componentName"`
-	// ContentID                 string                    `json:"contentId"`
-	// CustomerReviewsURL        string                    `json:"customerReviewsUrl"`
-	// CustomersAlsoBoughtApps   []string                  `json:"customersAlsoBoughtApps"`
-	// DoNotFilter               bool                      `json:"doNotFilter"`
-	FcKind string `protobuf:"bytes,3,opt,name=fc_kind,json=fcKind,proto3" json:"fc_kind,omitempty"`
-	// FcStructure               FcStructure               `json:"fcStructure"`
-	// GenreID                   int                       `json:"genreId"`
-	// KindExtID                 string                    `json:"kindExtId"`
-	// KindID                    int                       `json:"kindId"`
-	// KindName                  string                    `json:"kindName"`
-	MetricsBase *MetricsBase `protobuf:"bytes,4,opt,name=metrics_base,json=metricsBase,proto3" json:"metrics_base,omitempty"`
-	// Metrics                   Metrics                   `json:"metrics"`
-	// MoreByThisDeveloper       []string                  `json:"moreByThisDeveloper"`
-	// Mt                        int                       `json:"mt"`
-	// NfaSwooshData             NfaSwooshData             `json:"nfaSwooshData"`
-	// Today                     Today                     `json:"today"`
-	// TotalNumberOfReviews      int                       `json:"totalNumberOfReviews"`
-	// ID                        string                    `json:"id"`
-	// IsFatBinary               int                       `json:"isFatBinary"`
-	// IsNewsstand               bool                      `json:"isNewsstand"`
-	PageTitle string `protobuf:"bytes,5,opt,name=page_title,json=pageTitle,proto3" json:"page_title,omitempty"`
-}
-
-func (x *PageData) Reset() {
-	*x = PageData{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_scraper_scraper_proto_msgTypes[9]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
-
-func (x *PageData) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*PageData) ProtoMessage() {}
-
-func (x *PageData) ProtoReflect() protoreflect.Message {
-	mi := &file_scraper_scraper_proto_msgTypes[9]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use PageData.ProtoReflect.Descriptor instead.
-func (*PageData) Descriptor() ([]byte, []int) {
-	return file_scraper_scraper_proto_rawDescGZIP(), []int{9}
-}
-
-func (x *PageData) GetAdamId() uint32 {
-	if x != nil {
-		return x.AdamId
+		return x.Rating
 	}
 	return 0
 }
 
-func (x *PageData) GetAdamIds() []uint32 {
+func (x *GooglePlayAppReply) GetReleaseDate() string {
 	if x != nil {
-		return x.AdamIds
-	}
-	return nil
-}
-
-func (x *PageData) GetFcKind() string {
-	if x != nil {
-		return x.FcKind
+		return x.ReleaseDate
 	}
 	return ""
 }
 
-func (x *PageData) GetMetricsBase() *MetricsBase {
+func (x *GooglePlayAppReply) GetSubtitle() string {
 	if x != nil {
-		return x.MetricsBase
-	}
-	return nil
-}
-
-func (x *PageData) GetPageTitle() string {
-	if x != nil {
-		return x.PageTitle
+		return x.Subtitle
 	}
 	return ""
 }
 
-type MetricsBase struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
-	unknownFields protoimpl.UnknownFields
-
-	PageType              string `protobuf:"bytes,1,opt,name=page_type,json=pageType,proto3" json:"page_type,omitempty"`
-	PageId                string `protobuf:"bytes,2,opt,name=page_id,json=pageId,proto3" json:"page_id,omitempty"`
-	PageDetails           string `protobuf:"bytes,3,opt,name=page_details,json=pageDetails,proto3" json:"page_details,omitempty"`
-	Page                  string `protobuf:"bytes,4,opt,name=page,proto3" json:"page,omitempty"`
-	ServerInstance        string `protobuf:"bytes,5,opt,name=server_instance,json=serverInstance,proto3" json:"server_instance,omitempty"`
-	StoreFrontHeader      string `protobuf:"bytes,6,opt,name=store_front_header,json=storeFrontHeader,proto3" json:"store_front_header,omitempty"`
-	Language              string `protobuf:"bytes,7,opt,name=language,proto3" json:"language,omitempty"`
-	PlatformId            string `protobuf:"bytes,8,opt,name=platform_id,json=platformId,proto3" json:"platform_id,omitempty"`
-	PlatformName          string `protobuf:"bytes,9,opt,name=platform_name,json=platformName,proto3" json:"platform_name,omitempty"`
-	StoreFront            string `protobuf:"bytes,10,opt,name=store_front,json=storeFront,proto3" json:"store_front,omitempty"`
-	EnvironmentDataCenter string `protobuf:"bytes,11,opt,name=environment_data_center,json=environmentDataCenter,proto3" json:"environment_data_center,omitempty"`
-}
-
-func (x *MetricsBase) Reset() {
-	*x = MetricsBase{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_scraper_scraper_proto_msgTypes[10]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
-
-func (x *MetricsBase) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*MetricsBase) ProtoMessage() {}
-
-func (x *MetricsBase) ProtoReflect() protoreflect.Message {
-	mi := &file_scraper_scraper_proto_msgTypes[10]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use MetricsBase.ProtoReflect.Descriptor instead.
-func (*MetricsBase) Descriptor() ([]byte, []int) {
-	return file_scraper_scraper_proto_rawDescGZIP(), []int{10}
-}
-
-func (x *MetricsBase) GetPageType() string {
+func (x *GooglePlayAppReply) GetDescription() string {
 	if x != nil {
-		return x.PageType
+		return x.Description
 	}
 	return ""
 }
 
-func (x *MetricsBase) GetPageId() string {
+func (x *GooglePlayAppReply) GetScreenshot1() string {
 	if x != nil {
-		return x.PageId
+		return x.Screenshot1
 	}
 	return ""
 }
 
-func (x *MetricsBase) GetPageDetails() string {
+func (x *GooglePlayAppReply) GetLogo() string {
 	if x != nil {
-		return x.PageDetails
-	}
-	return ""
-}
-
-func (x *MetricsBase) GetPage() string {
-	if x != nil {
-		return x.Page
-	}
-	return ""
-}
-
-func (x *MetricsBase) GetServerInstance() string {
-	if x != nil {
-		return x.ServerInstance
-	}
-	return ""
-}
-
-func (x *MetricsBase) GetStoreFrontHeader() string {
-	if x != nil {
-		return x.StoreFrontHeader
-	}
-	return ""
-}
-
-func (x *MetricsBase) GetLanguage() string {
-	if x != nil {
-		return x.Language
-	}
-	return ""
-}
-
-func (x *MetricsBase) GetPlatformId() string {
-	if x != nil {
-		return x.PlatformId
-	}
-	return ""
-}
-
-func (x *MetricsBase) GetPlatformName() string {
-	if x != nil {
-		return x.PlatformName
-	}
-	return ""
-}
-
-func (x *MetricsBase) GetStoreFront() string {
-	if x != nil {
-		return x.StoreFront
-	}
-	return ""
-}
-
-func (x *MetricsBase) GetEnvironmentDataCenter() string {
-	if x != nil {
-		return x.EnvironmentDataCenter
+		return x.Logo
 	}
 	return ""
 }
@@ -798,112 +524,87 @@ var File_scraper_scraper_proto protoreflect.FileDescriptor
 var file_scraper_scraper_proto_rawDesc = []byte{
 	0x0a, 0x15, 0x73, 0x63, 0x72, 0x61, 0x70, 0x65, 0x72, 0x2f, 0x73, 0x63, 0x72, 0x61, 0x70, 0x65,
 	0x72, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x12, 0x07, 0x73, 0x63, 0x72, 0x61, 0x70, 0x65, 0x72,
-	0x22, 0x53, 0x0a, 0x0b, 0x52, 0x6f, 0x6f, 0x6d, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12,
-	0x0e, 0x0a, 0x02, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0d, 0x52, 0x02, 0x69, 0x64, 0x12,
-	0x18, 0x0a, 0x07, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x72, 0x79, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09,
-	0x52, 0x07, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x72, 0x79, 0x12, 0x1a, 0x0a, 0x08, 0x6c, 0x61, 0x6e,
-	0x67, 0x75, 0x61, 0x67, 0x65, 0x18, 0x03, 0x20, 0x01, 0x28, 0x09, 0x52, 0x08, 0x6c, 0x61, 0x6e,
-	0x67, 0x75, 0x61, 0x67, 0x65, 0x22, 0x2e, 0x0a, 0x09, 0x52, 0x6f, 0x6f, 0x6d, 0x52, 0x65, 0x70,
-	0x6c, 0x79, 0x12, 0x21, 0x0a, 0x04, 0x64, 0x61, 0x74, 0x61, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0b,
-	0x32, 0x0d, 0x2e, 0x73, 0x63, 0x72, 0x61, 0x70, 0x65, 0x72, 0x2e, 0x44, 0x61, 0x74, 0x61, 0x52,
-	0x04, 0x64, 0x61, 0x74, 0x61, 0x22, 0xa3, 0x02, 0x0a, 0x04, 0x44, 0x61, 0x74, 0x61, 0x12, 0x54,
-	0x0a, 0x13, 0x73, 0x74, 0x6f, 0x72, 0x65, 0x5f, 0x70, 0x6c, 0x61, 0x74, 0x66, 0x6f, 0x72, 0x6d,
-	0x5f, 0x64, 0x61, 0x74, 0x61, 0x18, 0x01, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x24, 0x2e, 0x73, 0x63,
-	0x72, 0x61, 0x70, 0x65, 0x72, 0x2e, 0x44, 0x61, 0x74, 0x61, 0x2e, 0x53, 0x74, 0x6f, 0x72, 0x65,
-	0x50, 0x6c, 0x61, 0x74, 0x66, 0x6f, 0x72, 0x6d, 0x44, 0x61, 0x74, 0x61, 0x45, 0x6e, 0x74, 0x72,
-	0x79, 0x52, 0x11, 0x73, 0x74, 0x6f, 0x72, 0x65, 0x50, 0x6c, 0x61, 0x74, 0x66, 0x6f, 0x72, 0x6d,
-	0x44, 0x61, 0x74, 0x61, 0x12, 0x2e, 0x0a, 0x09, 0x70, 0x61, 0x67, 0x65, 0x5f, 0x64, 0x61, 0x74,
-	0x61, 0x18, 0x02, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x11, 0x2e, 0x73, 0x63, 0x72, 0x61, 0x70, 0x65,
-	0x72, 0x2e, 0x50, 0x61, 0x67, 0x65, 0x44, 0x61, 0x74, 0x61, 0x52, 0x08, 0x70, 0x61, 0x67, 0x65,
-	0x44, 0x61, 0x74, 0x61, 0x12, 0x33, 0x0a, 0x0a, 0x70, 0x72, 0x6f, 0x70, 0x65, 0x72, 0x74, 0x69,
-	0x65, 0x73, 0x18, 0x03, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x13, 0x2e, 0x73, 0x63, 0x72, 0x61, 0x70,
-	0x65, 0x72, 0x2e, 0x50, 0x72, 0x6f, 0x70, 0x65, 0x72, 0x74, 0x69, 0x65, 0x73, 0x52, 0x0a, 0x70,
-	0x72, 0x6f, 0x70, 0x65, 0x72, 0x74, 0x69, 0x65, 0x73, 0x1a, 0x60, 0x0a, 0x16, 0x53, 0x74, 0x6f,
-	0x72, 0x65, 0x50, 0x6c, 0x61, 0x74, 0x66, 0x6f, 0x72, 0x6d, 0x44, 0x61, 0x74, 0x61, 0x45, 0x6e,
-	0x74, 0x72, 0x79, 0x12, 0x10, 0x0a, 0x03, 0x6b, 0x65, 0x79, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09,
-	0x52, 0x03, 0x6b, 0x65, 0x79, 0x12, 0x30, 0x0a, 0x05, 0x76, 0x61, 0x6c, 0x75, 0x65, 0x18, 0x02,
-	0x20, 0x01, 0x28, 0x0b, 0x32, 0x1a, 0x2e, 0x73, 0x63, 0x72, 0x61, 0x70, 0x65, 0x72, 0x2e, 0x53,
-	0x74, 0x6f, 0x72, 0x65, 0x50, 0x6c, 0x61, 0x74, 0x66, 0x6f, 0x72, 0x6d, 0x44, 0x61, 0x74, 0x61,
-	0x52, 0x05, 0x76, 0x61, 0x6c, 0x75, 0x65, 0x3a, 0x02, 0x38, 0x01, 0x22, 0x39, 0x0a, 0x0a, 0x50,
-	0x72, 0x6f, 0x70, 0x65, 0x72, 0x74, 0x69, 0x65, 0x73, 0x12, 0x17, 0x0a, 0x07, 0x72, 0x65, 0x76,
-	0x5f, 0x6e, 0x75, 0x6d, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x06, 0x72, 0x65, 0x76, 0x4e,
-	0x75, 0x6d, 0x12, 0x12, 0x0a, 0x04, 0x74, 0x69, 0x6d, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09,
-	0x52, 0x04, 0x74, 0x69, 0x6d, 0x65, 0x22, 0x8b, 0x02, 0x0a, 0x11, 0x53, 0x74, 0x6f, 0x72, 0x65,
-	0x50, 0x6c, 0x61, 0x74, 0x66, 0x6f, 0x72, 0x6d, 0x44, 0x61, 0x74, 0x61, 0x12, 0x41, 0x0a, 0x07,
-	0x72, 0x65, 0x73, 0x75, 0x6c, 0x74, 0x73, 0x18, 0x01, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x27, 0x2e,
-	0x73, 0x63, 0x72, 0x61, 0x70, 0x65, 0x72, 0x2e, 0x53, 0x74, 0x6f, 0x72, 0x65, 0x50, 0x6c, 0x61,
-	0x74, 0x66, 0x6f, 0x72, 0x6d, 0x44, 0x61, 0x74, 0x61, 0x2e, 0x52, 0x65, 0x73, 0x75, 0x6c, 0x74,
-	0x73, 0x45, 0x6e, 0x74, 0x72, 0x79, 0x52, 0x07, 0x72, 0x65, 0x73, 0x75, 0x6c, 0x74, 0x73, 0x12,
-	0x18, 0x0a, 0x07, 0x76, 0x65, 0x72, 0x73, 0x69, 0x6f, 0x6e, 0x18, 0x02, 0x20, 0x01, 0x28, 0x0d,
-	0x52, 0x07, 0x76, 0x65, 0x72, 0x73, 0x69, 0x6f, 0x6e, 0x12, 0x29, 0x0a, 0x10, 0x69, 0x73, 0x5f,
-	0x61, 0x75, 0x74, 0x68, 0x65, 0x6e, 0x74, 0x69, 0x63, 0x61, 0x74, 0x65, 0x64, 0x18, 0x03, 0x20,
-	0x01, 0x28, 0x08, 0x52, 0x0f, 0x69, 0x73, 0x41, 0x75, 0x74, 0x68, 0x65, 0x6e, 0x74, 0x69, 0x63,
-	0x61, 0x74, 0x65, 0x64, 0x12, 0x21, 0x0a, 0x04, 0x6d, 0x65, 0x74, 0x61, 0x18, 0x04, 0x20, 0x01,
-	0x28, 0x0b, 0x32, 0x0d, 0x2e, 0x73, 0x63, 0x72, 0x61, 0x70, 0x65, 0x72, 0x2e, 0x4d, 0x65, 0x74,
-	0x61, 0x52, 0x04, 0x6d, 0x65, 0x74, 0x61, 0x1a, 0x4b, 0x0a, 0x0c, 0x52, 0x65, 0x73, 0x75, 0x6c,
-	0x74, 0x73, 0x45, 0x6e, 0x74, 0x72, 0x79, 0x12, 0x10, 0x0a, 0x03, 0x6b, 0x65, 0x79, 0x18, 0x01,
-	0x20, 0x01, 0x28, 0x09, 0x52, 0x03, 0x6b, 0x65, 0x79, 0x12, 0x25, 0x0a, 0x05, 0x76, 0x61, 0x6c,
-	0x75, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x0f, 0x2e, 0x73, 0x63, 0x72, 0x61, 0x70,
-	0x65, 0x72, 0x2e, 0x52, 0x65, 0x73, 0x75, 0x6c, 0x74, 0x52, 0x05, 0x76, 0x61, 0x6c, 0x75, 0x65,
-	0x3a, 0x02, 0x38, 0x01, 0x22, 0x35, 0x0a, 0x06, 0x52, 0x65, 0x73, 0x75, 0x6c, 0x74, 0x12, 0x1b,
-	0x0a, 0x09, 0x61, 0x72, 0x74, 0x69, 0x73, 0x74, 0x5f, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28,
-	0x09, 0x52, 0x08, 0x61, 0x72, 0x74, 0x69, 0x73, 0x74, 0x49, 0x64, 0x12, 0x0e, 0x0a, 0x02, 0x69,
-	0x64, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x02, 0x69, 0x64, 0x22, 0x6a, 0x0a, 0x04, 0x4d,
-	0x65, 0x74, 0x61, 0x12, 0x33, 0x0a, 0x0a, 0x73, 0x74, 0x6f, 0x72, 0x65, 0x66, 0x72, 0x6f, 0x6e,
-	0x74, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x13, 0x2e, 0x73, 0x63, 0x72, 0x61, 0x70, 0x65,
-	0x72, 0x2e, 0x53, 0x74, 0x6f, 0x72, 0x65, 0x66, 0x72, 0x6f, 0x6e, 0x74, 0x52, 0x0a, 0x73, 0x74,
-	0x6f, 0x72, 0x65, 0x66, 0x72, 0x6f, 0x6e, 0x74, 0x12, 0x2d, 0x0a, 0x08, 0x6c, 0x61, 0x6e, 0x67,
-	0x75, 0x61, 0x67, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x11, 0x2e, 0x73, 0x63, 0x72,
-	0x61, 0x70, 0x65, 0x72, 0x2e, 0x4c, 0x61, 0x6e, 0x67, 0x75, 0x61, 0x67, 0x65, 0x52, 0x08, 0x6c,
-	0x61, 0x6e, 0x67, 0x75, 0x61, 0x67, 0x65, 0x22, 0x2c, 0x0a, 0x0a, 0x53, 0x74, 0x6f, 0x72, 0x65,
-	0x66, 0x72, 0x6f, 0x6e, 0x74, 0x12, 0x0e, 0x0a, 0x02, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28,
-	0x09, 0x52, 0x02, 0x69, 0x64, 0x12, 0x0e, 0x0a, 0x02, 0x63, 0x63, 0x18, 0x02, 0x20, 0x01, 0x28,
-	0x09, 0x52, 0x02, 0x63, 0x63, 0x22, 0x1c, 0x0a, 0x08, 0x4c, 0x61, 0x6e, 0x67, 0x75, 0x61, 0x67,
-	0x65, 0x12, 0x10, 0x0a, 0x03, 0x74, 0x61, 0x67, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x03,
-	0x74, 0x61, 0x67, 0x22, 0xaf, 0x01, 0x0a, 0x08, 0x50, 0x61, 0x67, 0x65, 0x44, 0x61, 0x74, 0x61,
-	0x12, 0x17, 0x0a, 0x07, 0x61, 0x64, 0x61, 0x6d, 0x5f, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28,
-	0x0d, 0x52, 0x06, 0x61, 0x64, 0x61, 0x6d, 0x49, 0x64, 0x12, 0x19, 0x0a, 0x08, 0x61, 0x64, 0x61,
-	0x6d, 0x5f, 0x69, 0x64, 0x73, 0x18, 0x02, 0x20, 0x03, 0x28, 0x0d, 0x52, 0x07, 0x61, 0x64, 0x61,
-	0x6d, 0x49, 0x64, 0x73, 0x12, 0x17, 0x0a, 0x07, 0x66, 0x63, 0x5f, 0x6b, 0x69, 0x6e, 0x64, 0x18,
-	0x03, 0x20, 0x01, 0x28, 0x09, 0x52, 0x06, 0x66, 0x63, 0x4b, 0x69, 0x6e, 0x64, 0x12, 0x37, 0x0a,
-	0x0c, 0x6d, 0x65, 0x74, 0x72, 0x69, 0x63, 0x73, 0x5f, 0x62, 0x61, 0x73, 0x65, 0x18, 0x04, 0x20,
-	0x01, 0x28, 0x0b, 0x32, 0x14, 0x2e, 0x73, 0x63, 0x72, 0x61, 0x70, 0x65, 0x72, 0x2e, 0x4d, 0x65,
-	0x74, 0x72, 0x69, 0x63, 0x73, 0x42, 0x61, 0x73, 0x65, 0x52, 0x0b, 0x6d, 0x65, 0x74, 0x72, 0x69,
-	0x63, 0x73, 0x42, 0x61, 0x73, 0x65, 0x12, 0x1d, 0x0a, 0x0a, 0x70, 0x61, 0x67, 0x65, 0x5f, 0x74,
-	0x69, 0x74, 0x6c, 0x65, 0x18, 0x05, 0x20, 0x01, 0x28, 0x09, 0x52, 0x09, 0x70, 0x61, 0x67, 0x65,
-	0x54, 0x69, 0x74, 0x6c, 0x65, 0x22, 0x8c, 0x03, 0x0a, 0x0b, 0x4d, 0x65, 0x74, 0x72, 0x69, 0x63,
-	0x73, 0x42, 0x61, 0x73, 0x65, 0x12, 0x1b, 0x0a, 0x09, 0x70, 0x61, 0x67, 0x65, 0x5f, 0x74, 0x79,
-	0x70, 0x65, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x08, 0x70, 0x61, 0x67, 0x65, 0x54, 0x79,
-	0x70, 0x65, 0x12, 0x17, 0x0a, 0x07, 0x70, 0x61, 0x67, 0x65, 0x5f, 0x69, 0x64, 0x18, 0x02, 0x20,
-	0x01, 0x28, 0x09, 0x52, 0x06, 0x70, 0x61, 0x67, 0x65, 0x49, 0x64, 0x12, 0x21, 0x0a, 0x0c, 0x70,
-	0x61, 0x67, 0x65, 0x5f, 0x64, 0x65, 0x74, 0x61, 0x69, 0x6c, 0x73, 0x18, 0x03, 0x20, 0x01, 0x28,
-	0x09, 0x52, 0x0b, 0x70, 0x61, 0x67, 0x65, 0x44, 0x65, 0x74, 0x61, 0x69, 0x6c, 0x73, 0x12, 0x12,
-	0x0a, 0x04, 0x70, 0x61, 0x67, 0x65, 0x18, 0x04, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x70, 0x61,
-	0x67, 0x65, 0x12, 0x27, 0x0a, 0x0f, 0x73, 0x65, 0x72, 0x76, 0x65, 0x72, 0x5f, 0x69, 0x6e, 0x73,
-	0x74, 0x61, 0x6e, 0x63, 0x65, 0x18, 0x05, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0e, 0x73, 0x65, 0x72,
-	0x76, 0x65, 0x72, 0x49, 0x6e, 0x73, 0x74, 0x61, 0x6e, 0x63, 0x65, 0x12, 0x2c, 0x0a, 0x12, 0x73,
-	0x74, 0x6f, 0x72, 0x65, 0x5f, 0x66, 0x72, 0x6f, 0x6e, 0x74, 0x5f, 0x68, 0x65, 0x61, 0x64, 0x65,
-	0x72, 0x18, 0x06, 0x20, 0x01, 0x28, 0x09, 0x52, 0x10, 0x73, 0x74, 0x6f, 0x72, 0x65, 0x46, 0x72,
-	0x6f, 0x6e, 0x74, 0x48, 0x65, 0x61, 0x64, 0x65, 0x72, 0x12, 0x1a, 0x0a, 0x08, 0x6c, 0x61, 0x6e,
-	0x67, 0x75, 0x61, 0x67, 0x65, 0x18, 0x07, 0x20, 0x01, 0x28, 0x09, 0x52, 0x08, 0x6c, 0x61, 0x6e,
-	0x67, 0x75, 0x61, 0x67, 0x65, 0x12, 0x1f, 0x0a, 0x0b, 0x70, 0x6c, 0x61, 0x74, 0x66, 0x6f, 0x72,
-	0x6d, 0x5f, 0x69, 0x64, 0x18, 0x08, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0a, 0x70, 0x6c, 0x61, 0x74,
-	0x66, 0x6f, 0x72, 0x6d, 0x49, 0x64, 0x12, 0x23, 0x0a, 0x0d, 0x70, 0x6c, 0x61, 0x74, 0x66, 0x6f,
-	0x72, 0x6d, 0x5f, 0x6e, 0x61, 0x6d, 0x65, 0x18, 0x09, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0c, 0x70,
-	0x6c, 0x61, 0x74, 0x66, 0x6f, 0x72, 0x6d, 0x4e, 0x61, 0x6d, 0x65, 0x12, 0x1f, 0x0a, 0x0b, 0x73,
-	0x74, 0x6f, 0x72, 0x65, 0x5f, 0x66, 0x72, 0x6f, 0x6e, 0x74, 0x18, 0x0a, 0x20, 0x01, 0x28, 0x09,
-	0x52, 0x0a, 0x73, 0x74, 0x6f, 0x72, 0x65, 0x46, 0x72, 0x6f, 0x6e, 0x74, 0x12, 0x36, 0x0a, 0x17,
-	0x65, 0x6e, 0x76, 0x69, 0x72, 0x6f, 0x6e, 0x6d, 0x65, 0x6e, 0x74, 0x5f, 0x64, 0x61, 0x74, 0x61,
-	0x5f, 0x63, 0x65, 0x6e, 0x74, 0x65, 0x72, 0x18, 0x0b, 0x20, 0x01, 0x28, 0x09, 0x52, 0x15, 0x65,
-	0x6e, 0x76, 0x69, 0x72, 0x6f, 0x6e, 0x6d, 0x65, 0x6e, 0x74, 0x44, 0x61, 0x74, 0x61, 0x43, 0x65,
-	0x6e, 0x74, 0x65, 0x72, 0x32, 0x3d, 0x0a, 0x07, 0x53, 0x63, 0x72, 0x61, 0x70, 0x65, 0x72, 0x12,
-	0x32, 0x0a, 0x04, 0x52, 0x6f, 0x6f, 0x6d, 0x12, 0x14, 0x2e, 0x73, 0x63, 0x72, 0x61, 0x70, 0x65,
-	0x72, 0x2e, 0x52, 0x6f, 0x6f, 0x6d, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x12, 0x2e,
-	0x73, 0x63, 0x72, 0x61, 0x70, 0x65, 0x72, 0x2e, 0x52, 0x6f, 0x6f, 0x6d, 0x52, 0x65, 0x70, 0x6c,
-	0x79, 0x22, 0x00, 0x42, 0x26, 0x5a, 0x24, 0x67, 0x69, 0x74, 0x68, 0x75, 0x62, 0x2e, 0x63, 0x6f,
-	0x6d, 0x2f, 0x73, 0x61, 0x6c, 0x61, 0x6c, 0x65, 0x73, 0x65, 0x72, 0x2f, 0x73, 0x63, 0x72, 0x61,
-	0x70, 0x65, 0x72, 0x2f, 0x73, 0x63, 0x72, 0x61, 0x70, 0x65, 0x72, 0x62, 0x06, 0x70, 0x72, 0x6f,
-	0x74, 0x6f, 0x33,
+	0x22, 0x1d, 0x0a, 0x0b, 0x50, 0x69, 0x6e, 0x67, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12,
+	0x0e, 0x0a, 0x02, 0x6f, 0x6b, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x02, 0x6f, 0x6b, 0x22,
+	0x1b, 0x0a, 0x09, 0x50, 0x69, 0x6e, 0x67, 0x52, 0x65, 0x70, 0x6c, 0x79, 0x12, 0x0e, 0x0a, 0x02,
+	0x6f, 0x6b, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x02, 0x6f, 0x6b, 0x22, 0x64, 0x0a, 0x13,
+	0x41, 0x70, 0x70, 0x53, 0x74, 0x6f, 0x72, 0x65, 0x52, 0x6f, 0x6f, 0x6d, 0x52, 0x65, 0x71, 0x75,
+	0x65, 0x73, 0x74, 0x12, 0x0e, 0x0a, 0x02, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0d, 0x52,
+	0x02, 0x69, 0x64, 0x12, 0x21, 0x0a, 0x0c, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x72, 0x79, 0x5f, 0x63,
+	0x6f, 0x64, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0b, 0x63, 0x6f, 0x75, 0x6e, 0x74,
+	0x72, 0x79, 0x43, 0x6f, 0x64, 0x65, 0x12, 0x1a, 0x0a, 0x08, 0x6c, 0x61, 0x6e, 0x67, 0x75, 0x61,
+	0x67, 0x65, 0x18, 0x03, 0x20, 0x01, 0x28, 0x09, 0x52, 0x08, 0x6c, 0x61, 0x6e, 0x67, 0x75, 0x61,
+	0x67, 0x65, 0x22, 0x9a, 0x03, 0x0a, 0x11, 0x41, 0x70, 0x70, 0x53, 0x74, 0x6f, 0x72, 0x65, 0x52,
+	0x6f, 0x6f, 0x6d, 0x52, 0x65, 0x70, 0x6c, 0x79, 0x12, 0x14, 0x0a, 0x05, 0x74, 0x69, 0x74, 0x6c,
+	0x65, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x05, 0x74, 0x69, 0x74, 0x6c, 0x65, 0x12, 0x12,
+	0x0a, 0x04, 0x6c, 0x69, 0x6e, 0x6b, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x6c, 0x69,
+	0x6e, 0x6b, 0x12, 0x0e, 0x0a, 0x02, 0x69, 0x64, 0x18, 0x03, 0x20, 0x01, 0x28, 0x0d, 0x52, 0x02,
+	0x69, 0x64, 0x12, 0x1f, 0x0a, 0x0b, 0x63, 0x6f, 0x6e, 0x74, 0x65, 0x6e, 0x74, 0x5f, 0x69, 0x64,
+	0x73, 0x18, 0x04, 0x20, 0x03, 0x28, 0x0d, 0x52, 0x0a, 0x63, 0x6f, 0x6e, 0x74, 0x65, 0x6e, 0x74,
+	0x49, 0x64, 0x73, 0x12, 0x1f, 0x0a, 0x0b, 0x61, 0x72, 0x74, 0x69, 0x73, 0x74, 0x5f, 0x6e, 0x61,
+	0x6d, 0x65, 0x18, 0x05, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0a, 0x61, 0x72, 0x74, 0x69, 0x73, 0x74,
+	0x4e, 0x61, 0x6d, 0x65, 0x12, 0x16, 0x0a, 0x06, 0x72, 0x61, 0x74, 0x69, 0x6e, 0x67, 0x18, 0x06,
+	0x20, 0x01, 0x28, 0x02, 0x52, 0x06, 0x72, 0x61, 0x74, 0x69, 0x6e, 0x67, 0x12, 0x21, 0x0a, 0x0c,
+	0x72, 0x65, 0x6c, 0x65, 0x61, 0x73, 0x65, 0x5f, 0x64, 0x61, 0x74, 0x65, 0x18, 0x07, 0x20, 0x01,
+	0x28, 0x09, 0x52, 0x0b, 0x72, 0x65, 0x6c, 0x65, 0x61, 0x73, 0x65, 0x44, 0x61, 0x74, 0x65, 0x12,
+	0x1a, 0x0a, 0x08, 0x73, 0x75, 0x62, 0x74, 0x69, 0x74, 0x6c, 0x65, 0x18, 0x08, 0x20, 0x01, 0x28,
+	0x09, 0x52, 0x08, 0x73, 0x75, 0x62, 0x74, 0x69, 0x74, 0x6c, 0x65, 0x12, 0x20, 0x0a, 0x0b, 0x64,
+	0x65, 0x73, 0x63, 0x72, 0x69, 0x70, 0x74, 0x69, 0x6f, 0x6e, 0x18, 0x09, 0x20, 0x01, 0x28, 0x09,
+	0x52, 0x0b, 0x64, 0x65, 0x73, 0x63, 0x72, 0x69, 0x70, 0x74, 0x69, 0x6f, 0x6e, 0x12, 0x21, 0x0a,
+	0x0c, 0x73, 0x63, 0x72, 0x65, 0x65, 0x6e, 0x73, 0x68, 0x6f, 0x74, 0x5f, 0x31, 0x18, 0x0a, 0x20,
+	0x01, 0x28, 0x09, 0x52, 0x0b, 0x73, 0x63, 0x72, 0x65, 0x65, 0x6e, 0x73, 0x68, 0x6f, 0x74, 0x31,
+	0x12, 0x12, 0x0a, 0x04, 0x6c, 0x6f, 0x67, 0x6f, 0x18, 0x0b, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04,
+	0x6c, 0x6f, 0x67, 0x6f, 0x12, 0x17, 0x0a, 0x07, 0x66, 0x63, 0x5f, 0x6b, 0x69, 0x6e, 0x64, 0x18,
+	0x0c, 0x20, 0x01, 0x28, 0x0d, 0x52, 0x06, 0x66, 0x63, 0x4b, 0x69, 0x6e, 0x64, 0x12, 0x1f, 0x0a,
+	0x0b, 0x73, 0x74, 0x6f, 0x72, 0x65, 0x5f, 0x66, 0x72, 0x6f, 0x6e, 0x74, 0x18, 0x0d, 0x20, 0x01,
+	0x28, 0x0d, 0x52, 0x0a, 0x73, 0x74, 0x6f, 0x72, 0x65, 0x46, 0x72, 0x6f, 0x6e, 0x74, 0x12, 0x1f,
+	0x0a, 0x0b, 0x6c, 0x61, 0x6e, 0x67, 0x75, 0x61, 0x67, 0x65, 0x5f, 0x69, 0x64, 0x18, 0x0e, 0x20,
+	0x01, 0x28, 0x0d, 0x52, 0x0a, 0x6c, 0x61, 0x6e, 0x67, 0x75, 0x61, 0x67, 0x65, 0x49, 0x64, 0x22,
+	0x83, 0x01, 0x0a, 0x14, 0x47, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x50, 0x6c, 0x61, 0x79, 0x41, 0x70,
+	0x70, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x21, 0x0a, 0x0c, 0x70, 0x61, 0x63, 0x6b,
+	0x61, 0x67, 0x65, 0x5f, 0x6e, 0x61, 0x6d, 0x65, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0b,
+	0x70, 0x61, 0x63, 0x6b, 0x61, 0x67, 0x65, 0x4e, 0x61, 0x6d, 0x65, 0x12, 0x21, 0x0a, 0x0c, 0x67,
+	0x65, 0x6f, 0x5f, 0x6c, 0x6f, 0x63, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x18, 0x02, 0x20, 0x01, 0x28,
+	0x09, 0x52, 0x0b, 0x67, 0x65, 0x6f, 0x4c, 0x6f, 0x63, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x12, 0x25,
+	0x0a, 0x0e, 0x68, 0x75, 0x6d, 0x61, 0x6e, 0x5f, 0x6c, 0x61, 0x6e, 0x67, 0x75, 0x61, 0x67, 0x65,
+	0x18, 0x03, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0d, 0x68, 0x75, 0x6d, 0x61, 0x6e, 0x4c, 0x61, 0x6e,
+	0x67, 0x75, 0x61, 0x67, 0x65, 0x22, 0xb1, 0x02, 0x0a, 0x12, 0x47, 0x6f, 0x6f, 0x67, 0x6c, 0x65,
+	0x50, 0x6c, 0x61, 0x79, 0x41, 0x70, 0x70, 0x52, 0x65, 0x70, 0x6c, 0x79, 0x12, 0x14, 0x0a, 0x05,
+	0x74, 0x69, 0x74, 0x6c, 0x65, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x05, 0x74, 0x69, 0x74,
+	0x6c, 0x65, 0x12, 0x12, 0x0a, 0x04, 0x6c, 0x69, 0x6e, 0x6b, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09,
+	0x52, 0x04, 0x6c, 0x69, 0x6e, 0x6b, 0x12, 0x21, 0x0a, 0x0c, 0x70, 0x61, 0x63, 0x6b, 0x61, 0x67,
+	0x65, 0x5f, 0x6e, 0x61, 0x6d, 0x65, 0x18, 0x03, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0b, 0x70, 0x61,
+	0x63, 0x6b, 0x61, 0x67, 0x65, 0x4e, 0x61, 0x6d, 0x65, 0x12, 0x1f, 0x0a, 0x0b, 0x61, 0x72, 0x74,
+	0x69, 0x73, 0x74, 0x5f, 0x6e, 0x61, 0x6d, 0x65, 0x18, 0x04, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0a,
+	0x61, 0x72, 0x74, 0x69, 0x73, 0x74, 0x4e, 0x61, 0x6d, 0x65, 0x12, 0x16, 0x0a, 0x06, 0x72, 0x61,
+	0x74, 0x69, 0x6e, 0x67, 0x18, 0x05, 0x20, 0x01, 0x28, 0x02, 0x52, 0x06, 0x72, 0x61, 0x74, 0x69,
+	0x6e, 0x67, 0x12, 0x21, 0x0a, 0x0c, 0x72, 0x65, 0x6c, 0x65, 0x61, 0x73, 0x65, 0x5f, 0x64, 0x61,
+	0x74, 0x65, 0x18, 0x06, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0b, 0x72, 0x65, 0x6c, 0x65, 0x61, 0x73,
+	0x65, 0x44, 0x61, 0x74, 0x65, 0x12, 0x1a, 0x0a, 0x08, 0x73, 0x75, 0x62, 0x74, 0x69, 0x74, 0x6c,
+	0x65, 0x18, 0x07, 0x20, 0x01, 0x28, 0x09, 0x52, 0x08, 0x73, 0x75, 0x62, 0x74, 0x69, 0x74, 0x6c,
+	0x65, 0x12, 0x20, 0x0a, 0x0b, 0x64, 0x65, 0x73, 0x63, 0x72, 0x69, 0x70, 0x74, 0x69, 0x6f, 0x6e,
+	0x18, 0x08, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0b, 0x64, 0x65, 0x73, 0x63, 0x72, 0x69, 0x70, 0x74,
+	0x69, 0x6f, 0x6e, 0x12, 0x20, 0x0a, 0x0b, 0x73, 0x63, 0x72, 0x65, 0x65, 0x6e, 0x73, 0x68, 0x6f,
+	0x74, 0x31, 0x18, 0x09, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0b, 0x73, 0x63, 0x72, 0x65, 0x65, 0x6e,
+	0x73, 0x68, 0x6f, 0x74, 0x31, 0x12, 0x12, 0x0a, 0x04, 0x6c, 0x6f, 0x67, 0x6f, 0x18, 0x0a, 0x20,
+	0x01, 0x28, 0x09, 0x52, 0x04, 0x6c, 0x6f, 0x67, 0x6f, 0x32, 0xd8, 0x01, 0x0a, 0x07, 0x53, 0x63,
+	0x72, 0x61, 0x70, 0x65, 0x72, 0x12, 0x32, 0x0a, 0x04, 0x50, 0x69, 0x6e, 0x67, 0x12, 0x14, 0x2e,
+	0x73, 0x63, 0x72, 0x61, 0x70, 0x65, 0x72, 0x2e, 0x50, 0x69, 0x6e, 0x67, 0x52, 0x65, 0x71, 0x75,
+	0x65, 0x73, 0x74, 0x1a, 0x12, 0x2e, 0x73, 0x63, 0x72, 0x61, 0x70, 0x65, 0x72, 0x2e, 0x50, 0x69,
+	0x6e, 0x67, 0x52, 0x65, 0x70, 0x6c, 0x79, 0x22, 0x00, 0x12, 0x4a, 0x0a, 0x0c, 0x41, 0x70, 0x70,
+	0x53, 0x74, 0x6f, 0x72, 0x65, 0x52, 0x6f, 0x6f, 0x6d, 0x12, 0x1c, 0x2e, 0x73, 0x63, 0x72, 0x61,
+	0x70, 0x65, 0x72, 0x2e, 0x41, 0x70, 0x70, 0x53, 0x74, 0x6f, 0x72, 0x65, 0x52, 0x6f, 0x6f, 0x6d,
+	0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x1a, 0x2e, 0x73, 0x63, 0x72, 0x61, 0x70, 0x65,
+	0x72, 0x2e, 0x41, 0x70, 0x70, 0x53, 0x74, 0x6f, 0x72, 0x65, 0x52, 0x6f, 0x6f, 0x6d, 0x52, 0x65,
+	0x70, 0x6c, 0x79, 0x22, 0x00, 0x12, 0x4d, 0x0a, 0x0d, 0x47, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x50,
+	0x6c, 0x61, 0x79, 0x41, 0x70, 0x70, 0x12, 0x1d, 0x2e, 0x73, 0x63, 0x72, 0x61, 0x70, 0x65, 0x72,
+	0x2e, 0x47, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x50, 0x6c, 0x61, 0x79, 0x41, 0x70, 0x70, 0x52, 0x65,
+	0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x1b, 0x2e, 0x73, 0x63, 0x72, 0x61, 0x70, 0x65, 0x72, 0x2e,
+	0x47, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x50, 0x6c, 0x61, 0x79, 0x41, 0x70, 0x70, 0x52, 0x65, 0x70,
+	0x6c, 0x79, 0x22, 0x00, 0x42, 0x26, 0x5a, 0x24, 0x67, 0x69, 0x74, 0x68, 0x75, 0x62, 0x2e, 0x63,
+	0x6f, 0x6d, 0x2f, 0x73, 0x61, 0x6c, 0x61, 0x6c, 0x65, 0x73, 0x65, 0x72, 0x2f, 0x73, 0x63, 0x72,
+	0x61, 0x70, 0x65, 0x72, 0x2f, 0x73, 0x63, 0x72, 0x61, 0x70, 0x65, 0x72, 0x62, 0x06, 0x70, 0x72,
+	0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -918,41 +619,27 @@ func file_scraper_scraper_proto_rawDescGZIP() []byte {
 	return file_scraper_scraper_proto_rawDescData
 }
 
-var file_scraper_scraper_proto_msgTypes = make([]protoimpl.MessageInfo, 13)
+var file_scraper_scraper_proto_msgTypes = make([]protoimpl.MessageInfo, 6)
 var file_scraper_scraper_proto_goTypes = []interface{}{
-	(*RoomRequest)(nil),       // 0: scraper.RoomRequest
-	(*RoomReply)(nil),         // 1: scraper.RoomReply
-	(*Data)(nil),              // 2: scraper.Data
-	(*Properties)(nil),        // 3: scraper.Properties
-	(*StorePlatformData)(nil), // 4: scraper.StorePlatformData
-	(*Result)(nil),            // 5: scraper.Result
-	(*Meta)(nil),              // 6: scraper.Meta
-	(*Storefront)(nil),        // 7: scraper.Storefront
-	(*Language)(nil),          // 8: scraper.Language
-	(*PageData)(nil),          // 9: scraper.PageData
-	(*MetricsBase)(nil),       // 10: scraper.MetricsBase
-	nil,                       // 11: scraper.Data.StorePlatformDataEntry
-	nil,                       // 12: scraper.StorePlatformData.ResultsEntry
+	(*PingRequest)(nil),          // 0: scraper.PingRequest
+	(*PingReply)(nil),            // 1: scraper.PingReply
+	(*AppStoreRoomRequest)(nil),  // 2: scraper.AppStoreRoomRequest
+	(*AppStoreRoomReply)(nil),    // 3: scraper.AppStoreRoomReply
+	(*GooglePlayAppRequest)(nil), // 4: scraper.GooglePlayAppRequest
+	(*GooglePlayAppReply)(nil),   // 5: scraper.GooglePlayAppReply
 }
 var file_scraper_scraper_proto_depIdxs = []int32{
-	2,  // 0: scraper.RoomReply.data:type_name -> scraper.Data
-	11, // 1: scraper.Data.store_platform_data:type_name -> scraper.Data.StorePlatformDataEntry
-	9,  // 2: scraper.Data.page_data:type_name -> scraper.PageData
-	3,  // 3: scraper.Data.properties:type_name -> scraper.Properties
-	12, // 4: scraper.StorePlatformData.results:type_name -> scraper.StorePlatformData.ResultsEntry
-	6,  // 5: scraper.StorePlatformData.meta:type_name -> scraper.Meta
-	7,  // 6: scraper.Meta.storefront:type_name -> scraper.Storefront
-	8,  // 7: scraper.Meta.language:type_name -> scraper.Language
-	10, // 8: scraper.PageData.metrics_base:type_name -> scraper.MetricsBase
-	4,  // 9: scraper.Data.StorePlatformDataEntry.value:type_name -> scraper.StorePlatformData
-	5,  // 10: scraper.StorePlatformData.ResultsEntry.value:type_name -> scraper.Result
-	0,  // 11: scraper.Scraper.Room:input_type -> scraper.RoomRequest
-	1,  // 12: scraper.Scraper.Room:output_type -> scraper.RoomReply
-	12, // [12:13] is the sub-list for method output_type
-	11, // [11:12] is the sub-list for method input_type
-	11, // [11:11] is the sub-list for extension type_name
-	11, // [11:11] is the sub-list for extension extendee
-	0,  // [0:11] is the sub-list for field type_name
+	0, // 0: scraper.Scraper.Ping:input_type -> scraper.PingRequest
+	2, // 1: scraper.Scraper.AppStoreRoom:input_type -> scraper.AppStoreRoomRequest
+	4, // 2: scraper.Scraper.GooglePlayApp:input_type -> scraper.GooglePlayAppRequest
+	1, // 3: scraper.Scraper.Ping:output_type -> scraper.PingReply
+	3, // 4: scraper.Scraper.AppStoreRoom:output_type -> scraper.AppStoreRoomReply
+	5, // 5: scraper.Scraper.GooglePlayApp:output_type -> scraper.GooglePlayAppReply
+	3, // [3:6] is the sub-list for method output_type
+	0, // [0:3] is the sub-list for method input_type
+	0, // [0:0] is the sub-list for extension type_name
+	0, // [0:0] is the sub-list for extension extendee
+	0, // [0:0] is the sub-list for field type_name
 }
 
 func init() { file_scraper_scraper_proto_init() }
@@ -962,7 +649,7 @@ func file_scraper_scraper_proto_init() {
 	}
 	if !protoimpl.UnsafeEnabled {
 		file_scraper_scraper_proto_msgTypes[0].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*RoomRequest); i {
+			switch v := v.(*PingRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -974,7 +661,7 @@ func file_scraper_scraper_proto_init() {
 			}
 		}
 		file_scraper_scraper_proto_msgTypes[1].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*RoomReply); i {
+			switch v := v.(*PingReply); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -986,7 +673,7 @@ func file_scraper_scraper_proto_init() {
 			}
 		}
 		file_scraper_scraper_proto_msgTypes[2].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*Data); i {
+			switch v := v.(*AppStoreRoomRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -998,7 +685,7 @@ func file_scraper_scraper_proto_init() {
 			}
 		}
 		file_scraper_scraper_proto_msgTypes[3].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*Properties); i {
+			switch v := v.(*AppStoreRoomReply); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -1010,7 +697,7 @@ func file_scraper_scraper_proto_init() {
 			}
 		}
 		file_scraper_scraper_proto_msgTypes[4].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*StorePlatformData); i {
+			switch v := v.(*GooglePlayAppRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -1022,67 +709,7 @@ func file_scraper_scraper_proto_init() {
 			}
 		}
 		file_scraper_scraper_proto_msgTypes[5].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*Result); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_scraper_scraper_proto_msgTypes[6].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*Meta); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_scraper_scraper_proto_msgTypes[7].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*Storefront); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_scraper_scraper_proto_msgTypes[8].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*Language); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_scraper_scraper_proto_msgTypes[9].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*PageData); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_scraper_scraper_proto_msgTypes[10].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*MetricsBase); i {
+			switch v := v.(*GooglePlayAppReply); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -1100,7 +727,7 @@ func file_scraper_scraper_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_scraper_scraper_proto_rawDesc,
 			NumEnums:      0,
-			NumMessages:   13,
+			NumMessages:   6,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
@@ -1126,7 +753,9 @@ const _ = grpc.SupportPackageIsVersion6
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
 type ScraperClient interface {
-	Room(ctx context.Context, in *RoomRequest, opts ...grpc.CallOption) (*RoomReply, error)
+	Ping(ctx context.Context, in *PingRequest, opts ...grpc.CallOption) (*PingReply, error)
+	AppStoreRoom(ctx context.Context, in *AppStoreRoomRequest, opts ...grpc.CallOption) (*AppStoreRoomReply, error)
+	GooglePlayApp(ctx context.Context, in *GooglePlayAppRequest, opts ...grpc.CallOption) (*GooglePlayAppReply, error)
 }
 
 type scraperClient struct {
@@ -1137,9 +766,27 @@ func NewScraperClient(cc grpc.ClientConnInterface) ScraperClient {
 	return &scraperClient{cc}
 }
 
-func (c *scraperClient) Room(ctx context.Context, in *RoomRequest, opts ...grpc.CallOption) (*RoomReply, error) {
-	out := new(RoomReply)
-	err := c.cc.Invoke(ctx, "/scraper.Scraper/Room", in, out, opts...)
+func (c *scraperClient) Ping(ctx context.Context, in *PingRequest, opts ...grpc.CallOption) (*PingReply, error) {
+	out := new(PingReply)
+	err := c.cc.Invoke(ctx, "/scraper.Scraper/Ping", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *scraperClient) AppStoreRoom(ctx context.Context, in *AppStoreRoomRequest, opts ...grpc.CallOption) (*AppStoreRoomReply, error) {
+	out := new(AppStoreRoomReply)
+	err := c.cc.Invoke(ctx, "/scraper.Scraper/AppStoreRoom", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *scraperClient) GooglePlayApp(ctx context.Context, in *GooglePlayAppRequest, opts ...grpc.CallOption) (*GooglePlayAppReply, error) {
+	out := new(GooglePlayAppReply)
+	err := c.cc.Invoke(ctx, "/scraper.Scraper/GooglePlayApp", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -1148,35 +795,79 @@ func (c *scraperClient) Room(ctx context.Context, in *RoomRequest, opts ...grpc.
 
 // ScraperServer is the server API for Scraper service.
 type ScraperServer interface {
-	Room(context.Context, *RoomRequest) (*RoomReply, error)
+	Ping(context.Context, *PingRequest) (*PingReply, error)
+	AppStoreRoom(context.Context, *AppStoreRoomRequest) (*AppStoreRoomReply, error)
+	GooglePlayApp(context.Context, *GooglePlayAppRequest) (*GooglePlayAppReply, error)
 }
 
 // UnimplementedScraperServer can be embedded to have forward compatible implementations.
 type UnimplementedScraperServer struct {
 }
 
-func (*UnimplementedScraperServer) Room(context.Context, *RoomRequest) (*RoomReply, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method Room not implemented")
+func (*UnimplementedScraperServer) Ping(context.Context, *PingRequest) (*PingReply, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Ping not implemented")
+}
+func (*UnimplementedScraperServer) AppStoreRoom(context.Context, *AppStoreRoomRequest) (*AppStoreRoomReply, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method AppStoreRoom not implemented")
+}
+func (*UnimplementedScraperServer) GooglePlayApp(context.Context, *GooglePlayAppRequest) (*GooglePlayAppReply, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GooglePlayApp not implemented")
 }
 
 func RegisterScraperServer(s *grpc.Server, srv ScraperServer) {
 	s.RegisterService(&_Scraper_serviceDesc, srv)
 }
 
-func _Scraper_Room_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(RoomRequest)
+func _Scraper_Ping_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(PingRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(ScraperServer).Room(ctx, in)
+		return srv.(ScraperServer).Ping(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/scraper.Scraper/Room",
+		FullMethod: "/scraper.Scraper/Ping",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ScraperServer).Room(ctx, req.(*RoomRequest))
+		return srv.(ScraperServer).Ping(ctx, req.(*PingRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Scraper_AppStoreRoom_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(AppStoreRoomRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ScraperServer).AppStoreRoom(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/scraper.Scraper/AppStoreRoom",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ScraperServer).AppStoreRoom(ctx, req.(*AppStoreRoomRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Scraper_GooglePlayApp_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GooglePlayAppRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ScraperServer).GooglePlayApp(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/scraper.Scraper/GooglePlayApp",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ScraperServer).GooglePlayApp(ctx, req.(*GooglePlayAppRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -1186,8 +877,16 @@ var _Scraper_serviceDesc = grpc.ServiceDesc{
 	HandlerType: (*ScraperServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
-			MethodName: "Room",
-			Handler:    _Scraper_Room_Handler,
+			MethodName: "Ping",
+			Handler:    _Scraper_Ping_Handler,
+		},
+		{
+			MethodName: "AppStoreRoom",
+			Handler:    _Scraper_AppStoreRoom_Handler,
+		},
+		{
+			MethodName: "GooglePlayApp",
+			Handler:    _Scraper_GooglePlayApp_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

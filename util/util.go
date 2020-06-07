@@ -12,16 +12,12 @@ import (
 
 	"github.com/detectlanguage/detectlanguage-go"
 	as "github.com/salaleser/appstoreapi"
-	pb "github.com/salaleser/vitalina/scraper"
-	"google.golang.org/grpc"
 )
 
 // Config is a configuration.
 var Config = make(map[string]string)
 
 var languageDetectionClient *detectlanguage.Client
-
-var Scraper pb.ScraperClient
 
 // LanguageDetection is a vitalina's Detection structure.
 type LanguageDetection struct {
@@ -72,15 +68,6 @@ func ReadConfig() {
 	if err != nil {
 		log.Println(err)
 	}
-}
-
-func InitScraper() {
-	conn, err := grpc.Dial("localhost:50051", grpc.WithInsecure(), grpc.WithBlock())
-	if err != nil {
-		log.Fatalf("did not connect: %v", err)
-	}
-	defer conn.Close()
-	Scraper = pb.NewScraperClient(conn)
 }
 
 // InitLangaugeDetection initializes language detection client.

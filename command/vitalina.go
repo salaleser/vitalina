@@ -13,6 +13,7 @@ import (
 	as "github.com/salaleser/appstoreapi"
 	pb "github.com/salaleser/vitalina/scraper"
 	"github.com/salaleser/vitalina/util"
+	"google.golang.org/grpc"
 )
 
 type room struct {
@@ -401,9 +402,27 @@ func Vitalina(s *discordgo.Session, m *discordgo.MessageCreate) {
 
 func processAppGp(s *discordgo.Session, m *discordgo.MessageCreate,
 	packageName string, gl string, hl string) error {
-	metadata := as.MetadataResponse{} //as.AppGp(packageName, gl, hl)
+	conn, err := grpc.Dial(fmt.Sprintf("%s:%s", util.Config["grpc-host"],
+		util.Config["grpc-port"]), grpc.WithInsecure(), grpc.WithBlock())
+	if err != nil {
+		log.Fatalf("did not connect: %v", err)
+	}
+	defer conn.Close()
+	client := pb.NewScraperClient(conn)
 
-	if metadata.Title == "" {
+	ctx, cancel := context.WithTimeout(context.Background(), time.Second)
+	defer cancel()
+	req := &pb.GooglePlayAppRequest{
+		PackageName:   packageName,
+		GeoLocation:   gl,
+		HumanLanguage: hl,
+	}
+	r, err := client.GooglePlayApp(ctx, req)
+	if err != nil {
+		log.Fatalf("could not get gp app: %v", err)
+	}
+
+	if r.Title == "" {
 		return nil
 	}
 
@@ -415,22 +434,22 @@ func processAppGp(s *discordgo.Session, m *discordgo.MessageCreate,
 		Description: fmt.Sprintf(""+
 			"__**%s**__\n"+
 			"%s",
-			metadata.Title,
-			metadata.Subtitle,
+			r.Title,
+			r.Subtitle,
 		),
 		Link: fmt.Sprintf("https://play.google.com/store/apps/details?id=%s",
 			packageName),
-		ImageURL:     metadata.Screenshot1,
-		ThumbnailURL: metadata.Logo,
+		ImageURL:     r.Screenshot1,
+		ThumbnailURL: r.Logo,
 		FooterText: fmt.Sprintf(""+
-			"ID: %s\n"+
+			"Package Name: %s\n"+
 			"Author: %s\n"+
 			"Release Date: %s\n"+
 			"Rating: %s",
-			metadata.AppID,
-			metadata.ArtistName,
-			metadata.ReleaseDate,
-			util.GetStarsBar(int(metadata.Rating)),
+			r.PackageName,
+			r.ArtistName,
+			r.ReleaseDate,
+			util.GetStarsBar(int(r.Rating)),
 		),
 		FooterIconURL: util.GpLogoURL,
 	})
@@ -700,10 +719,18 @@ func processStory(s *discordgo.Session, m *discordgo.MessageCreate,
 
 func processRoom(s *discordgo.Session, m *discordgo.MessageCreate,
 	id uint32, cc string, l string) error {
+	conn, err := grpc.Dial(fmt.Sprintf("%s:%s", util.Config["grpc-host"],
+		util.Config["grpc-port"]), grpc.WithInsecure(), grpc.WithBlock())
+	if err != nil {
+		log.Fatalf("did not connect: %v", err)
+	}
+	defer conn.Close()
+	client := pb.NewScraperClient(conn)
 
 	ctx, cancel := context.WithTimeout(context.Background(), time.Second)
 	defer cancel()
-	r, err := util.Scraper.Room(ctx, &pb.RoomRequest{Id: id, Country: cc, Language: l})
+	req := &pb.AppStoreRoomRequest{Id: id, CountryCode: cc, Language: l}
+	resp, err := client.AppStoreRoom(ctx, req)
 	if err != nil {
 		log.Fatalf("could not get room: %v", err)
 	}
@@ -716,18 +743,18 @@ func processRoom(s *discordgo.Session, m *discordgo.MessageCreate,
 		Description: fmt.Sprintf(""+
 			"__**%s**__\n\n"+
 			"**App IDs:**\n%s",
-			r.Data.PageData.PageTitle,
-			util.MakeList(r.Data.PageData.AdamIds),
+			resp.Title,
+			util.MakeList(resp.ContentIds),
 		),
 		FooterText: fmt.Sprintf(""+
 			"ID: %d\n"+
-			"FC Kind: %s\n"+
-			"Store Front ID: %s\n"+
-			"Language ID: %s",
-			r.Data.PageData.AdamId,
-			r.Data.PageData.FcKind,
-			r.Data.PageData.MetricsBase.StoreFront,
-			r.Data.PageData.MetricsBase.Language,
+			"FC Kind: %d\n"+
+			"Store Front ID: %d\n"+
+			"Language ID: %d",
+			resp.Id,
+			resp.FcKind,
+			resp.StoreFront,
+			resp.LanguageId,
 		),
 		FooterIconURL: util.AsLogoURL,
 	})

@@ -3,9 +3,11 @@ package command
 import (
 	"bytes"
 	"fmt"
+	"os"
 	"strings"
 
 	as "github.com/salaleser/appstoreapi"
+	gp "github.com/salaleser/googleplayapi"
 
 	"github.com/bwmarrin/discordgo"
 	"github.com/salaleser/vitalina/util"
@@ -57,8 +59,12 @@ func SearchApps(s *discordgo.Session, m *discordgo.MessageCreate) {
 func getAsAppIDsMessage(keyword string, cc string, l string) util.Message {
 	var d bytes.Buffer
 
-	metadatas := as.AppIDs(keyword, cc, l)
-	for i, m := range metadatas {
+	data, err := as.AppIDs(keyword, cc, l)
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "error as app-ids: %v", err)
+	}
+
+	for i, m := range data {
 		d.WriteString(fmt.Sprintf("**%d**: %s (`%s`) %s\n",
 			i+1, m.Title, m.AppID, util.GetStarsBar(int(m.Rating))))
 	}
@@ -68,16 +74,20 @@ func getAsAppIDsMessage(keyword string, cc string, l string) util.Message {
 			keyword),
 		Description:   d.String(),
 		ThumbnailURL:  util.AsLogoURL,
-		FooterText:    fmt.Sprintf("Total: %d", len(metadatas)),
+		FooterText:    fmt.Sprintf("Total: %d", len(data)),
 		FooterIconURL: util.AsLogoURL,
 	}
 }
 
-func getGpAppIDsMessage(keyword string, cc string, l string) util.Message {
+func getGpAppIDsMessage(keyword string, gl string, hl string) util.Message {
 	var d bytes.Buffer
 
-	metadatas := []as.MetadataResponse{} //gp.AppIDs(keyword, cc, l)
-	for i, m := range metadatas {
+	data, err := gp.AppIDs(keyword, gl, hl)
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "error gp app-ids: %v", err)
+	}
+
+	for i, m := range data {
 		d.WriteString(fmt.Sprintf("**%d**: %s (`%s`) %s\n",
 			i+1, m.Title, m.AppID, util.GetStarsBar(int(m.Rating))))
 	}
@@ -87,9 +97,9 @@ func getGpAppIDsMessage(keyword string, cc string, l string) util.Message {
 			keyword),
 		Description: d.String(),
 		Link: fmt.Sprintf("https://play.google.com/store/search?q=%s&c=apps&gl=%s&hl=%s",
-			keyword, cc, l),
+			keyword, gl, hl),
 		ThumbnailURL:  util.GpLogoURL,
-		FooterText:    fmt.Sprintf("Total: %d", len(metadatas)),
+		FooterText:    fmt.Sprintf("Total: %d", len(data)),
 		FooterIconURL: util.GpLogoURL,
 	}
 }

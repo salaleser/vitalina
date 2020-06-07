@@ -40,6 +40,16 @@ github.com/pmezard/go-difflib v1.0.0/go.mod h1:iKH77koFhYxTK1pcRnkKkqfTogsbg7gZN
 github.com/prometheus/client_model v0.0.0-20190812154241-14fe0d1b01d4/go.mod h1:xMI15A0UPsDsEKsMN9yxemIoYk6Tm2C1GtYGdfGttqA=
 github.com/salaleser/appstoreapi v0.0.0-20200607000511-b9d4f6b1130d h1:bzjn65WE2sjA7A2QF9Oll69V348x+aqTSysx6gR32fg=
 github.com/salaleser/appstoreapi v0.0.0-20200607000511-b9d4f6b1130d/go.mod h1:L7p99MBN4haKSeCZ6tIG6KAL7ggR0HNnV1fZxUehe9w=
+github.com/salaleser/appstoreapi v0.0.0-20200607155704-f2aebccfadf6 h1:N997nVeZgnvAS77b5DLGa9CJBc98HP2//a/HKg45ycA=
+github.com/salaleser/appstoreapi v0.0.0-20200607155704-f2aebccfadf6/go.mod h1:L7p99MBN4haKSeCZ6tIG6KAL7ggR0HNnV1fZxUehe9w=
+github.com/salaleser/appstoreapi v0.0.0-20200607164202-20213fa0cf15 h1:4ABNPg4RN/IcGo81h3kfnHxHNwW0UFrMf8rMPUovPN8=
+github.com/salaleser/appstoreapi v0.0.0-20200607164202-20213fa0cf15/go.mod h1:L7p99MBN4haKSeCZ6tIG6KAL7ggR0HNnV1fZxUehe9w=
+github.com/salaleser/googleplayapi v0.0.0-20200607104641-74c262147154 h1:fNuY3hTboOVMtx459NVBCaekO51PO36k6HM5SeHeUUo=
+github.com/salaleser/googleplayapi v0.0.0-20200607104641-74c262147154/go.mod h1:FY5ZS5gwTZ+fuXQgY+5UjZJdOpCjnMIIfAh4/e7AET4=
+github.com/salaleser/googleplayapi v0.0.0-20200607155510-2b6aa79bfdb1 h1:KIm2dG8pcCeWtw8gOZCYuJjtHQ3g9cerdIiUJRmFd3A=
+github.com/salaleser/googleplayapi v0.0.0-20200607155510-2b6aa79bfdb1/go.mod h1:FY5ZS5gwTZ+fuXQgY+5UjZJdOpCjnMIIfAh4/e7AET4=
+github.com/salaleser/googleplayapi v0.0.0-20200607163911-1274ee86bd87 h1:DkDCl50AM9Q9VXIS9e6PX2bpd6TAnhf588k/aEXkEeQ=
+github.com/salaleser/googleplayapi v0.0.0-20200607163911-1274ee86bd87/go.mod h1:FY5ZS5gwTZ+fuXQgY+5UjZJdOpCjnMIIfAh4/e7AET4=
 github.com/salaleser/scraper v0.0.0-20200529105348-cd979f809091 h1:+X9uKtSzaxS7nZXE3DpEqaPC0TfRuD1JjaRazS3f54s=
 github.com/salaleser/scraper v0.0.0-20200529105348-cd979f809091/go.mod h1:VCK119BGoJHR81a+GX5YsWWCabw6TyZeQqaMIQhLqD0=
 github.com/salaleser/scraper v0.0.0-20200607092636-ba9f82b8de4b h1:lwxdzl2kNlHIgB77fgkS0AQJLytNkx6gayuHZEb4UpM=

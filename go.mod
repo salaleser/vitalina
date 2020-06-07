@@ -7,8 +7,9 @@ require (
 	github.com/detectlanguage/detectlanguage-go v1.0.1
 	github.com/golang/protobuf v1.4.2
 	github.com/gorilla/websocket v1.4.2 // indirect
-	github.com/salaleser/appstoreapi v0.0.0-20200607000511-b9d4f6b1130d
-	github.com/salaleser/scraper v0.0.0-20200607092636-ba9f82b8de4b
+	github.com/salaleser/appstoreapi v0.0.0-20200607164202-20213fa0cf15
+	github.com/salaleser/googleplayapi v0.0.0-20200607163911-1274ee86bd87
+	github.com/salaleser/scraper v0.0.0-20200607092636-ba9f82b8de4b // indirect
 	golang.org/x/crypto v0.0.0-20200604202706-70a84ac30bf9 // indirect
 	google.golang.org/grpc v1.30.0-dev.1
 	google.golang.org/protobuf v1.24.0
