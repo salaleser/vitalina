@@ -1,7 +1,9 @@
 package command
 
 import (
+	"context"
 	"fmt"
+	"log"
 	"regexp"
 	"strconv"
 	"strings"
@@ -9,6 +11,7 @@ import (
 
 	"github.com/bwmarrin/discordgo"
 	"github.com/salaleser/scraper"
+	pb "github.com/salaleser/vitalina/scraper"
 	"github.com/salaleser/vitalina/util"
 )
 
@@ -239,23 +242,23 @@ func Vitalina(s *discordgo.Session, m *discordgo.MessageCreate) {
 			}
 		}
 
-		if util.MatchesAsRoomID(arg) {
-			id, _ := strconv.Atoi(arg)
-			err := processRoom(s, m, id, cc, l)
-			if err != nil {
-				util.Debug(fmt.Sprintf(
-					"room [id=%d,cc=%s,l=%s]: %v",
-					id, cc, l, err))
-				if force {
-					util.SendError(s, m,
-						fmt.Sprintf(
-							"Room [id=%d,cc=%s,l=%s]",
-							id, cc, l),
-						err,
-					)
-				}
-			}
-		}
+		// if util.MatchesAsRoomID(arg) {
+		// 	id, _ := strconv.Atoi(arg)
+		// 	err := processRoom(s, m, uint32(id), cc, l)
+		// 	if err != nil {
+		// 		util.Debug(fmt.Sprintf(
+		// 			"room [id=%d,cc=%s,l=%s]: %v",
+		// 			id, cc, l, err))
+		// 		if force {
+		// 			util.SendError(s, m,
+		// 				fmt.Sprintf(
+		// 					"Room [id=%d,cc=%s,l=%s]",
+		// 					id, cc, l),
+		// 				err,
+		// 			)
+		// 		}
+		// 	}
+		// }
 
 		if util.MatchesAsGroupingID(arg) {
 			id, _ := strconv.Atoi(arg)
@@ -696,10 +699,13 @@ func processStory(s *discordgo.Session, m *discordgo.MessageCreate,
 }
 
 func processRoom(s *discordgo.Session, m *discordgo.MessageCreate,
-	id int, cc string, l string) error {
-	page, err := scraper.Room(id, cc, l)
+	id uint32, cc string, l string) error {
+
+	ctx, cancel := context.WithTimeout(context.Background(), time.Second)
+	defer cancel()
+	r, err := util.Scraper.Room(ctx, &pb.RoomRequest{Id: id, Country: cc, Language: l})
 	if err != nil {
-		return err
+		log.Fatalf("could not get room: %v", err)
 	}
 
 	util.Send(s, m, util.Message{
@@ -710,18 +716,18 @@ func processRoom(s *discordgo.Session, m *discordgo.MessageCreate,
 		Description: fmt.Sprintf(""+
 			"__**%s**__\n\n"+
 			"**App IDs:**\n%s",
-			page.PageData.PageTitle,
-			util.MakeList(page.PageData.AdamIDs),
+			r.Data.PageData.PageTitle,
+			util.MakeList(r.Data.PageData.AdamIds),
 		),
 		FooterText: fmt.Sprintf(""+
 			"ID: %d\n"+
 			"FC Kind: %s\n"+
 			"Store Front ID: %s\n"+
 			"Language ID: %s",
-			page.PageData.AdamID,
-			page.PageData.FcKind,
-			page.PageData.MetricsBase.StoreFront,
-			page.PageData.MetricsBase.Language,
+			r.Data.PageData.AdamId,
+			r.Data.PageData.FcKind,
+			r.Data.PageData.MetricsBase.StoreFront,
+			r.Data.PageData.MetricsBase.Language,
 		),
 		FooterIconURL: util.AsLogoURL,
 	})

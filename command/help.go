@@ -34,7 +34,7 @@ func Help(s *discordgo.Session, m *discordgo.MessageCreate) {
 			"(Usage) Примеры использования (попробуйте просто отправить такое сообщение):\n" +
 			"`143444`, `6014 CN`, `547702041 JP ja-jp`\n\n" +
 			"(Aliases) Все префиксы (алиасы для скрытых команд):\n" +
-			"`!` — search-apps (App Store, Google Play): `!майнкрафт`.\n" +
+			"`§` — search-apps (App Store, Google Play): `§майнкрафт`.\n" +
 			"`?` — force command (verbose mode): `?RU`, `?hu-hu`.\n" +
 			"`.` — detect language (by reactions): `.Աստղային ճանապարհ`\n" +
 			"`,` — detect language (by reply message) `,HeghluʼmeH QaQ jajvam`.\n"

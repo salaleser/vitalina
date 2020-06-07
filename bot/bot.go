@@ -16,7 +16,7 @@ type handler func(s *discordgo.Session, m *discordgo.MessageCreate)
 
 // Command is a command
 type Command struct {
-	Hanlder     handler
+	Handler     handler
 	Description string
 }
 
@@ -82,8 +82,8 @@ func messageCreate(s *discordgo.Session, m *discordgo.MessageCreate) {
 	// Custom prefixes (aliases)
 	// TODO add aliases support
 	if !strings.HasPrefix(m.Content, "~") {
-		if strings.HasPrefix(m.Content, "!") {
-			// go command.SearchApps(s, m)
+		if strings.HasPrefix(m.Content, "§") {
+			go command.SearchApps(s, m)
 		} else if strings.HasPrefix(m.Content, ".") {
 			go command.DetectLanguage(s, m)
 		} else if strings.HasPrefix(m.Content, ",") {
@@ -97,7 +97,7 @@ func messageCreate(s *discordgo.Session, m *discordgo.MessageCreate) {
 	// Real commands
 	args := strings.Split(m.Content, " ")
 	if cmd, ok := Commands[args[0][1:]]; ok {
-		go cmd.Hanlder(s, m)
+		go cmd.Handler(s, m)
 	} else {
 		util.SendInfo(s, m, fmt.Sprintf("Команда `%s` не поддерживается", args[0]))
 	}

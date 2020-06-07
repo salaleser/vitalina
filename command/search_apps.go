@@ -3,6 +3,7 @@ package command
 import (
 	"bytes"
 	"fmt"
+	"strings"
 
 	"github.com/bwmarrin/discordgo"
 	"github.com/salaleser/scraper"
@@ -12,12 +13,43 @@ import (
 // SearchApps sends message with store applications.
 func SearchApps(s *discordgo.Session, m *discordgo.MessageCreate) {
 	cc := "us"
-	l := "en-us"
+	l := ""
+	gl := "us"
+	hl := ""
 
-	msg1 := getAsAppIDsMessage(m.Content[1:], cc, l)
+	content := m.Content[2:]
+
+	args := strings.Split(content, " ")
+
+	// Scan for country code and language
+	for _, arg := range args {
+		if _, ok := scraper.StoreFronts[arg]; ok {
+			util.Debug(fmt.Sprintf(""+
+				"Country code %q detected!",
+				arg,
+			))
+			cc = arg
+			gl = util.ToGooglePlayGeoLocation(arg)
+			country := util.Countries[strings.ToLower(arg)]
+			s.MessageReactionAdd(m.ChannelID, m.ID, country.Emoji)
+		}
+
+		if _, ok := scraper.Languages[arg]; ok {
+			util.Debug(fmt.Sprintf(""+
+				"Language %q detected!",
+				arg,
+			))
+			l = arg
+			hl = util.ToGooglePlayHumanLanguage(arg)
+			language := util.Languages[strings.Split(arg, "-")[0]]
+			s.MessageReactionAdd(m.ChannelID, m.ID, language.Emoji)
+		}
+	}
+
+	msg1 := getAsAppIDsMessage(args[0], cc, l)
 	util.Send(s, m, msg1)
 
-	msg2 := getGpAppIDsMessage(m.Content[1:], cc, l)
+	msg2 := getGpAppIDsMessage(args[0], gl, hl)
 	util.Send(s, m, msg2)
 }
 

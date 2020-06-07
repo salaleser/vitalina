@@ -1,0 +1,159 @@
+syntax = "proto3";
+
+option go_package = "github.com/salaleser/scraper/scraper";
+
+package scraper;
+
+service Scraper {
+	rpc Room (RoomRequest) returns (RoomReply) {}
+}
+
+message RoomRequest {
+	uint32 id = 1;
+	string country = 2;
+	string language = 3;
+}
+
+message RoomReply {
+	Data data = 1;
+}
+
+message Data {
+	map<string, StorePlatformData> store_platform_data = 1;
+	PageData page_data = 2;
+	Properties properties = 3;
+}
+
+message Properties {
+	string rev_num = 1;
+	string time = 2;
+}
+
+message StorePlatformData {
+	map<string, Result> results = 1;
+	uint32 version = 2;
+	bool is_authenticated = 3;
+	Meta meta = 4;
+}
+
+message Result {
+	string artist_id = 1;
+	// ArtistName                             string                   `json:"artistName"`
+	// ArtistURL                              string                   `json:"artistUrl"`
+	// Artwork                                Artwork                  `json:"artwork"`
+	// BundleID                               string                   `json:"bundleId"`
+	// Canvas                                 Canvas                   `json:"canvas"`
+	// CardDisplayStyle                       string                   `json:"cardDisplayStyle"`
+	// CardIDs                                []string                 `json:"cardIds"`
+	// ChartPositionForStore                  map[string]ChartPosition `json:"chartPositionForStore"`
+	// Children                               map[string]Result        `json:"children"`
+	// ChildrenIDs                            []string                 `json:"childrenIds"`
+	// СircularArtwork                        Artwork                  `json:"circularArtwork"`
+	// ContentRatingsBySystem                 ContentRatingsBySystem   `json:"contentRatingsBySystem"`
+	// Copyright                              string                   `json:"copyright"`
+	// Description                            Description              `json:"description"`
+	// DeviceFamilies                         []string                 `json:"deviceFamilies"`
+	// DisplayStyle                           string                   `json:"displayStyle"`
+	// DisplaySubStyle                        string                   `json:"displaySubStyle"`
+	// EditorialArtwork                       map[string]Artwork       `json:"editorialArtwork"`
+	// EditorialBadgeInfo                     EditorialBadgeInfo       `json:"editorialBadgeInfo"`
+	// EditorialNotes                         EditorialNotes           `json:"editorialNotes"`
+	// FirstVersionSupportingInAppPurchaseAPI string                   `json:"firstVersionSupportingInAppPurchaseApi"`
+	// Genres                                 Genres                   `json:"genres"`
+	// GenreNames                             []string                 `json:"genreNames"`
+	// HasInAppPurchases                      bool                     `json:"hasInAppPurchases"`
+	string id = 2;
+	// ItunesNotes                            ItunesNotes              `json:"itunesNotes"`
+	// IsAppleWatchSupported                  bool                     `json:"isAppleWatchSupported"`
+	// Kind                                   string                   `json:"kind"`
+	// Label                                  string                   `json:"label"`
+	// Link                                   Link                     `json:"link"`
+	// MinimumOSVersion                       string                   `json:"minimumOSVersion"`
+	// Name                                   string                   `json:"name"`
+	// NameRaw                                string                   `json:"nameRaw"`
+	// NameSortValue                          string                   `json:"nameSortValue"`
+	// Offers                                 Offers                   `json:"offers"`
+	// OvalArtwork                            Artwork                  `json:"ovalArtwork"`
+	// ReleaseDate                            string                   `json:"releaseDate"`
+	// RelatedContent                         map[string]Result        `json:"relatedContent"`
+	// RelatedEditorialItems                  []string                 `json:"relatedEditorialItems"`
+	// RequiredCapabilities                   string                   `json:"requiredCapabilities"`
+	// ScreenshotsByType                      map[string][]Artwork     `json:"screenshotsByType"`
+	// ShortURL                               string                   `json:"shortUrl"`
+	// Subtitle                               string                   `json:"subtitle"`
+	// URL                                    string                   `json:"url"`
+	// UserRating                             UserRating               `json:"userRating"`
+}
+
+message Meta {
+	Storefront storefront = 1;
+	Language language = 2;
+}
+
+message Storefront {
+	string id = 1;
+	string cc = 2;
+}
+
+message Language {
+	string tag = 1;
+}
+
+message PageData {
+	uint32 adam_id = 1;
+	repeated uint32 adam_ids = 2;
+	// AllCategoriesLink         AllCategoriesLink         `json:"allCategoriesLink"`
+	// AppRatingsLearnMoreURL    string                    `json:"appRatingsLearnMoreUrl"`
+	// Bubbles                   Bubbles                   `json:"bubbles"`
+	// CmcSwooshData             CmcSwooshData             `json:"cmcSwooshData"`
+	// ComponentName             string                    `json:"componentName"`
+	// ContentID                 string                    `json:"contentId"`
+	// CustomerReviewsURL        string                    `json:"customerReviewsUrl"`
+	// CustomersAlsoBoughtApps   []string                  `json:"customersAlsoBoughtApps"`
+	// DoNotFilter               bool                      `json:"doNotFilter"`
+	string fc_kind = 3;
+	// FcStructure               FcStructure               `json:"fcStructure"`
+	// GenreID                   int                       `json:"genreId"`
+	// KindExtID                 string                    `json:"kindExtId"`
+	// KindID                    int                       `json:"kindId"`
+	// KindName                  string                    `json:"kindName"`
+	MetricsBase metrics_base = 4;
+	// Metrics                   Metrics                   `json:"metrics"`
+	// MoreByThisDeveloper       []string                  `json:"moreByThisDeveloper"`
+	// Mt                        int                       `json:"mt"`
+	// NfaSwooshData             NfaSwooshData             `json:"nfaSwooshData"`
+	// Today                     Today                     `json:"today"`
+	// TotalNumberOfReviews      int                       `json:"totalNumberOfReviews"`
+	// ID                        string                    `json:"id"`
+	// IsFatBinary               int                       `json:"isFatBinary"`
+	// IsNewsstand               bool                      `json:"isNewsstand"`
+	string page_title = 5;
+	// PageType                  string                    `json:"pageType"`
+	// PurchaseURL               string                    `json:"purchaseUrl"`
+	// RadioURL                  string                    `json:"radioUrl"`
+	// RatingAndAdvisories       RatingAndAdvisories       `json:"rating-and-advisories"`
+	// RecommendationsSwooshData RecommendationsSwooshData `json:"recommendationsSwooshData"`
+	// SellerLabel               string                    `json:"sellerLabel"`
+	// Sf6ResourceImagePath      string                    `json:"sf6ResourceImagePath"`
+	// Term                      string                    `json:"term"`
+	// TopApps                   TopApps                   `json:"topApps"`
+	// VersionHistory            VersionHistory            `json:"versionHistory"`
+	// UnAvailableContentIds     map[string]int            `json:"unAvailableContentIds"`
+	// UserReviewsSortOptions    UserReviewsSortOptions    `json:"userReviewsSortOptions"`
+	// UserReviewList            UserReviewList            `json:"userReviewList"`
+	// URL                       string                    `json:"url"`
+}
+
+message MetricsBase {
+	string page_type = 1;
+	string page_id = 2;
+	string page_details = 3;
+	string page = 4;
+	string server_instance = 5;
+	string store_front_header = 6;
+	string language = 7;
+	string platform_id = 8;
+	string platform_name = 9;
+	string store_front = 10;
+	string environment_data_center = 11;
+}
