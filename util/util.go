@@ -11,7 +11,7 @@ import (
 	"time"
 
 	"github.com/detectlanguage/detectlanguage-go"
-	"github.com/salaleser/scraper"
+	as "github.com/salaleser/appstoreapi"
 	pb "github.com/salaleser/vitalina/scraper"
 	"google.golang.org/grpc"
 )
@@ -230,7 +230,7 @@ func MatchesAsGenreID(s string) bool {
 		return false
 	}
 
-	if !contains(scraper.GenreIDs, id) {
+	if !contains(as.GenreIDs, id) {
 		return false
 	}
 
@@ -364,7 +364,7 @@ func ContainsMap(m map[string]int, x int) bool {
 
 // GetCcByStoreFront returns App Store country code by store front storeFront.
 func GetCcByStoreFront(storeFront int) string {
-	for cc, sf := range scraper.StoreFronts {
+	for cc, sf := range as.StoreFronts {
 		if sf == storeFront {
 			return cc
 		}

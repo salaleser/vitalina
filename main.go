@@ -9,7 +9,7 @@ func main() {
 	util.ReadConfig()
 
 	util.InitLangaugeDetection()
-	// util.InitScraper()
+	util.InitScraper()
 
 	bot.Start("Bot " + util.Config["token"])
 }

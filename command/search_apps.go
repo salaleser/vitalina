@@ -5,8 +5,9 @@ import (
 	"fmt"
 	"strings"
 
+	as "github.com/salaleser/appstoreapi"
+
 	"github.com/bwmarrin/discordgo"
-	"github.com/salaleser/scraper"
 	"github.com/salaleser/vitalina/util"
 )
 
@@ -23,7 +24,7 @@ func SearchApps(s *discordgo.Session, m *discordgo.MessageCreate) {
 
 	// Scan for country code and language
 	for _, arg := range args {
-		if _, ok := scraper.StoreFronts[arg]; ok {
+		if _, ok := as.StoreFronts[arg]; ok {
 			util.Debug(fmt.Sprintf(""+
 				"Country code %q detected!",
 				arg,
@@ -34,7 +35,7 @@ func SearchApps(s *discordgo.Session, m *discordgo.MessageCreate) {
 			s.MessageReactionAdd(m.ChannelID, m.ID, country.Emoji)
 		}
 
-		if _, ok := scraper.Languages[arg]; ok {
+		if _, ok := as.Languages[arg]; ok {
 			util.Debug(fmt.Sprintf(""+
 				"Language %q detected!",
 				arg,
@@ -56,7 +57,7 @@ func SearchApps(s *discordgo.Session, m *discordgo.MessageCreate) {
 func getAsAppIDsMessage(keyword string, cc string, l string) util.Message {
 	var d bytes.Buffer
 
-	metadatas := scraper.AppIDs(keyword, cc, l)
+	metadatas := as.AppIDs(keyword, cc, l)
 	for i, m := range metadatas {
 		d.WriteString(fmt.Sprintf("**%d**: %s (`%s`) %s\n",
 			i+1, m.Title, m.AppID, util.GetStarsBar(int(m.Rating))))
@@ -75,7 +76,7 @@ func getAsAppIDsMessage(keyword string, cc string, l string) util.Message {
 func getGpAppIDsMessage(keyword string, cc string, l string) util.Message {
 	var d bytes.Buffer
 
-	metadatas := scraper.GpAppIDs(keyword, cc, l)
+	metadatas := []as.MetadataResponse{} //gp.AppIDs(keyword, cc, l)
 	for i, m := range metadatas {
 		d.WriteString(fmt.Sprintf("**%d**: %s (`%s`) %s\n",
 			i+1, m.Title, m.AppID, util.GetStarsBar(int(m.Rating))))

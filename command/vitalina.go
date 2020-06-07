@@ -10,7 +10,7 @@ import (
 	"time"
 
 	"github.com/bwmarrin/discordgo"
-	"github.com/salaleser/scraper"
+	as "github.com/salaleser/appstoreapi"
 	pb "github.com/salaleser/vitalina/scraper"
 	"github.com/salaleser/vitalina/util"
 )
@@ -53,7 +53,7 @@ func Vitalina(s *discordgo.Session, m *discordgo.MessageCreate) {
 
 	// Scan for country code and language
 	for _, arg := range args {
-		if _, ok := scraper.StoreFronts[arg]; ok {
+		if _, ok := as.StoreFronts[arg]; ok {
 			util.Debug(fmt.Sprintf(""+
 				"Country code %q detected!",
 				arg,
@@ -64,7 +64,7 @@ func Vitalina(s *discordgo.Session, m *discordgo.MessageCreate) {
 			s.MessageReactionAdd(m.ChannelID, m.ID, country.Emoji)
 		}
 
-		if _, ok := scraper.Languages[arg]; ok {
+		if _, ok := as.Languages[arg]; ok {
 			util.Debug(fmt.Sprintf(""+
 				"Language %q detected!",
 				arg,
@@ -80,7 +80,7 @@ func Vitalina(s *discordgo.Session, m *discordgo.MessageCreate) {
 	for _, arg := range args {
 		// Store Front
 		id, _ := strconv.Atoi(arg)
-		if util.ContainsMap(scraper.StoreFronts, id) {
+		if util.ContainsMap(as.StoreFronts, id) {
 			cc := util.GetCcByStoreFront(id)
 			country := util.Countries[strings.ToLower(cc)]
 			g, _ := s.Guild(m.GuildID)
@@ -109,7 +109,7 @@ func Vitalina(s *discordgo.Session, m *discordgo.MessageCreate) {
 
 		if force {
 			// Coutry Code
-			if sf, ok := scraper.StoreFronts[strings.ToUpper(arg)]; ok {
+			if sf, ok := as.StoreFronts[strings.ToUpper(arg)]; ok {
 				country := util.Countries[strings.ToLower(arg)]
 				g, _ := s.Guild(m.GuildID)
 				rl := util.ConvertDiscordRegionToLanguage(g.Region)
@@ -137,7 +137,7 @@ func Vitalina(s *discordgo.Session, m *discordgo.MessageCreate) {
 			}
 
 			// App Store Langauge Code
-			if asl, ok := scraper.Languages[arg]; ok {
+			if asl, ok := as.Languages[arg]; ok {
 				language := util.Languages[strings.Split(arg, "-")[0]]
 				g, _ := s.Guild(m.GuildID)
 				rl := util.ConvertDiscordRegionToLanguage(g.Region)
@@ -242,23 +242,23 @@ func Vitalina(s *discordgo.Session, m *discordgo.MessageCreate) {
 			}
 		}
 
-		// if util.MatchesAsRoomID(arg) {
-		// 	id, _ := strconv.Atoi(arg)
-		// 	err := processRoom(s, m, uint32(id), cc, l)
-		// 	if err != nil {
-		// 		util.Debug(fmt.Sprintf(
-		// 			"room [id=%d,cc=%s,l=%s]: %v",
-		// 			id, cc, l, err))
-		// 		if force {
-		// 			util.SendError(s, m,
-		// 				fmt.Sprintf(
-		// 					"Room [id=%d,cc=%s,l=%s]",
-		// 					id, cc, l),
-		// 				err,
-		// 			)
-		// 		}
-		// 	}
-		// }
+		if util.MatchesAsRoomID(arg) {
+			id, _ := strconv.Atoi(arg)
+			err := processRoom(s, m, uint32(id), cc, l)
+			if err != nil {
+				util.Debug(fmt.Sprintf(
+					"room [id=%d,cc=%s,l=%s]: %v",
+					id, cc, l, err))
+				if force {
+					util.SendError(s, m,
+						fmt.Sprintf(
+							"Room [id=%d,cc=%s,l=%s]",
+							id, cc, l),
+						err,
+					)
+				}
+			}
+		}
 
 		if util.MatchesAsGroupingID(arg) {
 			id, _ := strconv.Atoi(arg)
@@ -401,7 +401,7 @@ func Vitalina(s *discordgo.Session, m *discordgo.MessageCreate) {
 
 func processAppGp(s *discordgo.Session, m *discordgo.MessageCreate,
 	packageName string, gl string, hl string) error {
-	metadata := scraper.AppGp(packageName, gl, hl)
+	metadata := as.MetadataResponse{} //as.AppGp(packageName, gl, hl)
 
 	if metadata.Title == "" {
 		return nil
@@ -440,7 +440,7 @@ func processAppGp(s *discordgo.Session, m *discordgo.MessageCreate,
 
 func processApp(s *discordgo.Session, m *discordgo.MessageCreate,
 	id int, cc string, l string) error {
-	page, err := scraper.App(id, cc, l)
+	page, err := as.App(uint32(id), cc, l)
 	if err != nil {
 		return err
 	}
@@ -500,7 +500,7 @@ func processApp(s *discordgo.Session, m *discordgo.MessageCreate,
 
 func processBundle(s *discordgo.Session, m *discordgo.MessageCreate,
 	id int, cc string, l string) error {
-	page, err := scraper.Bundle(id, cc, l)
+	page, err := as.Bundle(uint32(id), cc, l)
 	if err != nil {
 		return err
 	}
@@ -558,7 +558,7 @@ func processBundle(s *discordgo.Session, m *discordgo.MessageCreate,
 
 func processGenre(s *discordgo.Session, m *discordgo.MessageCreate,
 	id int, cc string, l string) error {
-	page, err := scraper.Genre(id, cc)
+	page, err := as.Genre(uint32(id), cc)
 	if err != nil {
 		return err
 	}
@@ -611,7 +611,7 @@ func processGenre(s *discordgo.Session, m *discordgo.MessageCreate,
 
 func processGrouping(s *discordgo.Session, m *discordgo.MessageCreate,
 	id int, cc string, l string) error {
-	page, err := scraper.Grouping(id, cc, l)
+	page, err := as.Grouping(uint32(id), cc, l)
 	if err != nil {
 		return err
 	}
@@ -651,7 +651,7 @@ func processGrouping(s *discordgo.Session, m *discordgo.MessageCreate,
 
 func processStory(s *discordgo.Session, m *discordgo.MessageCreate,
 	id int, cc string, l string) error {
-	page, err := scraper.Story(id, cc, l)
+	page, err := as.Story(uint32(id), cc, l)
 	if err != nil {
 		return err
 	}
@@ -741,7 +741,7 @@ func isQuestion(s string) bool {
 	return regexp.MatchString(s)
 }
 
-func buildRooms(page *scraper.Page) [][]room {
+func buildRooms(page *as.Page) [][]room {
 	children := page.PageData.FcStructure.Model.Children[0].Children
 
 	sections := make([][]room, 0)
