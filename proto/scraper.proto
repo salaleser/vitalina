@@ -1,6 +1,8 @@
 syntax = "proto3";
 
-option go_package = "github.com/salaleser/scraper/scraper";
+option go_package = "github.com/salaleser/scraper/proto";
+
+// protoc --go_out=plugins=grpc:. --go_opt=paths=source_relative scraper.proto
 
 package scraper;
 
@@ -54,9 +56,15 @@ message GooglePlayAppReply {
 	string package_name = 3;
 	string artist_name = 4;
 	float rating = 5;
-	string release_date = 6;
-	string subtitle = 7;
-	string description = 8;
-	string screenshot1 = 9;
-	string logo = 10;
+	int32 stars_count = 6;
+	int32 stars_1_count = 7;
+	int32 stars_2_count = 8;
+	int32 stars_3_count = 9;
+	int32 stars_4_count = 10;
+	int32 stars_5_count = 11;
+	string release_date = 12;
+	string subtitle = 13;
+	string description = 14;
+	string screenshot1 = 15;
+	string logo = 16;
 }
