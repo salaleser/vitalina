@@ -11,7 +11,7 @@ import (
 
 	"github.com/bwmarrin/discordgo"
 	as "github.com/salaleser/appstoreapi"
-	pb "github.com/salaleser/vitalina/scraper"
+	pb "github.com/salaleser/vitalina/proto"
 	"github.com/salaleser/vitalina/util"
 	"google.golang.org/grpc"
 )
